@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta name="theme-color" content="#006d4a"/>
+<meta name="description" content="LinguaLeap - Master pronunciation with AI-powered speech recognition"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>LinguaLeap - Active Lesson</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Be+Vietnam+Pro:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "tertiary-fixed": "#fda625",
+              "on-tertiary-fixed": "#311c00",
+              "primary-fixed": "#69f6b8",
+              "tertiary-fixed-dim": "#ed9912",
+              "secondary-container": "#c8f17a",
+              "on-primary-fixed": "#00452d",
+              "inverse-surface": "#041015",
+              "background": "#f4faff",
+              "on-primary-container": "#005a3c",
+              "tertiary": "#875400",
+              "on-secondary": "#f0ffce",
+              "primary-dim": "#005f40",
+              "on-secondary-fixed": "#304600",
+              "surface-container-highest": "#cde6f4",
+              "on-tertiary": "#fff7f3",
+              "secondary": "#4a6800",
+              "outline": "#667e8a",
+              "on-secondary-container": "#3f5a00",
+              "surface-container": "#def1fc",
+              "on-primary": "#e6ffee",
+              "inverse-primary": "#69f6b8",
+              "on-surface": "#1d3540",
+              "on-error-container": "#671200",
+              "secondary-fixed": "#c8f17a",
+              "error-dim": "#821a01",
+              "surface-bright": "#f4faff",
+              "secondary-dim": "#405b00",
+              "primary": "#006d4a",
+              "on-secondary-fixed-variant": "#476400",
+              "on-error": "#fff7f6",
+              "secondary-fixed-dim": "#bae26e",
+              "primary-container": "#69f6b8",
+              "surface-container-high": "#d5ecf8",
+              "on-background": "#1d3540",
+              "on-tertiary-container": "#502f00",
+              "surface-dim": "#c2deee",
+              "surface-variant": "#cde6f4",
+              "surface-container-lowest": "#ffffff",
+              "error-container": "#fa7150",
+              "inverse-on-surface": "#929fa6",
+              "surface-tint": "#006d4a",
+              "on-tertiary-fixed-variant": "#5c3700",
+              "surface-container-low": "#e7f6ff",
+              "outline-variant": "#9db6c3",
+              "tertiary-dim": "#764900",
+              "error": "#aa371c",
+              "surface": "#f4faff",
+              "on-primary-fixed-variant": "#006544",
+              "tertiary-container": "#fda625",
+              "primary-fixed-dim": "#58e7ab",
+              "on-surface-variant": "#4b626e"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans"],
+              "body": ["Be Vietnam Pro"],
+              "label": ["Plus Jakarta Sans"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        body { font-family: 'Be Vietnam Pro', sans-serif; }
+        h1, h2, h3, .font-headline { font-family: 'Plus Jakarta Sans', sans-serif; }
+    </style>
+<style>
+    body {
+      min-height:100%;
+    }
+  </style>
+</head>
+<body class="bg-background text-on-background min-h-screen flex flex-col overflow-x-hidden pb-32">
+<!-- Top Navigation Bar (JSON Anchor Implementation) -->
+<!-- Rule: Suppress Full Nav on Transactional/Task Screens. Simplified Header for focus. -->
+<header class="w-full top-0 z-40 bg-[#f4faff] dark:bg-slate-950 flex justify-between items-center px-6 py-6">
+<div class="flex items-center gap-6 w-full max-w-4xl mx-auto">
+<button class="text-on-surface hover:bg-surface-container-highest transition-colors p-2 rounded-full cursor-pointer" onclick="window.location.href='speech.html'">
+<span class="material-symbols-outlined text-2xl" data-icon="close">close</span>
+</button>
+<!-- Custom Progress Bar -->
+<div class="flex-grow bg-surface-container-high h-4 rounded-full overflow-hidden">
+<div class="bg-gradient-to-r from-primary to-primary-container h-full w-[65%] rounded-full transition-all duration-500 shadow-sm shadow-primary/20"></div>
+</div>
+<div class="flex items-center gap-2 px-3 py-1.5 bg-surface-container-low rounded-full">
+<span class="text-lg">12</span>
+<span class="text-lg">🔥</span>
+</div>
+</div>
+</header>
+<main class="flex-grow flex flex-col items-center px-6 py-8 max-w-4xl mx-auto w-full mb-32">
+<!-- Instructional Header -->
+<div class="w-full text-left mb-10">
+<span class="text-primary font-headline font-bold text-sm tracking-widest uppercase">TRANSLATION TASK</span>
+<h1 class="text-on-surface font-headline font-extrabold text-4xl mt-2 tracking-tight">Translate this phrase</h1>
+</div>
+<!-- Central Lesson Card (Asymmetric / Bento Style) -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-6 w-full">
+<!-- Phrase Presentation -->
+<div class="md:col-span-8 bg-surface-container-lowest rounded-[2rem] p-8 shadow-[0_12px_32px_-4px_rgba(29,53,64,0.06)] relative overflow-hidden flex flex-col justify-center min-h-[220px]">
+<div class="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full -mr-10 -mt-10"></div>
+<div class="flex items-start gap-4 z-10">
+<div class="bg-surface-container-low p-4 rounded-2xl">
+<span class="material-symbols-outlined text-primary text-3xl" data-icon="volume_up">volume_up</span>
+</div>
+<div>
+<p class="text-on-surface text-2xl md:text-3xl font-headline font-bold leading-tight">
+                            "Le petit chat noir dort sous la table en bois."
+                        </p>
+<p class="text-on-surface-variant italic mt-3 text-lg opacity-70">Pronunciation: /lə pə.ti ʃa nwaʁ dɔʁ su la tabl ɑ̃ bwa/</p>
+</div>
+</div>
+</div>
+<!-- Grammar Tip Sidecard -->
+<div class="md:col-span-4 bg-tertiary-container rounded-[2rem] p-6 flex flex-col justify-between text-on-tertiary-container shadow-[0_8px_24px_-4px_rgba(135,84,0,0.15)]">
+<div>
+<div class="flex items-center gap-2 mb-3">
+<span class="material-symbols-outlined" data-icon="lightbulb" style="font-variation-settings: 'FILL' 1;">lightbulb</span>
+<span class="font-headline font-bold text-sm uppercase tracking-wider">Grammar Tip</span>
+</div>
+<p class="text-sm leading-relaxed font-medium">
+                        Adjectives like <span class="font-bold underline">noir</span> (black) usually come <span class="font-bold">after</span> the noun in French.
+                    </p>
+</div>
+<div class="mt-4 pt-4 border-t border-on-tertiary-container/10">
+<span class="text-xs font-bold opacity-60">RULE: B.A.N.G.S exception doesn't apply here.</span>
+</div>
+</div>
+</div>
+<!-- Interaction Area: MCQ Options -->
+<div class="w-full mt-12">
+<h2 class="font-headline font-bold text-on-surface-variant text-sm mb-6 uppercase tracking-widest px-2">Select the correct translation:</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<!-- Option 1: Selected State -->
+<button class="group flex items-center p-5 rounded-[1.5rem] bg-surface-container-lowest border-2 border-primary shadow-sm transition-all active:scale-95 duration-150 text-left">
+<span class="w-10 h-10 flex items-center justify-center rounded-xl bg-primary text-on-primary font-headline font-bold mr-4">1</span>
+<span class="text-on-surface text-lg font-semibold">The small black cat is sleeping under the wooden table.</span>
+</button>
+<!-- Option 2 -->
+<button class="group flex items-center p-5 rounded-[1.5rem] bg-surface-container-lowest hover:bg-surface-container-low transition-all active:scale-95 duration-150 text-left">
+<span class="w-10 h-10 flex items-center justify-center rounded-xl bg-surface-container-highest text-on-surface-variant font-headline font-bold mr-4 group-hover:bg-primary/10 group-hover:text-primary transition-colors">2</span>
+<span class="text-on-surface text-lg font-semibold">The big black cat sits on the wooden chair.</span>
+</button>
+<!-- Option 3 -->
+<button class="group flex items-center p-5 rounded-[1.5rem] bg-surface-container-lowest hover:bg-surface-container-low transition-all active:scale-95 duration-150 text-left">
+<span class="w-10 h-10 flex items-center justify-center rounded-xl bg-surface-container-highest text-on-surface-variant font-headline font-bold mr-4 group-hover:bg-primary/10 group-hover:text-primary transition-colors">3</span>
+<span class="text-on-surface text-lg font-semibold">A small white kitten sleeps beside the wooden bench.</span>
+</button>
+<!-- Option 4 -->
+<button class="group flex items-center p-5 rounded-[1.5rem] bg-surface-container-lowest hover:bg-surface-container-low transition-all active:scale-95 duration-150 text-left">
+<span class="w-10 h-10 flex items-center justify-center rounded-xl bg-surface-container-highest text-on-surface-variant font-headline font-bold mr-4 group-hover:bg-primary/10 group-hover:text-primary transition-colors">4</span>
+<span class="text-on-surface text-lg font-semibold">The small black dog sleeps under the wooden table.</span>
+</button>
+</div>
+</div>
+</main>
+<!-- Task Footer (Action Area) -->
+<footer class="fixed bottom-0 left-0 w-full bg-surface-container-low border-t border-outline-variant/15 px-6 py-6 z-50">
+<div class="max-w-4xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+<div class="hidden md:flex items-center gap-4">
+<div class="bg-secondary-container p-3 rounded-2xl">
+<span class="material-symbols-outlined text-on-secondary-container" data-icon="task_alt">task_alt</span>
+</div>
+<div>
+<p class="font-headline font-bold text-on-surface leading-tight">Almost there!</p>
+<p class="text-on-surface-variant text-sm">Correct answers earn +20 bonus XP today.</p>
+</div>
+</div>
+<div class="flex gap-4 w-full md:w-auto">
+<button class="flex-1 md:flex-none px-10 py-4 rounded-full font-headline font-bold text-on-surface hover:bg-surface-container-highest transition-all active:scale-95" onclick="window.location.href='speech.html'">
+                    SKIP
+                </button>
+<button class="flex-[2] md:flex-none px-16 py-4 rounded-full bg-primary text-on-primary font-headline font-extrabold shadow-lg shadow-primary/20 hover:bg-primary-dim transition-all active:scale-95 tracking-wide" onclick="window.location.href='speech.html';">
+                    CHECK ANSWER
+                </button>
+</div>
+</div>
+</footer>
+<!-- Image for background context (hidden/decorative) -->
+<div class="fixed inset-0 -z-10 opacity-30 pointer-events-none">
+<div class="absolute top-1/4 -right-20 w-[600px] h-[600px] bg-gradient-to-br from-primary-container/20 to-transparent rounded-full blur-3xl"></div>
+<div class="absolute bottom-0 -left-20 w-[400px] h-[400px] bg-gradient-to-tr from-secondary-container/30 to-transparent rounded-full blur-3xl"></div>
+</div>
+<!-- Hidden visual context for the LLM's image requirements -->
+<div class="hidden">
+<img data-alt="Soft focused educational background with organic shapes and pastel teal gradients creating a calm learning atmosphere" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDvWKobuk-uC-dlRiSrWnToMRm1LOUqm3qaRXQ_Oai7RPBLwHDJW91eBz-Cose-VL39VNr-CUsxym3bhK5lDwh-HbNLKXJPyw1ajKOq6tKuW7Wq5RU_NFG7Bsfq4bJLlPOB2VhZ5PFsQFPb4VZ7EhFHMallVWYuI9FJubRidbcvyb29QlQYubjyYAoT_TvaO6IqXhgD69D8-95DpsSfiwQC8V66llPOFh450KiJQQw-d3Ex00HKkFkuVHm54Cvfoxsz2dOV_GvUdb21"/>
+</div>
+
+<script>
+// ——— LinguaLeap SPA Router ———
+(function() {
+  const PAGE = 'active-lesson.html';
+
+  // Active nav item highlight
+  document.querySelectorAll('a[href], button[data-nav]').forEach(el => {
+    const href = el.getAttribute('href') || '';
+    if (href === PAGE) {
+      el.classList.add('nav-active');
+    }
+  });
+
+  // Smooth page transitions
+  document.addEventListener('click', function(e) {
+    const link = e.target.closest('a[href]');
+    if (!link) return;
+    const href = link.getAttribute('href');
+    if (!href || href === '#' || href.startsWith('http') || href.startsWith('mailto')) return;
+    e.preventDefault();
+    document.body.style.opacity = '0';
+    document.body.style.transition = 'opacity 0.2s ease';
+    setTimeout(() => { window.location.href = href; }, 200);
+  });
+
+  // Fade in on load
+  document.body.style.opacity = '0';
+  window.addEventListener('DOMContentLoaded', () => {
+    requestAnimationFrame(() => {
+      document.body.style.transition = 'opacity 0.3s ease';
+      document.body.style.opacity = '1';
+    });
+  });
+})();
+</script>
+<nav id="bottom-nav" class="fixed bottom-0 left-0 w-full flex justify-around items-center px-4 pb-safe pt-2 pb-4 bg-[#f4faff]/95 backdrop-blur-md border-t border-[#9db6c3]/15 shadow-[0_-4px_20px_-4px_rgba(29,53,64,0.06)] z-50 rounded-t-[1.5rem]">
+<a class="flex flex-col items-center justify-center text-[#1d3540] px-4 py-2 hover:bg-[#e7f6ff] rounded-xl transition-all duration-300 transform active:scale-90" href="dashboard.html">
+<span class="material-symbols-outlined text-[22px]" style="font-variation-settings:'FILL' 0;">home</span>
+<span class="text-[10px] font-semibold mt-0.5">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-[#c8f17a] text-[#006d4a] rounded-[1.5rem] px-4 py-2 transition-all duration-300 transform active:scale-90" href="roadmap.html">
+<span class="material-symbols-outlined text-[22px]" style="font-variation-settings:'FILL' 1;">school</span>
+<span class="text-[10px] font-semibold mt-0.5">Roadmap</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#1d3540] px-4 py-2 hover:bg-[#e7f6ff] rounded-xl transition-all duration-300 transform active:scale-90" href="speech.html">
+<span class="material-symbols-outlined text-[22px]" style="font-variation-settings:'FILL' 0;">mic</span>
+<span class="text-[10px] font-semibold mt-0.5">Practice</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#1d3540] px-4 py-2 hover:bg-[#e7f6ff] rounded-xl transition-all duration-300 transform active:scale-90" href="leaderboard.html">
+<span class="material-symbols-outlined text-[22px]" style="font-variation-settings:'FILL' 0;">leaderboard</span>
+<span class="text-[10px] font-semibold mt-0.5">Rank</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#1d3540] px-4 py-2 hover:bg-[#e7f6ff] rounded-xl transition-all duration-300 transform active:scale-90" href="achievements.html">
+<span class="material-symbols-outlined text-[22px]" style="font-variation-settings:'FILL' 0;">person</span>
+<span class="text-[10px] font-semibold mt-0.5">Profile</span>
+</a>
+</nav>
+
+<script>
+(function(){
+  // Answer input check
+  const checkBtn = document.querySelector('button[onclick*="speech"]');
+  const inputs = document.querySelectorAll('input[type="text"],textarea');
+  
+  if(checkBtn){
+    checkBtn.addEventListener('click', function(e){
+      e.stopPropagation();
+      // Animate button
+      this.innerHTML = '<span class="material-symbols-outlined animate-spin">progress_activity</span> Checking...';
+      this.disabled = true;
+      setTimeout(()=>{
+        // Show success feedback
+        const feedback = document.createElement('div');
+        feedback.className='fixed inset-0 flex items-center justify-center z-[9999] bg-black/20';
+        feedback.innerHTML=`<div class="bg-white rounded-3xl p-8 shadow-2xl flex flex-col items-center gap-4 mx-4">
+          <span class="material-symbols-outlined text-6xl text-green-500" style="font-variation-settings:'FILL' 1;">check_circle</span>
+          <h2 class="text-2xl font-bold text-[#1d3540]">Correct!</h2>
+          <p class="text-[#1d3540]/60 text-center">Great pronunciation! Moving to speech practice...</p>
+        </div>`;
+        document.body.appendChild(feedback);
+        setTimeout(()=>window.location.href='speech.html', 1500);
+      }, 1200);
+    });
+  }
+
+  // Highlight selectable word tiles
+  document.querySelectorAll('[class*="rounded-xl"][class*="px-4"][class*="py-2"]').forEach(tile=>{
+    if(tile.textContent.trim().length < 30){
+      tile.style.cursor='pointer';
+      tile.addEventListener('click',()=>{
+        tile.classList.toggle('bg-primary');
+        tile.classList.toggle('text-white');
+        tile.classList.toggle('bg-surface-container-low');
+      });
+    }
+  });
+
+  // Timer countdown
+  const timerEl = document.querySelector('[class*="text-primary"][class*="font-mono"],[class*="countdown"],[class*="timer"]');
+  if(timerEl && /\d+/.test(timerEl.textContent)){
+    let secs = parseInt(timerEl.textContent.match(/\d+/)[0]) || 30;
+    const tick = setInterval(()=>{
+      secs--;
+      timerEl.textContent = secs + 's';
+      if(secs <= 5) timerEl.classList.add('text-red-500');
+      if(secs <= 0){ clearInterval(tick); window.location.href='speech.html'; }
+    },1000);
+  }
+})();
+</script>
+</body></html>

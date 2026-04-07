@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta name="theme-color" content="#006d4a"/>
+<meta name="description" content="LinguaLeap - Master pronunciation with AI-powered speech recognition"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Be+Vietnam+Pro:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary-dim": "#005f40",
+              "surface-dim": "#c2deee",
+              "secondary": "#4a6800",
+              "on-tertiary": "#fff7f3",
+              "on-background": "#1d3540",
+              "tertiary": "#875400",
+              "on-secondary": "#f0ffce",
+              "surface-container-lowest": "#ffffff",
+              "on-primary": "#e6ffee",
+              "error-container": "#fa7150",
+              "on-tertiary-container": "#502f00",
+              "on-secondary-container": "#3f5a00",
+              "secondary-fixed-dim": "#bae26e",
+              "secondary-fixed": "#c8f17a",
+              "primary-fixed-dim": "#58e7ab",
+              "background": "#f4faff",
+              "on-primary-fixed-variant": "#006544",
+              "on-primary-fixed": "#00452d",
+              "tertiary-dim": "#764900",
+              "on-surface-variant": "#4b626e",
+              "error": "#aa371c",
+              "surface-bright": "#f4faff",
+              "on-primary-container": "#005a3c",
+              "primary-fixed": "#69f6b8",
+              "tertiary-fixed-dim": "#ed9912",
+              "surface-tint": "#006d4a",
+              "on-tertiary-fixed": "#311c00",
+              "on-secondary-fixed-variant": "#476400",
+              "on-error-container": "#671200",
+              "error-dim": "#821a01",
+              "on-secondary-fixed": "#304600",
+              "surface-container-low": "#e7f6ff",
+              "tertiary-fixed": "#fda625",
+              "surface-variant": "#cde6f4",
+              "on-error": "#fff7f6",
+              "secondary-dim": "#405b00",
+              "outline": "#667e8a",
+              "on-surface": "#1d3540",
+              "primary": "#006d4a",
+              "surface-container-highest": "#cde6f4",
+              "secondary-container": "#c8f17a",
+              "on-tertiary-fixed-variant": "#5c3700",
+              "primary-container": "#69f6b8",
+              "inverse-on-surface": "#929fa6",
+              "inverse-primary": "#69f6b8",
+              "outline-variant": "#9db6c3",
+              "surface": "#f4faff",
+              "tertiary-container": "#fda625",
+              "surface-container": "#def1fc",
+              "surface-container-high": "#d5ecf8",
+              "inverse-surface": "#041015"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans"],
+              "body": ["Be Vietnam Pro"],
+              "label": ["Plus Jakarta Sans"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "2xl": "1.5rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      .custom-scrollbar::-webkit-scrollbar { width: 4px; }
+      .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+      .custom-scrollbar::-webkit-scrollbar-thumb { background: #9db6c344; border-radius: 10px; }
+    </style>
+<style>
+    body {
+      min-height:100%;
+    }
+  </style>
+</head>
+<body class="bg-background font-body text-on-surface pb-32">
+<!-- TopAppBar Shell -->
+<header class="fixed top-0 w-full z-50 flex justify-between items-center px-6 py-3 bg-[#f4faff] dark:bg-slate-950">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full overflow-hidden border-2 border-primary-container">
+<img alt="User Profile Avatar" class="w-full h-full object-cover" data-alt="Close-up professional portrait of a smiling young man with clean studio lighting and soft blue background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCIuaUr-Zjzd08W8t3H_U5umJTOZ2J3Eokc9ZfKFVH8rzNt1hPAMHFKW8pm32RjQZgQm5qf3Ze2xbpUU4vbf-Riho2DLD8MoQyDHh5kRq-10i4dp1DQs8e38ypDnIV0U7zruRgGxoZ5qiuRDYQzc0Zq-3H4AwAZ5rOLWQHrQncav2kMtmPmL4a13rjg7w_vvk-LVPWJ3CH1GLqowmcpN7UYiK8H9kJYLPWGhEOt7kmxhEOIDpfjkixNNNnaIem9Rs0htwwAlQ0ImtjI"/>
+</div>
+<span class="text-xl font-extrabold text-[#006d4a] dark:text-[#69f6b8] font-headline tracking-tight">LinguaLeap</span>
+</div>
+<div class="flex items-center gap-2 px-4 py-1.5 rounded-full bg-surface-container-low text-[#006d4a] font-headline font-bold text-sm">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">workspace_premium</span>
+            1,240 XP • 15 🔥
+        </div>
+</header>
+<main class="pt-20 pb-28 px-4 max-w-2xl mx-auto min-h-screen">
+<!-- Header & Countdown -->
+<div class="flex flex-col items-center mb-8">
+<h1 class="font-headline text-4xl font-extrabold text-primary tracking-tight mb-2">Diamond League</h1>
+<div class="flex items-center gap-2 px-4 py-1 rounded-full bg-tertiary-container/20 text-tertiary font-label font-bold text-xs uppercase tracking-wider">
+<span class="material-symbols-outlined text-base">timer</span>
+                4 Days Left
+            </div>
+</div>
+<!-- Podium Section (Asymmetric / Custom Layout) -->
+<div class="relative flex items-end justify-center gap-4 mb-12 mt-16 px-2">
+<!-- 2nd Place -->
+<div class="flex flex-col items-center flex-1 max-w-[100px]">
+<div class="relative mb-3">
+<div class="w-16 h-16 rounded-2xl rotate-3 bg-surface-container-highest flex items-center justify-center p-1">
+<img alt="Rank 2" class="w-full h-full object-cover rounded-xl -rotate-3" data-alt="Vibrant portrait of a woman with curly hair laughing outdoors in warm sunlight" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDIFqoNR77Sssdjo_HTwID1l69SfUCFwTi6PG8xWsnhYtqLCYtbo2G0gu1CI61mDDQoHanE3MKG1-zZlG_IxZcw_C2bci1VdV-chAc1odpLJJ6p3adDwYZOzI78CF1Xs3orUXghhGy_drlu4FZQakzlY2_ymcdkAXYBAF9eZyMpgytrMj6de-CofsjC1gfd8KV9OxipOt0v8rD2sCcgrE8Zm8WqyXizEYqodugIWMEp-B5ekK63qe3JbIznOpyhq-WtPMP7rYilrHKD"/>
+</div>
+<div class="absolute -top-3 -right-2 bg-slate-300 w-8 h-8 rounded-full flex items-center justify-center border-4 border-background text-white font-bold text-xs">2</div>
+</div>
+<p class="font-headline font-bold text-on-surface text-sm truncate w-full text-center">Elena</p>
+<p class="text-primary font-bold text-xs">2,140 XP</p>
+<div class="h-24 w-full bg-surface-container-high rounded-t-2xl mt-4"></div>
+</div>
+<!-- 1st Place -->
+<div class="flex flex-col items-center flex-1 max-w-[120px] -translate-y-6">
+<div class="relative mb-3 scale-110">
+<div class="absolute -top-6 left-1/2 -translate-x-1/2 text-tertiary-fixed drop-shadow-sm">
+<span class="material-symbols-outlined text-4xl" style="font-variation-settings: 'FILL' 1;">stars</span>
+</div>
+<div class="w-20 h-20 rounded-2xl bg-primary-container flex items-center justify-center p-1.5 shadow-xl">
+<img alt="Rank 1" class="w-full h-full object-cover rounded-xl" data-alt="Clean studio headshot of a stylish man with a short beard against a neutral light background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAOYiLn0aG6eELS-Jdigi88236mktMg2YiPXOU9hI8jMBuUMazBObWpNgrSEGq-nUALrTAU69qjDsyNc5oeEkPW0BpLQo3lmGD5rBN7xvbb-Vw52yCafZ4DpHhefenYdqAjUOArPirmz8Mf-i7eF3sV8pdo4EWh_zrLFqivTQT3xoQh48wv3hqhD_DFMIEm6yaTUmRW9-kqJ8Ol0qgoid0ummnbCMpjKHHzOudF2aqTkPM02sEd99WZOkD-QnhvwLHf9hKZSgmF47Cd"/>
+</div>
+<div class="absolute -bottom-2 left-1/2 -translate-x-1/2 bg-tertiary-fixed text-on-tertiary-fixed px-3 py-0.5 rounded-full font-bold text-[10px] whitespace-nowrap shadow-md">GOLD</div>
+</div>
+<p class="font-headline font-bold text-on-surface text-base truncate w-full text-center">Marco</p>
+<p class="text-primary font-bold text-sm">2,850 XP</p>
+<div class="h-36 w-full bg-gradient-to-b from-primary to-primary-dim rounded-t-2xl mt-4 flex items-start justify-center pt-4">
+<span class="material-symbols-outlined text-primary-container/40 text-4xl">emoji_events</span>
+</div>
+</div>
+<!-- 3rd Place -->
+<div class="flex flex-col items-center flex-1 max-w-[100px]">
+<div class="relative mb-3">
+<div class="w-16 h-16 rounded-2xl -rotate-3 bg-surface-container-highest flex items-center justify-center p-1">
+<img alt="Rank 3" class="w-full h-full object-cover rounded-xl rotate-3" data-alt="Portrait of a young man with glasses smiling in a bright modern office environment" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDKDfOMuCK_DmP-IXsjQ1NXtbXONeu2auvNCHbJkoZ2qYx_8t5uj2i92d34t8axbMHsTlfIvhjfrkGhzCTzsK5yRS7JLhCg-RBz1CAt0YC1YPNo1eG6txLZmGw_5llFZpdlUjeqLwlft0G28g7deYNlmMH2w9-7-bBIdxQrYWoz-j0CCIje7y0jfBWz5xPWy6ZrUSCYmT0flfISR1CB-jG4xVMGZd1V91Homuh4GdvLobJwKESvNnsSdlKydG2YLiDiWaS_cvvzfHl7"/>
+</div>
+<div class="absolute -top-3 -left-2 bg-orange-700/80 w-8 h-8 rounded-full flex items-center justify-center border-4 border-background text-white font-bold text-xs">3</div>
+</div>
+<p class="font-headline font-bold text-on-surface text-sm truncate w-full text-center">Soren</p>
+<p class="text-primary font-bold text-xs">1,980 XP</p>
+<div class="h-20 w-full bg-surface-container-high rounded-t-2xl mt-4"></div>
+</div>
+</div>
+<!-- Promotion Zone Divider -->
+<div class="relative py-4 flex items-center justify-center mb-6">
+<div class="absolute inset-0 flex items-center">
+<div class="w-full border-t border-dashed border-primary/30"></div>
+</div>
+<div class="relative px-6 py-1 bg-primary text-on-primary rounded-full font-label font-bold text-[10px] tracking-widest uppercase">
+                Promotion Zone
+            </div>
+</div>
+<!-- Ranking List -->
+<div class="space-y-3">
+<!-- Item 4 -->
+<div class="flex items-center gap-4 p-4 rounded-2xl bg-surface-container-lowest shadow-sm hover:scale-[1.01] transition-transform duration-200">
+<span class="w-6 font-headline font-extrabold text-outline text-center">4</span>
+<div class="w-12 h-12 rounded-xl overflow-hidden bg-surface-container">
+<img alt="User" class="w-full h-full object-cover" data-alt="Close-up portrait of a woman with blond hair and a blue shirt in soft natural light" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDq_Nrg-s6u4sttkpdCkWwnHRhAZ1d3F3L7Ca8zgXkwbUvUFoIq-hgpk1evoFawR7Z8qNIr5JX9Y_L4H19Qq0kNDcaBfAmv-mdetam-QGZftjyKItAdBj0D30q3xvv9CtWSW9vUB4tVmPkqPX9H_3Al7GOamThCQ-DUkNx2f6QPlxZWZ2NRPxPQlGmE1bwlkOEeO-WvJoGZNWW4DPblkk7AI3_wHA9W12wzxMW7bfzYuqg9bBC5KqWEGQZ3L6rQTre5KXOoWsQvUWZJ"/>
+</div>
+<div class="flex-1">
+<p class="font-bold text-on-surface font-headline">Lucia Ricci</p>
+<p class="text-xs text-on-surface-variant font-medium">15 day streak</p>
+</div>
+<div class="text-right">
+<p class="font-extrabold text-on-surface">1,540</p>
+<p class="text-[10px] font-bold text-outline-variant uppercase">XP</p>
+</div>
+</div>
+<!-- Item 5 -->
+<div class="flex items-center gap-4 p-4 rounded-2xl bg-surface-container-lowest shadow-sm">
+<span class="w-6 font-headline font-extrabold text-outline text-center">5</span>
+<div class="w-12 h-12 rounded-xl overflow-hidden bg-surface-container">
+<img alt="User" class="w-full h-full object-cover" data-alt="Portrait of a young professional man in a dark polo shirt against a blurred outdoor background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDi7Na9u0NMrQsOo444P6cAW4a8tTQTtKfo6JcM9mAPCR9_lb3SzeZD9BmjF6zmCPoxq2HIDRDiViQoKlsje2TQ_XcNx4oV9dmmR8eqlbfNo4G9LZ9DvBSDE0FkMcM6fLnRgH2XHHiX9N884f0OwAhsCvZ1VZixCcZ0cc8RTmckPr4Lq-S8A4cGVzPoPsY9Y_T4Q6n7B6KBuIu6E9sINUHHtKL7xkE_u2wHyvBa447RjxxOc6oqAAsKA72EgrS8KHkFTU6hHAaIOp-1"/>
+</div>
+<div class="flex-1">
+<p class="font-bold text-on-surface font-headline">Jean-Luc</p>
+<p class="text-xs text-on-surface-variant font-medium">8 day streak</p>
+</div>
+<div class="text-right">
+<p class="font-extrabold text-on-surface">1,420</p>
+<p class="text-[10px] font-bold text-outline-variant uppercase">XP</p>
+</div>
+</div>
+<!-- Item 6 -->
+<div class="flex items-center gap-4 p-4 rounded-2xl bg-surface-container-lowest shadow-sm">
+<span class="w-6 font-headline font-extrabold text-outline text-center">6</span>
+<div class="w-12 h-12 rounded-xl overflow-hidden bg-surface-container">
+<img alt="User" class="w-full h-full object-cover" data-alt="Minimalist portrait of a woman with natural freckles and thoughtful expression in soft daylight" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDKSwXm07UiWpGjWxjYhQA0bQE5Lu9qQxdQDXvFZ5oZK7U06wc9ebFr5s7yfc7CDdShWUTzssvaxzOnPDe5a2yhk6K-E85v89Pn3y-IJ4yIx_L82yjf1W-DwhcZLvSDWi5xvQveS9534yWqdEoIarJ1i9sE6mAXmoeuz5-3c66JRYy3fOSMUvogk8YY8whRSGJOAOwO8pl2GIXhv2n4fhOrzcNkdoRLGtId9ryxxRUdmHN0XDLJ0NvD8sQ9fkNX82ecB8Lh9KGsZtkh"/>
+</div>
+<div class="flex-1">
+<p class="font-bold text-on-surface font-headline">Amara</p>
+<p class="text-xs text-on-surface-variant font-medium">22 day streak</p>
+</div>
+<div class="text-right">
+<p class="font-extrabold text-on-surface">1,380</p>
+<p class="text-[10px] font-bold text-outline-variant uppercase">XP</p>
+</div>
+</div>
+<!-- Item 7 -->
+<div class="flex items-center gap-4 p-4 rounded-2xl bg-surface-container-lowest shadow-sm">
+<span class="w-6 font-headline font-extrabold text-outline text-center">7</span>
+<div class="w-12 h-12 rounded-xl overflow-hidden bg-surface-container">
+<img alt="User" class="w-full h-full object-cover" data-alt="Close-up of a man with a beard smiling warmly in professional attire" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCaBKoC6-SNj50qzyPol9HbBM4RPdWrhYoxzWNNiaUHv7Af3_KdtcbRztk8ZzU7dTjo6NSsJWrrYEycV5sN4oNqJ-NTkRy_q0hQG7thnzB0gBYsRoVbxk8MdaKw-fLfVPsNdsT_J9jxxJeSsEMgf4a-iaUDtIvIWyRpSDKakR60QXuzqykwwIu-Pofm1bJHXkF0inrqmsQFdVHQuNEGFNh5iFir0kBCQpic9jH6Bo83gsfOliA3CzQ6uzfyPkS-j22zuwaeiBH8qbS8"/>
+</div>
+<div class="flex-1">
+<p class="font-bold text-on-surface font-headline">Kaito</p>
+<p class="text-xs text-on-surface-variant font-medium">4 day streak</p>
+</div>
+<div class="text-right">
+<p class="font-extrabold text-on-surface">1,290</p>
+<p class="text-[10px] font-bold text-outline-variant uppercase">XP</p>
+</div>
+</div>
+<!-- Highlight: Current User Rank #8 -->
+<div class="flex items-center gap-4 p-5 rounded-2xl bg-secondary-container shadow-[0_8px_30px_rgb(200,241,122,0.4)] relative border-2 border-primary/10">
+<div class="w-6 flex flex-col items-center">
+<span class="font-headline font-extrabold text-primary text-lg">8</span>
+<span class="material-symbols-outlined text-primary text-sm leading-none" style="font-variation-settings: 'FILL' 1;">arrow_drop_up</span>
+</div>
+<div class="w-14 h-14 rounded-2xl overflow-hidden border-2 border-primary shadow-sm">
+<img alt="User" class="w-full h-full object-cover" data-alt="Portrait of a smiling young man in a modern casual shirt" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA7pe1L_X20BiEJQWg0HjVTvU0QWhp0TUi-bkK9VTWVpOgOwft4fti9b16uUnYC5mglLEXMV1imfbqsECNMwPtDlvcwOcm8d5YqYvQhptOKwidHNsaE_r4H1ji3mtuVmwbH74NKs1noADrwv6ADc2dG_r1x_E6W3OpXPhXurhF7TAxMropTOS0_rnI6t2rWaKEKfyGo5ORxJZwKyJBMF2dKDinVGHLTvBHDRyCtLAMtALEOawnEcMdQtfii4li52a-IJq33WbB6sCJn"/>
+</div>
+<div class="flex-1">
+<div class="flex items-center gap-2">
+<p class="font-extrabold text-on-secondary-container font-headline text-lg">You</p>
+<span class="px-2 py-0.5 bg-primary/10 text-primary font-bold text-[9px] rounded-full uppercase tracking-tighter">Current Rank</span>
+</div>
+<p class="text-xs text-on-secondary-container/70 font-bold">15 day streak</p>
+</div>
+<div class="text-right">
+<p class="font-black text-on-secondary-container text-xl tracking-tight">1,240</p>
+<p class="text-[10px] font-bold text-on-secondary-container/60 uppercase">XP</p>
+</div>
+</div>
+<!-- Item 9 -->
+<div class="flex items-center gap-4 p-4 rounded-2xl bg-surface-container-lowest shadow-sm opacity-60">
+<span class="w-6 font-headline font-extrabold text-outline text-center">9</span>
+<div class="w-12 h-12 rounded-xl overflow-hidden bg-surface-container">
+<img alt="User" class="w-full h-full object-cover" data-alt="Studio portrait of a woman with dark skin and braided hair with neutral lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA9bFkeKQ_wSgi2FXbR3Ld3mLmwLIIfsGUIFGvvEk5kzISTIT9ptV2Rvo3ZM42PCcUD4LjQuCgNYka0AU_0_VkB8fRx_GLXbA2kccWtegYhp2TtPSiwU7e7ZXZWcHkTM8c-uVAc4hDTi3_jBY538__ywuZWP3Y34W2asC5gc5Pezu38PMKzg7UAQzgVxLemhyhHrZSpCAn613Q_sXXYlj9cBgwX_3TIzF6PZi3kPFJr96sYIfqzYGN2l2YQzoSHwxRAYwvU5CRTP_1K"/>
+</div>
+<div class="flex-1">
+<p class="font-bold text-on-surface font-headline">Zoe</p>
+<p class="text-xs text-on-surface-variant font-medium">3 day streak</p>
+</div>
+<div class="text-right">
+<p class="font-extrabold text-on-surface">1,110</p>
+<p class="text-[10px] font-bold text-outline-variant uppercase">XP</p>
+</div>
+</div>
+<!-- Item 10 -->
+<div class="flex items-center gap-4 p-4 rounded-2xl bg-surface-container-lowest shadow-sm opacity-60">
+<span class="w-6 font-headline font-extrabold text-outline text-center">10</span>
+<div class="w-12 h-12 rounded-xl overflow-hidden bg-surface-container">
+<img alt="User" class="w-full h-full object-cover" data-alt="Portrait of a young man with a serious expression and short dark hair" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAGvL4fiWr0z8yyq_379fgQDjcKRPowRAw81tkGaGs1ddEfSomyjQRXkgbTV5cBOP9N8IZ3tnWhOYmXhJHI4I9xvavGpAWpSYKvnF6sKO6xwF7P3eLYLSFNV_9-ynJZygJLnv7rfq9FFfzXqvZy-o_atWif_HRuRz1sFvNVSAGXRnIslMzLgQBj_Te1M9v9LkdE3Oz0ZI-ufFZH_XbO6llfDnI6akGC0FAUeGFzyfCRt10R5JmOv1EUah94FLvAc9eNR0Fn_Yf1y0vl"/>
+</div>
+<div class="flex-1">
+<p class="font-bold text-on-surface font-headline">Liam</p>
+<p class="text-xs text-on-surface-variant font-medium">0 day streak</p>
+</div>
+<div class="text-right">
+<p class="font-extrabold text-on-surface">980</p>
+<p class="text-[10px] font-bold text-outline-variant uppercase">XP</p>
+</div>
+</div>
+</div>
+<!-- Demotion Risk Zone (Optional context) -->
+<div class="mt-8 p-4 rounded-2xl bg-surface-container text-center border border-outline-variant/15">
+<p class="text-xs font-bold text-on-surface-variant">Top 15 advance to Obsidian League</p>
+</div>
+</main>
+<!-- BottomNavBar Shell -->
+<nav id="bottom-nav" class="fixed bottom-0 left-0 w-full flex justify-around items-center px-4 pb-safe pt-2 pb-4 bg-[#f4faff]/95 backdrop-blur-md border-t border-[#9db6c3]/15 shadow-[0_-4px_20px_-4px_rgba(29,53,64,0.06)] z-50 rounded-t-[1.5rem]">
+<a class="flex flex-col items-center justify-center text-[#1d3540] px-4 py-2 hover:bg-[#e7f6ff] rounded-xl transition-all duration-300 transform active:scale-90" href="dashboard.html">
+<span class="material-symbols-outlined text-[22px]" style="font-variation-settings:'FILL' 0;">home</span>
+<span class="text-[10px] font-semibold mt-0.5">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#1d3540] px-4 py-2 hover:bg-[#e7f6ff] rounded-xl transition-all duration-300 transform active:scale-90" href="roadmap.html">
+<span class="material-symbols-outlined text-[22px]" style="font-variation-settings:'FILL' 0;">school</span>
+<span class="text-[10px] font-semibold mt-0.5">Roadmap</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#1d3540] px-4 py-2 hover:bg-[#e7f6ff] rounded-xl transition-all duration-300 transform active:scale-90" href="speech.html">
+<span class="material-symbols-outlined text-[22px]" style="font-variation-settings:'FILL' 0;">mic</span>
+<span class="text-[10px] font-semibold mt-0.5">Practice</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-[#c8f17a] text-[#006d4a] rounded-[1.5rem] px-4 py-2 transition-all duration-300 transform active:scale-90" href="leaderboard.html">
+<span class="material-symbols-outlined text-[22px]" style="font-variation-settings:'FILL' 1;">leaderboard</span>
+<span class="text-[10px] font-semibold mt-0.5">Rank</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#1d3540] px-4 py-2 hover:bg-[#e7f6ff] rounded-xl transition-all duration-300 transform active:scale-90" href="achievements.html">
+<span class="material-symbols-outlined text-[22px]" style="font-variation-settings:'FILL' 0;">person</span>
+<span class="text-[10px] font-semibold mt-0.5">Profile</span>
+</a>
+</nav>
+
+<script>
+// ——— LinguaLeap SPA Router ———
+(function() {
+  const PAGE = 'leaderboard.html';
+
+  // Active nav item highlight
+  document.querySelectorAll('a[href], button[data-nav]').forEach(el => {
+    const href = el.getAttribute('href') || '';
+    if (href === PAGE) {
+      el.classList.add('nav-active');
+    }
+  });
+
+  // Smooth page transitions
+  document.addEventListener('click', function(e) {
+    const link = e.target.closest('a[href]');
+    if (!link) return;
+    const href = link.getAttribute('href');
+    if (!href || href === '#' || href.startsWith('http') || href.startsWith('mailto')) return;
+    e.preventDefault();
+    document.body.style.opacity = '0';
+    document.body.style.transition = 'opacity 0.2s ease';
+    setTimeout(() => { window.location.href = href; }, 200);
+  });
+
+  // Fade in on load
+  document.body.style.opacity = '0';
+  window.addEventListener('DOMContentLoaded', () => {
+    requestAnimationFrame(() => {
+      document.body.style.transition = 'opacity 0.3s ease';
+      document.body.style.opacity = '1';
+    });
+  });
+})();
+</script>
+
+<script>
+(function(){
+  // Tab switching (Weekly / Monthly / All-time)
+  const tabs = document.querySelectorAll('[class*="rounded-full"][class*="px-5"],[class*="tab"],[role="tab"]');
+  tabs.forEach(tab=>{
+    tab.addEventListener('click',()=>{
+      tabs.forEach(t=>{
+        t.classList.remove('bg-primary','text-on-primary');
+        t.classList.add('bg-surface-container-low','text-on-surface-variant');
+      });
+      tab.classList.add('bg-primary','text-on-primary');
+      tab.classList.remove('bg-surface-container-low','text-on-surface-variant');
+      // Shuffle scores for demo
+      document.querySelectorAll('[class*="text-primary"][class*="font-bold"],[class*="font-mono"]').forEach(el=>{
+        if(/\d+/.test(el.textContent)){
+          const base = parseInt(el.textContent.replace(/[^0-9]/g,''))||100;
+          el.textContent = (base + Math.floor(Math.random()*500-250)).toLocaleString();
+        }
+      });
+    });
+  });
+
+  // Animate rank numbers on load
+  document.querySelectorAll('[class*="text-2xl"],[class*="text-xl"]').forEach(el=>{
+    const num = parseInt(el.textContent.replace(/[^0-9]/g,''));
+    if(num>100 && num < 100000){
+      let s=0;
+      const t=setInterval(()=>{ s+=Math.ceil(num/30); el.textContent=Math.min(s,num).toLocaleString()+(el.textContent.includes('XP')?' XP':''); if(s>=num)clearInterval(t); },30);
+    }
+  });
+
+  // Challenge button
+  document.querySelectorAll('button').forEach(btn=>{
+    if(btn.textContent.toLowerCase().includes('challenge')){
+      btn.addEventListener('click',()=>{
+        btn.textContent='Challenge Sent! ✓';
+        btn.disabled=true;
+        btn.classList.add('bg-green-500','text-white');
+      });
+    }
+  });
+})();
+</script>
+</body></html>

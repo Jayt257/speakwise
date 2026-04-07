@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta name="theme-color" content="#006d4a"/>
+<meta name="description" content="LinguaLeap - Master pronunciation with AI-powered speech recognition"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>LinguaLeap - Scenario Selection</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Be+Vietnam+Pro:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary-dim": "#005f40",
+              "surface-dim": "#c2deee",
+              "secondary": "#4a6800",
+              "on-tertiary": "#fff7f3",
+              "on-background": "#1d3540",
+              "tertiary": "#875400",
+              "on-secondary": "#f0ffce",
+              "surface-container-lowest": "#ffffff",
+              "on-primary": "#e6ffee",
+              "error-container": "#fa7150",
+              "on-tertiary-container": "#502f00",
+              "on-secondary-container": "#3f5a00",
+              "secondary-fixed-dim": "#bae26e",
+              "secondary-fixed": "#c8f17a",
+              "primary-fixed-dim": "#58e7ab",
+              "background": "#f4faff",
+              "on-primary-fixed-variant": "#006544",
+              "on-primary-fixed": "#00452d",
+              "tertiary-dim": "#764900",
+              "on-surface-variant": "#4b626e",
+              "error": "#aa371c",
+              "surface-bright": "#f4faff",
+              "on-primary-container": "#005a3c",
+              "primary-fixed": "#69f6b8",
+              "tertiary-fixed-dim": "#ed9912",
+              "surface-tint": "#006d4a",
+              "on-tertiary-fixed": "#311c00",
+              "on-secondary-fixed-variant": "#476400",
+              "on-error-container": "#671200",
+              "error-dim": "#821a01",
+              "on-secondary-fixed": "#304600",
+              "surface-container-low": "#e7f6ff",
+              "tertiary-fixed": "#fda625",
+              "surface-variant": "#cde6f4",
+              "on-error": "#fff7f6",
+              "secondary-dim": "#405b00",
+              "outline": "#667e8a",
+              "on-surface": "#1d3540",
+              "primary": "#006d4a",
+              "surface-container-highest": "#cde6f4",
+              "secondary-container": "#c8f17a",
+              "on-tertiary-fixed-variant": "#5c3700",
+              "primary-container": "#69f6b8",
+              "inverse-on-surface": "#929fa6",
+              "inverse-primary": "#69f6b8",
+              "outline-variant": "#9db6c3",
+              "surface": "#f4faff",
+              "tertiary-container": "#fda625",
+              "surface-container": "#def1fc",
+              "surface-container-high": "#d5ecf8",
+              "inverse-surface": "#041015"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans"],
+              "body": ["Be Vietnam Pro"],
+              "label": ["Plus Jakarta Sans"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "2xl": "1.5rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      .glass-card {
+        background: rgba(255, 255, 255, 0.6);
+        backdrop-filter: blur(24px);
+      }
+    </style>
+<style>
+    body {
+      min-height:100%;
+    }
+  </style>
+</head>
+<body class="bg-background font-body text-on-surface antialiased min-h-screen pb-32">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 flex justify-between items-center px-6 py-3 bg-[#f4faff] dark:bg-slate-950">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-primary-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+</div>
+<h1 class="font-headline font-bold tracking-tight text-xl text-[#006d4a] dark:text-[#69f6b8]">LinguaLeap</h1>
+</div>
+<div class="flex items-center gap-4">
+<span class="font-label font-bold text-sm bg-surface-container-low px-4 py-2 rounded-full text-on-surface-variant">1,240 XP • 15 🔥</span>
+</div>
+</header>
+<main class="pt-24 px-6 md:px-12 lg:px-24 max-w-7xl mx-auto">
+<!-- Hero Section -->
+<section class="mb-16">
+<div class="flex flex-col md:flex-row gap-8 items-end">
+<div class="flex-1 space-y-4">
+<h2 class="font-headline font-extrabold text-5xl md:text-6xl text-on-surface tracking-tight leading-tight">Pick your <span class="text-primary italic">scenario</span></h2>
+<p class="text-on-surface-variant text-lg max-w-md font-medium leading-relaxed">Level up your speaking skills with AI-powered roleplay designed for real-world impact.</p>
+</div>
+<!-- Featured: Job Interview Card -->
+<div class="w-full md:w-2/5 lg:w-1/3">
+<div class="group relative overflow-hidden rounded-2xl bg-primary aspect-[4/5] shadow-xl hover:scale-[1.02] transition-transform duration-300">
+<img alt="Job Interview Scenario" class="absolute inset-0 w-full h-full object-cover opacity-60 mix-blend-luminosity" data-alt="Professional woman in business attire smiling warmly across a desk in a bright, modern office with soft daylight" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC_SHdF5CxG0u8KdJYzUEOXgLqeJqP_uOd1viVJBzjQ1hn_5MVRYDxKd8-_9nviiTBaC__JHdr1NCdYlsXus16eNtje17ZhX-96DTq4dYZIG91b3pKOvgx4WsQfNLHTQlIPtjXJEDRNO91lHgWhLe-g22fMfTDqr_DdZJaBnPlfGEx5Zdm4VvbumTgBguTXAFzABf9GnPT4AsUpb1CzCs8CbGZx6zaKUjc1aMq5eXIa2xvrerrPuTNvpWnssqQRuHmpksfVKJmhQVVL"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary via-primary/20 to-transparent"></div>
+<div class="absolute bottom-0 p-8 space-y-4">
+<div class="flex items-center gap-2">
+<span class="px-3 py-1 bg-tertiary-container text-on-tertiary-fixed font-label text-xs font-bold rounded-full">FEATURED</span>
+<span class="px-3 py-1 bg-white/20 backdrop-blur-md text-white font-label text-xs font-bold rounded-full">Hard</span>
+</div>
+<div>
+<h3 class="font-headline text-3xl font-bold text-on-primary">Job Interview</h3>
+<p class="text-on-primary/80 mt-2 text-sm">Master the art of professional storytelling and navigate tough technical questions.</p>
+</div>
+<a class="block w-full py-4 bg-secondary-container text-on-secondary-container font-headline font-bold rounded-xl text-center hover:bg-primary-fixed transition-colors active:scale-95 duration-200" href="conversation.html">
+                                START SESSION
+                            </a>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Scenario Grid -->
+<section class="mb-20">
+<div class="flex items-center justify-between mb-8">
+<h3 class="font-headline font-bold text-2xl">Daily Situations</h3>
+<div class="flex gap-2">
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+<span class="w-2 h-2 rounded-full bg-outline-variant/30"></span>
+<span class="w-2 h-2 rounded-full bg-outline-variant/30"></span>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+<!-- Card: Doctor's Appointment -->
+<a class="bg-surface-container-lowest rounded-2xl p-6 flex flex-col justify-between hover:shadow-lg transition-all duration-300 group" href="conversation.html">
+<div class="space-y-4">
+<div class="flex justify-between items-start">
+<div class="w-12 h-12 rounded-xl bg-surface-container-high flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" data-icon="medical_services">medical_services</span>
+</div>
+<span class="px-3 py-1 bg-surface-container text-on-surface-variant font-label text-[10px] font-extrabold tracking-widest rounded-full uppercase">Easy</span>
+</div>
+<div>
+<h4 class="font-headline font-bold text-xl mb-2 group-hover:text-primary transition-colors">Doctor's Appointment</h4>
+<p class="text-on-surface-variant text-sm leading-relaxed">Explain symptoms and understand medical advice in a calm environment.</p>
+</div>
+</div>
+<div class="mt-8 flex items-center justify-between">
+<div class="flex items-center text-primary font-label text-sm font-bold">
+<span class="material-symbols-outlined mr-2" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                            Unlocked
+                        </div>
+<span class="material-symbols-outlined text-outline-variant group-hover:translate-x-1 transition-transform" data-icon="arrow_forward">arrow_forward</span>
+</div>
+</a>
+<!-- Card: Airport Security -->
+<a class="bg-surface-container-lowest rounded-2xl p-6 flex flex-col justify-between hover:shadow-lg transition-all duration-300 group" href="conversation.html">
+<div class="space-y-4">
+<div class="flex justify-between items-start">
+<div class="w-12 h-12 rounded-xl bg-surface-container-high flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" data-icon="flight_takeoff">flight_takeoff</span>
+</div>
+<span class="px-3 py-1 bg-surface-container text-on-surface-variant font-label text-[10px] font-extrabold tracking-widest rounded-full uppercase">Medium</span>
+</div>
+<div>
+<h4 class="font-headline font-bold text-xl mb-2 group-hover:text-primary transition-colors">Airport Security</h4>
+<p class="text-on-surface-variant text-sm leading-relaxed">Navigate high-pressure questions and clarify travel document details.</p>
+</div>
+</div>
+<div class="mt-8 flex items-center justify-between">
+<div class="flex items-center text-primary font-label text-sm font-bold">
+<span class="material-symbols-outlined mr-2" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                            Unlocked
+                        </div>
+<span class="material-symbols-outlined text-outline-variant group-hover:translate-x-1 transition-transform" data-icon="arrow_forward">arrow_forward</span>
+</div>
+</a>
+<!-- Card: Booking a Hotel -->
+<div class="bg-surface-container-low rounded-2xl p-6 flex flex-col justify-between relative overflow-hidden">
+<!-- Locked Overlay Shroud -->
+<div class="absolute inset-0 bg-surface-dim/40 backdrop-blur-[2px] z-10 flex items-center justify-center">
+<div class="bg-white/90 px-4 py-2 rounded-full shadow-sm flex items-center gap-2">
+<span class="material-symbols-outlined text-sm" data-icon="lock" style="font-variation-settings: 'FILL' 1;">lock</span>
+<span class="font-label font-bold text-xs">REACH LEVEL 5</span>
+</div>
+</div>
+<div class="space-y-4 opacity-50">
+<div class="flex justify-between items-start">
+<div class="w-12 h-12 rounded-xl bg-surface-container-high flex items-center justify-center">
+<span class="material-symbols-outlined" data-icon="hotel">hotel</span>
+</div>
+<span class="px-3 py-1 bg-surface-container text-on-surface-variant font-label text-[10px] font-extrabold tracking-widest rounded-full uppercase">Easy</span>
+</div>
+<div>
+<h4 class="font-headline font-bold text-xl mb-2">Booking a Hotel</h4>
+<p class="text-on-surface-variant text-sm leading-relaxed">Request room amenities and navigate stay dates with front desk.</p>
+</div>
+</div>
+</div>
+<!-- Card: Ordering at a Restaurant -->
+<div class="bg-surface-container-low rounded-2xl p-6 flex flex-col justify-between relative overflow-hidden">
+<div class="absolute inset-0 bg-surface-dim/40 backdrop-blur-[2px] z-10 flex items-center justify-center">
+<div class="bg-white/90 px-4 py-2 rounded-full shadow-sm flex items-center gap-2">
+<span class="material-symbols-outlined text-sm" data-icon="lock" style="font-variation-settings: 'FILL' 1;">lock</span>
+<span class="font-label font-bold text-xs">REACH LEVEL 8</span>
+</div>
+</div>
+<div class="space-y-4 opacity-50">
+<div class="flex justify-between items-start">
+<div class="w-12 h-12 rounded-xl bg-surface-container-high flex items-center justify-center">
+<span class="material-symbols-outlined" data-icon="restaurant">restaurant</span>
+</div>
+<span class="px-3 py-1 bg-surface-container text-on-surface-variant font-label text-[10px] font-extrabold tracking-widest rounded-full uppercase">Medium</span>
+</div>
+<div>
+<h4 class="font-headline font-bold text-xl mb-2">Ordering at a Restaurant</h4>
+<p class="text-on-surface-variant text-sm leading-relaxed">Discuss dietary restrictions and understand complex menu descriptions.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Bento Recommendation -->
+<section class="mb-32">
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+<div class="lg:col-span-2 bg-primary-container/20 rounded-2xl p-8 flex flex-col md:flex-row items-center gap-8">
+<div class="flex-1 space-y-4">
+<h3 class="font-headline font-bold text-3xl text-on-primary-container">Weekly Challenge</h3>
+<p class="text-on-surface-variant">Complete 3 roleplay scenarios this week to unlock the <span class="font-bold">Global Conference</span> expert pack.</p>
+<div class="w-full bg-surface-container-highest rounded-full h-3">
+<div class="bg-primary h-full rounded-full w-[66%]"></div>
+</div>
+<p class="text-sm font-label font-bold text-primary">2 / 3 COMPLETED</p>
+</div>
+<div class="w-32 h-32 flex-shrink-0 bg-white rounded-2xl shadow-inner flex items-center justify-center">
+<span class="material-symbols-outlined text-6xl text-primary" data-icon="trophy" style="font-variation-settings: 'FILL' 1;">trophy</span>
+</div>
+</div>
+<div class="bg-secondary-container rounded-2xl p-8 flex flex-col justify-center items-center text-center space-y-4">
+<span class="material-symbols-outlined text-4xl text-on-secondary-container" data-icon="history">history</span>
+<h4 class="font-headline font-bold text-xl">Resume Practice</h4>
+<p class="text-sm text-on-secondary-container/80">You were halfway through "Lost in Tokyo".</p>
+<a class="bg-primary text-on-primary px-6 py-2 rounded-full font-label font-bold active:scale-95 duration-200" href="conversation.html">CONTINUE</a>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav id="bottom-nav" class="fixed bottom-0 left-0 w-full flex justify-around items-center px-4 pb-safe pt-2 pb-4 bg-[#f4faff]/95 backdrop-blur-md border-t border-[#9db6c3]/15 shadow-[0_-4px_20px_-4px_rgba(29,53,64,0.06)] z-50 rounded-t-[1.5rem]">
+<a class="flex flex-col items-center justify-center text-[#1d3540] px-4 py-2 hover:bg-[#e7f6ff] rounded-xl transition-all duration-300 transform active:scale-90" href="dashboard.html">
+<span class="material-symbols-outlined text-[22px]" style="font-variation-settings:'FILL' 0;">home</span>
+<span class="text-[10px] font-semibold mt-0.5">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#1d3540] px-4 py-2 hover:bg-[#e7f6ff] rounded-xl transition-all duration-300 transform active:scale-90" href="roadmap.html">
+<span class="material-symbols-outlined text-[22px]" style="font-variation-settings:'FILL' 0;">school</span>
+<span class="text-[10px] font-semibold mt-0.5">Roadmap</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-[#c8f17a] text-[#006d4a] rounded-[1.5rem] px-4 py-2 transition-all duration-300 transform active:scale-90" href="speech.html">
+<span class="material-symbols-outlined text-[22px]" style="font-variation-settings:'FILL' 1;">mic</span>
+<span class="text-[10px] font-semibold mt-0.5">Practice</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#1d3540] px-4 py-2 hover:bg-[#e7f6ff] rounded-xl transition-all duration-300 transform active:scale-90" href="leaderboard.html">
+<span class="material-symbols-outlined text-[22px]" style="font-variation-settings:'FILL' 0;">leaderboard</span>
+<span class="text-[10px] font-semibold mt-0.5">Rank</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#1d3540] px-4 py-2 hover:bg-[#e7f6ff] rounded-xl transition-all duration-300 transform active:scale-90" href="achievements.html">
+<span class="material-symbols-outlined text-[22px]" style="font-variation-settings:'FILL' 0;">person</span>
+<span class="text-[10px] font-semibold mt-0.5">Profile</span>
+</a>
+</nav>
+
+<script>
+// ——— LinguaLeap SPA Router ———
+(function() {
+  const PAGE = 'scenarios.html';
+
+  // Active nav item highlight
+  document.querySelectorAll('a[href], button[data-nav]').forEach(el => {
+    const href = el.getAttribute('href') || '';
+    if (href === PAGE) {
+      el.classList.add('nav-active');
+    }
+  });
+
+  // Smooth page transitions
+  document.addEventListener('click', function(e) {
+    const link = e.target.closest('a[href]');
+    if (!link) return;
+    const href = link.getAttribute('href');
+    if (!href || href === '#' || href.startsWith('http') || href.startsWith('mailto')) return;
+    e.preventDefault();
+    document.body.style.opacity = '0';
+    document.body.style.transition = 'opacity 0.2s ease';
+    setTimeout(() => { window.location.href = href; }, 200);
+  });
+
+  // Fade in on load
+  document.body.style.opacity = '0';
+  window.addEventListener('DOMContentLoaded', () => {
+    requestAnimationFrame(() => {
+      document.body.style.transition = 'opacity 0.3s ease';
+      document.body.style.opacity = '1';
+    });
+  });
+})();
+</script>
+
+<script>
+(function(){
+  // Scenario card click → conversation
+  document.querySelectorAll('a[href="conversation.html"]').forEach(card=>{
+    // Already linked, just add loading state
+    card.addEventListener('click',function(){
+      const btn = this.querySelector('a.bg-primary, span');
+      if(btn) btn.textContent='Loading...';
+    });
+  });
+
+  // Difficulty filter chips
+  const chips = document.querySelectorAll('[class*="rounded-full"][class*="px-4"]');
+  chips.forEach(chip=>{
+    chip.addEventListener('click',()=>{
+      chips.forEach(c=>{ c.classList.remove('bg-primary','text-white'); c.classList.add('bg-surface-container-low','text-on-surface'); });
+      chip.classList.add('bg-primary','text-white');
+      chip.classList.remove('bg-surface-container-low','text-on-surface');
+    });
+  });
+})();
+</script>
+</body></html>
