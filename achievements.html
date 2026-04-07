@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta name="theme-color" content="#006d4a"/>
+<meta name="description" content="LinguaLeap - Master pronunciation with AI-powered speech recognition"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Be+Vietnam+Pro:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary-dim": "#005f40",
+              "surface-dim": "#c2deee",
+              "secondary": "#4a6800",
+              "on-tertiary": "#fff7f3",
+              "on-background": "#1d3540",
+              "tertiary": "#875400",
+              "on-secondary": "#f0ffce",
+              "surface-container-lowest": "#ffffff",
+              "on-primary": "#e6ffee",
+              "error-container": "#fa7150",
+              "on-tertiary-container": "#502f00",
+              "on-secondary-container": "#3f5a00",
+              "secondary-fixed-dim": "#bae26e",
+              "secondary-fixed": "#c8f17a",
+              "primary-fixed-dim": "#58e7ab",
+              "background": "#f4faff",
+              "on-primary-fixed-variant": "#006544",
+              "on-primary-fixed": "#00452d",
+              "tertiary-dim": "#764900",
+              "on-surface-variant": "#4b626e",
+              "error": "#aa371c",
+              "surface-bright": "#f4faff",
+              "on-primary-container": "#005a3c",
+              "primary-fixed": "#69f6b8",
+              "tertiary-fixed-dim": "#ed9912",
+              "surface-tint": "#006d4a",
+              "on-tertiary-fixed": "#311c00",
+              "on-secondary-fixed-variant": "#476400",
+              "on-error-container": "#671200",
+              "error-dim": "#821a01",
+              "on-secondary-fixed": "#304600",
+              "surface-container-low": "#e7f6ff",
+              "tertiary-fixed": "#fda625",
+              "surface-variant": "#cde6f4",
+              "on-error": "#fff7f6",
+              "secondary-dim": "#405b00",
+              "outline": "#667e8a",
+              "on-surface": "#1d3540",
+              "primary": "#006d4a",
+              "surface-container-highest": "#cde6f4",
+              "secondary-container": "#c8f17a",
+              "on-tertiary-fixed-variant": "#5c3700",
+              "primary-container": "#69f6b8",
+              "inverse-on-surface": "#929fa6",
+              "inverse-primary": "#69f6b8",
+              "outline-variant": "#9db6c3",
+              "surface": "#f4faff",
+              "tertiary-container": "#fda625",
+              "surface-container": "#def1fc",
+              "surface-container-high": "#d5ecf8",
+              "inverse-surface": "#041015"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans"],
+              "body": ["Be Vietnam Pro"],
+              "label": ["Plus Jakarta Sans"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "2xl": "1.5rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .achievement-card-active {
+            background: linear-gradient(135deg, #006d4a 0%, #69f6b8 100%);
+        }
+    </style>
+<style>
+        body {
+            min-height:100%;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body selection:bg-primary-container selection:text-on-primary-container pb-32">
+<!-- TopAppBar -->
+<nav class="fixed top-0 w-full z-50 flex justify-between items-center px-6 py-3 bg-[#f4faff] dark:bg-slate-950">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-variant flex items-center justify-center overflow-hidden">
+<img alt="User Profile" class="w-full h-full object-cover" data-alt="Close-up portrait of a friendly young man with a warm smile, soft studio lighting, high-end professional photography style" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBdtAdORaRXlac_ASfnONczKGWAnKNTLR-s4nhm4-2QDK95tZETaWDc-nkFL_ggZV95m9dG37n7NEHqvi_5OYx-2LTwNSC02AUoWo_wh8dd-a8Y9bcknjvFDC68aUVOXb327rt68Tjjg6DTy31Tma79YHfdPxmkcItyeG98OA6PCkR4o_OeyEuwbuNQGvVd-yUytXyl2dR-sbrF0s9lGWY3fllsvilumtx1n_C0Zkz9gfDrcBJ8ULF8ytoZ6MZiWVBIQDQiwd3tCtWl"/>
+</div>
+<span class="text-xl font-extrabold text-[#006d4a] dark:text-[#69f6b8] font-headline tracking-tight">LinguaLeap</span>
+</div>
+<div class="flex items-center gap-4">
+<span class="text-[#006d4a] dark:text-[#69f6b8] font-headline font-bold text-sm bg-surface-container-low px-3 py-1.5 rounded-full">
+            1,240 XP • 15 🔥
+        </span>
+</div>
+</nav>
+<main class="pt-24 pb-32 px-6 max-w-7xl mx-auto">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+<!-- Left Column: Friends & Social -->
+<div class="lg:col-span-7 space-y-8">
+<!-- Search & Invite Section -->
+<section class="bg-surface-container-lowest rounded-2xl p-6 shadow-[0_12_32px_-4px_rgba(29,53,64,0.06)]">
+<h2 class="font-headline text-2xl font-extrabold tracking-tight mb-6">Find Friends</h2>
+<div class="flex flex-col md:flex-row gap-4">
+<div class="relative flex-1">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline">search</span>
+<input class="w-full pl-12 pr-4 py-3 bg-surface-container-highest border-none rounded-2xl focus:ring-2 focus:ring-primary/20 focus:bg-surface-container-lowest transition-all placeholder:text-outline/70" placeholder="Search by name or email..." type="text"/>
+</div>
+<button class="bg-secondary-container text-on-secondary-container font-headline font-bold px-6 py-3 rounded-2xl flex items-center justify-center gap-2 hover:opacity-80 transition-opacity active:scale-95 duration-200">
+<span class="material-symbols-outlined">person_add</span>
+                        Invite Friends
+                    </button>
+</div>
+</section>
+<!-- Friends Feed -->
+<section class="space-y-6">
+<div class="flex justify-between items-end">
+<h2 class="font-headline text-3xl font-extrabold tracking-tight">Friend Activity</h2>
+<span class="text-primary font-bold text-sm cursor-pointer hover:underline">See All</span>
+</div>
+<div class="space-y-4">
+<!-- Feed Item 1 -->
+<div class="group bg-surface-container-lowest p-5 rounded-2xl flex gap-4 hover:shadow-md transition-all duration-300">
+<div class="w-12 h-12 rounded-full overflow-hidden shrink-0 border-2 border-primary-container">
+<img alt="Sarah" class="w-full h-full object-cover" data-alt="Vibrant portrait of a woman with curly hair, joyful expression, outdoor natural sunlight, professional lifestyle photography" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDRyvo8ueZfH3N5EFm9kAVWkQ6kMfquCn4D9B6uSE3Ge1wDd2e7kpXlX8Jvzplmla0FZmesvhUq1ayyJjiJ6lJCE4wbK9LHFeyBAR-j-IF4-KIri5cXRKMZy7GazAYZ-M1-9QAVlEznWO_hfE015kDf5PukzcFST57wzyANlL5962K5CJ4f9XIB4aG6J2Br1IUUrthsk76EDC8ZRay5LOoAnpvLkRWonMzGYJb3oieb_sXqukylYM6B8BZp_D6vN8vi3FyfBxl-gnnm"/>
+</div>
+<div class="flex-1 space-y-2">
+<p class="text-on-surface leading-tight">
+<span class="font-bold">Sarah</span> earned the <span class="text-tertiary font-bold">Polyglot</span> badge for learning 3 languages simultaneously!
+                            </p>
+<div class="flex items-center justify-between">
+<span class="text-xs text-outline font-medium">2 hours ago</span>
+<button class="flex items-center gap-2 bg-surface-container-low px-4 py-1.5 rounded-full text-primary font-bold text-sm hover:bg-secondary-container transition-colors active:scale-90">
+<span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">back_hand</span>
+                                    High-five
+                                </button>
+</div>
+</div>
+</div>
+<!-- Feed Item 2 -->
+<div class="group bg-surface-container-lowest p-5 rounded-2xl flex gap-4 hover:shadow-md transition-all duration-300">
+<div class="w-12 h-12 rounded-full overflow-hidden shrink-0">
+<img alt="Lukas" class="w-full h-full object-cover" data-alt="Portrait of a young man with glasses, soft cinematic lighting, neutral background, modern aesthetic" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDheOSUDNWPzEq2uveN5YC1b2uzxxDLDq7Ljuk2Ned_xL0pXIIMpxLLTHnURmJQG8LwrCgmZ9mgbUTVx_ALV8vtIhvKgmYr4ZqTQv7ulNMGrb5mbqaOvIH8t6MKUmBko88EuXgii301PTw1opst6Ts8JrIxq8LDKtxcwL5PZIJ2BxPog6w59kDfuh8DajlWiQVaOyfi2fSymn5qI70wIjQ7Y3s6_a_mHlmgJTqVBLASodpv-wgvgWMjZKmn6q0uWqOQ3SrNQczT-L1c"/>
+</div>
+<div class="flex-1 space-y-2">
+<p class="text-on-surface leading-tight">
+<span class="font-bold">Lukas</span> just reached a <span class="text-primary font-bold">50-day streak</span>! Keep the fire burning.
+                            </p>
+<div class="flex items-center justify-between">
+<span class="text-xs text-outline font-medium">5 hours ago</span>
+<button class="flex items-center gap-2 bg-surface-container-low px-4 py-1.5 rounded-full text-primary font-bold text-sm hover:bg-secondary-container transition-colors active:scale-90">
+<span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">back_hand</span>
+                                    High-five
+                                </button>
+</div>
+</div>
+</div>
+<!-- Feed Item 3 -->
+<div class="group bg-surface-container-lowest p-5 rounded-2xl flex gap-4 hover:shadow-md transition-all duration-300">
+<div class="w-12 h-12 rounded-full overflow-hidden shrink-0">
+<img alt="Maya" class="w-full h-full object-cover" data-alt="Professional woman smiling, soft office lighting in background, high-resolution portrait" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDbvSUnxyZy0OoEOxbKMJ5vVcotQdI3ZxTVS-UHPmkWXOGJ8NEkFYIK8hMU7qrPPKjt9V3JMMdbYlctCFPVY8FW9SNZwWNFRt8qkr4ObOxOcuh_Vje1K_xIImhkPzls098unLCidkVEsBCTYbhc6dDj8Wu-Lx_hO0bVMd92Bnov3dLQAVp7XugTmSLoM3N0XUzFIhIPMIrNi1cGahZF-NyK72euBfguKMsV1N3lQ60zMBwDs96vbSccXtGtS7q8-9A7BSJ5nVuB7xa-"/>
+</div>
+<div class="flex-1 space-y-2">
+<p class="text-on-surface leading-tight">
+<span class="font-bold">Maya</span> completed the <span class="text-primary-dim font-bold">Business French</span> course.
+                            </p>
+<div class="flex items-center justify-between">
+<span class="text-xs text-outline font-medium">Yesterday</span>
+<button class="flex items-center gap-2 bg-surface-container-low px-4 py-1.5 rounded-full text-primary font-bold text-sm hover:bg-secondary-container transition-colors active:scale-90">
+<span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">back_hand</span>
+                                    High-five
+                                </button>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- Right Column: Achievement Gallery & Stats -->
+<div class="lg:col-span-5 space-y-8">
+<section class="bg-surface-container-low rounded-3xl p-8">
+<div class="mb-8">
+<h2 class="font-headline text-3xl font-extrabold tracking-tight mb-2">Galleria</h2>
+<p class="text-on-surface-variant font-medium">You’ve earned 12 of 30 honors</p>
+<!-- Progress Well -->
+<div class="mt-4 h-3 w-full bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full achievement-card-active w-[40%] rounded-full"></div>
+</div>
+</div>
+<!-- Achievement Grid -->
+<div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
+<!-- Earned Badge 1 -->
+<div class="bg-surface-container-lowest p-4 rounded-2xl flex flex-col items-center text-center gap-3 group hover:-translate-y-1 transition-transform duration-300 cursor-help">
+<div class="w-16 h-16 rounded-full achievement-card-active flex items-center justify-center text-on-primary shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined text-3xl" style="font-variation-settings: 'FILL' 1;">local_fire_department</span>
+</div>
+<div>
+<h3 class="font-headline text-xs font-bold uppercase tracking-wider text-on-surface">7-Day Streak</h3>
+<p class="text-[10px] text-outline font-medium mt-1">Unlocked 2 days ago</p>
+</div>
+</div>
+<!-- Earned Badge 2 -->
+<div class="bg-surface-container-lowest p-4 rounded-2xl flex flex-col items-center text-center gap-3 group hover:-translate-y-1 transition-transform duration-300 cursor-help">
+<div class="w-16 h-16 rounded-full bg-tertiary flex items-center justify-center text-on-tertiary shadow-lg shadow-tertiary/20">
+<span class="material-symbols-outlined text-3xl" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<div>
+<h3 class="font-headline text-xs font-bold uppercase tracking-wider text-on-surface">Perfect Score</h3>
+<p class="text-[10px] text-outline font-medium mt-1">Consistency pays off</p>
+</div>
+</div>
+<!-- Earned Badge 3 -->
+<div class="bg-surface-container-lowest p-4 rounded-2xl flex flex-col items-center text-center gap-3 group hover:-translate-y-1 transition-transform duration-300 cursor-help">
+<div class="w-16 h-16 rounded-full bg-secondary flex items-center justify-center text-on-secondary shadow-lg shadow-secondary/20">
+<span class="material-symbols-outlined text-3xl" style="font-variation-settings: 'FILL' 1;">psychology</span>
+</div>
+<div>
+<h3 class="font-headline text-xs font-bold uppercase tracking-wider text-on-surface">Memory Pro</h3>
+<p class="text-[10px] text-outline font-medium mt-1">No mistakes in review</p>
+</div>
+</div>
+<!-- Locked Badge 1 -->
+<div class="bg-surface-container-highest/50 p-4 rounded-2xl flex flex-col items-center text-center gap-3 opacity-60 filter grayscale">
+<div class="w-16 h-16 rounded-full bg-outline-variant/30 flex items-center justify-center text-outline">
+<span class="material-symbols-outlined text-3xl">lock</span>
+</div>
+<div>
+<h3 class="font-headline text-xs font-bold uppercase tracking-wider text-outline">Centurion</h3>
+<p class="text-[10px] text-outline/70 font-medium mt-1">100-Day Streak</p>
+</div>
+</div>
+<!-- Locked Badge 2 -->
+<div class="bg-surface-container-highest/50 p-4 rounded-2xl flex flex-col items-center text-center gap-3 opacity-60 filter grayscale">
+<div class="w-16 h-16 rounded-full bg-outline-variant/30 flex items-center justify-center text-outline">
+<span class="material-symbols-outlined text-3xl">public</span>
+</div>
+<div>
+<h3 class="font-headline text-xs font-bold uppercase tracking-wider text-outline">Globetrotter</h3>
+<p class="text-[10px] text-outline/70 font-medium mt-1">Master 5 languages</p>
+</div>
+</div>
+<!-- Locked Badge 3 -->
+<div class="bg-surface-container-highest/50 p-4 rounded-2xl flex flex-col items-center text-center gap-3 opacity-60 filter grayscale">
+<div class="w-16 h-16 rounded-full bg-outline-variant/30 flex items-center justify-center text-outline">
+<span class="material-symbols-outlined text-3xl">military_tech</span>
+</div>
+<div>
+<h3 class="font-headline text-xs font-bold uppercase tracking-wider text-outline">Elite 100</h3>
+<p class="text-[10px] text-outline/70 font-medium mt-1">Top 1% of Learner</p>
+</div>
+</div>
+</div>
+<!-- Featured Stats Button -->
+<div class="mt-8 space-y-4">
+<a class="w-full py-4 bg-primary text-on-primary rounded-2xl font-headline font-extrabold flex items-center justify-center gap-3 hover:bg-primary-dim transition-all shadow-lg shadow-primary/20 active:scale-[0.98]" href="conversation.html">
+<span class="material-symbols-outlined">analytics</span>
+                        View Detailed Stats
+                    </a>
+<a class="w-full py-4 border-2 border-primary/10 rounded-2xl font-headline font-extrabold text-primary hover:bg-primary/5 transition-colors flex items-center justify-center" href="leaderboard.html">
+                        View Full Showcase
+                    </a>
+</div>
+</section>
+</div>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav id="bottom-nav" class="fixed bottom-0 left-0 w-full flex justify-around items-center px-4 pb-safe pt-2 pb-4 bg-[#f4faff]/95 backdrop-blur-md border-t border-[#9db6c3]/15 shadow-[0_-4px_20px_-4px_rgba(29,53,64,0.06)] z-50 rounded-t-[1.5rem]">
+<a class="flex flex-col items-center justify-center text-[#1d3540] px-4 py-2 hover:bg-[#e7f6ff] rounded-xl transition-all duration-300 transform active:scale-90" href="dashboard.html">
+<span class="material-symbols-outlined text-[22px]" style="font-variation-settings:'FILL' 0;">home</span>
+<span class="text-[10px] font-semibold mt-0.5">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#1d3540] px-4 py-2 hover:bg-[#e7f6ff] rounded-xl transition-all duration-300 transform active:scale-90" href="roadmap.html">
+<span class="material-symbols-outlined text-[22px]" style="font-variation-settings:'FILL' 0;">school</span>
+<span class="text-[10px] font-semibold mt-0.5">Roadmap</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#1d3540] px-4 py-2 hover:bg-[#e7f6ff] rounded-xl transition-all duration-300 transform active:scale-90" href="speech.html">
+<span class="material-symbols-outlined text-[22px]" style="font-variation-settings:'FILL' 0;">mic</span>
+<span class="text-[10px] font-semibold mt-0.5">Practice</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#1d3540] px-4 py-2 hover:bg-[#e7f6ff] rounded-xl transition-all duration-300 transform active:scale-90" href="leaderboard.html">
+<span class="material-symbols-outlined text-[22px]" style="font-variation-settings:'FILL' 0;">leaderboard</span>
+<span class="text-[10px] font-semibold mt-0.5">Rank</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-[#c8f17a] text-[#006d4a] rounded-[1.5rem] px-4 py-2 transition-all duration-300 transform active:scale-90" href="achievements.html">
+<span class="material-symbols-outlined text-[22px]" style="font-variation-settings:'FILL' 1;">person</span>
+<span class="text-[10px] font-semibold mt-0.5">Profile</span>
+</a>
+</nav>
+
+<script>
+// ——— LinguaLeap SPA Router ———
+(function() {
+  const PAGE = 'achievements.html';
+
+  // Active nav item highlight
+  document.querySelectorAll('a[href], button[data-nav]').forEach(el => {
+    const href = el.getAttribute('href') || '';
+    if (href === PAGE) {
+      el.classList.add('nav-active');
+    }
+  });
+
+  // Smooth page transitions
+  document.addEventListener('click', function(e) {
+    const link = e.target.closest('a[href]');
+    if (!link) return;
+    const href = link.getAttribute('href');
+    if (!href || href === '#' || href.startsWith('http') || href.startsWith('mailto')) return;
+    e.preventDefault();
+    document.body.style.opacity = '0';
+    document.body.style.transition = 'opacity 0.2s ease';
+    setTimeout(() => { window.location.href = href; }, 200);
+  });
+
+  // Fade in on load
+  document.body.style.opacity = '0';
+  window.addEventListener('DOMContentLoaded', () => {
+    requestAnimationFrame(() => {
+      document.body.style.transition = 'opacity 0.3s ease';
+      document.body.style.opacity = '1';
+    });
+  });
+})();
+</script>
+
+<script>
+(function(){
+  // Badge unlock animation on scroll
+  const observer = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        entry.target.style.animation='badge-pop 0.5s cubic-bezier(0.34,1.56,0.64,1)';
+        observer.unobserve(entry.target);
+      }
+    });
+  },{threshold:0.3});
+
+  document.querySelectorAll('[class*="rounded-2xl"][class*="p-4"],[class*="rounded-2xl"][class*="p-6"]').forEach(el=>observer.observe(el));
+
+  // Stats counter animation
+  document.querySelectorAll('[class*="text-3xl"],[class*="text-4xl"]').forEach(el=>{
+    const num=parseInt(el.textContent.replace(/[^0-9]/g,''));
+    if(num>0 && num<10000){
+      let s=0;
+      const t=setInterval(()=>{ s+=Math.ceil(num/30); el.textContent=el.textContent.replace(/[0-9,]+/,Math.min(s,num).toLocaleString()); if(s>=num)clearInterval(t); },30);
+    }
+  });
+
+  // Add Friend button
+  document.querySelectorAll('button').forEach(btn=>{
+    if(btn.textContent.toLowerCase().includes('add')||btn.textContent.toLowerCase().includes('follow')){
+      btn.addEventListener('click',function(){
+        this.textContent='✓ Added';
+        this.classList.remove('bg-primary');
+        this.classList.add('bg-green-500');
+        this.disabled=true;
+      });
+    }
+  });
+
+  // Tab switch (Achievements / Friends)
+  const tabs=document.querySelectorAll('[class*="rounded-full"][class*="px-6"],[class*="tab"]');
+  tabs.forEach(tab=>{
+    tab.addEventListener('click',()=>{
+      tabs.forEach(t=>{ t.classList.remove('bg-primary','text-on-primary'); t.classList.add('text-on-surface-variant'); });
+      tab.classList.add('bg-primary','text-on-primary');
+    });
+  });
+})();
+</script>
+<style>
+@keyframes badge-pop{from{opacity:0;transform:scale(0.7)}to{opacity:1;transform:scale(1)}}
+</style>
+</body></html>

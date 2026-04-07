@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta name="theme-color" content="#006d4a"/>
+<meta name="description" content="LinguaLeap - Master pronunciation with AI-powered speech recognition"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>LinguaLeap - Onboarding</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Be+Vietnam+Pro:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#006d4a",
+                        "primary-container": "#69f6b8",
+                        "on-primary": "#e6ffee",
+                        "on-primary-container": "#005a3c",
+                        "surface": "#f4faff",
+                        "on-surface": "#1d3540",
+                        "surface-variant": "#cde6f4",
+                        "on-surface-variant": "#4b626e",
+                        "outline": "#667e8a",
+                        "outline-variant": "#9db6c3",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container-low": "#e7f6ff",
+                        "surface-container": "#def1fc",
+                        "surface-container-high": "#d5ecf8",
+                        "surface-container-highest": "#cde6f4",
+                    },
+                    fontFamily: {
+                        "headline": ["Plus Jakarta Sans"],
+                        "body": ["Be Vietnam Pro"],
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "1.5rem", "2xl": "2rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            font-family: 'Be Vietnam Pro', sans-serif;
+            background-color: #f4faff;
+            color: #1d3540;
+        }
+        h1, h2, h3, .font-headline {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            height: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #9db6c3;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col">
+<!-- Header -->
+<header class="bg-surface/80 backdrop-blur-md sticky top-0 z-50 w-full px-6 py-6 flex justify-between items-center">
+<div class="flex items-center gap-2">
+<span class="text-2xl font-black text-primary font-headline tracking-tight">LinguaLeap</span>
+</div>
+<div class="flex gap-1.5">
+<div class="h-1.5 w-8 bg-primary rounded-full"></div>
+<div class="h-1.5 w-1.5 bg-outline-variant/30 rounded-full"></div>
+<div class="h-1.5 w-1.5 bg-outline-variant/30 rounded-full"></div>
+</div>
+</header>
+<main class="flex-grow flex flex-col px-6 max-w-2xl mx-auto w-full pb-40">
+<!-- Hero -->
+<section class="mt-8 mb-12">
+<h1 class="text-4xl font-extrabold text-on-surface leading-tight tracking-tight mb-3">
+                Your journey starts here.
+            </h1>
+<p class="text-lg text-on-surface-variant font-medium">
+                Let's tailor your experience to match your goals.
+            </p>
+</section>
+<!-- Section 1: Target Language -->
+<section class="mb-12">
+<h2 class="text-xl font-bold font-headline mb-6 flex items-center gap-2">
+<span class="w-8 h-8 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center text-sm">1</span>
+                What language do you want to learn?
+            </h2>
+<div class="grid grid-cols-2 gap-4">
+<!-- French -->
+<button class="relative flex flex-col items-center p-6 bg-surface-container-lowest rounded-2xl border-2 border-primary shadow-sm transition-all">
+<div class="w-16 h-16 rounded-full overflow-hidden mb-4 border border-surface-variant">
+<img alt="French Flag" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBNx7AnZqzc9H58d0wfGZW2DhtgGE1dQiBJ0a1h5oupBuFQg-3W1GTPqpOPTuWYA8F1Ka5p-AHy6WH-DmOpFJqe_8k9He9YJVR1N2ZdayNpBBxhqzmBbAVi30mwV1KG4RCPlIahs1Uh-r8jVPIP-eK7n23B3zU2XOJjppwrYZn04vsCN8ejExuIAxioPZiGDgAIKEPr2kY5gBY94G1pdun2VB_ncE94e429uNfMqqDNKy4EzQxABwtxkKfXwa3FEUhrhk4O2PSHuFXG"/>
+</div>
+<span class="font-headline font-bold text-on-surface">French</span>
+<div class="absolute top-3 right-3 text-primary">
+<span class="material-symbols-outlined text-xl" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+</button>
+<!-- Spanish -->
+<button class="flex flex-col items-center p-6 bg-surface-container-low rounded-2xl border-2 border-transparent hover:border-outline-variant/30 transition-all group">
+<div class="w-16 h-16 rounded-full overflow-hidden mb-4 grayscale-[0.5] group-hover:grayscale-0 transition-all">
+<img alt="Spanish Flag" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBFOob-0aWCbNoqjjndKMj9X3ZOXhFd65jhyKLZfXC8bPd_bDebzmsbbTEvRHvVfGFgJEGXLjRtOm4WlZnyO09MAUI6yoJ-HZ8GFAfJnnZX7Tvt2LFYn_jHwwcKqsu4ieNeBdlw7pFqlvhYVfArkETjMkZzMNdPs71OZwYe5hZVuRArPBDTc5U4ALkte_nNFxZO9HFxhrj-o7yY-JaNWmwDc6PgN8NXWKiol3svWwwT-E5TiQCujZNgoTuFKjZ0yCA9Lk3a0_t38LLO"/>
+</div>
+<span class="font-headline font-bold text-on-surface">Spanish</span>
+</button>
+<!-- Japanese -->
+<button class="flex flex-col items-center p-6 bg-surface-container-low rounded-2xl border-2 border-transparent hover:border-outline-variant/30 transition-all group">
+<div class="w-16 h-16 rounded-full overflow-hidden mb-4 grayscale-[0.5] group-hover:grayscale-0 transition-all">
+<img alt="Japanese Flag" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDnnImDh-CcmQMe8dsqqLOfn8TNIKUlAmu-cxoF6_WCpvx7GmQvC-D0iCN32mcFsdFxnikit0LxQLEdYELNATI9UDZ7fY6wHNB_eTTjeovoPHs2wwnI3o_hJCbP4W-ao3BZ7Dv252l96XvCTnLV348E3FMxtgswuzGTpsKFOm9SEdBwwy-u1AICmUKEL2fJ3PhVgBt_7aMWft8boMIsouW-WVhIWW11I3IQk55TQ2u3OperqTzEtXc25MKkyk6puZp3wiCdkWTItY0r"/>
+</div>
+<span class="font-headline font-bold text-on-surface">Japanese</span>
+</button>
+<!-- German -->
+<button class="flex flex-col items-center p-6 bg-surface-container-low rounded-2xl border-2 border-transparent hover:border-outline-variant/30 transition-all group">
+<div class="w-16 h-16 rounded-full overflow-hidden mb-4 grayscale-[0.5] group-hover:grayscale-0 transition-all">
+<img alt="German Flag" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAMDKi2obdC3gCS0LoRnYsX_jrNircrqi_0v6YEED1c4-eZqxtgv3rInXiW7X1-WgQ2TsVC1_0NJQWThSC0AP7Ali_evCIEopPoXohf6QLckST2PaDdpD7IXYpm87dcjWeIhnKmdnvatSz7fsZuhkILlm7rE7V_la_Z9QCStdL09HwQwJFWf57qvGmtr68qbFs2byQ6CNLAWUxZsnf2uT0pKp4-D3xQIukMIQB_Vdw8WYlcbjTm-_lNG6JXfer7XP6HhZSySh-Cq8Xp"/>
+</div>
+<span class="font-headline font-bold text-on-surface">German</span>
+</button>
+</div>
+</section>
+<!-- Section 2: Native/Known Language -->
+<section class="mb-12">
+<h2 class="text-xl font-bold font-headline mb-6 flex items-center gap-2">
+<span class="w-8 h-8 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center text-sm">2</span>
+                What language do you already know?
+            </h2>
+<div class="flex flex-col gap-3">
+<button class="flex items-center justify-between p-5 bg-surface-container-lowest rounded-xl border border-primary/20 shadow-sm">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full overflow-hidden border border-surface-variant">
+<img alt="English Flag" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAY7O7oM2C1T2i_78R2V4XhW_oI9_pXpL4_4_qL7B0uP1Zk5O8_9F_o-8p-V5f5_q-6"/>
+</div>
+<span class="font-bold text-on-surface">English</span>
+</div>
+<span class="material-symbols-outlined text-primary">radio_button_checked</span>
+</button>
+<button class="flex items-center justify-between p-5 bg-surface-container-low rounded-xl border border-transparent hover:bg-surface-container-lowest transition-colors">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full overflow-hidden border border-surface-variant grayscale">
+<img alt="Spanish Flag" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBFOob-0aWCbNoqjjndKMj9X3ZOXhFd65jhyKLZfXC8bPd_bDebzmsbbTEvRHvVfGFgJEGXLjRtOm4WlZnyO09MAUI6yoJ-HZ8GFAfJnnZX7Tvt2LFYn_jHwwcKqsu4ieNeBdlw7pFqlvhYVfArkETjMkZzMNdPs71OZwYe5hZVuRArPBDTc5U4ALkte_nNFxZO9HFxhrj-o7yY-JaNWmwDc6PgN8NXWKiol3svWwwT-E5TiQCujZNgoTuFKjZ0yCA9Lk3a0_t38LLO"/>
+</div>
+<span class="font-bold text-on-surface">Spanish</span>
+</div>
+<span class="material-symbols-outlined text-outline-variant">radio_button_unchecked</span>
+</button>
+<div class="flex justify-center mt-2">
+<button class="text-sm font-bold text-primary hover:underline">View more languages</button>
+</div>
+</div>
+</section>
+<!-- Divider -->
+<div class="h-px bg-surface-variant mb-12"></div>
+<!-- Section 3: Proficiency (Secondary) -->
+<section class="mb-12 opacity-90 grayscale-[0.2]">
+<h2 class="text-lg font-bold font-headline mb-2 text-on-surface-variant">Level of proficiency</h2>
+<p class="text-sm text-on-surface-variant/80 mb-6 italic">We'll adjust your feed based on this.</p>
+<div class="flex gap-4 overflow-x-auto pb-4 custom-scrollbar snap-x">
+<!-- Beginner -->
+<div class="flex-shrink-0 w-48 snap-start p-4 bg-surface-container-highest rounded-xl border border-transparent hover:border-primary-container transition-all cursor-pointer">
+<div class="w-full h-24 mb-3 bg-surface-container-low rounded-lg overflow-hidden">
+<img alt="Beginner" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCHztIfM0R-gNAXtbNXHsjtzGjBFSIekDeFGSTYwNyhW2VS4iBM1Ih--7HgLvFpHLvXLkSGTj1Y5_S8bazaOhbKn_HRhtApahfLY5o9HfGDJePjrJKST4XQtrEqtsVyRGTB-2T7140OJsg_2wLVNmGQz1qyJYkW89YDZUP9ePaDHbUKj6QOODmOxVeaatxMu0SP1ySpc4oqynfFw-U0lTk2S0csC5D4hxvyyyzRMPHALrUDjpuvCigAcmz2bsF0l1VI5JG9envA6O1N"/>
+</div>
+<h3 class="font-headline font-bold text-sm">Beginner</h3>
+</div>
+<!-- Intermediate -->
+<div class="flex-shrink-0 w-48 snap-start p-4 bg-surface-container-lowest rounded-xl border-2 border-primary shadow-sm cursor-pointer">
+<div class="w-full h-24 mb-3 bg-primary-container/20 rounded-lg overflow-hidden">
+<img alt="Intermediate" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDHQ4CHdG8AMSVNLpnmvQhV9SoERU9bZ6xMfJfjfGnySezVGH9lX3Aj1MPdLAnEAhaBP9AD-R_SCVGPQDy_D3bhjETpbim4_EliONVYdoJ5aHmzyoVObIe0jFd6Np1jtc4DKAGaWIHEFMecUS985cUPk244yZcdlaOByUqpr3hg2gFQhPBaAgsjpddiIbCbpQH4NEOg2LcyM4T3ZXyvfrynHUKx2XTFJ_AQ0zoloDGQTaG8NnbU4CfPpG79dxcxoFqOstxt1Nj9jvY4"/>
+</div>
+<h3 class="font-headline font-bold text-sm text-primary">Intermediate</h3>
+</div>
+<!-- Advanced -->
+<div class="flex-shrink-0 w-48 snap-start p-4 bg-surface-container-highest rounded-xl border border-transparent hover:border-primary-container transition-all cursor-pointer">
+<div class="w-full h-24 mb-3 bg-surface-container-low rounded-lg overflow-hidden">
+<img alt="Advanced" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBg9pSp8iD2zuYMxHJq0QjhIdBrRk_J75tf640iExDvYB-_dYYAsuhnjap6ZuScxxMvR5IFWFVXkPct6xWBDzyhqziT9kV7bUbN3GEBjSiyTym8AN5AucRYucg-hIR05Q5p6mNsY_DipgdpPf8PDEzYqCwCisjZUdt5WHq2nt60V2IKq8uS0sR1lUONQhxNlADimru2Cf5bpGsc59hIzvCB0k6R3yLSo-3YkrjiM3DDa4b921lQmtSfJio4LoknD_c8R1aZCSjG-V9r"/>
+</div>
+<h3 class="font-headline font-bold text-sm">Advanced</h3>
+</div>
+</div>
+</section>
+<!-- Section 4: Daily Goal (Secondary) -->
+<section class="opacity-90">
+<div class="bg-surface-container-low p-6 rounded-2xl border border-primary/10">
+<h2 class="text-lg font-bold font-headline mb-6 text-on-surface-variant">Daily Learning Goal</h2>
+<div class="flex flex-col gap-6">
+<div class="relative w-full">
+<input class="w-full h-1.5 bg-surface-container-highest rounded-lg appearance-none cursor-pointer accent-primary" max="60" min="5" step="5" type="range" value="15"/>
+<div class="flex justify-between mt-3 text-[10px] font-bold font-headline text-on-surface-variant/60 uppercase tracking-widest">
+<span>5m</span>
+<span>15m</span>
+<span>30m</span>
+<span>45m</span>
+<span>1h+</span>
+</div>
+</div>
+<div class="flex items-center gap-4 bg-surface-container-lowest p-4 rounded-xl shadow-sm border border-primary-container/20">
+<div class="w-12 h-12 bg-primary-container/30 rounded-full flex items-center justify-center">
+<span class="text-2xl font-black text-primary">15</span>
+</div>
+<div>
+<p class="text-sm font-bold text-on-surface">Minutes / Day</p>
+<p class="text-xs text-primary-dim font-medium flex items-center gap-1">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">local_fire_department</span>
+                                Casual streak recommended
+                            </p>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer Action -->
+<div class="fixed bottom-0 left-0 w-full p-6 bg-surface/80 backdrop-blur-xl border-t border-surface-variant/50 z-50">
+<div class="max-w-2xl mx-auto">
+<button class="w-full py-4 bg-primary text-on-primary rounded-2xl font-headline font-extrabold text-lg hover:bg-primary-dim transition-all active:scale-[0.98] shadow-lg shadow-primary/20 flex items-center justify-center gap-2" onclick="window.location.href='dashboard.html'">
+                Continue to Dashboard
+                <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+<p class="text-center text-[11px] text-on-surface-variant mt-3 font-medium">By continuing, you agree to our Terms of Service</p>
+</div>
+</div>
+
+<script>
+// ——— LinguaLeap SPA Router ———
+(function() {
+  const PAGE = 'onboarding.html';
+
+  // Active nav item highlight
+  document.querySelectorAll('a[href], button[data-nav]').forEach(el => {
+    const href = el.getAttribute('href') || '';
+    if (href === PAGE) {
+      el.classList.add('nav-active');
+    }
+  });
+
+  // Smooth page transitions
+  document.addEventListener('click', function(e) {
+    const link = e.target.closest('a[href]');
+    if (!link) return;
+    const href = link.getAttribute('href');
+    if (!href || href === '#' || href.startsWith('http') || href.startsWith('mailto')) return;
+    e.preventDefault();
+    document.body.style.opacity = '0';
+    document.body.style.transition = 'opacity 0.2s ease';
+    setTimeout(() => { window.location.href = href; }, 200);
+  });
+
+  // Fade in on load
+  document.body.style.opacity = '0';
+  window.addEventListener('DOMContentLoaded', () => {
+    requestAnimationFrame(() => {
+      document.body.style.transition = 'opacity 0.3s ease';
+      document.body.style.opacity = '1';
+    });
+  });
+})();
+</script>
+
+<script>
+(function(){
+  // Language card selection
+  const cards = document.querySelectorAll('button.flex.flex-col.items-center.p-6');
+  cards.forEach(card=>{
+    card.addEventListener('click',()=>{
+      cards.forEach(c=>{
+        c.classList.remove('border-primary','shadow-sm','bg-surface-container-lowest');
+        c.classList.add('border-transparent','bg-surface-container-low');
+        c.querySelectorAll('.opacity-100').forEach(el=>el.classList.remove('opacity-100'));
+      });
+      card.classList.add('border-primary','shadow-sm','bg-surface-container-lowest');
+      card.classList.remove('border-transparent');
+      // Show checkmark if present
+      const check = card.querySelector('.text-primary, [class*="check"]');
+      if(check) check.classList.add('opacity-100');
+    });
+  });
+
+  // Goal level selection
+  const goalBtns = document.querySelectorAll('button.flex.items-center.justify-between.p-5');
+  goalBtns.forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      goalBtns.forEach(b=>{
+        b.classList.remove('border-primary/20','bg-surface-container-lowest');
+        b.classList.add('border-transparent','bg-surface-container-low');
+      });
+      btn.classList.add('border-primary/20','bg-surface-container-lowest');
+    });
+  });
+
+  // Progress steps
+  let step = 0;
+  const totalSteps = 3;
+  const progressDots = document.querySelectorAll('[class*="w-2"][class*="h-2"], [class*="rounded-full"][class*="w-"]');
+  
+  const continueBtn = document.querySelector('button[onclick*="dashboard"]');
+  if(continueBtn){
+    continueBtn.addEventListener('click', function(e){
+      continueBtn.innerHTML = '<span class="material-symbols-outlined animate-spin text-xl">progress_activity</span> Setting up your path...';
+      continueBtn.disabled = true;
+      setTimeout(()=>{ window.location.href='dashboard.html'; }, 1200);
+      e.stopPropagation();
+    });
+  }
+})();
+</script>
+</body></html>

@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta name="theme-color" content="#006d4a"/>
+<meta name="description" content="LinguaLeap - Master pronunciation with AI-powered speech recognition"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>LinguaLeap - Speech Recognition</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Be+Vietnam+Pro:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "tertiary-fixed": "#fda625",
+              "on-tertiary-fixed": "#311c00",
+              "primary-fixed": "#69f6b8",
+              "tertiary-fixed-dim": "#ed9912",
+              "secondary-container": "#c8f17a",
+              "on-primary-fixed": "#00452d",
+              "inverse-surface": "#041015",
+              "background": "#f4faff",
+              "on-primary-container": "#005a3c",
+              "tertiary": "#875400",
+              "on-secondary": "#f0ffce",
+              "primary-dim": "#005f40",
+              "on-secondary-fixed": "#304600",
+              "surface-container-highest": "#cde6f4",
+              "on-tertiary": "#fff7f3",
+              "secondary": "#4a6800",
+              "outline": "#667e8a",
+              "on-secondary-container": "#3f5a00",
+              "surface-container": "#def1fc",
+              "on-primary": "#e6ffee",
+              "inverse-primary": "#69f6b8",
+              "on-surface": "#1d3540",
+              "on-error-container": "#671200",
+              "secondary-fixed": "#c8f17a",
+              "error-dim": "#821a01",
+              "surface-bright": "#f4faff",
+              "secondary-dim": "#405b00",
+              "primary": "#006d4a",
+              "on-secondary-fixed-variant": "#476400",
+              "on-error": "#fff7f6",
+              "secondary-fixed-dim": "#bae26e",
+              "primary-container": "#69f6b8",
+              "surface-container-high": "#d5ecf8",
+              "on-background": "#1d3540",
+              "on-tertiary-container": "#502f00",
+              "surface-dim": "#c2deee",
+              "surface-variant": "#cde6f4",
+              "surface-container-lowest": "#ffffff",
+              "error-container": "#fa7150",
+              "inverse-on-surface": "#929fa6",
+              "surface-tint": "#006d4a",
+              "on-tertiary-fixed-variant": "#5c3700",
+              "surface-container-low": "#e7f6ff",
+              "outline-variant": "#9db6c3",
+              "tertiary-dim": "#764900",
+              "error": "#aa371c",
+              "surface": "#f4faff",
+              "on-primary-fixed-variant": "#006544",
+              "tertiary-container": "#fda625",
+              "primary-fixed-dim": "#58e7ab",
+              "on-surface-variant": "#4b626e"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans"],
+              "body": ["Be Vietnam Pro"],
+              "label": ["Plus Jakarta Sans"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+      .waveform-bar {
+        transition: height 0.2s ease-in-out;
+      }
+      .glass-morphism {
+        background: rgba(255, 255, 255, 0.4);
+        backdrop-filter: blur(12px);
+      }
+    </style>
+<style>
+    body {
+      min-height:100%;
+    }
+  </style>
+</head>
+<body class="bg-background font-body text-on-surface selection:bg-primary-container selection:text-on-primary-container pb-32">
+<!-- TopAppBar from Shared Components -->
+<header class="docked w-full top-0 bg-[#f4faff] dark:bg-slate-950 flex justify-between items-center w-full px-6 py-4 z-40">
+<div class="flex items-center gap-4">
+<button class="text-[#006d4a] dark:text-[#69f6b8] hover:bg-[#cde6f4] dark:hover:bg-slate-800 transition-colors p-2 rounded-full">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+</button>
+<h1 class="font-['Plus_Jakarta_Sans'] font-bold tracking-tight text-2xl font-black text-[#006d4a] dark:text-[#69f6b8]">LinguaLeap</h1>
+</div>
+<div class="flex items-center gap-2 px-4 py-1.5 bg-surface-container-highest rounded-full">
+<span class="text-sm font-bold text-[#006d4a]">12 🔥</span>
+</div>
+</header>
+<main class="max-w-4xl mx-auto px-6 pt-8 pb-32 min-h-screen">
+<!-- Contextual Back Navigation (Task-Focused) -->
+<div class="mb-8">
+<button class="flex items-center gap-2 text-on-surface-variant hover:text-primary transition-colors group" onclick="window.location.href='active-lesson.html'">
+<span class="material-symbols-outlined text-[20px] group-active:scale-90 transition-transform" data-icon="arrow_back">arrow_back</span>
+<span class="font-label font-semibold text-sm">Back to Practice</span>
+</button>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+<!-- Left Column: Primary Content -->
+<div class="lg:col-span-7 space-y-8">
+<!-- Phrase Card -->
+<section class="bg-surface-container-lowest rounded-[2rem] p-8 shadow-[0_12px_32px_-4px_rgba(29,53,64,0.06)] border border-white/40">
+<div class="flex justify-between items-start mb-6">
+<span class="px-3 py-1 bg-secondary-container text-on-secondary-container text-xs font-bold rounded-full uppercase tracking-wider">Target Phrase</span>
+<span class="text-on-surface-variant font-medium text-sm">Level: B2</span>
+</div>
+<div class="space-y-4">
+<h2 class="text-4xl md:text-5xl font-headline font-extrabold text-on-surface tracking-tight leading-tight">
+                            L'éducation est la clé du futur.
+                        </h2>
+<div class="flex items-center gap-3 text-primary font-medium text-lg italic opacity-80">
+<span>[le.dy.ka.sjɔ̃ ɛ la kle dy fy.tyʁ]</span>
+</div>
+</div>
+<!-- Audio Playback & Waveform Container -->
+<div class="mt-10 p-6 bg-surface-container-low rounded-2xl flex flex-col gap-6">
+<div class="flex items-center gap-4">
+<button class="w-14 h-14 bg-primary text-white rounded-full flex items-center justify-center shadow-lg hover:scale-105 active:scale-95 transition-all">
+<span class="material-symbols-outlined text-[28px]" data-icon="play_arrow" data-weight="fill" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+</button>
+<div class="flex-1">
+<div class="text-xs font-bold text-on-surface-variant mb-2 uppercase tracking-widest">Native Speaker</div>
+<div class="flex items-end gap-[3px] h-10 w-full overflow-hidden">
+<div class="waveform-bar bg-primary-container h-4 w-1 rounded-full"></div>
+<div class="waveform-bar bg-primary-container h-6 w-1 rounded-full"></div>
+<div class="waveform-bar bg-primary-container h-3 w-1 rounded-full"></div>
+<div class="waveform-bar bg-primary-container h-8 w-1 rounded-full"></div>
+<div class="waveform-bar bg-primary-container h-5 w-1 rounded-full"></div>
+<div class="waveform-bar bg-primary-container h-9 w-1 rounded-full"></div>
+<div class="waveform-bar bg-primary h-10 w-1 rounded-full"></div>
+<div class="waveform-bar bg-primary-container h-7 w-1 rounded-full"></div>
+<div class="waveform-bar bg-primary-container h-4 w-1 rounded-full"></div>
+<div class="waveform-bar bg-primary-container h-6 w-1 rounded-full"></div>
+<div class="waveform-bar bg-primary-container h-3 w-1 rounded-full"></div>
+<div class="waveform-bar bg-primary-container h-8 w-1 rounded-full"></div>
+<div class="waveform-bar bg-primary-container h-5 w-1 rounded-full"></div>
+<div class="waveform-bar bg-primary-container h-9 w-1 rounded-full"></div>
+<div class="waveform-bar bg-primary-container h-6 w-1 rounded-full"></div>
+<div class="waveform-bar bg-primary-container h-4 w-1 rounded-full"></div>
+<div class="waveform-bar bg-primary-container h-7 w-1 rounded-full"></div>
+<div class="waveform-bar bg-primary-container h-3 w-1 rounded-full"></div>
+<div class="waveform-bar bg-primary-container h-8 w-1 rounded-full"></div>
+<div class="waveform-bar bg-primary-container h-5 w-1 rounded-full"></div>
+<div class="waveform-bar bg-primary-container h-6 w-1 rounded-full"></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Feedback Breakdown -->
+<section class="space-y-4">
+<h3 class="text-lg font-headline font-bold text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-primary" data-icon="analytics">analytics</span>
+                        Phoneme Feedback
+                    </h3>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<!-- Phoneme Card: Positive -->
+<div class="bg-surface-container-low p-5 rounded-2xl border-l-4 border-primary">
+<div class="flex justify-between items-start mb-2">
+<span class="font-headline font-bold text-xl text-primary">/y/</span>
+<span class="text-xs font-bold text-primary px-2 py-0.5 bg-primary/10 rounded-full">EXCELLENT</span>
+</div>
+<p class="text-sm text-on-surface-variant leading-relaxed">Perfect rounded lips for the 'u' in 'futur'. Crystal clear production.</p>
+</div>
+<!-- Phoneme Card: Improvement -->
+<div class="bg-surface-container-low p-5 rounded-2xl border-l-4 border-tertiary">
+<div class="flex justify-between items-start mb-2">
+<span class="font-headline font-bold text-xl text-tertiary">/sjɔ̃/</span>
+<span class="text-xs font-bold text-tertiary px-2 py-0.5 bg-tertiary/10 rounded-full">NEEDS FOCUS</span>
+</div>
+<p class="text-sm text-on-surface-variant leading-relaxed">Nasalization was slightly too open. Try directing more air through the nose.</p>
+</div>
+</div>
+</section>
+</div>
+<!-- Right Column: Interactive & Metrics -->
+<div class="lg:col-span-5 space-y-8 lg:sticky lg:top-24">
+<!-- Accuracy Gauge -->
+<div class="bg-surface-container-highest rounded-[2.5rem] p-8 relative overflow-hidden flex flex-col items-center">
+<div class="absolute inset-0 opacity-10 pointer-events-none">
+<img class="w-full h-full object-cover" data-alt="abstract topographic lines pattern in deep emerald green on pale blue background soft gradients" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBv-7hpEEqjNohKBjjawQO6uNPTGjiDsRQlMxH3TRANaYpJuQaLRXAHIY9i3A-NSkxuXwEWWK7SDGzfDYmmPE49xFjUTpzo_s9eoPdVzjB9QWaZtQHVH3jHJTVp1hJEGQHTa3GXQyfzBWxHfA_aZpQ9W8_9J4jb7NuGOXSgqWJjriw6De2iBcA0iql_F9y-i5v3fyBA1S9CG0jmhbXudq0XmTvs3-fnhuJYIxg-az83O-PfLAoD4dOIP4YYVO13KkbGkZ7HDo7jHF8Z"/>
+</div>
+<div class="relative z-10 text-center">
+<div class="w-48 h-48 rounded-full border-[12px] border-surface-container flex flex-col items-center justify-center relative">
+<!-- Progress Ring (Simulated with Gradient) -->
+<div class="absolute inset-[-12px] rounded-full border-[12px] border-transparent border-t-primary border-r-primary border-b-primary-container rotate-[45deg]"></div>
+<span class="text-6xl font-headline font-black text-on-surface">88</span>
+<span class="text-sm font-bold text-on-surface-variant -mt-1 uppercase tracking-tighter">Accuracy Score</span>
+</div>
+<p class="mt-6 text-on-surface-variant text-sm font-medium">You're getting closer to a native accent!</p>
+</div>
+</div>
+<!-- Record Interaction -->
+<div class="flex flex-col items-center gap-6">
+<div class="relative">
+<!-- Pulsing Rings -->
+<div class="absolute inset-0 bg-primary/20 rounded-full scale-125"></div>
+<div class="absolute inset-0 bg-primary/10 rounded-full scale-150"></div>
+<!-- Main Mic Button -->
+<button class="relative w-28 h-28 bg-primary text-white rounded-full flex items-center justify-center shadow-2xl hover:scale-105 active:scale-95 transition-all z-10">
+<span class="material-symbols-outlined text-4xl" data-icon="mic" data-weight="fill" style="font-variation-settings: 'FILL' 1;">mic</span>
+</button>
+</div>
+<div class="text-center">
+<p class="font-headline font-bold text-on-surface">Tap to Record</p>
+<p class="text-xs text-on-surface-variant font-medium mt-1">Speak clearly into your microphone</p>
+</div>
+</div>
+<!-- Tips Card -->
+<div class="bg-secondary-container/30 rounded-2xl p-6 border border-secondary-container/40">
+<h4 class="font-bold text-on-secondary-container flex items-center gap-2 mb-2">
+<span class="material-symbols-outlined text-sm" data-icon="lightbulb">lightbulb</span>
+                        Pro Tip
+                    </h4>
+<p class="text-sm text-on-secondary-container leading-relaxed">
+                        In French, "éducation" begins with a clear, sharp "é". Make sure your tongue is forward and high in your mouth.
+                    </p>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar from Shared Components -->
+<nav id="bottom-nav" class="fixed bottom-0 left-0 w-full flex justify-around items-center px-4 pb-safe pt-2 pb-4 bg-[#f4faff]/95 backdrop-blur-md border-t border-[#9db6c3]/15 shadow-[0_-4px_20px_-4px_rgba(29,53,64,0.06)] z-50 rounded-t-[1.5rem]">
+<a class="flex flex-col items-center justify-center text-[#1d3540] px-4 py-2 hover:bg-[#e7f6ff] rounded-xl transition-all duration-300 transform active:scale-90" href="dashboard.html">
+<span class="material-symbols-outlined text-[22px]" style="font-variation-settings:'FILL' 0;">home</span>
+<span class="text-[10px] font-semibold mt-0.5">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#1d3540] px-4 py-2 hover:bg-[#e7f6ff] rounded-xl transition-all duration-300 transform active:scale-90" href="roadmap.html">
+<span class="material-symbols-outlined text-[22px]" style="font-variation-settings:'FILL' 0;">school</span>
+<span class="text-[10px] font-semibold mt-0.5">Roadmap</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-[#c8f17a] text-[#006d4a] rounded-[1.5rem] px-4 py-2 transition-all duration-300 transform active:scale-90" href="speech.html">
+<span class="material-symbols-outlined text-[22px]" style="font-variation-settings:'FILL' 1;">mic</span>
+<span class="text-[10px] font-semibold mt-0.5">Practice</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#1d3540] px-4 py-2 hover:bg-[#e7f6ff] rounded-xl transition-all duration-300 transform active:scale-90" href="leaderboard.html">
+<span class="material-symbols-outlined text-[22px]" style="font-variation-settings:'FILL' 0;">leaderboard</span>
+<span class="text-[10px] font-semibold mt-0.5">Rank</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#1d3540] px-4 py-2 hover:bg-[#e7f6ff] rounded-xl transition-all duration-300 transform active:scale-90" href="achievements.html">
+<span class="material-symbols-outlined text-[22px]" style="font-variation-settings:'FILL' 0;">person</span>
+<span class="text-[10px] font-semibold mt-0.5">Profile</span>
+</a>
+</nav>
+
+<script>
+// ——— LinguaLeap SPA Router ———
+(function() {
+  const PAGE = 'speech.html';
+
+  // Active nav item highlight
+  document.querySelectorAll('a[href], button[data-nav]').forEach(el => {
+    const href = el.getAttribute('href') || '';
+    if (href === PAGE) {
+      el.classList.add('nav-active');
+    }
+  });
+
+  // Smooth page transitions
+  document.addEventListener('click', function(e) {
+    const link = e.target.closest('a[href]');
+    if (!link) return;
+    const href = link.getAttribute('href');
+    if (!href || href === '#' || href.startsWith('http') || href.startsWith('mailto')) return;
+    e.preventDefault();
+    document.body.style.opacity = '0';
+    document.body.style.transition = 'opacity 0.2s ease';
+    setTimeout(() => { window.location.href = href; }, 200);
+  });
+
+  // Fade in on load
+  document.body.style.opacity = '0';
+  window.addEventListener('DOMContentLoaded', () => {
+    requestAnimationFrame(() => {
+      document.body.style.transition = 'opacity 0.3s ease';
+      document.body.style.opacity = '1';
+    });
+  });
+})();
+</script>
+
+<script>
+(function(){
+  let isRecording = false;
+  let waveInterval = null;
+  let recordTimeout = null;
+
+  const micBtn = document.querySelector('button.w-14.h-14, button[class*="w-14"][class*="rounded-full"]');
+  const bars   = document.querySelectorAll('[class*="flex items-end gap"][div],[class*="h-10"] div');
+  const waveContainer = document.querySelector('[class*="flex items-end gap-\\[3px\\]"],[class*="h-10.w-full"]');
+
+  // Build waveform bars dynamically if not present
+  if(!waveContainer){
+    console.log('No wave container found');
+  }
+
+  // Score ring animation
+  document.querySelectorAll('[class*="stroke-primary"],[class*="circle"]').forEach(circle=>{
+    if(circle.tagName==='circle'){
+      const r = parseFloat(circle.getAttribute('r')||'40');
+      const circ = 2*Math.PI*r;
+      circle.style.strokeDasharray=circ;
+      circle.style.strokeDashoffset=circ;
+      setTimeout(()=>{
+        circle.style.transition='stroke-dashoffset 1.5s cubic-bezier(0.34,1.56,0.64,1)';
+        circle.style.strokeDashoffset = circ * 0.18; // 82% score
+      },500);
+    }
+  });
+
+  function animateWave(){
+    if(!waveContainer) return;
+    const divs = waveContainer.querySelectorAll('div');
+    divs.forEach(div=>{
+      const h = Math.random()*80+20;
+      div.style.height=h+'%';
+    });
+  }
+
+  // Mic button toggle recording
+  const allMicBtns = document.querySelectorAll('button');
+  allMicBtns.forEach(btn=>{
+    const icon = btn.querySelector('.material-symbols-outlined');
+    if(icon && (icon.textContent.trim()==='mic' || icon.textContent.trim()==='mic_none')){
+      btn.addEventListener('click',()=>{
+        isRecording = !isRecording;
+        if(isRecording){
+          icon.textContent='stop';
+          btn.classList.add('bg-red-500','ring-4','ring-red-300','animate-pulse');
+          btn.classList.remove('bg-primary');
+          waveInterval = setInterval(animateWave,100);
+          // Auto-stop after 4s and show result
+          recordTimeout = setTimeout(()=>{
+            stopRecording(btn, icon);
+            showScore();
+          }, 4000);
+        } else {
+          stopRecording(btn, icon);
+          showScore();
+        }
+      });
+    }
+  });
+
+  function stopRecording(btn, icon){
+    isRecording=false;
+    icon.textContent='mic';
+    btn.classList.remove('bg-red-500','ring-4','ring-red-300','animate-pulse');
+    btn.classList.add('bg-primary');
+    clearInterval(waveInterval);
+    clearTimeout(recordTimeout);
+  }
+
+  function showScore(){
+    // Update score display
+    const scoreEl = document.querySelector('[class*="text-4xl"],[class*="text-5xl"]');
+    if(scoreEl && /\d/.test(scoreEl.textContent)){
+      let s=0;
+      const target=Math.floor(75+Math.random()*20);
+      const t=setInterval(()=>{ s+=3; scoreEl.textContent=Math.min(s,target)+'%'; if(s>=target)clearInterval(t); },30);
+    }
+    // Show next button toast
+    showToast('Great attempt! Score recorded.');
+  }
+
+  // "Try Again" and "Next Word" buttons
+  document.querySelectorAll('button').forEach(btn=>{
+    const t = btn.textContent.trim().toLowerCase();
+    if(t.includes('next word')||t.includes('next')){
+      btn.addEventListener('click',()=>{
+        const words=['Stethoscope','Diagnosis','Pharmacology','Anesthesia'];
+        const wordEl=document.querySelector('h1.text-4xl,h1.text-5xl,[class*="display"]');
+        if(wordEl) wordEl.textContent=words[Math.floor(Math.random()*words.length)];
+        showToast('New word loaded!');
+      });
+    }
+    if(t.includes('continue')||t.includes('finish')){
+      btn.addEventListener('click',()=>window.location.href='conversation.html');
+    }
+  });
+
+  function showToast(msg){
+    const t=document.createElement('div');
+    t.className='fixed bottom-24 left-1/2 -translate-x-1/2 bg-[#1d3540] text-white text-sm px-4 py-2 rounded-full z-[9999] shadow-xl transition-all';
+    t.textContent=msg;
+    document.body.appendChild(t);
+    setTimeout(()=>t.style.opacity='0',2500);
+    setTimeout(()=>t.remove(),3000);
+  }
+
+  // Phoneme chips clickable
+  document.querySelectorAll('[class*="px-3"][class*="py-1"][class*="rounded-full"]').forEach(chip=>{
+    chip.addEventListener('click',()=>{
+      chip.classList.toggle('bg-primary');
+      chip.classList.toggle('text-white');
+    });
+  });
+})();
+</script>
+</body></html>

@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta name="theme-color" content="#006d4a"/>
+<meta name="description" content="LinguaLeap - Master pronunciation with AI-powered speech recognition"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Learning Roadmap - LinguaLeap</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Be+Vietnam+Pro:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary": "#875400",
+                        "on-secondary": "#f0ffce",
+                        "on-tertiary-container": "#502f00",
+                        "on-tertiary-fixed-variant": "#5c3700",
+                        "tertiary-dim": "#764900",
+                        "secondary": "#4a6800",
+                        "error-container": "#fa7150",
+                        "surface-container-lowest": "#ffffff",
+                        "background": "#f4faff",
+                        "on-primary-fixed": "#00452d",
+                        "outline": "#667e8a",
+                        "surface-container": "#def1fc",
+                        "on-error": "#fff7f6",
+                        "secondary-fixed-dim": "#bae26e",
+                        "tertiary-fixed-dim": "#ed9912",
+                        "on-secondary-fixed": "#304600",
+                        "on-primary": "#e6ffee",
+                        "surface-dim": "#c2deee",
+                        "surface-container-low": "#e7f6ff",
+                        "on-secondary-fixed-variant": "#476400",
+                        "surface-container-high": "#d5ecf8",
+                        "secondary-dim": "#405b00",
+                        "surface-tint": "#006d4a",
+                        "primary-fixed": "#69f6b8",
+                        "surface-variant": "#cde6f4",
+                        "primary-container": "#69f6b8",
+                        "on-primary-fixed-variant": "#006544",
+                        "inverse-primary": "#69f6b8",
+                        "primary-fixed-dim": "#58e7ab",
+                        "error": "#aa371c",
+                        "surface": "#f4faff",
+                        "secondary-fixed": "#c8f17a",
+                        "primary-dim": "#005f40",
+                        "inverse-surface": "#041015",
+                        "primary": "#006d4a",
+                        "tertiary-fixed": "#fda625",
+                        "on-tertiary": "#fff7f3",
+                        "outline-variant": "#9db6c3",
+                        "on-error-container": "#671200",
+                        "error-dim": "#821a01",
+                        "on-secondary-container": "#3f5a00",
+                        "on-tertiary-fixed": "#311c00",
+                        "on-surface": "#1d3540",
+                        "inverse-on-surface": "#929fa6",
+                        "surface-container-highest": "#cde6f4",
+                        "tertiary-container": "#fda625",
+                        "surface-bright": "#f4faff",
+                        "on-background": "#1d3540",
+                        "on-surface-variant": "#4b626e",
+                        "on-primary-container": "#005a3c",
+                        "secondary-container": "#c8f17a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Plus Jakarta Sans"],
+                        "body": ["Be Vietnam Pro"],
+                        "label": ["Plus Jakarta Sans"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Be Vietnam Pro', sans-serif; }
+        h1, h2, h3, h4 { font-family: 'Plus Jakarta Sans', sans-serif; }
+        
+        /* Smooth path curve */
+        .roadmap-path-svg {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+            height: 100%;
+            z-index: -10;
+            overflow: visible;
+        }
+        .path-line {
+            fill: none;
+            stroke: #006d4a;
+            stroke-width: 4;
+            stroke-dasharray: 12 8;
+            stroke-linecap: round;
+            opacity: 0.15;
+        }
+        .path-line-completed {
+            fill: none;
+            stroke: #006d4a;
+            stroke-width: 4;
+            stroke-linecap: round;
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface min-h-screen pb-32 overflow-x-hidden">
+<!-- TopAppBar -->
+<nav class="w-full top-0 sticky bg-[#f4faff] dark:bg-slate-950 flex items-center justify-between px-6 py-4 w-full z-40">
+<div class="flex items-center gap-4">
+<button class="text-[#006d4a] dark:text-[#69f6b8] hover:bg-[#cde6f4]/50 p-2 rounded-full transition-colors active:scale-95 duration-200">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<h1 class="font-['Plus_Jakarta_Sans'] font-bold text-lg tracking-tight text-[#1d3540] dark:text-slate-400">Learning Roadmap</h1>
+</div>
+<div class="flex items-center gap-3">
+<div class="bg-secondary-container px-3 py-1 rounded-full flex items-center gap-2">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">local_fire_department</span>
+<span class="text-on-secondary-container font-bold text-sm">12</span>
+</div>
+<button class="w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center border-2 border-primary overflow-hidden">
+<img alt="User" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuALAV_r6lNGZeHW5ZlYRifW5L6GuaXySeAzXtJDXEvapBpsTDbZOIUj7CZgik7MaHYf36DtXjIN2AcWzW2a5iYq80tIVtaW2SapmyyRwfa2H1amW9BrwfPCD8GSN5d4CnOvqu27gfoc0ej5XxKfT-qyGzclQUPuhdKtDY1ZXej9TKuJPdO2gFF_nJWaLg6lEPix9b27pZmAw22aKHADHiDpmFmcpWc1WtYTZOzbuIdT3paB3nmbjCjIqrPMwHjfiXNChCd-YHmoo5Ww"/>
+</button>
+</div>
+</nav>
+<main class="max-w-4xl mx-auto px-4 py-8 relative">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+<!-- Left Column: The Roadmap Map -->
+<div class="lg:col-span-8 relative">
+<!-- Visual Path SVG -->
+<svg class="roadmap-path-svg" preserveaspectratio="none" viewbox="0 0 100 1200">
+<path class="path-line" d="M 50,0 Q 80,150 50,300 Q 20,450 50,600 Q 80,750 50,900 Q 20,1050 50,1200"></path>
+<!-- Completed segment -->
+<path class="path-line-completed" d="M 50,0 Q 80,150 50,160"></path>
+</svg>
+<div class="flex flex-col gap-24 py-10">
+<!-- Stage 1 (Centered - Start) -->
+<div class="flex flex-col items-center">
+<div class="relative group">
+<div class="w-20 h-20 rounded-2xl bg-primary text-on-primary flex items-center justify-center shadow-lg active:scale-95 transition-all cursor-pointer ring-4 ring-primary-container/30">
+<span class="material-symbols-outlined text-4xl" style="font-variation-settings: 'FILL' 1;">waving_hand</span>
+</div>
+<div class="absolute -top-3 -right-3 bg-secondary text-on-secondary text-[10px] font-bold px-2 py-1 rounded-full border-2 border-white shadow-sm">DONE</div>
+</div>
+<div class="mt-6 text-center px-4 max-w-[280px]">
+<h3 class="font-bold text-lg text-primary leading-tight">Stage 1: Foundations</h3>
+<p class="text-on-surface-variant text-xs font-medium uppercase tracking-wider mt-1">Goal: Build familiarity</p>
+<div class="mt-4 flex flex-wrap justify-center gap-2">
+<span class="bg-surface-container-high px-2.5 py-1 rounded-lg text-xs font-medium flex items-center gap-1.5"><span class="material-symbols-outlined text-sm">celebration</span> Greetings</span>
+<span class="bg-surface-container-high px-2.5 py-1 rounded-lg text-xs font-medium flex items-center gap-1.5"><span class="material-symbols-outlined text-sm">restaurant</span> Food</span>
+</div>
+</div>
+</div>
+<!-- Stage 2 (Right Aligned) -->
+<div class="flex flex-row-reverse items-center justify-center gap-6 pr-4 sm:pr-20">
+<div class="flex-1 text-right max-w-[200px]">
+<h3 class="font-bold text-lg text-secondary leading-tight">Stage 2: Sentences</h3>
+<p class="text-on-surface-variant text-xs font-medium uppercase tracking-wider">Goal: Construct meaning</p>
+</div>
+<div class="w-16 h-16 rounded-2xl bg-secondary-container text-on-secondary-container flex items-center justify-center shadow-md active:scale-95 transition-all cursor-pointer">
+<span class="material-symbols-outlined text-3xl">account_tree</span>
+</div>
+</div>
+<!-- Stage 3 (Left Aligned) -->
+<div class="flex items-center justify-center gap-6 pl-4 sm:pl-20">
+<div class="w-16 h-16 rounded-2xl bg-surface-container-high text-primary flex items-center justify-center shadow-md active:scale-95 transition-all cursor-pointer border border-primary/10">
+<span class="material-symbols-outlined text-3xl">hearing</span>
+</div>
+<div class="flex-1 text-left max-w-[200px]">
+<h3 class="font-bold text-lg text-on-surface leading-tight">Stage 3: Listening</h3>
+<p class="text-on-surface-variant text-xs font-medium uppercase tracking-wider">Goal: Decipher sounds</p>
+</div>
+</div>
+<!-- Stage 4 (Centered - Main Focus) -->
+<div class="flex flex-col items-center">
+<div class="relative group">
+<div class="absolute -inset-6 bg-tertiary/10 rounded-full blur-2xl animate-pulse"></div>
+<div class="w-24 h-24 rounded-full bg-tertiary text-on-tertiary flex items-center justify-center shadow-xl active:scale-95 transition-all cursor-pointer relative z-10 border-4 border-surface-container-lowest">
+<span class="material-symbols-outlined text-4xl" style="font-variation-settings: 'FILL' 1;">mic</span>
+</div>
+<div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-tertiary-container text-on-tertiary-container text-[10px] font-black px-3 py-1 rounded-full shadow-md z-20 whitespace-nowrap">CORE SKILL</div>
+</div>
+<div class="mt-6 text-center px-4 max-w-[320px]">
+<h3 class="font-bold text-xl text-tertiary leading-tight">Stage 4: Speaking Practice</h3>
+<p class="text-on-surface-variant text-xs font-medium uppercase tracking-wider mt-1 mb-4">Goal: Master verbal fluidity</p>
+<div class="bg-gradient-to-br from-tertiary-container/30 to-surface-container-lowest p-4 rounded-2xl border border-tertiary-container/20 text-sm">
+<p class="text-on-surface-variant leading-relaxed">Engage in real-time conversations with AI peers to build confidence.</p>
+<div class="flex justify-center gap-4 mt-3 opacity-60">
+<span class="material-symbols-outlined text-tertiary">settings_voice</span>
+<span class="material-symbols-outlined text-tertiary">smart_toy</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Stage 5 (Right Aligned) -->
+<div class="flex flex-row-reverse items-center justify-center gap-6 pr-4 sm:pr-20">
+<div class="flex-1 text-right max-w-[200px]">
+<h3 class="font-bold text-lg text-error leading-tight">Stage 5: Real-Life</h3>
+<p class="text-on-surface-variant text-xs font-medium uppercase tracking-wider">Goal: Survive &amp; Thrive</p>
+</div>
+<div class="w-16 h-16 rounded-2xl bg-error-container/20 text-error flex items-center justify-center shadow-md active:scale-95 transition-all cursor-pointer">
+<span class="material-symbols-outlined text-3xl">travel_explore</span>
+</div>
+</div>
+<!-- Stage 6 (Left Aligned) -->
+<div class="flex items-center justify-center gap-6 pl-4 sm:pl-20">
+<div class="w-16 h-16 rounded-2xl bg-tertiary-fixed text-on-tertiary-fixed flex items-center justify-center shadow-md active:scale-95 transition-all cursor-pointer">
+<span class="material-symbols-outlined text-3xl">spellcheck</span>
+</div>
+<div class="flex-1 text-left max-w-[200px]">
+<h3 class="font-bold text-lg text-tertiary-dim leading-tight">Stage 6: Grammar</h3>
+<p class="text-on-surface-variant text-xs font-medium uppercase tracking-wider">Goal: Refine accuracy</p>
+</div>
+</div>
+<!-- Stage 7 (Right Aligned) -->
+<div class="flex flex-row-reverse items-center justify-center gap-6 pr-4 sm:pr-20">
+<div class="flex-1 text-right max-w-[200px]">
+<h3 class="font-bold text-lg text-on-surface leading-tight">Stage 7: Writing</h3>
+<p class="text-on-surface-variant text-xs font-medium uppercase tracking-wider">Goal: Express depth</p>
+</div>
+<div class="w-16 h-16 rounded-2xl bg-on-surface text-surface flex items-center justify-center shadow-md active:scale-95 transition-all cursor-pointer">
+<span class="material-symbols-outlined text-3xl">edit_note</span>
+</div>
+</div>
+<!-- Stage 8 (Centered - Finish) -->
+<div class="flex flex-col items-center mb-12">
+<div class="w-24 h-24 rounded-full bg-surface-container-lowest text-primary flex items-center justify-center shadow-xl border-4 border-primary active:scale-95 transition-all cursor-pointer ring-8 ring-primary/5">
+<span class="material-symbols-outlined text-5xl" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<div class="mt-6 text-center px-4">
+<h3 class="font-extrabold text-2xl text-primary tracking-tight">Stage 8: Mastery</h3>
+<p class="text-on-surface-variant text-xs font-bold uppercase tracking-widest mt-1">Personalized Advanced Path</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Column: Sidebar Features -->
+<div class="lg:col-span-4 flex flex-col gap-6 lg:sticky lg:top-24 h-fit">
+<!-- Extra Features Card -->
+<div class="bg-white/60 backdrop-blur-sm p-6 rounded-3xl shadow-sm border border-outline-variant/10">
+<h2 class="text-lg font-bold text-on-surface mb-5 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">extension</span>
+                        Extra Features
+                    </h2>
+<div class="space-y-3">
+<div class="flex items-center gap-4 p-3.5 bg-surface-container-lowest rounded-2xl hover:bg-white transition-all cursor-pointer group border border-transparent hover:border-primary/20">
+<div class="w-10 h-10 rounded-xl bg-primary/10 text-primary flex items-center justify-center group-hover:bg-primary group-hover:text-on-primary transition-all">
+<span class="material-symbols-outlined text-xl">repeat</span>
+</div>
+<div class="min-w-0">
+<h4 class="font-bold text-sm truncate">SRS Engine</h4>
+<p class="text-[11px] text-on-surface-variant truncate">Spaced repetition mastery</p>
+</div>
+</div>
+<div class="flex items-center gap-4 p-3.5 bg-surface-container-lowest rounded-2xl hover:bg-white transition-all cursor-pointer group border border-transparent hover:border-secondary/20">
+<div class="w-10 h-10 rounded-xl bg-secondary-container text-on-secondary-container flex items-center justify-center group-hover:bg-secondary group-hover:text-on-secondary transition-all">
+<span class="material-symbols-outlined text-xl">emoji_events</span>
+</div>
+<div class="min-w-0">
+<h4 class="font-bold text-sm truncate">Gamification</h4>
+<p class="text-[11px] text-on-surface-variant truncate">Earn badges and XP daily</p>
+</div>
+</div>
+<div class="flex items-center gap-4 p-3.5 bg-surface-container-lowest rounded-2xl hover:bg-white transition-all cursor-pointer group border border-transparent hover:border-tertiary/20">
+<div class="w-10 h-10 rounded-xl bg-tertiary/10 text-tertiary flex items-center justify-center group-hover:bg-tertiary group-hover:text-on-tertiary transition-all">
+<span class="material-symbols-outlined text-xl">smart_toy</span>
+</div>
+<div class="min-w-0">
+<h4 class="font-bold text-sm truncate">AI Tutor</h4>
+<p class="text-[11px] text-on-surface-variant truncate">24/7 personal guide</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Progress Dashboard Preview -->
+<div class="bg-primary text-on-primary p-6 rounded-3xl shadow-lg relative overflow-hidden group">
+<div class="relative z-10">
+<h3 class="font-bold text-lg mb-1">Your Progress</h3>
+<p class="text-on-primary/80 text-xs mb-4">Overall Completion: 12%</p>
+<div class="w-full bg-on-primary/20 h-2 rounded-full mb-5 overflow-hidden">
+<div class="bg-on-primary h-full w-[12%] rounded-full shadow-[0_0_8px_rgba(255,255,255,0.5)]"></div>
+</div>
+<button class="w-full bg-white text-primary font-bold py-2.5 rounded-xl text-sm hover:bg-on-primary-fixed transition-colors active:scale-95">
+                            View Detailed Stats
+                        </button>
+</div>
+<!-- Decorative Elements -->
+<div class="absolute -bottom-8 -right-8 w-32 h-32 bg-primary-container/20 rounded-full blur-xl group-hover:scale-110 transition-transform duration-700"></div>
+<div class="absolute -top-4 -left-4 w-16 h-16 bg-white/10 rounded-full blur-lg"></div>
+</div>
+<!-- Contextual Banner -->
+<div class="rounded-3xl overflow-hidden h-32 relative group shadow-sm border border-outline-variant/10">
+<img alt="Learning" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCGX5oBS41-FIJpMCVUKy0gJlrnBWPt5bp_apCHUD2gUZLkW3oQRfIkfvTMM_nOeSsFQSrLPsrtEWN-r_JF9xFpNraaJHIux_vbt1gOxiLQWTo6neKmgM5aSUQrALtzwpFLsBR8aP3pRKemM26tL9gXYb_NOzxRFfByqvzYEYU5fFxBQczH9gnWq89TvDQdIwopMavJXQ5yl0okaMmkmoviRLHUqMyIqGe_7T4Uu0B-7uICxCbB4GZeBFO_x3bKwsoeog3uTEWh8STa"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex items-end p-4">
+<span class="text-white font-bold text-xs tracking-wide">READY FOR THE NEXT UNIT?</span>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav id="bottom-nav" class="fixed bottom-0 left-0 w-full flex justify-around items-center px-4 pb-safe pt-2 pb-4 bg-[#f4faff]/95 backdrop-blur-md border-t border-[#9db6c3]/15 shadow-[0_-4px_20px_-4px_rgba(29,53,64,0.06)] z-50 rounded-t-[1.5rem]">
+<a class="flex flex-col items-center justify-center text-[#1d3540] px-4 py-2 hover:bg-[#e7f6ff] rounded-xl transition-all duration-300 transform active:scale-90" href="dashboard.html">
+<span class="material-symbols-outlined text-[22px]" style="font-variation-settings:'FILL' 0;">home</span>
+<span class="text-[10px] font-semibold mt-0.5">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-[#c8f17a] text-[#006d4a] rounded-[1.5rem] px-4 py-2 transition-all duration-300 transform active:scale-90" href="roadmap.html">
+<span class="material-symbols-outlined text-[22px]" style="font-variation-settings:'FILL' 1;">school</span>
+<span class="text-[10px] font-semibold mt-0.5">Roadmap</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#1d3540] px-4 py-2 hover:bg-[#e7f6ff] rounded-xl transition-all duration-300 transform active:scale-90" href="speech.html">
+<span class="material-symbols-outlined text-[22px]" style="font-variation-settings:'FILL' 0;">mic</span>
+<span class="text-[10px] font-semibold mt-0.5">Practice</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#1d3540] px-4 py-2 hover:bg-[#e7f6ff] rounded-xl transition-all duration-300 transform active:scale-90" href="leaderboard.html">
+<span class="material-symbols-outlined text-[22px]" style="font-variation-settings:'FILL' 0;">leaderboard</span>
+<span class="text-[10px] font-semibold mt-0.5">Rank</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#1d3540] px-4 py-2 hover:bg-[#e7f6ff] rounded-xl transition-all duration-300 transform active:scale-90" href="achievements.html">
+<span class="material-symbols-outlined text-[22px]" style="font-variation-settings:'FILL' 0;">person</span>
+<span class="text-[10px] font-semibold mt-0.5">Profile</span>
+</a>
+</nav>
+<!-- Floating Action Button -->
+<button class="fixed right-6 bottom-24 bg-primary text-on-primary w-14 h-14 rounded-full shadow-2xl flex items-center justify-center hover:scale-110 hover:rotate-6 active:scale-95 transition-all z-40 ring-4 ring-primary/10">
+<span class="material-symbols-outlined text-3xl">play_arrow</span>
+</button>
+
+<script>
+// ——— LinguaLeap SPA Router ———
+(function() {
+  const PAGE = 'roadmap.html';
+
+  // Active nav item highlight
+  document.querySelectorAll('a[href], button[data-nav]').forEach(el => {
+    const href = el.getAttribute('href') || '';
+    if (href === PAGE) {
+      el.classList.add('nav-active');
+    }
+  });
+
+  // Smooth page transitions
+  document.addEventListener('click', function(e) {
+    const link = e.target.closest('a[href]');
+    if (!link) return;
+    const href = link.getAttribute('href');
+    if (!href || href === '#' || href.startsWith('http') || href.startsWith('mailto')) return;
+    e.preventDefault();
+    document.body.style.opacity = '0';
+    document.body.style.transition = 'opacity 0.2s ease';
+    setTimeout(() => { window.location.href = href; }, 200);
+  });
+
+  // Fade in on load
+  document.body.style.opacity = '0';
+  window.addEventListener('DOMContentLoaded', () => {
+    requestAnimationFrame(() => {
+      document.body.style.transition = 'opacity 0.3s ease';
+      document.body.style.opacity = '1';
+    });
+  });
+})();
+</script>
+
+<script>
+(function(){
+  // Lesson node click → navigate to lesson
+  document.querySelectorAll('[class*="rounded-full"][class*="w-14"],[class*="rounded-full"][class*="w-16"]').forEach(node=>{
+    node.style.cursor='pointer';
+    node.addEventListener('click',()=>{
+      if(node.classList.contains('bg-primary') || node.classList.contains('bg-secondary-container')){
+        window.location.href='lesson.html';
+      } else {
+        // locked - shake
+        node.style.animation='shake 0.3s ease';
+        node.addEventListener('animationend',()=>node.style.animation='',{once:true});
+      }
+    });
+  });
+
+  // Module cards click
+  document.querySelectorAll('[class*="rounded-2xl"][class*="p-6"][class*="cursor-pointer"],[class*="rounded-2xl"][class*="p-5"]').forEach(card=>{
+    if(!card.onclick){
+      card.style.cursor='pointer';
+      card.addEventListener('click',()=>{ window.location.href='lesson.html'; });
+    }
+  });
+
+  // FAB button → start next lesson
+  const fab = document.querySelector('button.fixed.right-6.bottom-24, button[class*="fixed"][class*="right-6"]');
+  if(fab) fab.addEventListener('click',()=>window.location.href='active-lesson.html');
+})();
+</script>
+<style>
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+</style>
+</body></html>

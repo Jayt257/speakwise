@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta name="theme-color" content="#006d4a"/>
+<meta name="description" content="LinguaLeap - Master pronunciation with AI-powered speech recognition"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>LinguaLeap - Welcome to the Echo</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Be+Vietnam+Pro:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "tertiary-fixed": "#fda625",
+                    "primary-container": "#69f6b8",
+                    "error": "#aa371c",
+                    "outline": "#667e8a",
+                    "error-dim": "#821a01",
+                    "surface-variant": "#cde6f4",
+                    "tertiary": "#875400",
+                    "on-error-container": "#671200",
+                    "on-secondary-fixed": "#304600",
+                    "surface-container": "#def1fc",
+                    "on-secondary-container": "#3f5a00",
+                    "on-error": "#fff7f6",
+                    "error-container": "#fa7150",
+                    "on-surface-variant": "#4b626e",
+                    "on-primary-fixed": "#00452d",
+                    "on-secondary": "#f0ffce",
+                    "tertiary-container": "#fda625",
+                    "surface-tint": "#006d4a",
+                    "surface-container-high": "#d5ecf8",
+                    "tertiary-fixed-dim": "#ed9912",
+                    "secondary-dim": "#405b00",
+                    "primary-dim": "#005f40",
+                    "surface-container-low": "#e7f6ff",
+                    "outline-variant": "#9db6c3",
+                    "primary": "#006d4a",
+                    "on-primary-container": "#005a3c",
+                    "inverse-primary": "#69f6b8",
+                    "primary-fixed-dim": "#58e7ab",
+                    "surface-bright": "#f4faff",
+                    "secondary-container": "#c8f17a",
+                    "on-tertiary": "#fff7f3",
+                    "surface-container-highest": "#cde6f4",
+                    "inverse-surface": "#041015",
+                    "background": "#f4faff",
+                    "surface": "#f4faff",
+                    "on-surface": "#1d3540",
+                    "secondary": "#4a6800",
+                    "on-tertiary-fixed": "#311c00",
+                    "on-tertiary-container": "#502f00",
+                    "primary-fixed": "#69f6b8",
+                    "on-secondary-fixed-variant": "#476400",
+                    "on-primary-fixed-variant": "#006544",
+                    "surface-container-lowest": "#ffffff",
+                    "tertiary-dim": "#764900",
+                    "secondary-fixed": "#c8f17a",
+                    "inverse-on-surface": "#929fa6",
+                    "surface-dim": "#c2deee",
+                    "on-primary": "#e6ffee",
+                    "on-background": "#1d3540",
+                    "on-tertiary-fixed-variant": "#5c3700",
+                    "secondary-fixed-dim": "#bae26e"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "1.5rem",
+                    "2xl": "2rem",
+                    "3xl": "2.5rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Plus Jakarta Sans"],
+                    "body": ["Be Vietnam Pro"],
+                    "label": ["Plus Jakarta Sans"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Be Vietnam Pro', sans-serif; }
+        h1, h2, h3, button, label { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.45);
+            backdrop-filter: blur(28px);
+            -webkit-backdrop-filter: blur(28px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+        .bg-mesh {
+            background-color: #f4faff;
+            background-image: 
+                radial-gradient(at 0% 0%, rgba(105, 246, 184, 0.25) 0px, transparent 50%),
+                radial-gradient(at 100% 0%, rgba(200, 241, 122, 0.2) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(105, 246, 184, 0.15) 0px, transparent 50%),
+                radial-gradient(at 0% 100%, rgba(0, 109, 74, 0.08) 0px, transparent 50%);
+        }
+        .premium-button {
+            background: linear-gradient(135deg, #006d4a 0%, #005f40 100%);
+            box-shadow: 
+                0 10px 15px -3px rgba(0, 109, 74, 0.3),
+                0 4px 6px -4px rgba(0, 109, 74, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+        }
+        .input-glow:focus-within {
+            box-shadow: 0 0 0 4px rgba(0, 109, 74, 0.08);
+        }
+    </style>
+</head>
+<body class="bg-mesh min-h-screen flex items-center justify-center p-4 lg:p-8 relative ">
+<!-- Immersive Background Accents -->
+<div class="absolute inset-0 z-0 pointer-events-none">
+<div class="absolute top-[10%] left-[5%] w-[40rem] h-[40rem] bg-primary-container/20 rounded-full blur-[140px] animate-pulse"></div>
+<div class="absolute bottom-[5%] right-[5%] w-[50rem] h-[50rem] bg-secondary-container/15 rounded-full blur-[160px]"></div>
+<img class="w-full h-full object-cover opacity-20 mix-blend-overlay" data-alt="high quality abstract nature photography of fluid botanical shapes and soft moss textures" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCryoPxc9CJ8GKrC1FmcxVPGJ18ZfmC9AYWJhpBwRczHPWfZ03Tf0GGkI7YqXh9Iq-pV_7Lii2-SHmVvfyDU0DZKe5etXQip7-cERUQbZPvuIJqKMnXx9MZmMWlICC6z65-Nv1I73Om7cH6slAl0UUgkSr8N3Rm2S6nXcVz_qSZVJNKb3jJqe-ObXy6BP_LzuNmSKRPus88r-2_X2fYESclFKehA4qh6A5Pgug_oiY6-gPdL8--3rh0s9lIJhu-W1zb3KweXt6s1vCS"/>
+</div>
+<!-- Main Card Container -->
+<main class="relative z-10 w-full max-w-[1160px] grid lg:grid-cols-[1.1fr,1fr] glass-panel rounded-3xl shadow-[0_48px_100px_-24px_rgba(29,53,64,0.15)] overflow-hidden">
+<!-- Artistic Hero Side -->
+<section class="hidden lg:flex flex-col justify-between p-16 relative overflow-hidden bg-primary/5">
+<div class="absolute inset-0 opacity-40 mix-blend-soft-light">
+<img class="w-full h-full object-cover" data-alt="premium abstract organic pattern with flowing lines and emerald leaf silhouettes" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBC3skwd0XC0X7lN6G6iG7vIohYUVkaOdMKiT9EqCSVroxp-ijKGV7WgFCUFoJT-okQcF86Y-KgZ7hLESSQnXlozJepqMM6zN_oVnwp4Ch7gvtcRqGOGNvHxpA8U8boEoK2NJfgTXo8ZdVLzeMGbNRfcZBPj28TGAISMdWdciQdyjYWFJySvLuKfaw2t-wNu33Mru40EcV3g_EGXR3qEj5Lp4CGexLvFkjfZIB6dgiYetMfX98VWfXkPh_6Oyf-WiwgV1j-zFXw1Sho"/>
+</div>
+<div class="relative z-10">
+<div class="flex items-center gap-4 mb-20 group">
+<div class="w-14 h-14 bg-primary text-on-primary rounded-2xl flex items-center justify-center shadow-2xl shadow-primary/30 transition-transform group-hover:scale-110">
+<span class="material-symbols-outlined text-3xl" style="font-variation-settings: 'FILL' 1;">eco</span>
+</div>
+<span class="text-2xl font-extrabold tracking-tight text-on-surface">Emerald Echo</span>
+</div>
+<div class="space-y-8">
+<h1 class="text-6xl font-extrabold tracking-tight leading-[1.05] text-on-surface">
+                        Resonate with <br/>
+<span class="text-primary italic">new worlds.</span>
+</h1>
+<p class="text-on-surface-variant text-xl max-w-md leading-relaxed font-medium opacity-90">
+                        Experience the greenhouse of language learning—where vocabulary breathes and fluency grows through intelligent AI resonance.
+                    </p>
+</div>
+</div>
+<!-- Testimonial / Social Proof -->
+<div class="relative z-10 p-8 glass-panel rounded-2xl border border-white/40">
+<div class="flex items-center gap-4 mb-4">
+<div class="flex -space-x-3">
+<img class="w-10 h-10 rounded-full border-2 border-white ring-4 ring-primary/5" data-alt="portrait of a learner" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBND-yqqNYGBOlZ6gGA45L4E8hflJ5DRsPe_7LUwg9intxy5Bfi0EKetvSk78yyyKs6DFCxJzcCb1CZahfzTzCCgfp8ZcOTeav_Kp4DiA7ObSJZsRs5gfxbH6S3HXyiQ2lyayamK6579yuwqQ_lT4jCpSonw3kUpUARX_r5TKaslGpGdN7bDgb68TvSmYG_RmvCuhtdLYNRdENqt869-31Jj9cDbPhoSphG5YyrgBglth6tDjW8Gj6bEWZrSSFej5iBQJZfNq8SZbIJ"/>
+<img class="w-10 h-10 rounded-full border-2 border-white ring-4 ring-primary/5" data-alt="portrait of a learner" src="https://lh3.googleusercontent.com/aida-public/AB6AXuByUBvfIihVsW0fUI7roqE_35-dCYCpXIZNSWO89lPjRiUfry-q4rXdNESrWbNMGKHGPPbd1W_MPPDAKDQGlX8V_sYYlDSsvz3rreZ6_OrdJfpHnq60PyhzVwJorttEpvRowSelZ3ejpaL4g8gxwR27pxX4jEh8wULsbBlQB80lW2gyRpNRyn0UWTZRPsWbcVZSqiU8T2RV4O4Qhll_8iZVApYeSpXemBLb_UmEv1ZDXXn3yCg-HyPNniSxFIJ_OlJtfeRm94Agm_qn"/>
+<div class="w-10 h-10 rounded-full border-2 border-white ring-4 ring-primary/5 bg-primary-container flex items-center justify-center text-[10px] font-bold text-on-primary-container">
+                            +2M
+                        </div>
+</div>
+<div class="h-8 w-px bg-on-surface-variant/20 mx-2"></div>
+<span class="text-sm font-bold text-on-surface">Trusted by global explorers</span>
+</div>
+<p class="text-sm text-on-surface-variant italic leading-relaxed">"The organic feedback loops make learning feel less like a chore and more like discovery."</p>
+</div>
+</section>
+<!-- Form Side -->
+<section class="p-8 lg:p-16 flex flex-col justify-center bg-white/40">
+<div class="max-w-md mx-auto w-full">
+<!-- Mobile Header -->
+<div class="lg:hidden flex items-center gap-3 mb-10">
+<div class="w-10 h-10 bg-primary text-on-primary rounded-xl flex items-center justify-center">
+<span class="material-symbols-outlined text-xl" style="font-variation-settings: 'FILL' 1;">eco</span>
+</div>
+<span class="text-xl font-extrabold text-on-surface tracking-tight">Emerald Echo</span>
+</div>
+<!-- Welcome Text -->
+<div class="mb-10">
+<h2 class="text-4xl font-extrabold text-on-surface mb-3 tracking-tight">Welcome back</h2>
+<p class="text-on-surface-variant font-medium opacity-80">Continue your linguistic resonance journey.</p>
+</div>
+<!-- State Toggle (Tab-style) -->
+<div class="bg-surface-container-low/50 p-1.5 rounded-2xl flex mb-10 border border-outline-variant/10">
+<button class="flex-1 py-3 text-sm font-bold rounded-xl bg-white text-primary shadow-[0_4px_12px_rgba(0,109,74,0.1)] transition-all">
+                        Login
+                    </button>
+<button class="flex-1 py-3 text-sm font-bold text-on-surface-variant hover:text-on-surface transition-all">
+                        Sign Up
+                    </button>
+</div>
+<!-- Form -->
+<form class="space-y-6" onsubmit="return false;">
+<div class="space-y-2.5">
+<label class="text-xs font-extrabold uppercase tracking-widest text-on-surface-variant/70 ml-1" for="email">Email Address</label>
+<div class="relative group input-glow rounded-2xl">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline-variant group-focus-within:text-primary transition-colors">mail</span>
+<input class="w-full pl-12 pr-4 py-4 bg-white/60 border border-outline-variant/20 rounded-2xl focus:border-primary/40 focus:ring-0 focus:bg-white transition-all text-on-surface placeholder:text-outline-variant font-medium" id="email" placeholder="name@example.com" type="email"/>
+</div>
+</div>
+<div class="space-y-2.5">
+<div class="flex justify-between items-center px-1">
+<label class="text-xs font-extrabold uppercase tracking-widest text-on-surface-variant/70" for="password">Password</label>
+<a class="text-xs font-bold text-primary hover:underline decoration-2 underline-offset-4 transition-all" href="#">Forgot?</a>
+</div>
+<div class="relative group input-glow rounded-2xl">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline-variant group-focus-within:text-primary transition-colors">lock</span>
+<input class="w-full pl-12 pr-4 py-4 bg-white/60 border border-outline-variant/20 rounded-2xl focus:border-primary/40 focus:ring-0 focus:bg-white transition-all text-on-surface placeholder:text-outline-variant font-medium" id="password" placeholder="••••••••" type="password"/>
+</div>
+</div>
+<a class="w-full py-4 premium-button text-on-primary font-bold rounded-2xl hover:scale-[1.01] active:scale-[0.98] transition-all flex items-center justify-center gap-2 group mt-8" href="onboarding.html">
+<span>Continue to Echo</span>
+<span class="material-symbols-outlined text-xl transition-transform group-hover:translate-x-1">arrow_right_alt</span>
+</a>
+</form>
+<!-- Divider -->
+<div class="relative my-10">
+<div class="absolute inset-0 flex items-center">
+<div class="w-full border-t border-outline-variant/20"></div>
+</div>
+<div class="relative flex justify-center text-[10px] font-black uppercase tracking-[0.2em] text-outline-variant">
+<span class="bg-transparent px-6 backdrop-blur-xl">Or continue with</span>
+</div>
+</div>
+<!-- Social Logins -->
+<div class="grid grid-cols-2 gap-4">
+<button class="flex items-center justify-center gap-3 py-4 bg-white border border-outline-variant/20 rounded-2xl hover:bg-surface-container-low hover:border-outline-variant/40 transition-all shadow-sm hover:shadow-md">
+<svg class="w-5 h-5" viewbox="0 0 24 24">
+<path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"></path>
+<path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"></path>
+<path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"></path>
+<path d="M12 5.38c1.62 0 3.06.56 4.21 1.66l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 12-4.53z" fill="#EA4335"></path>
+</svg>
+<span class="text-sm font-bold text-on-surface">Google</span>
+</button>
+<button class="flex items-center justify-center gap-3 py-4 bg-white border border-outline-variant/20 rounded-2xl hover:bg-surface-container-low hover:border-outline-variant/40 transition-all shadow-sm hover:shadow-md">
+<svg class="w-5 h-5" fill="currentColor" viewbox="0 0 24 24">
+<path d="M17.05 20.28c-.98.95-2.05 1.72-3.21 1.72-1.14 0-1.52-.68-2.85-.68-1.33 0-1.76.66-2.83.68-1.12 0-2.31-.85-3.35-1.84-2.12-2.03-3.23-5.22-3.23-7.55 0-3.66 2.37-5.59 4.67-5.59 1.21 0 2.21.75 2.96.75.73 0 1.87-.8 3.22-.8 1.41 0 2.65.68 3.41 1.72-2.73 1.55-2.28 5.25.4 6.45-.63 1.6-1.53 3.31-2.99 5.07zM12.03 5.48c-.03-2.18 1.8-4.04 3.9-4.14.23 2.5-2.25 4.38-3.9 4.14z"></path>
+</svg>
+<span class="text-sm font-bold text-on-surface">Apple</span>
+</button>
+</div>
+<!-- Footer Text -->
+<p class="text-center mt-12 text-[11px] font-medium leading-relaxed text-on-surface-variant/80">
+                    By continuing, you agree to Emerald Echo's <br/>
+<a class="font-bold text-on-surface hover:text-primary transition-colors" href="#">Terms of Service</a> &amp; <a class="font-bold text-on-surface hover:text-primary transition-colors" href="#">Privacy Policy</a>.
+                </p>
+</div>
+</section>
+</main>
+<!-- Floating Background Decor Elements -->
+<div class="fixed top-[-10%] right-[-10%] pointer-events-none opacity-20 hidden xl:block">
+<div class="w-[30rem] h-[30rem] border-[40px] border-secondary-container/30 rounded-full blur-xl"></div>
+</div>
+<div class="fixed bottom-20 left-10 pointer-events-none opacity-10 hidden xl:block">
+<div class="w-48 h-48 bg-primary rotate-45 rounded-[3rem] blur-2xl"></div>
+</div>
+
+<script>
+// ——— LinguaLeap SPA Router ———
+(function() {
+  const PAGE = 'index.html';
+
+  // Active nav item highlight
+  document.querySelectorAll('a[href], button[data-nav]').forEach(el => {
+    const href = el.getAttribute('href') || '';
+    if (href === PAGE) {
+      el.classList.add('nav-active');
+    }
+  });
+
+  // Smooth page transitions
+  document.addEventListener('click', function(e) {
+    const link = e.target.closest('a[href]');
+    if (!link) return;
+    const href = link.getAttribute('href');
+    if (!href || href === '#' || href.startsWith('http') || href.startsWith('mailto')) return;
+    e.preventDefault();
+    document.body.style.opacity = '0';
+    document.body.style.transition = 'opacity 0.2s ease';
+    setTimeout(() => { window.location.href = href; }, 200);
+  });
+
+  // Fade in on load
+  document.body.style.opacity = '0';
+  window.addEventListener('DOMContentLoaded', () => {
+    requestAnimationFrame(() => {
+      document.body.style.transition = 'opacity 0.3s ease';
+      document.body.style.opacity = '1';
+    });
+  });
+})();
+</script>
+
+<script>
+(function(){
+  // Form submit → validate then go to onboarding
+  const form = document.querySelector('form') || document.querySelector('.flex.flex-col.gap-4');
+  const emailInput = document.querySelector('input[type="email"], input[placeholder*="Email"], input[placeholder*="email"]');
+  const passInput  = document.querySelector('input[type="password"], input[placeholder*="pass"], input[placeholder*="Pass"]');
+  const signInBtn  = document.querySelector('a[href="onboarding.html"]');
+
+  function shake(el){
+    el.style.animation='shake 0.4s ease';
+    el.addEventListener('animationend',()=>el.style.animation='',{once:true});
+  }
+
+  // Demo credentials hint
+  const hint = document.createElement('p');
+  hint.className = 'text-center text-xs text-[#006d4a] mt-2 opacity-70';
+  hint.textContent = 'Demo: any email + password (6+ chars)';
+  if(signInBtn) signInBtn.parentNode.insertBefore(hint, signInBtn.nextSibling);
+
+  if(signInBtn){
+    signInBtn.addEventListener('click', function(e){
+      const email = emailInput ? emailInput.value.trim() : 'demo@test.com';
+      const pass  = passInput  ? passInput.value.trim()  : 'password';
+      if(!email.includes('@') || pass.length < 6){
+        e.preventDefault();
+        e.stopPropagation();
+        const card = document.querySelector('.rounded-3xl, .rounded-2xl');
+        if(card) shake(card);
+        if(emailInput && !email.includes('@')) emailInput.style.outline='2px solid #c0392b';
+        if(passInput  && pass.length<6) passInput.style.outline='2px solid #c0392b';
+        return;
+      }
+      // Show loading spinner
+      signInBtn.innerHTML = '<span class="material-symbols-outlined animate-spin">progress_activity</span>';
+    });
+  }
+
+  // Clear red outlines on input
+  [emailInput, passInput].forEach(inp=>{
+    if(inp) inp.addEventListener('input',()=>inp.style.outline='');
+  });
+})();
+</script>
+<style>
+@keyframes shake{0%,100%{transform:translateX(0)}20%,60%{transform:translateX(-8px)}40%,80%{transform:translateX(8px)}}
+</style>
+</body></html>

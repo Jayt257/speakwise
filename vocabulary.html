@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta name="theme-color" content="#006d4a"/>
+<meta name="description" content="LinguaLeap - Master pronunciation with AI-powered speech recognition"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>LinguaLeap | Domain-Specific Vocabulary</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Be+Vietnam+Pro:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary-container": "#69f6b8",
+              "on-tertiary": "#fff7f3",
+              "tertiary": "#875400",
+              "primary": "#006d4a",
+              "on-secondary-container": "#3f5a00",
+              "primary-fixed": "#69f6b8",
+              "tertiary-fixed": "#fda625",
+              "surface-container-low": "#e7f6ff",
+              "primary-fixed-dim": "#58e7ab",
+              "on-tertiary-container": "#502f00",
+              "secondary": "#4a6800",
+              "on-secondary": "#f0ffce",
+              "surface-tint": "#006d4a",
+              "surface-variant": "#cde6f4",
+              "background": "#f4faff",
+              "on-surface": "#1d3540",
+              "inverse-on-surface": "#929fa6",
+              "on-primary-fixed": "#00452d",
+              "inverse-primary": "#69f6b8",
+              "error-container": "#fa7150",
+              "primary-dim": "#005f40",
+              "on-secondary-fixed-variant": "#476400",
+              "on-primary-fixed-variant": "#006544",
+              "surface-dim": "#c2deee",
+              "secondary-container": "#c8f17a",
+              "surface-container-high": "#d5ecf8",
+              "tertiary-fixed-dim": "#ed9912",
+              "secondary-fixed-dim": "#bae26e",
+              "secondary-dim": "#405b00",
+              "on-primary": "#e6ffee",
+              "surface-bright": "#f4faff",
+              "surface": "#f4faff",
+              "on-secondary-fixed": "#304600",
+              "on-background": "#1d3540",
+              "tertiary-container": "#fda625",
+              "on-primary-container": "#005a3c",
+              "inverse-surface": "#041015",
+              "surface-container": "#def1fc",
+              "secondary-fixed": "#c8f17a",
+              "outline": "#667e8a",
+              "on-error-container": "#671200",
+              "surface-container-highest": "#cde6f4",
+              "on-tertiary-fixed": "#311c00",
+              "on-surface-variant": "#4b626e",
+              "error-dim": "#821a01",
+              "outline-variant": "#9db6c3",
+              "on-tertiary-fixed-variant": "#5c3700",
+              "on-error": "#fff7f6",
+              "error": "#aa371c",
+              "surface-container-lowest": "#ffffff",
+              "tertiary-dim": "#764900"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans"],
+              "body": ["Be Vietnam Pro"],
+              "label": ["Plus Jakarta Sans"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Be Vietnam Pro', sans-serif; }
+        h1, h2, h3, .font-headline { font-family: 'Plus Jakarta Sans', sans-serif; }
+    </style>
+<style>
+    body {
+      min-height:100%;
+    }
+  </style>
+</head>
+<body class="bg-background text-on-background min-h-screen pb-32">
+<!-- TopAppBar -->
+<header class="w-full top-0 sticky bg-[#f4faff] dark:bg-slate-950 z-50">
+<div class="flex justify-between items-center px-6 py-4 w-full max-w-7xl mx-auto">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-primary-container flex items-center justify-center overflow-hidden">
+<img alt="User Profile" class="w-full h-auto" data-alt="professional headshot of a young man with a friendly smile in soft studio lighting against a neutral background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBizfUQOtLm-ijZnAZp1LtrAIkE_LAa93iS9DzGpXJQqzJ9PF8OQP5eywtV7JcW41LPVDoYFsJmmu7WXRDSECLFzTUo8_Z5dM48br1UAo86p_2ZS9-bjW_rYX3rpp0lHih_O84_v1WLTLA3gs7H1YRXtn0cHaLIIKpq9zqR1SY_gnfMi-W7cl8HdX0wDu1-iBdsAk2rHvx_HIF18xxPwF2uRAer_paBWQEeHE3uYG-H-Zmu8uwbgqjTrhMWD25-QEQ2DVx5eey8-yed"/>
+</div>
+<span class="text-2xl font-black text-[#006d4a] dark:text-[#69f6b8] font-['Plus_Jakarta_Sans'] tracking-tight">LinguaLeap</span>
+</div>
+<div class="flex items-center gap-2">
+<button class="p-2 rounded-full hover:bg-[#cde6f4] dark:hover:bg-slate-800 transition-colors scale-95 duration-200 text-[#1d3540] dark:text-slate-400">
+<span class="material-symbols-outlined" data-icon="search">search</span>
+</button>
+<button class="p-2 rounded-full hover:bg-[#cde6f4] dark:hover:bg-slate-800 transition-colors scale-95 duration-200 text-[#006d4a] dark:text-[#69f6b8]">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+</button>
+</div>
+</div>
+</header>
+<main class="max-w-7xl mx-auto px-6 pt-12">
+<!-- Hero Section -->
+<section class="mb-16">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-8">
+<div class="max-w-2xl">
+<h1 class="text-5xl md:text-6xl font-extrabold text-on-surface tracking-tight leading-[1.1] mb-6">
+                        Master the <span class="text-primary italic">Professional</span> Vernacular
+                    </h1>
+<p class="text-lg text-on-surface-variant leading-relaxed max-w-xl">
+                        Elevate your career with curated vocabulary packs designed for specialized industries. Go beyond basics and speak like a native expert.
+                    </p>
+</div>
+<div class="w-full md:w-auto">
+<div class="relative group">
+<div class="absolute inset-y-0 left-4 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-outline" data-icon="search">search</span>
+</div>
+<input class="w-full md:w-80 pl-12 pr-6 py-4 bg-surface-container-highest border-none rounded-xl focus:ring-2 focus:ring-primary/20 focus:bg-surface-container-lowest transition-all placeholder:text-outline" placeholder="Search other domains..." type="text"/>
+</div>
+</div>
+</div>
+</section>
+<!-- Bento Grid / Cards -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+<!-- Medical Card -->
+<div class="group flex flex-col bg-surface-container-lowest rounded-[1.5rem] p-8 hover:scale-[1.02] transition-transform duration-300 shadow-[0_12px_32px_-4px_rgba(29,53,64,0.06)] relative overflow-hidden">
+<div class="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full -mr-16 -mt-16 group-hover:bg-primary/10 transition-colors"></div>
+<div class="w-14 h-14 bg-surface-container-high rounded-2xl flex items-center justify-center mb-8">
+<span class="material-symbols-outlined text-primary text-3xl" data-icon="medical_services">medical_services</span>
+</div>
+<h3 class="text-2xl font-bold text-on-surface mb-2 font-headline">Medical Terminology</h3>
+<div class="flex items-center gap-2 mb-8">
+<span class="px-3 py-1 bg-secondary-container text-on-secondary-container text-xs font-bold rounded-full uppercase tracking-wider">Requires B2</span>
+</div>
+<p class="text-on-surface-variant text-sm mb-10 flex-grow">Anatomy, clinical diagnostics, and patient communication protocols.</p>
+<button class="w-full py-4 bg-primary text-on-primary rounded-[1.5rem] font-bold hover:bg-primary-dim transition-colors flex items-center justify-center gap-2 group-hover:shadow-md" onclick="window.location.href='lesson.html'">
+                    Start Course
+                    <span class="material-symbols-outlined text-sm" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+<!-- Legal Card -->
+<div class="group flex flex-col bg-surface-container-lowest rounded-[1.5rem] p-8 hover:scale-[1.02] transition-transform duration-300 shadow-[0_12px_32px_-4px_rgba(29,53,64,0.06)] relative overflow-hidden">
+<div class="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full -mr-16 -mt-16 group-hover:bg-primary/10 transition-colors"></div>
+<div class="w-14 h-14 bg-surface-container-high rounded-2xl flex items-center justify-center mb-8">
+<span class="material-symbols-outlined text-primary text-3xl" data-icon="gavel">gavel</span>
+</div>
+<h3 class="text-2xl font-bold text-on-surface mb-2 font-headline">Legal Jurisprudence</h3>
+<div class="flex items-center gap-2 mb-8">
+<span class="px-3 py-1 bg-secondary-container text-on-secondary-container text-xs font-bold rounded-full uppercase tracking-wider">Requires C1</span>
+</div>
+<p class="text-on-surface-variant text-sm mb-10 flex-grow">Contract law, litigation terminology, and formal judicial rhetoric.</p>
+<button class="w-full py-4 bg-primary text-on-primary rounded-[1.5rem] font-bold hover:bg-primary-dim transition-colors flex items-center justify-center gap-2" onclick="window.location.href='lesson.html'">
+                    Start Course
+                    <span class="material-symbols-outlined text-sm" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+<!-- Tech Card -->
+<div class="group flex flex-col bg-surface-container-lowest rounded-[1.5rem] p-8 hover:scale-[1.02] transition-transform duration-300 shadow-[0_12px_32px_-4px_rgba(29,53,64,0.06)] relative overflow-hidden">
+<div class="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full -mr-16 -mt-16 group-hover:bg-primary/10 transition-colors"></div>
+<div class="w-14 h-14 bg-surface-container-high rounded-2xl flex items-center justify-center mb-8">
+<span class="material-symbols-outlined text-primary text-3xl" data-icon="terminal">terminal</span>
+</div>
+<h3 class="text-2xl font-bold text-on-surface mb-2 font-headline">Tech &amp; Engineering</h3>
+<div class="flex items-center gap-2 mb-8">
+<span class="px-3 py-1 bg-secondary-container text-on-secondary-container text-xs font-bold rounded-full uppercase tracking-wider">Requires B2</span>
+</div>
+<p class="text-on-surface-variant text-sm mb-10 flex-grow">Software architecture, agile methodology, and hardware specifications.</p>
+<button class="w-full py-4 bg-primary text-on-primary rounded-[1.5rem] font-bold hover:bg-primary-dim transition-colors flex items-center justify-center gap-2" onclick="window.location.href='lesson.html'">
+                    Start Course
+                    <span class="material-symbols-outlined text-sm" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+<!-- Finance Card -->
+<div class="group flex flex-col bg-surface-container-lowest rounded-[1.5rem] p-8 hover:scale-[1.02] transition-transform duration-300 shadow-[0_12px_32px_-4px_rgba(29,53,64,0.06)] relative overflow-hidden">
+<div class="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full -mr-16 -mt-16 group-hover:bg-primary/10 transition-colors"></div>
+<div class="w-14 h-14 bg-surface-container-high rounded-2xl flex items-center justify-center mb-8">
+<span class="material-symbols-outlined text-primary text-3xl" data-icon="query_stats">query_stats</span>
+</div>
+<h3 class="text-2xl font-bold text-on-surface mb-2 font-headline">Finance &amp; Banking</h3>
+<div class="flex items-center gap-2 mb-8">
+<span class="px-3 py-1 bg-secondary-container text-on-secondary-container text-xs font-bold rounded-full uppercase tracking-wider">Requires B1</span>
+</div>
+<p class="text-on-surface-variant text-sm mb-10 flex-grow">Capital markets, fiduciary responsibility, and global trade terms.</p>
+<button class="w-full py-4 bg-primary text-on-primary rounded-[1.5rem] font-bold hover:bg-primary-dim transition-colors flex items-center justify-center gap-2" onclick="window.location.href='lesson.html'">
+                    Start Course
+                    <span class="material-symbols-outlined text-sm" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Secondary Section: Coming Soon -->
+<section class="mt-24 mb-12">
+<h2 class="text-3xl font-bold text-on-surface mb-8 font-headline">Upcoming Domains</h2>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 opacity-60">
+<div class="flex items-center gap-4 bg-surface-container-low p-6 rounded-2xl">
+<div class="w-12 h-12 bg-surface-container-highest rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="architecture">architecture</span>
+</div>
+<div>
+<p class="font-bold text-on-surface">Architecture</p>
+<p class="text-xs text-on-surface-variant">Releasing June 12</p>
+</div>
+</div>
+<div class="flex items-center gap-4 bg-surface-container-low p-6 rounded-2xl">
+<div class="w-12 h-12 bg-surface-container-highest rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="palette">palette</span>
+</div>
+<div>
+<p class="font-bold text-on-surface">Creative Arts</p>
+<p class="text-xs text-on-surface-variant">Releasing July 05</p>
+</div>
+</div>
+<div class="flex items-center gap-4 bg-surface-container-low p-6 rounded-2xl">
+<div class="w-12 h-12 bg-surface-container-highest rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="rocket_launch">rocket_launch</span>
+</div>
+<div>
+<p class="font-bold text-on-surface">Aerospace</p>
+<p class="text-xs text-on-surface-variant">Releasing August 19</p>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav id="bottom-nav" class="fixed bottom-0 left-0 w-full flex justify-around items-center px-4 pb-safe pt-2 pb-4 bg-[#f4faff]/95 backdrop-blur-md border-t border-[#9db6c3]/15 shadow-[0_-4px_20px_-4px_rgba(29,53,64,0.06)] z-50 rounded-t-[1.5rem]">
+<a class="flex flex-col items-center justify-center text-[#1d3540] px-4 py-2 hover:bg-[#e7f6ff] rounded-xl transition-all duration-300 transform active:scale-90" href="dashboard.html">
+<span class="material-symbols-outlined text-[22px]" style="font-variation-settings:'FILL' 0;">home</span>
+<span class="text-[10px] font-semibold mt-0.5">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#1d3540] px-4 py-2 hover:bg-[#e7f6ff] rounded-xl transition-all duration-300 transform active:scale-90" href="roadmap.html">
+<span class="material-symbols-outlined text-[22px]" style="font-variation-settings:'FILL' 0;">school</span>
+<span class="text-[10px] font-semibold mt-0.5">Roadmap</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#1d3540] px-4 py-2 hover:bg-[#e7f6ff] rounded-xl transition-all duration-300 transform active:scale-90" href="speech.html">
+<span class="material-symbols-outlined text-[22px]" style="font-variation-settings:'FILL' 0;">mic</span>
+<span class="text-[10px] font-semibold mt-0.5">Practice</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#1d3540] px-4 py-2 hover:bg-[#e7f6ff] rounded-xl transition-all duration-300 transform active:scale-90" href="leaderboard.html">
+<span class="material-symbols-outlined text-[22px]" style="font-variation-settings:'FILL' 0;">leaderboard</span>
+<span class="text-[10px] font-semibold mt-0.5">Rank</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#1d3540] px-4 py-2 hover:bg-[#e7f6ff] rounded-xl transition-all duration-300 transform active:scale-90" href="achievements.html">
+<span class="material-symbols-outlined text-[22px]" style="font-variation-settings:'FILL' 0;">person</span>
+<span class="text-[10px] font-semibold mt-0.5">Profile</span>
+</a>
+</nav>
+
+<script>
+// ——— LinguaLeap SPA Router ———
+(function() {
+  const PAGE = 'vocabulary.html';
+
+  // Active nav item highlight
+  document.querySelectorAll('a[href], button[data-nav]').forEach(el => {
+    const href = el.getAttribute('href') || '';
+    if (href === PAGE) {
+      el.classList.add('nav-active');
+    }
+  });
+
+  // Smooth page transitions
+  document.addEventListener('click', function(e) {
+    const link = e.target.closest('a[href]');
+    if (!link) return;
+    const href = link.getAttribute('href');
+    if (!href || href === '#' || href.startsWith('http') || href.startsWith('mailto')) return;
+    e.preventDefault();
+    document.body.style.opacity = '0';
+    document.body.style.transition = 'opacity 0.2s ease';
+    setTimeout(() => { window.location.href = href; }, 200);
+  });
+
+  // Fade in on load
+  document.body.style.opacity = '0';
+  window.addEventListener('DOMContentLoaded', () => {
+    requestAnimationFrame(() => {
+      document.body.style.transition = 'opacity 0.3s ease';
+      document.body.style.opacity = '1';
+    });
+  });
+})();
+</script>
+
+<script>
+(function(){
+  // Search/filter words
+  const searchInput = document.querySelector('input[type="search"],input[placeholder*="Search"],input[placeholder*="search"]');
+  const wordCards   = document.querySelectorAll('[class*="rounded-2xl"][class*="p-6"],[class*="rounded-xl"][class*="p-5"]');
+
+  if(searchInput){
+    searchInput.addEventListener('input',()=>{
+      const q = searchInput.value.toLowerCase();
+      wordCards.forEach(card=>{
+        const text = card.textContent.toLowerCase();
+        card.style.display = text.includes(q) || q==='' ? '' : 'none';
+      });
+    });
+  }
+
+  // Play audio button simulation
+  document.querySelectorAll('[class*="material-symbols"][class*="volume"],[class*="play"],[class*="headphones"]').forEach(btn=>{
+    btn.closest('button')?.addEventListener('click',function(){
+      const icon = this.querySelector('.material-symbols-outlined');
+      if(icon){ icon.textContent='pause'; setTimeout(()=>{ icon.textContent='volume_up'; },1500); }
+      // Ripple
+      const ripple=document.createElement('span');
+      ripple.style.cssText='position:absolute;width:40px;height:40px;background:rgba(0,109,74,0.2);border-radius:50%;animation:ripple 0.6s ease-out;pointer-events:none;top:50%;left:50%;transform:translate(-50%,-50%)';
+      this.style.position='relative'; this.style.overflow='hidden';
+      this.appendChild(ripple);
+      ripple.addEventListener('animationend',()=>ripple.remove());
+    });
+  });
+
+  // Word card → start lesson
+  wordCards.forEach(card=>{
+    const btn = card.querySelector('button[onclick*="lesson"]');
+    if(!btn && card.querySelector('[class*="text-primary"]')){
+      card.style.cursor='pointer';
+      card.addEventListener('click',()=>window.location.href='lesson.html');
+    }
+  });
+
+  // Tab switching (Domain filters)
+  const tabs = document.querySelectorAll('[class*="rounded-full"][class*="px-4"][class*="py-2"],[class*="chip"],[class*="filter"]');
+  tabs.forEach(tab=>{
+    tab.addEventListener('click',()=>{
+      tabs.forEach(t=>{
+        t.classList.remove('bg-primary','text-on-primary');
+        t.classList.add('bg-surface-container-low','text-on-surface');
+      });
+      tab.classList.add('bg-primary','text-on-primary');
+      tab.classList.remove('bg-surface-container-low','text-on-surface');
+    });
+  });
+})();
+</script>
+<style>
+@keyframes ripple{from{opacity:1;transform:translate(-50%,-50%) scale(0)}to{opacity:0;transform:translate(-50%,-50%) scale(2)}}
+</style>
+</body></html>
