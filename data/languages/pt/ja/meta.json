@@ -1,0 +1,26 @@
+{
+  "_comment": "Portuguese → Japanese language pair metadata",
+  "_status": "stub — content not yet created",
+  "pairId": "pt-ja",
+  "source": {
+    "id": "pt",
+    "name": "Portuguese",
+    "flag": "🇧🇷"
+  },
+  "target": {
+    "id": "ja",
+    "name": "Japanese",
+    "flag": "🇯🇵"
+  },
+  "status": "planned",
+  "months": [
+    {
+      "month": 1,
+      "title": "Foundation",
+      "description": "Learn Japanese basics from Portuguese.",
+      "status": "not-started",
+      "weeks": []
+    }
+  ],
+  "_howToCreate": "See /data/README.md for instructions on creating pt-ja content."
+}

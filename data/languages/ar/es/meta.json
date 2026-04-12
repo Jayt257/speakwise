@@ -1,0 +1,26 @@
+{
+  "_comment": "Arabic → Spanish language pair metadata",
+  "_status": "stub — content not yet created",
+  "pairId": "ar-es",
+  "source": {
+    "id": "ar",
+    "name": "Arabic",
+    "flag": "🇸🇦"
+  },
+  "target": {
+    "id": "es",
+    "name": "Spanish",
+    "flag": "🇪🇸"
+  },
+  "status": "planned",
+  "months": [
+    {
+      "month": 1,
+      "title": "Foundation",
+      "description": "Learn Spanish basics from Arabic.",
+      "status": "not-started",
+      "weeks": []
+    }
+  ],
+  "_howToCreate": "See /data/README.md for instructions on creating ar-es content."
+}

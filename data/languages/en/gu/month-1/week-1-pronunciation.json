@@ -1,0 +1,83 @@
+{
+  "_comment": "English → Gujarati | Month 1 Week 1 | Pronunciation",
+  "id": 4,
+  "type": "pronunciation",
+  "title": "Gujarati Vowel Sounds",
+  "description": "Practice all 13 Gujarati vowels with IPA, mouth position guides, and minimal pair contrasts.",
+  "duration": "12 min",
+  "xp": 30,
+  "week": 1,
+  "month": 1,
+  "langPair": "en-gu",
+  "tags": ["vowels", "pronunciation", "script", "sounds"],
+  "blocks": [
+    {
+      "id": "p1",
+      "type": "keypoints",
+      "title": "The 13 Vowels — Tap Each to Practice",
+      "points": [
+        "અ (a) — like 'u' in 'cup' · Example: અહીં (ahee) = Here",
+        "આ (aa) — like 'a' in 'father' · Example: આવો (aavo) = Come",
+        "ઇ (i) — like 'i' in 'bit' · Example: ઇચ્છા (ichchhaa) = Wish",
+        "ઈ (ee) — like 'ee' in 'feet' · Example: ઈંટ (eent) = Brick",
+        "ઉ (u) — like 'u' in 'put' · Example: ઉઠો (utho) = Get up",
+        "ઊ (oo) — like 'oo' in 'food' · Example: ઊન (oon) = Wool",
+        "એ (e) — like 'e' in 'café' · Example: એક (ek) = One",
+        "ઓ (o) — like 'o' in 'note' · Example: ઓઢ (odh) = Cover",
+        "ઔ (au) — like 'ou' in 'out' · Example: ઔષધ (aushadh) = Medicine",
+        "ઐ (ai) — like 'ai' in 'aisle'",
+        "અં (am) — nasal 'an' · Example: અંગ (ang) = Body",
+        "અઃ (ah) — aspirated 'ah' (Sanskrit loanwords)",
+        "ઋ (ri) — tongue-roll 'ri' · Example: ઋષિ (rishi) = Sage"
+      ]
+    },
+    {
+      "id": "p2",
+      "type": "tip",
+      "body": "🎯 Focus on SHORT vs LONG vowels: અ vs આ, ઇ vs ઈ, ઉ vs ઊ. The LENGTH CHANGES THE MEANING. Example: 'kal' can mean yesterday OR tomorrow depending on context — length matters!"
+    },
+    {
+      "id": "p3",
+      "type": "minimal_pairs",
+      "title": "Critical Vowel Contrasts",
+      "instruction": "These pairs differ only in vowel LENGTH. Train your ear to hear the difference!",
+      "pairs": [
+        { "word1": "અ", "word2": "આ", "sound1": "a (short)",  "sound2": "aa (long)",  "diff": "length — short vs long 'a'" },
+        { "word1": "ઇ", "word2": "ઈ", "sound1": "i (short)",  "sound2": "ee (long)",  "diff": "length — short vs long 'i'" },
+        { "word1": "ઉ", "word2": "ઊ", "sound1": "u (short)",  "sound2": "oo (long)",  "diff": "length — short vs long 'u'" },
+        { "word1": "ક", "word2": "ખ", "sound1": "k (plain)",  "sound2": "kh (puff)",  "diff": "aspiration — air puff on 'kh'" },
+        { "word1": "ગ", "word2": "ઘ", "sound1": "g (plain)",  "sound2": "gh (puff)",  "diff": "aspiration — air puff on 'gh'" }
+      ]
+    },
+    {
+      "id": "p4",
+      "type": "stress_pattern",
+      "title": "Where Does the Stress Fall?",
+      "words": [
+        { "word": "ગુ-જ-રા-ત",  "syllables": ["gu","ja","raat"], "stressed": 0, "note": "First syllable stressed" },
+        { "word": "ભા-ષા",       "syllables": ["bhaa","shaa"],   "stressed": 0, "note": "First syllable stressed" },
+        { "word": "ન-મ-સ્તે",   "syllables": ["na","ma","ste"],  "stressed": 2, "note": "Last syllable stressed in greetings" },
+        { "word": "આ-ભા-ર",      "syllables": ["aa","bhaa","r"], "stressed": 1, "note": "Middle syllable stressed" }
+      ]
+    },
+    {
+      "id": "p5",
+      "type": "tongue_twister",
+      "title": "Vowel Sequence Practice",
+      "text": "અ આ ઇ ઈ ઉ ઊ — ક કા કિ કી કુ કૂ",
+      "romanization": "a aa i ee u oo — ka kaa ki kee ku koo",
+      "translation": "All vowels, then the same vowels attached to consonant 'K'",
+      "tip": "Start very slowly. Each vowel-pair practice trains your ear for short vs long distinction."
+    },
+    {
+      "id": "p6",
+      "type": "true_false",
+      "title": "Vowel Facts — True or False?",
+      "items": [
+        { "statement": "Gujarati has exactly 13 vowels.", "answer": true, "explanation": "Yes! Gujarati has 13 vowels: અ આ ઇ ઈ ઉ ઊ ઋ એ ઐ ઓ ઔ અં અઃ" },
+        { "statement": "Short and long vowels mean the same thing in Gujarati.", "answer": false, "explanation": "No! Length is meaningful. The word 'kal' can mean yesterday or tomorrow — context and length matter!" },
+        { "statement": "Aspirated consonants (like ખ, ઘ) are produced with a puff of air.", "answer": true, "explanation": "Correct! Hold your hand in front of your mouth — you should feel a puff of air when saying ખ (kh) but not ક (k)." }
+      ]
+    }
+  ]
+}

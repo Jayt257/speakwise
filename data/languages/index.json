@@ -1,0 +1,47 @@
+{
+  "_comment": "LearnWise Language Registry — source and target language metadata",
+  "_version": "1.0.0",
+  "_updated": "2025-04",
+
+  "sourceLanguages": [
+    { "id": "en", "name": "English",            "native": "English",    "flag": "🇬🇧", "rtl": false },
+    { "id": "hi", "name": "Hindi",              "native": "हिन्दी",     "flag": "🇮🇳", "rtl": false },
+    { "id": "es", "name": "Spanish",            "native": "Español",    "flag": "🇪🇸", "rtl": false },
+    { "id": "fr", "name": "French",             "native": "Français",   "flag": "🇫🇷", "rtl": false },
+    { "id": "de", "name": "German",             "native": "Deutsch",    "flag": "🇩🇪", "rtl": false },
+    { "id": "ar", "name": "Arabic",             "native": "العربية",    "flag": "🇸🇦", "rtl": true  },
+    { "id": "ja", "name": "Japanese",           "native": "日本語",     "flag": "🇯🇵", "rtl": false },
+    { "id": "zh", "name": "Mandarin Chinese",   "native": "普通话",     "flag": "🇨🇳", "rtl": false },
+    { "id": "pt", "name": "Portuguese",         "native": "Português",  "flag": "🇧🇷", "rtl": false },
+    { "id": "ko", "name": "Korean",             "native": "한국어",     "flag": "🇰🇷", "rtl": false }
+  ],
+
+  "targetLanguages": [
+    { "id": "en", "name": "English",            "native": "English",    "flag": "🇬🇧", "script": "Latin",    "family": "Germanic",      "speakers": "1.5B",  "difficulty": "A1", "rtl": false },
+    { "id": "hi", "name": "Hindi",              "native": "हिन्दी",     "flag": "🇮🇳", "script": "Devanagari","family": "Indo-Aryan",   "speakers": "600M",  "difficulty": "B",  "rtl": false },
+    { "id": "gu", "name": "Gujarati",           "native": "ગુજરાતી",   "flag": "🇮🇳", "script": "Gujarati", "family": "Indo-Aryan",    "speakers": "60M",   "difficulty": "B",  "rtl": false },
+    { "id": "es", "name": "Spanish",            "native": "Español",    "flag": "🇪🇸", "script": "Latin",    "family": "Romance",       "speakers": "500M",  "difficulty": "A",  "rtl": false },
+    { "id": "fr", "name": "French",             "native": "Français",   "flag": "🇫🇷", "script": "Latin",    "family": "Romance",       "speakers": "280M",  "difficulty": "A",  "rtl": false },
+    { "id": "de", "name": "German",             "native": "Deutsch",    "flag": "🇩🇪", "script": "Latin",    "family": "Germanic",      "speakers": "100M",  "difficulty": "B",  "rtl": false },
+    { "id": "ar", "name": "Arabic",             "native": "العربية",    "flag": "🇸🇦", "script": "Arabic",   "family": "Semitic",       "speakers": "420M",  "difficulty": "C",  "rtl": true  },
+    { "id": "ja", "name": "Japanese",           "native": "日本語",     "flag": "🇯🇵", "script": "Mixed",    "family": "Japonic",       "speakers": "128M",  "difficulty": "C",  "rtl": false },
+    { "id": "zh", "name": "Mandarin Chinese",   "native": "普通话",     "flag": "🇨🇳", "script": "Hanzi",    "family": "Sino-Tibetan",  "speakers": "1.1B",  "difficulty": "C",  "rtl": false },
+    { "id": "pt", "name": "Portuguese",         "native": "Português",  "flag": "🇧🇷", "script": "Latin",    "family": "Romance",       "speakers": "260M",  "difficulty": "A",  "rtl": false },
+    { "id": "ko", "name": "Korean",             "native": "한국어",     "flag": "🇰🇷", "script": "Hangul",   "family": "Koreanic",      "speakers": "77M",   "difficulty": "C",  "rtl": false }
+  ],
+
+  "activePairs": [
+    "en/gu"
+  ],
+
+  "inProgressPairs": [
+    "en/hi", "en/es", "en/fr", "en/de",
+    "hi/en", "hi/gu"
+  ],
+
+  "difficultyKey": {
+    "A": "Easy (similar to source language script/grammar)",
+    "B": "Moderate (new script or grammar patterns)",
+    "C": "Hard (new script + very different grammar)"
+  }
+}

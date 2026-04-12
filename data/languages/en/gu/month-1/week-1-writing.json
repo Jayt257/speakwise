@@ -1,0 +1,61 @@
+{
+  "_comment": "English → Gujarati | Month 1 Week 1 | Writing",
+  "id": 5,
+  "type": "writing",
+  "title": "Introduce Yourself in Gujarati",
+  "description": "Write a short self-introduction using the greetings and phrases you have learned.",
+  "duration": "15 min",
+  "xp": 35,
+  "week": 1,
+  "month": 1,
+  "langPair": "en-gu",
+  "tags": ["writing", "introduction", "self-expression"],
+  "blocks": [
+    {
+      "id": "w1",
+      "type": "sentence_builder",
+      "title": "Build: 'I am learning Gujarati'",
+      "translation": "I am learning Gujarati",
+      "words": ["છું", "ગુજરાતી", "શીખું", "હું", "અંગ્રેજી"],
+      "correctOrder": [3, 1, 2, 0]
+    },
+    {
+      "id": "w2",
+      "type": "sentence_builder",
+      "title": "Build: 'My name is ___'",
+      "translation": "My name is Alex",
+      "words": ["છે", "Alex", "નામ", "મારું"],
+      "correctOrder": [3, 2, 1, 0]
+    },
+    {
+      "id": "w3",
+      "type": "translation_task",
+      "title": "Translate to Gujarati",
+      "instruction": "Translate these English phrases into Gujarati (transliteration is perfectly fine!)",
+      "items": [
+        { "source": "Hello! How are you?", "answer": "નમસ્તે! કેમ છો? (Namaste! Kem chho?)" },
+        { "source": "My name is ___.", "answer": "મારું નામ ___ છે. (Maarun naam ___ chhe.)" },
+        { "source": "I am from England.", "answer": "હું ઈંગ્લૅન્ડ થી છું. (Hun England thi chhun.)" },
+        { "source": "I am learning Gujarati.", "answer": "હું ગુજરાતી શીખું છું. (Hun Gujarati shikhun chhun.)" }
+      ]
+    },
+    {
+      "id": "w4",
+      "type": "text",
+      "title": "How to Write a Self-Introduction",
+      "body": "A basic Gujarati self-introduction follows this pattern:\n\n1. Greeting: નમસ્તે! (Namaste!)\n2. Name: મારું નામ ___ છે. (My name is ___)\n3. Origin: હું ___ થી છું. (I am from ___)\n4. Learning: હું ગુજરાતી શીખું છું. (I am learning Gujarati)\n5. Closing: ખૂબ ખૂબ આભાર! (Thank you very much!)"
+    },
+    {
+      "id": "w5",
+      "type": "writing",
+      "prompt": "Write a short introduction about yourself in Gujarati (or a mix of Gujarati and transliteration). Include: your name, where you are from, why you are learning Gujarati, and one thing you like about the language.",
+      "minWords": 30,
+      "sampleAnswer": "નમસ્તે! (Namaste!)\n\nMaaru naam Alex chhe. (My name is Alex.) I am from New York, USA.\n\nHun Gujarati shikhun chhun because my friends are from Gujarat and I want to talk to them in their language.\n\nGujarat ni bhasha khub sundar lage chhe — the script looks beautiful!\n\nKhub aabhaar! 🙏"
+    },
+    {
+      "id": "w6",
+      "type": "tip",
+      "body": "💡 In Gujarati, adjectives change based on gender. 'Good' for a male speaker is 'સારો' but for a female speaker 'સારી'. Don't worry too much now — just use 'ઠીક' (theek) when unsure!"
+    }
+  ]
+}

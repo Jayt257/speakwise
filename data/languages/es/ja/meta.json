@@ -1,0 +1,26 @@
+{
+  "_comment": "Spanish → Japanese language pair metadata",
+  "_status": "stub — content not yet created",
+  "pairId": "es-ja",
+  "source": {
+    "id": "es",
+    "name": "Spanish",
+    "flag": "🇪🇸"
+  },
+  "target": {
+    "id": "ja",
+    "name": "Japanese",
+    "flag": "🇯🇵"
+  },
+  "status": "planned",
+  "months": [
+    {
+      "month": 1,
+      "title": "Foundation",
+      "description": "Learn Japanese basics from Spanish.",
+      "status": "not-started",
+      "weeks": []
+    }
+  ],
+  "_howToCreate": "See /data/README.md for instructions on creating es-ja content."
+}

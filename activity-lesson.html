@@ -8,6 +8,8 @@
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
 <script src="data/roadmap-data.js"></script>
 <script src="data/activities-content.js"></script>
+<script src="data/content-loader.js"></script>
+<script src="data/blocks-renderer.js"></script>
 <script src="data/en-gu-month1.js"></script>
 <style>
 *{box-sizing:border-box;margin:0;padding:0;}
@@ -235,14 +237,8 @@ function renderBlock(i){
   if(!bc||!blks[i])return;
   const b=blks[i];
   let html='';
-  switch(b.type){
-    case'text':html=buildText(b);break;
-    case'keypoints':html=buildKP(b);break;
-    case'vocab_table':html=buildVocab(b);break;
-    case'tip':html=buildTip(b);break;
-    case'audio':html=buildAudio(b);break;
-    default:html=`<div class="block"><p class="body-p">[${b.type}]</p></div>`;
-  }
+  if(typeof LWRenderer!=='undefined'){html=LWRenderer.render(b);}
+  else{switch(b.type){case'text':html=buildText(b);break;case'keypoints':html=buildKP(b);break;case'vocab_table':html=buildVocab(b);break;case'tip':html=buildTip(b);break;case'audio':html=buildAudio(b);break;default:html=`<div class="block"><p class="body-p">[${b.type}]</p></div>`;}}
   bc.innerHTML=html;
   bc.querySelectorAll('.kp').forEach((el,i)=>{el.style.animationDelay=`${i*.07}s`;});
   renderSteps();

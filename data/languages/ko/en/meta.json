@@ -1,0 +1,26 @@
+{
+  "_comment": "Korean → English language pair metadata",
+  "_status": "stub — content not yet created",
+  "pairId": "ko-en",
+  "source": {
+    "id": "ko",
+    "name": "Korean",
+    "flag": "🇰🇷"
+  },
+  "target": {
+    "id": "en",
+    "name": "English",
+    "flag": "🇬🇧"
+  },
+  "status": "planned",
+  "months": [
+    {
+      "month": 1,
+      "title": "Foundation",
+      "description": "Learn English basics from Korean.",
+      "status": "not-started",
+      "weeks": []
+    }
+  ],
+  "_howToCreate": "See /data/README.md for instructions on creating ko-en content."
+}

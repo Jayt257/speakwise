@@ -1,0 +1,26 @@
+{
+  "_comment": "Spanish → German language pair metadata",
+  "_status": "stub — content not yet created",
+  "pairId": "es-de",
+  "source": {
+    "id": "es",
+    "name": "Spanish",
+    "flag": "🇪🇸"
+  },
+  "target": {
+    "id": "de",
+    "name": "German",
+    "flag": "🇩🇪"
+  },
+  "status": "planned",
+  "months": [
+    {
+      "month": 1,
+      "title": "Foundation",
+      "description": "Learn German basics from Spanish.",
+      "status": "not-started",
+      "weeks": []
+    }
+  ],
+  "_howToCreate": "See /data/README.md for instructions on creating es-de content."
+}

@@ -1,0 +1,55 @@
+{
+  "_comment": "English → Gujarati | Month 1 Week 1 | Listening",
+  "id": 6,
+  "type": "listening",
+  "title": "Greetings in Context — First Listen",
+  "description": "Listen to a native Gujarati greeting exchange and practice comprehension exercises.",
+  "duration": "10 min",
+  "xp": 40,
+  "week": 1,
+  "month": 1,
+  "langPair": "en-gu",
+  "tags": ["listening", "greetings", "comprehension", "native"],
+  "audioUrl": null,
+  "audioTranscript": "Rahul: નમસ્તે! Sneha: નમસ્તે! કેમ છો? Rahul: હું સારો છું, આભાર. Sneha: ખૂબ સારું!",
+  "blocks": [
+    {
+      "id": "l1",
+      "type": "note_template",
+      "title": "Listening Notes — Before You Listen",
+      "instruction": "Listen to the Gujarati greeting dialogue and take notes as you go:",
+      "sections": [
+        { "label": "How many speakers did you hear?",    "placeholder": "1 / 2 / 3 speakers" },
+        { "label": "Which greeting words did you catch?", "placeholder": "e.g. Namaste, kem chho..." },
+        { "label": "Did anyone say their name?",          "placeholder": "Name(s) you heard" },
+        { "label": "One new word you noticed:",           "placeholder": "Any unfamiliar word?" }
+      ]
+    },
+    {
+      "id": "l2",
+      "type": "gap_fill",
+      "title": "Fill the Gaps — Greeting Transcript",
+      "text": "___ ! (Hello!) ___ છો? (How are you?) — ___ , ___. (Fine, thank you.)",
+      "gaps": ["નમસ્તે", "કેમ", "સારો", "આભાર"],
+      "hints": ["greeting word", "question word (how)", "adjective for fine", "gratitude word"]
+    },
+    {
+      "id": "l3",
+      "type": "true_false",
+      "title": "Did You Understand?",
+      "items": [
+        { "statement": "Gujarati speakers say 'Namaste' to greet someone.", "answer": true, "explanation": "'Namaste' (નમસ્તે) is the standard Gujarati greeting — used for hello AND goodbye." },
+        { "statement": "'Kem chho?' is used to say goodbye.", "answer": false, "explanation": "'Kem chho?' (કેમ છો?) means 'How are you?' It's a question, not a farewell!" },
+        { "statement": "'Saaro chhun, aabhaar' is a typical response to 'Kem chho?'", "answer": true, "explanation": "'સારો/સારી છું, આભાર' = 'I am fine, thank you' — the standard polite response." }
+      ]
+    },
+    {
+      "id": "l4",
+      "type": "cultural_note",
+      "title": "The Sound of Gujarati",
+      "icon": "🎵",
+      "content": "Gujarati is known for its melodic, rhythmic quality. The language has a musical cadence that many learners find beautiful. It's spoken by over 60 million people across Gujarat, Mumbai, UK, USA, and East Africa. Famous speakers include Mahatma Gandhi — Gujarati was his mother tongue!",
+      "tags": ["culture", "history", "diaspora", "famous speakers"]
+    }
+  ]
+}

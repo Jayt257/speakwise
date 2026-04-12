@@ -78,6 +78,59 @@ window.LW_LANG_PAIR = {
               'આઈ (aa-ee) — Came (mother in some dialects)',
             ]
           },
+          {
+            id:'b8', type:'grammar_rule', title:'SOV — Gujarati Sentence Order',
+            pattern:'Subject + Object + Verb + છે',
+            examples:[
+              {native:'I food eat',target:'હું ખોરાક ખાઉ છું',translation:'I eat food'},
+              {native:'She book reads',target:'તે પુસ્તક વાંચે છે',translation:'She reads a book'},
+              {native:'He Gujarati learns',target:'તે ગુજરાતી શીખે છે',translation:'He learns Gujarati'},
+            ],
+            note:'Unlike English (Subject-Verb-Object), Gujarati puts the verb LAST.'
+          },
+          {
+            id:'b9', type:'dialogue', title:'Your First Real Conversation',
+            speakers:['You','Gujarati Friend'],
+            lines:[
+              {speaker:0,text:'નમસ્તે!',romanization:'Namaste!',translation:'Hello!'},
+              {speaker:1,text:'નમસ્તે! કેમ છો?',romanization:'Kem chho?',translation:'How are you?'},
+              {speaker:0,text:'હું સારો છું, આભાર.',romanization:'Hun saaro chhun, aabhaar.',translation:'I am fine, thank you.'},
+              {speaker:1,text:'ખૂબ સારું! ફરી મળીશું.',romanization:'Khoob saaru! Fari malishun.',translation:'Very good! See you again.'},
+            ]
+          },
+          {
+            id:'b10', type:'comparison_table', title:'Core Phrases at a Glance',
+            headers:['English','ગુજરાતી','Pronunciation'],
+            rows:[
+              ['Hello','નમસ્તે','Namaste'],['Thank you','આભાર','Aabhaar'],['Sorry','ક્ષમા','Kshama'],
+              ['Yes','હા','Haa'],['No','ના','Naa'],['OK','ઠીક','Theek'],['Very good','ખૂબ સારું','Khoob saaru'],
+            ]
+          },
+          {
+            id:'b11', type:'fill_blank', title:'Quick Check — Fill in the Blanks',
+            instructions:'Type the correct Gujarati word:',
+            items:[
+              {sentence:'___ means Hello in Gujarati.',answer:'નમસ્તે',hint:'greeting word'},
+              {sentence:'___ means Thank you.',answer:'આભાર',hint:'gratitude'},
+              {sentence:'Gujarati uses ___ sentence order.',answer:'SOV',hint:'Subject-Object-?'},
+            ]
+          },
+          {
+            id:'b12', type:'cultural_note', title:'Cultural Context', icon:'🙏',
+            content:'In Gujarati culture, "Namaste" (નમસ્તે) is used for both hello AND goodbye — just like the Sanskrit origin meaning "I bow to you." The palms-together gesture (pranam) shows respect. You'll use this many times every day in Gujarat!',
+            tags:['greetings','customs','respect']
+          },
+          {
+            id:'b13', type:'progress_checkpoint', title:'Week 1 Checkpoint',
+            items:[
+              'I can greet someone in Gujarati (hello/goodbye)',
+              'I can say please, thank you, and sorry',
+              'I can introduce myself and ask someone's name',
+              'I understand that Gujarati uses SOV word order',
+              'I can recognize and read the 13 Gujarati vowels',
+            ],
+            xpBonus:15
+          },
         ]
       },
 
@@ -86,7 +139,21 @@ window.LW_LANG_PAIR = {
         title: 'Essential Greetings & Basics',
         description: 'Your first 25 Gujarati words — greetings, basics, and must-know everyday expressions.',
         duration: '12 min', xp: 20, langPair: 'en-gu', week: 1,
-        blocks: [{
+        blocks: [
+          {
+            id:'v0', type:'image_word', title:'Visual Vocabulary — Common Objects',
+            items:[
+              {emoji:'🏠',word:'ઘર',meaning:'House / Home',example:'My home is in Gujarat'},
+              {emoji:'🙏',word:'નમસ્તે',meaning:'Hello / Namaste',example:'Greet with joined palms'},
+              {emoji:'💧',word:'પાણી',meaning:'Water',example:'Please give water'},
+              {emoji:'🍵',word:'ચા',meaning:'Tea',example:'Chai is life in Gujarat!'},
+              {emoji:'👤',word:'હું',meaning:'I / Me',example:'I am learning Gujarati'},
+              {emoji:'🌍',word:'ભાષા',meaning:'Language',example:'Gujarati language'},
+              {emoji:'📚',word:'શીખવું',meaning:'To learn',example:'I am learning'},
+              {emoji:'🙏',word:'આભાર',meaning:'Thank you',example:'Thank you very much'},
+            ]
+          },
+          {
           id:'v1', type:'vocab_table', title:'Week 1 Vocabulary — 25 Words',
           words:[
             { word:'નમસ્તે', meaning:'Hello / Goodbye', example:'નમસ્તે, કેમ છો? — Hello, how are you?' },
@@ -171,24 +238,51 @@ window.LW_LANG_PAIR = {
         description: 'Practice all 13 Gujarati vowels with correct mouth positions, IPA notation, and sample words.',
         duration: '10 min', xp: 30, langPair: 'en-gu', week: 1,
         blocks: [
-          { id:'p1', type:'keypoints', title:'Vowels to Practice (tap each to practice)',
+          { id:'p1', type:'keypoints', title:'The 13 Vowels — Tap Each to Practice',
             points:[
-              'અ (a) — like "u" in "cup" · Example: અહીં (ahee) = Here',
-              'આ (aa) — like "a" in "father" · Example: આવો (aavo) = Come',
-              'ઇ (i) — like "i" in "bit" · Example: ઇચ્છા (ichchhaa) = Wish',
-              'ઈ (ee) — like "ee" in "feet" · Example: ઈંટ (eent) = Brick',
-              'ઉ (u) — like "u" in "put" · Example: ઉઠો (utho) = Get up',
-              'ઊ (oo) — like "oo" in "food" · Example: ઊન (oon) = Wool',
-              'એ (e) — like "e" in "café" · Example: એક (ek) = One',
-              'ઐ (ai) — like "ai" in "aisle" · Example: ઐતિહ (aitih) = Historical',
-              'ઓ (o) — like "o" in "note" · Example: ઓઢ (odh) = Cover',
-              'ઔ (au) — like "ou" in "out" · Example: ઔષધ (aushadh) = Medicine',
-              'અં (am) — nasal "an" · Example: અંગ (ang) = Body/limb',
-              'અઃ (ah) — aspirated "ah" · Example: (used in Sanskrit loanwords)',
-              'ઋ (ri) — "ri" with tongue-roll · Example: ઋષિ (rishi) = Sage',
+              'અ (a) — like "u" in "cup" · Example: અહીં = Here',
+              'આ (aa) — like "a" in "father" · Example: આવો = Come',
+              'ઇ (i) — like "i" in "bit" · Example: ઇચ્છા = Wish',
+              'ઈ (ee) — like "ee" in "feet" · Example: ઈંટ = Brick',
+              'ઉ (u) — like "u" in "put" · Example: ઉઠો = Get up',
+              'ઊ (oo) — like "oo" in "food" · Example: ઊન = Wool',
+              'એ (e) — like "e" in "café" · Example: એક = One',
+              'ઓ (o) — like "o" in "note" · Example: ઓઢ = Cover',
+              'ઔ (au) — like "ou" in "out" · Example: ઔષધ = Medicine',
+              'ઐ (ai) — like "ai" in "aisle"',
+              'અં (am) — nasal "an" · Example: અંગ = Body',
+              'અઃ (ah) — aspirated "ah" (Sanskrit loanwords)',
+              'ઋ (ri) — tongue-roll "ri" · Example: ઋષિ = Sage',
             ]
           },
-          { id:'p2', type:'tip', body:'🎯 Focus on the contrast between short and long vowels: અ vs આ, ઇ vs ઈ, ઉ vs ઊ. The length difference is meaningful in Gujarati — it can change the meaning of a word!' }
+          { id:'p2', type:'tip', body:'🎯 Focus on SHORT vs LONG vowels: અ vs આ, ઇ vs ઈ, ઉ vs ઊ. Length changes the meaning!' },
+          {
+            id:'p3', type:'minimal_pairs', title:'Vowel Contrast — Short vs Long',
+            instruction:'These pairs differ ONLY in vowel length. Can you hear the difference?',
+            pairs:[
+              {word1:'અ',word2:'આ',sound1:'a (short)',sound2:'aa (long)',diff:'length: short vs long "a"'},
+              {word1:'ઇ',word2:'ઈ',sound1:'i (short)',sound2:'ee (long)',diff:'length: short vs long "i"'},
+              {word1:'ઉ',word2:'ઊ',sound1:'u (short)',sound2:'oo (long)',diff:'length: short vs long "u"'},
+              {word1:'ક',word2:'ખ',sound1:'k (unaspirated)',sound2:'kh (aspirated)',diff:'aspiration: air puff'},
+              {word1:'ગ',word2:'ઘ',sound1:'g (voiced)',sound2:'gh (aspirated voiced)',diff:'aspiration: air puff'},
+            ]
+          },
+          {
+            id:'p4', type:'stress_pattern', title:'Gujarati Word Stress',
+            words:[
+              {word:'ગુ-જ-રા-ત',syllables:['gu','ja','raat'],stressed:0,note:'First syllable stress'},
+              {word:'ભા-ષા',syllables:['bhaa','shaa'],stressed:0,note:'First syllable stress'},
+              {word:'ન-મ-સ્તે',syllables:['na','ma','ste'],stressed:2,note:'Last syllable stress'},
+              {word:'આ-ભા-ર',syllables:['aa','bhaa','r'],stressed:1,note:'Middle syllable stress'},
+            ]
+          },
+          {
+            id:'p5', type:'tongue_twister', title:'Vowel Practice Tongue Twister',
+            text:'અ આ ઇ ઈ ઉ ઊ — ગુ ગૂ ગિ ગી ગ ગા',
+            romanization:'a aa i ee u oo — gu goo gi gee ga gaa',
+            translation:'A sequence practicing all vowel sounds with the consonant G',
+            tip:'Start very slowly, then increase speed. Focus on length contrast.'
+          },
         ]
       },
 
@@ -198,6 +292,28 @@ window.LW_LANG_PAIR = {
         description: 'Write a short self-introduction using the greetings and phrases you have learned.',
         duration: '15 min', xp: 35, langPair: 'en-gu', week: 1,
         blocks: [
+          {
+            id:'w_sb1', type:'sentence_builder', title:'Build a Gujarati Sentence',
+            translation:'I am learning Gujarati',
+            words:['છું','ગુજરાતી','શીખું','હું','અંગ્રેજી'],
+            correctOrder:[3,1,2,0]
+          },
+          {
+            id:'w_sb2', type:'sentence_builder', title:'Build Another Sentence',
+            translation:'My name is Alex',
+            words:['છે','Alex','નામ','મારું'],
+            correctOrder:[3,2,1,0]
+          },
+          {
+            id:'w_tr1', type:'translation_task', title:'Translate to Gujarati',
+            instruction:'Translate these English phrases into Gujarati (use transliteration if needed)',
+            items:[
+              {source:'Hello! How are you?',answer:'નમસ્તે! કેમ છો? (Namaste! Kem chho?)'},
+              {source:'My name is ___.',answer:'મારું નામ ___ છે. (Maarun naam ___ chhe.)'},
+              {source:'I am from England.',answer:'હું ઈંગ્લૅન્ડ થી છું. (Hun England thi chhun.)'},
+              {source:'I am learning Gujarati.',answer:'હું ગુજરાતી શીખું છું. (Hun Gujarati shikhun chhun.)'},
+            ]
+          },
           { id:'w1', type:'text', title:'How to Introduce Yourself',
             body:'A basic Gujarati self-introduction follows this pattern:\n\n1. Greeting: નમસ્તે! (Namaste!)\n2. Name: મારું નામ ___ છે. (My name is ___)\n3. Origin: હું ___ થી છું. (I am from ___)\n4. Occupation: હું ___ છું. (I am a ___)\n5. Learning: હું ગુજરાતી શીખું છું. (I am learning Gujarati)\n6. Closing: ખૂબ ખૂબ આભાર! (Thank you very much!)'
           },
@@ -207,12 +323,59 @@ window.LW_LANG_PAIR = {
         ]
       },
 
+      // ── LISTENING ───────────────────────────────────────────
+      6: {
+        title: 'Week 1 Listening — Greetings in Context',
+        description: 'Listen to a native Gujarati greeting exchange and practice comprehension exercises.',
+        duration: '10 min', xp: 40, langPair: 'en-gu', week: 1,
+        blocks: [
+          {
+            id:'l1_nt', type:'note_template', title:'Listening Notes — Greeting Dialogue',
+            instruction:'Listen to the audio and fill in your notes:',
+            sections:[
+              {label:'How many speakers did you hear?', placeholder:'1 / 2 / 3 speakers'},
+              {label:'Which greeting words did you catch?', placeholder:'e.g. Namaste, kem chho...'},
+              {label:'Did anyone mention their name?', placeholder:'Name(s) you heard'},
+              {label:'One new word you heard:', placeholder:'Any unfamiliar word?'},
+            ]
+          },
+          {
+            id:'l1_gf', type:'gap_fill', title:'Fill the Gaps — Greeting Transcript',
+            text:'___ ! (Hello!) ___ ছો? (How are you?) — ___ , ___. (Fine, thank you.)',
+            gaps:['નમસ્તે','કેમ','સારો','આભાર'],
+            hints:['greeting','question word','adjective for fine','gratitude']
+          },
+          {
+            id:'l1_tf', type:'true_false', title:'Did You Understand?',
+            items:[
+              {statement:'Gujarati speakers say "Namaste" to greet someone.',answer:true,explanation:'Yes! "Namaste" (નમસ્તે) is the standard greeting in Gujarati.'},
+              {statement:'"Kem chho?" is used to say goodbye.',answer:false,explanation:'"Kem chho?" (કેમ છો?) means "How are you?" It's a question, not a farewell!'},
+              {statement:'A typical reply to "Kem chho?" is "Saaro chhun, aabhaar."',answer:true,explanation:'Yes! "સારો/સારી છું, આભાર" = "I am fine, thank you." — the standard polite response.'},
+            ]
+          },
+          {
+            id:'l1_cn', type:'cultural_note', title:'The Sound of Gujarati', icon:'🎵',
+            content:'Gujarati is known for its melodic, rhythmic quality. It has a musical cadence that many learners find beautiful. The language is spoken by over 60 million people across Gujarat, Mumbai, the UK, USA, and East Africa. Famous speakers include Mahatma Gandhi!',
+            tags:['culture','history','famous speakers']
+          },
+        ]
+      },
+
       // ── SPEAKING ────────────────────────────────────────────
       8: {
         title: 'Greetings & First Conversations',
         description: 'Practice real-world greetings with 3 speaking scenarios — meeting someone for the first time.',
         duration: '12 min', xp: 35, langPair: 'en-gu', week: 1,
         blocks: [
+          {
+            id:'sp0', type:'roleplay_card', title:'Scene: Cultural Event',
+            scenario:'Gujarati Cultural Event',
+            yourRole:'New Attendee',
+            partnerRole:'Local Gujarati Person',
+            context:'You are attending a Gujarati cultural event in your city. You want to meet local people and practice your Gujarati.',
+            goal:'Introduce yourself, ask their name, find out where they are from, and say something nice about Gujarat.',
+            usefulPhrases:['નમસ્તે! (Hello!)','તમારું નામ શું છે? (What is your name?)','ગુજરાત ખૂબ સુંદર છે! (Gujarat is very beautiful!)','ખૂબ ખૂશ! (Very pleased to meet you!)']
+          },
           { id:'sp1', type:'speaking', prompt:'You are at a Gujarati cultural event and meet someone new. Greet them, ask their name, and say where you are from.',
             hints:['નમસ્તે! (Hello!)', 'તમારું નામ શું છે? (What\'s your name?)', 'હું ___ થી છું (I am from ___)','મને ગુજરાત ગમે છે (I like Gujarat)'] },
           { id:'sp2', type:'speaking', prompt:'Your Gujarati friend asks how you are feeling today. Respond using what you know, and ask how they are too.',
@@ -248,6 +411,22 @@ window.LW_LANG_PAIR = {
             options:['Little','Slowly','Very / A lot','OK'], correct:2, explanation:'"ખૂબ" (khoob) means "very" or "a lot". "ખૂબ સારું" = "Very good", "ખૂબ ખૂબ આભાર" = "Thank you very much".' },
           { id:'q10', type:'quiz', question:'In Gujarati vowel marks attached to consonants are called:',
             options:['Svar','Maatra','Viraam','Vyanjan'], correct:1, explanation:'Vowel marks (diacritics) attached to consonants in Gujarati are called "Maatra" (માત્રા). The standalone vowels are called "Svar" (સ્વર).' },
+          {
+            id:'q_tf', type:'true_false', title:'Vowel Facts — True or False?',
+            items:[
+              {statement:'Gujarati has exactly 13 vowels.',answer:true,explanation:'Yes! Gujarati has 13 vowels: અ આ ઇ ઈ ઉ ઊ ઋ એ ઐ ઓ ઔ અં અઃ'},
+              {statement:'Short and long vowels mean the same thing in Gujarati.',answer:false,explanation:'No! Length is meaningful. અ (short) and આ (long) are different sounds and can distinguish different words.'},
+              {statement:'The word "Namaste" uses the Gujarati script letter "ન".',answer:true,explanation:'Yes! "Namaste" starts with "ન" (na), then "મ" (ma), "સ" (sa), "ત" (ta), "ે" (e), making "Namaste".'},
+              {statement:'Gujarati script is unrelated to Devanagari.',answer:false,explanation:'False! Gujarati script is actually derived from Devanagari (the Hindi/Sanskrit script). Both share the same ancient Brahmi origins.'},
+            ]
+          },
+          {
+            id:'q_match', type:'matching', title:'Match the Gujarati Words',
+            instruction:'Match each Gujarati word with its English meaning',
+            leftItems:['નમસ્તે','આભાર','ઘ-ર','ભ-ષ-','ઠ-ક'],
+            rightItems:['House','Thank you','Language','Hello','OK / Fine'],
+            pairs:[[0,3],[1,1],[2,0],[3,2],[4,4]]
+          },
         ]
       },
 
@@ -317,7 +496,26 @@ window.LW_LANG_PAIR = {
         title: 'Objects, Places & Daily Life',
         description: '25 essential Gujarati words for objects, places, food and daily life.',
         duration: '10 min', xp: 20, langPair: 'en-gu', week: 2,
-        blocks: [{ id:'v2_1', type:'vocab_table', title:'Week 2 Vocabulary',
+        blocks: [
+          {
+            id:'v2_spotlight', type:'vocabulary_spotlight',
+            word:'ખોરાક', meaning:'Food', pronunciation:'kho-raak', partOfSpeech:'noun',
+            examples:[{gu:'ગુજરાતી ખોરાક ખૂબ સ્વાદિષ્ટ છે.',en:'Gujarati food is very tasty.'},{gu:'ખોરાક ક્યાં મળે?',en:'Where can I get food?'}],
+            relatedWords:['ભૂખ (hunger)','ખાવું (to eat)','સ્વાદ (taste)','ભોજન (meal)'],
+            culturalNote:'Gujarati cuisine is famous for its unique sweet-salty-spicy balance. Dal, bhaat (rice), roti, and shaak (vegetables) form the staple thali.'
+          },
+          {
+            id:'v2_family', type:'word_family', title:'Food Word Family',
+            root:'ખ', rootMeaning:'Root sound for eating',
+            members:[
+              {word:'ખોરાક',meaning:'Food'},
+              {word:'ખાવું',meaning:'To eat'},
+              {word:'ખાઉ',meaning:'I eat (present)'},
+              {word:'ખાઉ-ઘ',meaning:'Glutton (one who always eats!)'},
+              {word:'ખાવ-ડ',meaning:'Food snack'},
+            ]
+          },
+          { id:'v2_1', type:'vocab_table', title:'Week 2 Vocabulary — Objects & Places',
           words:[
             { word:'ખોરાક', meaning:'Food', example:'ખોરાક ખૂબ સ્વાદિષ્ટ છે — The food is very tasty' },
             { word:'પાણી', meaning:'Water', example:'એક ગ્લાસ પાણી આપો — Give me a glass of water' },
@@ -386,6 +584,21 @@ I love Ahmedabad! (મને અહેમદાબાદ ખૂબ ગમે છ
         description: 'Practice writing about your daily schedule using Gujarati time expressions and action verbs.',
         duration: '15 min', xp: 35, langPair: 'en-gu', week: 2,
         blocks: [
+          {
+            id:'w2_sb', type:'sentence_builder', title:'Build: "I wake up at 7 in the morning"',
+            translation:'In the morning at 7 I wake up',
+            words:['ઊઠું','સવારે','હું','૭','છું','વાગ્યે'],
+            correctOrder:[2,1,3,5,0,4]
+          },
+          {
+            id:'w2_tr', type:'translation_task', title:'Translate Daily Routine Phrases',
+            instruction:'Translate into Gujarati (transliteration is fine)',
+            items:[
+              {source:'In the morning I drink tea.',answer:'સવારે હું ચા પીઉ છું. (Savaare hun chaa peeun chhun.)'},
+              {source:'In the afternoon I work in the office.',answer:'બપોરે હું ઓફિસ માં કામ કરું છું. (Bapore hun office maan kaam karun chhun.)'},
+              {source:'At night I sleep at 11 o'clock.',answer:'રાત્રે ૧૧ વાગ્યે ઊંઘું છું. (Raatre 11 vaagye oonghun chhun.)'},
+            ]
+          },
           { id:'w2b1', type:'text', title:'Time Expressions in Gujarati',
             body:'સવારે (savaare) = In the morning\nબપોરે (bapore) = In the afternoon\nસાંજે (saanje) = In the evening\nરાત્રે (raatre) = At night\n___ વાગ્યે (___ vaagye) = At ___ o\'clock\n\nCommon verbs:\nઊઠવું (uthvun) = to wake up\nખાવું (khaavun) = to eat\nપીવું (peevun) = to drink\nજવું (javun) = to go\nઆવવું (aavvun) = to come\nકામ કરવું (kaam karvun) = to work\nઊંઘવું (oonghvun) = to sleep'
           },
@@ -472,6 +685,25 @@ I love Ahmedabad! (મને અહેમદાબાદ ખૂબ ગમે છ
             ]
           },
           { id:'l3b5', type:'tip', body:'🎵 Memory trick for days: sor-man-gal-bud-gu-shuk-sha-ra → Monday starts with "Soma" (Moon in Sanskrit). Tuesday is Mangal (Mars). Wednesday is Budh (Mercury). Thursday is Guru (Jupiter). Friday is Shukra (Venus). Saturday is Shani (Saturn). Sunday is Ravi (Sun). Same as Hindi days!' },
+          {
+            id:'l3b6', type:'ordering', title:'Days of the Week — Put in Order',
+            instruction:'Arrange the days from Monday to Sunday',
+            words:['ગુરુવાર','સોમવાર','રવિવાર','શનિવાર','બુધવાર','શુક્રવાર','મંગળવાર'],
+            correctOrder:[1,6,4,0,5,3,2]
+          },
+          {
+            id:'l3b7', type:'true_false', title:'Numbers & Days — True or False?',
+            items:[
+              {statement:'The Gujarati word for 100 is "સો" (so).',answer:true,explanation:'"સો" (so) = 100. Related: "સો" is also the root in many Gujarati compound number words.'},
+              {statement:'Wednesday in Gujarati is named after Mercury (Budh).',answer:true,explanation:'Yes! "બુધ" (Budh) = Mercury in Sanskrit. All days are named after celestial bodies.'},
+              {statement:'"પાંચ" (paanch) means 10.',answer:false,explanation:'"પાંચ" (paanch) = 5, not 10. "દસ" (das) = 10. Remember: 1=એક, 5=પાંચ, 10=દસ.'},
+            ]
+          },
+          {
+            id:'l3b8', type:'cultural_note', title:'Gujarati Calendar Tradition', icon:'📅',
+            content:'Gujarat follows both the Western calendar and the traditional Vikram Samvat calendar. Important festivals like Diwali, Navratri (9 nights of dance), and Uttarayan (kite festival) are celebrated by Gujaratis worldwide. The Gujarati New Year falls on the day after Diwali!',
+            tags:['calendar','festivals','traditions']
+          },
         ]
       },
 
@@ -656,6 +888,20 @@ I love Ahmedabad! (મને અહેમદાબાદ ખૂબ ગમે છ
         description: 'Practice describing your family, expressing emotions, and having natural conversations in Gujarati.',
         duration: '14 min', xp: 35, langPair: 'en-gu', week: 4,
         blocks: [
+          {
+            id:'sp4_rp1', type:'roleplay_card', title:'Scene: Introducing Your Family',
+            scenario:'Family Introduction',
+            yourRole:'You (learner)',
+            partnerRole:'Gujarati Friend',
+            context:'Your Gujarati friend visits your home and wants to know about your family. Describe each family member.',
+            goal:'Name 3-4 family members, their relationship, and say one thing about each person.',
+            usefulPhrases:['મારી family માં ___ જણ છે (My family has ___ people)','આ મારી/મારો ___ છે (This is my ___)','તે/ઓ ___ વર્ષ ના/ની છે (He/She is ___ years old)','ઓ ખૂબ ___ છે (He/She is very ___)']
+          },
+          {
+            id:'sp4_cn', type:'cultural_note', title:'Gujarati Family Structure', icon:'👨‍👩‍👧‍👦',
+            content:'Traditional Gujarati families often live in joint family systems (સંયુક્ત કુટુંબ) where grandparents, parents, and children all live together. Elders are deeply respected. Family bonds (ઘ-ર-સ-ધ) are central to Gujarati culture, and major decisions are made collectively as a family.',
+            tags:['family','culture','joint family','values']
+          },
           { id:'sp4_1', type:'speaking', prompt:'Describe your family to a new Gujarati friend. Tell them about your family members, where they live, and one interesting thing about each person.',
             hints:['મારી family માં ___ જણ છે (My family has ___ people)','મારી maa ___ (My mother is a ___)','ભાઈ/બહેન ___ years old chhe','Amara ghar maun ___ rehiye chheye'] },
           { id:'sp4_2', type:'speaking', prompt:'Your friend asks you how you\'re feeling about your Gujarati learning progress. Express your emotions honestly — what\'s hard, what\'s fun, and what you want to learn next.',

@@ -1,0 +1,100 @@
+{
+  "_comment": "English → Gujarati | Month 1 Week 1 | Vocabulary",
+  "id": 2,
+  "type": "vocab",
+  "title": "Essential Greetings & Basics",
+  "description": "Your first 25 Gujarati words — greetings, basics, and must-know everyday expressions.",
+  "duration": "12 min",
+  "xp": 20,
+  "week": 1,
+  "month": 1,
+  "langPair": "en-gu",
+  "tags": ["greetings", "basics", "essential", "beginner"],
+  "blocks": [
+    {
+      "id": "v0",
+      "type": "image_word",
+      "title": "Visual Vocabulary — Tap Each Card",
+      "items": [
+        { "emoji": "🙏", "word": "નમસ્તે",     "meaning": "Hello/Goodbye",   "example": "Greet with joined palms" },
+        { "emoji": "❤️", "word": "આભાર",       "meaning": "Thank you",        "example": "ખૂબ ખૂબ આભાર" },
+        { "emoji": "🏠", "word": "ઘર",          "meaning": "House/Home",       "example": "My home is in Gujarat" },
+        { "emoji": "💧", "word": "પાણી",        "meaning": "Water",            "example": "Please give water" },
+        { "emoji": "🍵", "word": "ચા",           "meaning": "Tea",              "example": "Chai is life in Gujarat!" },
+        { "emoji": "👤", "word": "હું",          "meaning": "I / Me",           "example": "I am learning Gujarati" },
+        { "emoji": "📚", "word": "ભાષા",        "meaning": "Language",         "example": "Gujarati language" },
+        { "emoji": "✅", "word": "ઠીક",          "meaning": "OK / Fine",        "example": "That's OK" }
+      ]
+    },
+    {
+      "id": "v1",
+      "type": "vocab_table",
+      "title": "Week 1 Vocabulary — 25 Words",
+      "words": [
+        { "word": "નમસ્તે",     "meaning": "Hello / Goodbye",         "example": "નમસ્તે, કેમ છો? — Hello, how are you?" },
+        { "word": "આભાર",       "meaning": "Thank you",               "example": "ખૂબ ખૂબ આભાર — Thank you very much" },
+        { "word": "ક્ષમા",      "meaning": "Sorry / Excuse me",        "example": "ક્ષમા કરો — Please forgive me" },
+        { "word": "હા",          "meaning": "Yes",                      "example": "હા, ચોક્કસ — Yes, certainly" },
+        { "word": "ના",          "meaning": "No",                       "example": "ના, ધન્યવાદ — No, thank you" },
+        { "word": "ઠીક",         "meaning": "OK / Fine / Alright",      "example": "ઠીક છે — That's OK" },
+        { "word": "સારું",       "meaning": "Good / Well",              "example": "ખૂબ સારું — Very good" },
+        { "word": "કૃપા કરીને", "meaning": "Please (polite)",           "example": "કૃપા કરીને ધીમો બોલો — Please speak slowly" },
+        { "word": "હું",         "meaning": "I / Me",                   "example": "હું ગુજરાતી શીખું છું — I am learning Gujarati" },
+        { "word": "તમે",         "meaning": "You (formal)",             "example": "તમે ક્યાં છો? — Where are you?" },
+        { "word": "ઘર",          "meaning": "Home / House",             "example": "મારું ઘર ગુજરાતમાં — My home is in Gujarat" },
+        { "word": "નામ",         "meaning": "Name",                     "example": "તમારું નામ શું છે? — What is your name?" },
+        { "word": "ભાષા",        "meaning": "Language",                 "example": "ગુજરાતી ભાષા સુંદર — Gujarati language is beautiful" },
+        { "word": "શીખવું",      "meaning": "To learn",                 "example": "હું ગુજરાતી શીખું — I am learning Gujarati" },
+        { "word": "બોલવું",      "meaning": "To speak",                 "example": "ગુજરાતી બોલો — Speak Gujarati" },
+        { "word": "ફરી",         "meaning": "Again / Once more",        "example": "ફરી કહો — Say it again" },
+        { "word": "ધીમો",        "meaning": "Slowly",                   "example": "ધીમો બોલો — Speak slowly" },
+        { "word": "મદદ",         "meaning": "Help",                     "example": "મને મદદ કરો — Help me" },
+        { "word": "ખૂબ",         "meaning": "Very / A lot",             "example": "ખૂબ સારું — Very good" },
+        { "word": "થોડું",       "meaning": "A little",                 "example": "થોડું ગુજરાતી — A little Gujarati" },
+        { "word": "પાણી",        "meaning": "Water",                    "example": "પાણી આપો — Give me water" },
+        { "word": "ચા",           "meaning": "Tea",                      "example": "ચા ગરમ — The tea is hot" },
+        { "word": "ભૂખ",         "meaning": "Hunger",                   "example": "ભૂખ લાગી — I am hungry" },
+        { "word": "સમય",         "meaning": "Time",                     "example": "સમય ક્યારે? — What time is it?" },
+        { "word": "ઠીક છે",      "meaning": "That's fine / Got it",     "example": "ઠીક છે, ચાલો — OK, let's go" }
+      ]
+    },
+    {
+      "id": "v2",
+      "type": "vocabulary_spotlight",
+      "word": "નમસ્તે",
+      "meaning": "Hello / Goodbye",
+      "pronunciation": "Na-ma-ste",
+      "partOfSpeech": "greeting",
+      "examples": [
+        { "gu": "નમસ્તે! કેમ છો?", "en": "Hello! How are you?" },
+        { "gu": "ફરી મળીશું, નમસ્તે!", "en": "See you again, goodbye!" }
+      ],
+      "relatedWords": ["ફરી મળીશું (see you again)", "આવજો (goodbye formal)", "સસ્નેહ (with love)"],
+      "culturalNote": "Used for both hello and goodbye. The word comes from Sanskrit 'namas' (bow) + 'te' (to you). The palms-together gesture is called 'pranam' and shows deep respect."
+    },
+    {
+      "id": "v3",
+      "type": "word_family",
+      "title": "The 'Learn' Word Family",
+      "root": "શીખ",
+      "rootMeaning": "Root: to learn",
+      "members": [
+        { "word": "શીખવું",    "meaning": "To learn (verb infinitive)" },
+        { "word": "શીખું",     "meaning": "I learn (present)" },
+        { "word": "શીખ્યો",    "meaning": "Learned (past, male)" },
+        { "word": "શીખ્યા",    "meaning": "Learned (past, plural)" },
+        { "word": "શીખવો",     "meaning": "Teach! / Learn! (command)" },
+        { "word": "શિક્ષક",    "meaning": "Teacher (one who teaches)" }
+      ]
+    },
+    {
+      "id": "v4",
+      "type": "matching",
+      "title": "Match the Words",
+      "instruction": "Tap to match each Gujarati word with its English meaning",
+      "leftItems":  ["નમસ્તે", "આભાર", "ઠીક", "ઘર", "ખૂબ"],
+      "rightItems": ["Very/A lot", "Thank you", "House/Home", "Hello", "OK/Fine"],
+      "pairs": [[0,3],[1,1],[2,4],[3,2],[4,0]]
+    }
+  ]
+}

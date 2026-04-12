@@ -1,0 +1,115 @@
+{
+  "_comment": "English → Gujarati | Month 1 Week 1 | Quick Test",
+  "id": 7,
+  "type": "test",
+  "title": "Week 1 Quiz — Script & Greetings",
+  "description": "Test your knowledge of Gujarati vowels, basic greetings and essential phrases.",
+  "duration": "8 min",
+  "xp": 50,
+  "week": 1,
+  "month": 1,
+  "langPair": "en-gu",
+  "tags": ["quiz", "greetings", "vowels", "week1"],
+  "passingScore": 70,
+  "blocks": [
+    {
+      "id": "q1",
+      "type": "quiz",
+      "question": "What does 'નમસ્તે' (Namaste) mean?",
+      "options": ["Goodbye only", "Thank you", "Hello/Goodbye", "Sorry"],
+      "correct": 2,
+      "explanation": "'Namaste' (નમસ્તે) is used for both hello and goodbye in Gujarati. It comes from Sanskrit meaning 'I bow to you'."
+    },
+    {
+      "id": "q2",
+      "type": "quiz",
+      "question": "Which Gujarati word means 'Thank you'?",
+      "options": ["ઠીક", "આભાર", "ક્ષમા", "ફરી"],
+      "correct": 1,
+      "explanation": "'આભાર' (Aabhaar) means Thank you. ઠીક = OK, ક્ષમા = Sorry, ફરી = Again."
+    },
+    {
+      "id": "q3",
+      "type": "quiz",
+      "question": "How many vowels (સ્વર) does Gujarati have?",
+      "options": ["10", "11", "13", "16"],
+      "correct": 2,
+      "explanation": "Gujarati has 13 independent vowels: અ, આ, ઇ, ઈ, ઉ, ઊ, ઋ, એ, ઐ, ઓ, ઔ, અં, and અઃ."
+    },
+    {
+      "id": "q4",
+      "type": "quiz",
+      "question": "What does 'ધીમો' mean?",
+      "options": ["Fast", "Slowly", "Again", "Please"],
+      "correct": 1,
+      "explanation": "'ધીમો' means slowly. You say 'ધીમો બોલો' (dhimo bolo) = speak slowly."
+    },
+    {
+      "id": "q5",
+      "type": "quiz",
+      "question": "'હું ગુજરાતી શીખું છું' means:",
+      "options": ["I speak Gujarati", "I like Gujarati", "I am learning Gujarati", "I understand Gujarati"],
+      "correct": 2,
+      "explanation": "'શીખું છું' (shikhun chhun) = am learning. 'હું' = I, so the sentence = I am learning Gujarati."
+    },
+    {
+      "id": "q6",
+      "type": "quiz",
+      "question": "Which vowel sounds like 'aa' in 'father'?",
+      "options": ["અ (a)", "ઇ (i)", "આ (aa)", "ઉ (u)"],
+      "correct": 2,
+      "explanation": "'આ' (aa) is the long 'a' sound, like the 'a' in 'father'. 'અ' is the shorter 'a' sound like in 'about'."
+    },
+    {
+      "id": "q7",
+      "type": "quiz",
+      "question": "How do you ask 'What is your name?' in Gujarati?",
+      "options": ["તમે ક્યાં છો?", "તમારું નામ શું છે?", "કેમ છો?", "ક્યાંથી છો?"],
+      "correct": 1,
+      "explanation": "'તમારું નામ શું છે?' = 'Your name what is?' — standard SOV word order in Gujarati."
+    },
+    {
+      "id": "q8",
+      "type": "quiz",
+      "question": "What does the word 'ઘર' mean?",
+      "options": ["City", "Language", "House/Home", "Friend"],
+      "correct": 2,
+      "explanation": "'ઘર' (ghar) means house or home. Example: 'મારું ઘર ગુજરાતમાં' = My home is in Gujarat."
+    },
+    {
+      "id": "q9",
+      "type": "quiz",
+      "question": "Gujarati sentence order is:",
+      "options": ["Subject-Verb-Object (SVO)", "Verb-Subject-Object (VSO)", "Subject-Object-Verb (SOV)", "Object-Verb-Subject (OVS)"],
+      "correct": 2,
+      "explanation": "Gujarati uses SOV order — the verb comes LAST. 'I food eat' instead of English's 'I eat food'."
+    },
+    {
+      "id": "q10",
+      "type": "quiz",
+      "question": "Vowel marks attached to consonants in Gujarati are called:",
+      "options": ["Svar", "Maatra", "Viraam", "Vyanjan"],
+      "correct": 1,
+      "explanation": "Vowel marks (diacritics) attached to consonants are called 'Maatra' (માત્રા). Standalone vowels are called 'Svar' (સ્વર)."
+    },
+    {
+      "id": "q11",
+      "type": "true_false",
+      "title": "Script Facts — True or False?",
+      "items": [
+        { "statement": "Gujarati script is derived from Devanagari (Hindi script).", "answer": true, "explanation": "Yes! Both Gujarati and Devanagari scripts share the same Brahmi origins from ancient India." },
+        { "statement": "In Gujarati, 'kal' always means 'tomorrow'.", "answer": false, "explanation": "'kal' (કાલ) means BOTH yesterday AND tomorrow in Gujarati! Context tells you which one. 'gai kal' = yesterday, 'aavti kal' = tomorrow." },
+        { "statement": "The aspirated consonant ખ is produced with a puff of air.", "answer": true, "explanation": "Yes! Hold your hand near your mouth — you feel a puff of air when saying ખ (kh) but not ક (k)." }
+      ]
+    },
+    {
+      "id": "q12",
+      "type": "matching",
+      "title": "Final Match — Gujarati Words",
+      "instruction": "Match each Gujarati word with its English meaning",
+      "leftItems":  ["નમસ્તે", "આભાર", "ઘ-ર", "ભ-ષ-", "ઠ-ક"],
+      "rightItems": ["House", "Thank you", "Language", "Hello", "OK/Fine"],
+      "pairs": [[0,3],[1,1],[2,0],[3,2],[4,4]]
+    }
+  ]
+}
