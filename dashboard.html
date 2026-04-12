@@ -2,10 +2,10 @@
 
 <html class="light" lang="en"><head>
 <meta charset="utf-8"/>
-<meta name="theme-color" content="#006d4a"/>
-<meta name="description" content="LinguaLeap - Master pronunciation with AI-powered speech recognition"/>
+<meta name="theme-color" content="#5b4fcf"/>
+<meta name="description" content="LearnWise - Master pronunciation with AI-powered speech recognition"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>LinguaLeap - Dashboard</title>
+<title>LearnWise - Dashboard</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Be+Vietnam+Pro:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
@@ -26,7 +26,7 @@
               "secondary-fixed": "#c8f17a",
               "on-primary-container": "#005a3c",
               "outline-variant": "#9db6c3",
-              "primary": "#006d4a",
+              "primary": "#5b4fcf",
               "surface-container-low": "#e7f6ff",
               "surface": "#f4faff",
               "surface-container-high": "#d5ecf8",
@@ -53,7 +53,7 @@
               "on-secondary-container": "#3f5a00",
               "tertiary-fixed": "#fda625",
               "inverse-surface": "#041015",
-              "surface-tint": "#006d4a",
+              "surface-tint": "#5b4fcf",
               "on-tertiary-container": "#502f00",
               "tertiary": "#875400",
               "on-primary-fixed-variant": "#006544",
@@ -104,7 +104,7 @@
 <div class="w-10 h-10 rounded-full bg-surface-container-highest overflow-hidden">
 <img alt="User Profile Photo" class="w-full h-full object-cover" data-alt="close-up portrait of a friendly young man with short dark hair and a warm smile against a soft blue background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCtkKtVX04r8It4Iguvv6a2FbqjIluK-fqz-RUd-sSNkNN8fRQ23dWqPstZVUm3QY-kQvHAH8tK4FSK8UM-IuzBjK1oMW_veFNSkyImNmHYFtsOcO5_50anm1WVJQWUllcblBjyoQ6j9DTL3jknjl7ZgM-AETZlj0tSEeDy87ApNEZabpu7DKXG1LwXzkb59P75wOMHSBdyK7K0Dzr6oNhYIEUJL1d6kmH_bNLGM9YjTDRSX-MeBJ7QwspwWJGGZt-GWsTsmNQ7pE9e"/>
 </div>
-<span class="text-xl font-extrabold text-[#006d4a] dark:text-[#69f6b8] font-headline tracking-tight">LinguaLeap</span>
+<span class="text-xl font-extrabold text-[#5b4fcf] dark:text-[#69f6b8] font-headline tracking-tight">LearnWise</span>
 </div>
 <div class="flex items-center gap-4 bg-surface-container-low px-4 py-1.5 rounded-full">
 <div class="flex items-center gap-1">
@@ -316,7 +316,7 @@
 </main>
 <!-- Updated BottomNavBar with 4 tabs -->
 <nav id="bottom-nav" class="fixed bottom-0 left-0 w-full flex justify-around items-center px-4 pb-safe pt-2 pb-4 bg-[#f4faff]/95 backdrop-blur-md border-t border-[#9db6c3]/15 shadow-[0_-4px_20px_-4px_rgba(29,53,64,0.06)] z-50 rounded-t-[1.5rem]">
-<a class="flex flex-col items-center justify-center bg-[#c8f17a] text-[#006d4a] rounded-[1.5rem] px-4 py-2 transition-all duration-300 transform active:scale-90" href="dashboard.html">
+<a class="flex flex-col items-center justify-center bg-[#c8f17a] text-[#5b4fcf] rounded-[1.5rem] px-4 py-2 transition-all duration-300 transform active:scale-90" href="dashboard.html">
 <span class="material-symbols-outlined text-[22px]" style="font-variation-settings:'FILL' 1;">home</span>
 <span class="text-[10px] font-semibold mt-0.5">Home</span>
 </a>
@@ -339,7 +339,7 @@
 </nav>
 
 <script>
-// ——— LinguaLeap SPA Router ———
+// ——— LearnWise SPA Router ———
 (function() {
   const PAGE = 'dashboard.html';
 
@@ -414,7 +414,7 @@
 
   // Toast notification
   const toast = document.createElement('div');
-  toast.className='fixed top-4 right-4 bg-[#006d4a] text-white px-4 py-3 rounded-2xl shadow-xl flex items-center gap-2 z-[9999] transform translate-x-full transition-transform duration-500';
+  toast.className='fixed top-4 right-4 bg-[#5b4fcf] text-white px-4 py-3 rounded-2xl shadow-xl flex items-center gap-2 z-[9999] transform translate-x-full transition-transform duration-500';
   toast.innerHTML='<span class="material-symbols-outlined text-[#c8f17a]">local_fire_department</span><span class="text-sm font-semibold">7-day streak! Keep it up 🔥</span>';
   document.body.appendChild(toast);
   setTimeout(()=>toast.style.transform='translateX(0)',500);
