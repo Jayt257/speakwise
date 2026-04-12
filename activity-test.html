@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Quiz · LearnWise</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800;900&family=Inter:wght@300;400;500;600&family=Noto+Sans+Gujarati:wght@400;700;900&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script src="data/roadmap-data.js"></script><script src="data/activities-content.js"></script><script src="data/en-gu-month1.js"></script>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Inter',sans-serif;background:#07061a;color:#e2e8f0;min-height:100vh;overflow-x:hidden;}
+h1,h2,h3,button{font-family:'Plus Jakarta Sans',sans-serif;}
+.gu{font-family:'Noto Sans Gujarati',sans-serif;}
+.ms{font-variation-settings:'FILL' 0,'wght' 400}
+.bg{position:fixed;inset:0;z-index:0;background:radial-gradient(ellipse 80% 60% at 50% 10%,#2a0a0a 0%,#0d0b22 50%,#060410 100%);}
+.gbg{position:fixed;inset:0;z-index:0;opacity:.35;background:repeating-linear-gradient(0deg,transparent,transparent 47px,rgba(239,68,68,.05) 47px,rgba(239,68,68,.05) 48px),repeating-linear-gradient(90deg,transparent,transparent 47px,rgba(239,68,68,.05) 47px,rgba(239,68,68,.05) 48px);}
+.orb{position:fixed;border-radius:50%;filter:blur(90px);z-index:0;}
+@keyframes fl{0%,100%{transform:translateY(0);}50%{transform:translateY(-28px);}}
+.page{position:relative;z-index:1;}
+.nav{position:sticky;top:0;z-index:50;background:rgba(7,6,26,.9);backdrop-filter:blur(22px);border-bottom:1px solid rgba(239,68,68,.2);height:56px;display:flex;align-items:center;padding:0 16px;gap:10px;}
+.back{width:34px;height:34px;border-radius:9px;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.05);display:flex;align-items:center;justify-content:center;cursor:pointer;color:rgba(255,255,255,.55);text-decoration:none;transition:all .18s;flex-shrink:0;}
+.back:hover{background:rgba(255,255,255,.13);color:#fff;}
+.pbar{height:4px;background:rgba(255,255,255,.06);}
+.pfill{height:4px;background:linear-gradient(90deg,#ef4444,#f87171);transition:width .5s ease;}
+.cmax{max-width:680px;margin:0 auto;padding:16px 16px 100px;}
+
+/* Question card */
+.q-stage{min-height:calc(100vh - 180px);display:flex;flex-direction:column;justify-content:center;}
+.q-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:22px;padding:26px;margin-bottom:18px;animation:fadeup .4s ease both;}
+.q-header{display:flex;align-items:center;gap:10px;margin-bottom:16px;}
+.q-badge{width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,#ef4444,#b91c1c);display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:900;color:#fff;flex-shrink:0;}
+.q-of{font-size:11px;color:rgba(255,255,255,.3);font-weight:600;}
+.q-text{font-size:17px;font-weight:800;color:#fff;line-height:1.5;margin-bottom:20px;}
+.q-text .gu-q{font-family:'Noto Sans Gujarati',sans-serif;color:#f87171;font-size:1.1em;}
+
+/* Options */
+.opt{width:100%;padding:14px 18px;border-radius:14px;border:1.5px solid rgba(255,255,255,.1);background:rgba(255,255,255,.04);color:rgba(255,255,255,.8);font-weight:700;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;font-size:14px;text-align:left;margin-bottom:9px;transition:all .2s;display:flex;align-items:center;gap:12px;position:relative;overflow:hidden;}
+.opt:hover:not([disabled]){background:rgba(239,68,68,.1);border-color:rgba(239,68,68,.35);transform:translateX(4px);}
+.opt:active:not([disabled]){transform:scale(.98);}
+.opt.selected{border-color:rgba(239,68,68,.5);background:rgba(239,68,68,.12);}
+.opt.correct{border-color:#10b981!important;background:rgba(16,185,129,.15)!important;color:#34d399!important;}
+.opt.wrong{border-color:#ef4444!important;background:rgba(239,68,68,.12)!important;color:#f87171!important;}
+.opt-letter{width:28px;height:28px;border-radius:8px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;flex-shrink:0;transition:all .2s;}
+.opt.correct .opt-letter{background:rgba(16,185,129,.3);border-color:#10b981;}
+.opt.wrong .opt-letter{background:rgba(239,68,68,.25);border-color:#ef4444;}
+.opt-gu{font-family:'Noto Sans Gujarati',sans-serif;font-size:1.1em;}
+
+/* Explanation bubble */
+.explanation{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-left:3px solid #10b981;border-radius:0 14px 14px 0;padding:14px 16px;margin-top:12px;font-size:13px;color:rgba(255,255,255,.6);line-height:1.7;animation:slideExpl .35s ease both;}
+.explanation.wrong-expl{border-left-color:#ef4444;}
+@keyframes slideExpl{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:translateY(0);}}
+
+/* Score screen */
+.score-screen{text-align:center;padding:40px 20px;animation:fadeup .5s ease both;}
+.score-ring{width:140px;height:140px;border-radius:50%;margin:0 auto 24px;position:relative;display:flex;align-items:center;justify-content:center;}
+.score-ring svg{position:absolute;inset:0;}
+.score-num{font-size:42px;font-weight:900;color:#fff;line-height:1;}
+.score-label{font-size:14px;font-weight:700;color:rgba(255,255,255,.4);}
+.review-item{display:flex;align-items:flex-start;gap:12px;padding:12px 16px;border-radius:12px;margin-bottom:8px;text-align:left;}
+.review-item.ok{background:rgba(16,185,129,.07);border:1px solid rgba(16,185,129,.2);}
+.review-item.bad{background:rgba(239,68,68,.06);border:1px solid rgba(239,68,68,.15);}
+
+/* Bottom bar */
+.bbar{position:fixed;bottom:0;left:0;right:0;z-index:40;background:rgba(7,6,26,.94);backdrop-filter:blur(22px);border-top:1px solid rgba(239,68,68,.2);padding:12px 16px;padding-bottom:max(12px,env(safe-area-inset-bottom,12px));}
+.binner{max-width:680px;margin:0 auto;}
+.btn-nxt{width:100%;background:linear-gradient(135deg,#ef4444,#b91c1c);color:#fff;font-weight:800;border:none;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;border-radius:13px;padding:13px;font-size:15px;display:flex;align-items:center;justify-content:center;gap:8px;transition:all .25s;box-shadow:0 6px 24px rgba(239,68,68,.4);position:relative;overflow:hidden;}
+.btn-nxt:hover{transform:translateY(-2px);box-shadow:0 10px 32px rgba(239,68,68,.6);}
+.btn-nxt:active{transform:scale(.97);}
+.btn-nxt:disabled{opacity:.3;cursor:not-allowed;transform:none!important;}
+.btn-nxt.green{background:linear-gradient(135deg,#10b981,#059669);box-shadow:0 6px 24px rgba(16,185,129,.4);}
+@keyframes fadeup{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:translateY(0);}}
+.ripple{position:absolute;border-radius:50%;background:rgba(255,255,255,.18);transform:scale(0);animation:rp .55s linear;pointer-events:none;}
+@keyframes rp{to{transform:scale(4);opacity:0;}}
+#fw{position:fixed;inset:0;z-index:800;pointer-events:none;display:none;}
+::-webkit-scrollbar{width:4px;}::-webkit-scrollbar-thumb{background:rgba(239,68,68,.3);border-radius:2px;}
+</style>
+</head>
+<body>
+<div class="bg"></div><div class="gbg"></div>
+<div class="orb" style="width:340px;height:340px;background:rgba(239,68,68,.14);top:-90px;right:-60px;animation:fl 14s ease-in-out infinite;"></div>
+<div class="orb" style="width:240px;height:240px;background:rgba(248,113,113,.09);bottom:10%;left:-50px;animation:fl 18s ease-in-out -8s infinite;"></div>
+<canvas id="fw"></canvas>
+
+<div class="page">
+  <nav class="nav">
+    <a class="back" href="roadmap.html" id="back-a"><span class="ms material-symbols-outlined" style="font-size:20px;">arrow_back</span></a>
+    <div style="width:30px;height:30px;border-radius:9px;background:linear-gradient(135deg,#ef4444,#b91c1c);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+      <span class="ms material-symbols-outlined" style="font-size:16px;color:#fff;font-variation-settings:'FILL' 1">quiz</span>
+    </div>
+    <div style="flex:1;min-width:0;"><div style="font-size:13px;font-weight:800;color:#fff;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;" id="nav-title">Quick Test</div></div>
+    <div style="display:flex;gap:6px;flex-shrink:0;">
+      <span style="background:rgba(239,68,68,.15);border:1px solid rgba(239,68,68,.3);color:#f87171;border-radius:999px;padding:4px 10px;font-size:11px;font-weight:700;" id="nav-prog">1/10</span>
+      <span style="background:rgba(239,68,68,.2);border:1px solid rgba(239,68,68,.3);color:#f87171;border-radius:999px;padding:4px 10px;font-size:11px;font-weight:800;" id="nav-xp">⚡50</span>
+    </div>
+  </nav>
+  <div class="pbar"><div class="pfill" id="prog" style="width:0%"></div></div>
+  <div class="cmax" id="content"></div>
+</div>
+
+<div class="bbar">
+  <div class="binner">
+    <button class="btn-nxt" id="btn-nxt" disabled onclick="onNext()">
+      <span class="ms material-symbols-outlined" style="font-size:19px;font-variation-settings:'FILL' 1" id="btn-ic">arrow_forward</span>
+      <span id="btn-tx">Select an answer</span>
+    </button>
+  </div>
+</div>
+
+<script>
+const P=new URLSearchParams(location.search);
+const LANG=P.get('lang')||'gujarati',AID=parseInt(P.get('id'))||7,AXP=parseInt(P.get('xp'))||50;
+let act=null,cnt=null,qs=[],cur=0,answers=[],answered=false,showScore=false;
+const LETTERS=['A','B','C','D'];
+
+function init(){
+  const all=LWData.getActivities(LANG);
+  outer:for(const m of all)for(const a of m.activities){if(a.id===AID){act=a;break outer;}}
+  setTimeout(()=>{
+    cnt=LWContent.getContent(AID);
+    if(cnt?.blocks)qs=cnt.blocks.filter(b=>b.type==='quiz');
+    if(!qs.length)qs=[{type:'quiz',question:'What does "નમસ્તે" mean?',options:['Goodbye','Thank you','Hello/Goodbye','Sorry'],correct:2,explanation:'Namaste is used for both hello and goodbye.'}];
+    document.getElementById('nav-title').textContent=cnt?.title||act?.title||'Quick Test';
+    document.getElementById('nav-xp').textContent='⚡'+(cnt?.xp||act?.xp||AXP);
+    render();
+  },150);
+}
+
+function render(){
+  if(showScore){renderScore();return;}
+  const c=document.getElementById('content');
+  const q=qs[cur];if(!q){renderScore();return;}
+  const qText=q.question||'';
+  const opts=q.options||[];
+  const pct=Math.round((cur/qs.length)*100);
+  document.getElementById('prog').style.width=pct+'%';
+  document.getElementById('nav-prog').textContent=(cur+1)+'/'+qs.length;
+
+  const highlighted=esc(qText).replace(/([\u0A80-\u0AFF]+)/g,'<span class="gu-q gu">$1</span>');
+
+  c.innerHTML=`
+  <div class="q-stage">
+    <div class="q-card">
+      <div class="q-header">
+        <div class="q-badge">${cur+1}</div>
+        <div>
+          <div class="q-of">Question ${cur+1} of ${qs.length}</div>
+          <div style="font-size:11px;color:rgba(255,255,255,.2);margin-top:2px;">${cnt?.title||'Quick Test'}</div>
+        </div>
+        <!-- Mini progress dots -->
+        <div style="display:flex;gap:4px;margin-left:auto;">
+          ${qs.map((_,i)=>`<div style="width:7px;height:7px;border-radius:50%;background:${i<cur?'#10b981':i===cur?'#ef4444':'rgba(255,255,255,.1)'}"></div>`).join('')}
+        </div>
+      </div>
+      <div class="q-text">${highlighted}</div>
+      ${opts.map((opt,i)=>{
+        const guOpt=String(opt).replace(/([\u0A80-\u0AFF]+)/g,'<span class="opt-gu gu">$1</span>');
+        return`<button class="opt" id="opt${i}" onclick="pickAnswer(${i})"${answered?' disabled':''}>
+          <div class="opt-letter">${LETTERS[i]}</div>
+          <span style="flex:1;">${guOpt}</span>
+        </button>`;
+      }).join('')}
+      <div id="expl" style="display:none;"></div>
+    </div>
+  </div>`;
+  updateBtn();
+}
+
+function pickAnswer(i){
+  if(answered)return;
+  answered=true;
+  const q=qs[cur];const correct=q.correct;
+  answers[cur]=i;
+  // Visual feedback on options
+  document.querySelectorAll('.opt').forEach((btn,j)=>{
+    btn.disabled=true;
+    if(j===correct)btn.classList.add('correct');
+    else if(j===i&&i!==correct)btn.classList.add('wrong');
+  });
+  // Explanation
+  const expl=document.getElementById('expl');
+  if(expl&&q.explanation){
+    expl.style.display='block';
+    expl.className='explanation'+(i!==correct?' wrong-expl':'');
+    expl.innerHTML=`<strong style="color:${i===correct?'#34d399':'#f87171'};">${i===correct?'✓ Correct!':'✗ Incorrect!'}</strong> ${esc(q.explanation||'')}`;
+  }
+  updateBtn();
+}
+
+function onNext(){
+  if(!answered)return;
+  if(cur<qs.length-1){cur++;answered=false;render();window.scrollTo({top:0,behavior:'smooth'});}
+  else{showScore=true;renderScore();}
+}
+
+function updateBtn(){
+  const btn=document.getElementById('btn-nxt');const ic=document.getElementById('btn-ic');const tx=document.getElementById('btn-tx');
+  if(!answered){btn.disabled=true;ic.textContent='arrow_forward';tx.textContent='Select an answer';}
+  else if(cur<qs.length-1){btn.disabled=false;btn.className='btn-nxt';ic.textContent='arrow_forward';tx.textContent='Next Question';}
+  else{btn.disabled=false;btn.className='btn-nxt green';ic.textContent='emoji_events';tx.textContent='See Results';}
+}
+
+function renderScore(){
+  const correct=answers.filter((a,i)=>a===qs[i]?.correct).length;
+  const total=qs.length;const pct=Math.round((correct/total)*100);
+  const xp=cnt?.xp||AXP;
+  document.getElementById('prog').style.width='100%';
+  document.getElementById('nav-prog').textContent=correct+'/'+total;
+  const grade=pct>=80?{label:'Excellent!',color:'#10b981',emoji:'🌟'}:pct>=60?{label:'Good Job!',color:'#fbbf24',emoji:'👍'}:{label:'Keep Practicing',color:'#f87171',emoji:'💪'};
+  const c=document.getElementById('content');
+  // SVG ring for score
+  const r=52,circ=2*Math.PI*r,dash=circ*(pct/100);
+  c.innerHTML=`
+  <div class="score-screen">
+    <div style="font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.3);margin-bottom:20px;">Test Complete — Results</div>
+    <div class="score-ring">
+      <svg viewBox="0 0 120 120" style="transform:rotate(-90deg)">
+        <circle cx="60" cy="60" r="${r}" fill="none" stroke="rgba(255,255,255,.06)" stroke-width="12"/>
+        <circle cx="60" cy="60" r="${r}" fill="none" stroke="${grade.color}" stroke-width="12" stroke-dasharray="${dash} ${circ}" stroke-linecap="round" style="transition:stroke-dasharray 1s ease"/>
+      </svg>
+      <div><div class="score-num" style="color:${grade.color}">${pct}%</div><div class="score-label">${correct}/${total}</div></div>
+    </div>
+    <div style="font-size:26px;font-weight:900;color:#fff;margin-bottom:6px;">${grade.emoji} ${grade.label}</div>
+    <div style="font-size:14px;color:rgba(255,255,255,.4);margin-bottom:8px;">${correct} correct out of ${total} questions</div>
+    <div style="font-size:22px;font-weight:900;background:linear-gradient(135deg,#f87171,#ef4444);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:24px;">+${xp} XP</div>
+
+    <!-- Answer review -->
+    <div style="font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:rgba(255,255,255,.3);margin-bottom:12px;text-align:left;">Answer Review</div>
+    ${qs.map((q,i)=>{
+      const ok=answers[i]===q.correct;
+      return`<div class="review-item ${ok?'ok':'bad'}">
+        <span class="ms material-symbols-outlined" style="font-size:18px;color:${ok?'#10b981':'#f87171'};font-variation-settings:'FILL' 1;flex-shrink:0;">${ok?'check_circle':'cancel'}</span>
+        <div style="flex:1;">
+          <div style="font-size:13px;font-weight:700;color:rgba(255,255,255,.7);margin-bottom:3px;">${esc(q.question||'').replace(/([\u0A80-\u0AFF]+)/g,'<span class="gu" style="color:#f87171;font-size:1.05em;">$1</span>')}</div>
+          ${!ok?`<div style="font-size:11px;color:#34d399;">Correct: ${esc(q.options?.[q.correct]||'')}</div>`:''}
+        </div>
+      </div>`;
+    }).join('')}
+
+    <button onclick="doComplete()" style="width:100%;margin-top:20px;background:linear-gradient(135deg,#10b981,#059669);color:#fff;font-weight:800;border:none;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;border-radius:13px;padding:14px;font-size:15px;display:flex;align-items:center;justify-content:center;gap:8px;transition:all .2s;box-shadow:0 6px 24px rgba(16,185,129,.4);" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">
+      <span class="ms material-symbols-outlined" style="font-size:19px;font-variation-settings:'FILL' 1">check_circle</span>Claim XP &amp; Continue
+    </button>
+  </div>`;
+  // Hide bottom bar
+  document.querySelector('.bbar').style.display='none';
+  launchFW();
+}
+
+function doComplete(){
+  const xp=cnt?.xp||AXP;const p=LWData.getProgress(LANG);const ids=p.completedIds||[];
+  if(!ids.includes(AID))ids.push(AID);LWData.saveProgress(LANG,ids,(p.totalXP||0)+xp);
+  goBack();
+}
+function goBack(){const p=LWData.getProgress(LANG);const d=(p.completedIds||[]).includes(AID);window.location.href='roadmap.html?lang='+LANG+(d?'&completed='+AID+'&xp='+(cnt?.xp||AXP):'');}
+function esc(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+function launchFW(){const c=document.getElementById('fw');c.style.display='block';c.width=innerWidth;c.height=innerHeight;const ctx=c.getContext('2d');const cols=['#ef4444','#f87171','#10b981','#fbbf24'];const ps=Array.from({length:90},()=>({x:innerWidth/2+(Math.random()-.5)*280,y:innerHeight*.32,vx:(Math.random()-.5)*14,vy:(Math.random()-.5)*14-5,alpha:1,color:cols[~~(Math.random()*cols.length)],sz:Math.random()*5+2}));const t=()=>{ctx.clearRect(0,0,c.width,c.height);ps.forEach(p=>{p.x+=p.vx;p.y+=p.vy;p.vy+=.22;p.alpha-=.014;ctx.globalAlpha=Math.max(0,p.alpha);ctx.fillStyle=p.color;ctx.beginPath();ctx.arc(p.x,p.y,p.sz,0,Math.PI*2);ctx.fill();});if(ps.some(p=>p.alpha>0))requestAnimationFrame(t);else c.style.display='none';};t();}
+init();
+</script>
+</body>
+</html>

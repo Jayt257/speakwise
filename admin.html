@@ -1,0 +1,1899 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Admin · LearnWise</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script src="data/roadmap-data.js"></script>
+<script src="data/activities-content.js"></script>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{height:100%;overflow:hidden;font-family:'Inter',sans-serif;background:#0a0818;color:#e2e8f0;}
+h1,h2,h3,h4,button,label,.headline{font-family:'Plus Jakarta Sans',sans-serif;}
+.material-symbols-outlined{font-variation-settings:'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 24;vertical-align:middle;}
+
+/* Layout */
+#app{display:flex;flex-direction:column;height:100vh;}
+#topbar{height:56px;background:rgba(10,8,24,0.98);border-bottom:1px solid rgba(91,79,207,0.25);display:flex;align-items:center;padding:0 20px;gap:16px;flex-shrink:0;z-index:50;}
+#body{display:flex;flex:1;overflow:hidden;}
+#sidebar{width:240px;background:rgba(15,12,35,0.98);border-right:1px solid rgba(91,79,207,0.15);display:flex;flex-direction:column;overflow-y:auto;flex-shrink:0;}
+#center{flex:1;display:flex;flex-direction:column;overflow:hidden;}
+#activity-list-panel{width:300px;border-right:1px solid rgba(91,79,207,0.15);background:rgba(12,10,28,0.98);display:flex;flex-direction:column;overflow:hidden;flex-shrink:0;}
+#editor-panel{flex:1;display:flex;flex-direction:column;overflow:hidden;background:#0d0b22;}
+
+/* Scrollbars */
+::-webkit-scrollbar{width:5px;height:5px;}
+::-webkit-scrollbar-thumb{background:rgba(91,79,207,0.35);border-radius:3px;}
+
+/* Sidebar sections */
+.sb-section{padding:16px;}
+.sb-section+.sb-section{border-top:1px solid rgba(255,255,255,0.06);}
+.sb-label{font-size:10px;font-weight:800;letter-spacing:0.1em;text-transform:uppercase;color:rgba(165,160,223,0.5);margin-bottom:10px;}
+
+/* Language cards */
+.lang-card{display:flex;align-items:center;gap:10px;padding:9px 10px;border-radius:10px;cursor:pointer;transition:all 0.18s ease;border:1px solid transparent;}
+.lang-card:hover{background:rgba(91,79,207,0.15);border-color:rgba(91,79,207,0.2);}
+.lang-card.active{background:rgba(91,79,207,0.22);border-color:rgba(91,79,207,0.45);}
+.lang-flag{font-size:20px;width:28px;text-align:center;}
+.lang-name{font-size:13px;font-weight:700;color:rgba(255,255,255,0.9);}
+.lang-count{margin-left:auto;font-size:10px;color:rgba(165,160,223,0.5);background:rgba(91,79,207,0.15);padding:2px 7px;border-radius:999px;}
+
+/* Type tabs */
+.type-pill{display:flex;align-items:center;gap:8px;padding:8px 10px;border-radius:9px;cursor:pointer;transition:all 0.18s ease;border:1px solid transparent;}
+.type-pill:hover{background:rgba(255,255,255,0.06);}
+.type-pill.active{background:rgba(91,79,207,0.2);border-color:rgba(91,79,207,0.35);}
+.type-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;}
+.type-name{font-size:12px;font-weight:700;color:rgba(255,255,255,0.75);}
+.type-pill.active .type-name{color:white;}
+
+/* Month tabs */
+.month-btn{padding:6px 12px;border-radius:8px;font-size:11px;font-weight:700;cursor:pointer;border:1px solid rgba(255,255,255,0.08);background:rgba(255,255,255,0.05);color:rgba(255,255,255,0.45);transition:all 0.18s;font-family:'Plus Jakarta Sans',sans-serif;}
+.month-btn:hover{background:rgba(91,79,207,0.2);color:rgba(255,255,255,0.8);}
+.month-btn.active{background:rgba(91,79,207,0.3);border-color:rgba(91,79,207,0.5);color:white;}
+
+/* Activity list items */
+.act-item{padding:10px 14px;cursor:pointer;border-bottom:1px solid rgba(255,255,255,0.04);transition:background 0.15s;border-left:3px solid transparent;}
+.act-item:hover{background:rgba(91,79,207,0.1);}
+.act-item.active{background:rgba(91,79,207,0.18);border-left-color:#5b4fcf;}
+.act-item-title{font-size:12px;font-weight:700;color:rgba(255,255,255,0.85);line-height:1.4;margin-bottom:3px;}
+.act-item-meta{font-size:10px;color:rgba(255,255,255,0.35);display:flex;align-items:center;gap:8px;}
+.act-item-badge{display:inline-flex;align-items:center;gap:3px;font-size:9px;font-weight:700;padding:1px 6px;border-radius:999px;}
+.has-content{background:rgba(16,185,129,0.2);color:#34d399;}
+.no-content{background:rgba(255,255,255,0.08);color:rgba(255,255,255,0.35);}
+
+/* Editor header */
+#ed-header{padding:20px 24px 0;border-bottom:1px solid rgba(255,255,255,0.07);flex-shrink:0;}
+.ed-tabs{display:flex;gap:4px;margin-top:14px;}
+.ed-tab{padding:8px 16px;font-size:12px;font-weight:700;cursor:pointer;border-radius:9px 9px 0 0;border:1px solid transparent;border-bottom:none;color:rgba(255,255,255,0.4);transition:all 0.18s;}
+.ed-tab:hover{color:rgba(255,255,255,0.7);}
+.ed-tab.active{background:rgba(91,79,207,0.2);border-color:rgba(91,79,207,0.3);color:white;}
+
+/* Editor body */
+#ed-body{flex:1;overflow-y:auto;padding:20px 24px;}
+
+/* Form fields */
+.field-label{font-size:11px;font-weight:700;color:rgba(165,160,223,0.7);margin-bottom:6px;text-transform:uppercase;letter-spacing:0.05em;}
+.field-input{width:100%;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:10px 13px;font-size:13px;color:white;font-family:'Inter',sans-serif;outline:none;transition:border-color 0.18s;}
+.field-input:focus{border-color:rgba(91,79,207,0.6);background:rgba(91,79,207,0.08);}
+.field-input::placeholder{color:rgba(255,255,255,0.2);}
+textarea.field-input{resize:vertical;min-height:80px;line-height:1.6;}
+.field-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.field-row-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;}
+
+/* Blocks */
+.block-card{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:12px;margin-bottom:12px;overflow:hidden;transition:border-color 0.18s;}
+.block-card:hover{border-color:rgba(91,79,207,0.3);}
+.block-header{display:flex;align-items:center;gap:8px;padding:10px 14px;background:rgba(255,255,255,0.03);border-bottom:1px solid rgba(255,255,255,0.05);cursor:pointer;}
+.block-icon{width:28px;height:28px;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.block-title{font-size:12px;font-weight:700;color:rgba(255,255,255,0.8);flex:1;}
+.block-body{padding:14px;}
+.block-actions{display:flex;gap:4px;margin-left:auto;}
+.block-btn{width:26px;height:26px;border-radius:7px;border:1px solid rgba(255,255,255,0.08);background:rgba(255,255,255,0.04);cursor:pointer;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,0.35);transition:all 0.15s;}
+.block-btn:hover{background:rgba(91,79,207,0.2);color:white;}
+.block-btn.del:hover{background:rgba(239,68,68,0.2);color:#ef4444;border-color:rgba(239,68,68,0.3);}
+
+/* Add block menu */
+.add-block-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;}
+.add-block-btn{padding:10px 8px;border-radius:10px;border:1px solid rgba(255,255,255,0.08);background:rgba(255,255,255,0.04);cursor:pointer;text-align:center;transition:all 0.18s;}
+.add-block-btn:hover{border-color:rgba(91,79,207,0.4);background:rgba(91,79,207,0.12);}
+.add-block-btn .icon{font-size:20px;margin-bottom:4px;display:block;}
+.add-block-btn .lbl{font-size:10px;font-weight:700;color:rgba(255,255,255,0.55);}
+
+/* Buttons */
+.btn{display:inline-flex;align-items:center;gap:6px;padding:9px 16px;border-radius:10px;font-size:13px;font-weight:700;cursor:pointer;border:none;transition:all 0.18s;font-family:'Plus Jakarta Sans',sans-serif;}
+.btn-primary{background:linear-gradient(135deg,#5b4fcf,#7c6fd4);color:white;box-shadow:0 4px 14px rgba(91,79,207,0.35);}
+.btn-primary:hover{transform:translateY(-1px);box-shadow:0 6px 20px rgba(91,79,207,0.5);}
+.btn-secondary{background:rgba(255,255,255,0.08);color:rgba(255,255,255,0.75);border:1px solid rgba(255,255,255,0.1);}
+.btn-secondary:hover{background:rgba(255,255,255,0.13);color:white;}
+.btn-danger{background:rgba(239,68,68,0.15);color:#f87171;border:1px solid rgba(239,68,68,0.2);}
+.btn-danger:hover{background:rgba(239,68,68,0.25);}
+.btn-success{background:rgba(16,185,129,0.15);color:#34d399;border:1px solid rgba(16,185,129,0.25);}
+.btn-success:hover{background:rgba(16,185,129,0.25);}
+.btn-sm{padding:6px 12px;font-size:11px;}
+
+/* XP editor */
+.xp-input{width:80px;background:rgba(91,79,207,0.15);border:1px solid rgba(91,79,207,0.3);border-radius:8px;padding:8px 10px;font-size:14px;font-weight:800;color:#a5a0df;text-align:center;font-family:'Plus Jakarta Sans',sans-serif;outline:none;}
+.xp-input:focus{border-color:#5b4fcf;}
+
+/* Empty state */
+.empty-state{display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;gap:16px;color:rgba(255,255,255,0.25);text-align:center;padding:40px;}
+
+/* Toast */
+#toast{position:fixed;bottom:24px;right:24px;z-index:999;transform:translateY(20px);opacity:0;transition:all 0.3s cubic-bezier(.34,1.3,.64,1);pointer-events:none;}
+#toast.show{opacity:1;transform:translateY(0);}
+.toast-inner{background:rgba(8,6,22,0.97);border:1px solid rgba(91,79,207,0.35);border-radius:12px;padding:12px 18px;display:flex;align-items:center;gap:10px;font-size:13px;font-weight:600;color:white;box-shadow:0 12px 40px rgba(0,0,0,0.5);}
+
+/* Stats bar */
+.stat-pill{display:flex;align-items:center;gap:6px;padding:6px 12px;border-radius:8px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);}
+.stat-pill span{font-size:12px;font-weight:700;}
+
+/* Word pair row */
+.word-row{display:grid;grid-template-columns:1fr 1fr 1.5fr auto;gap:8px;align-items:center;margin-bottom:8px;}
+
+/* Quiz option row */
+.quiz-opt{display:flex;align-items:center;gap:8px;margin-bottom:8px;}
+.quiz-opt-radio{width:16px;height:16px;accent-color:#5b4fcf;cursor:pointer;}
+
+/* Modal */
+#modal-overlay{display:none;position:fixed;inset:0;background:rgba(4,3,14,0.85);z-index:200;align-items:center;justify-content:center;padding:20px;}
+#modal-overlay.show{display:flex;}
+.modal-box{background:#13102a;border:1px solid rgba(91,79,207,0.3);border-radius:16px;max-width:480px;width:100%;padding:28px;box-shadow:0 40px 80px rgba(0,0,0,0.7);}
+
+/* Animations */
+@keyframes fade-in{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:translateY(0);}}
+.fade-in{animation:fade-in 0.25s ease both;}
+
+/* Search */
+.search-box{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);border-radius:9px;padding:7px 10px;font-size:12px;color:white;width:100%;outline:none;font-family:'Inter',sans-serif;}
+.search-box:focus{border-color:rgba(91,79,207,0.4);}
+.search-box::placeholder{color:rgba(255,255,255,0.2);}
+
+/* Block category section header */
+.block-cat-header{font-size:9px;font-weight:800;letter-spacing:0.12em;text-transform:uppercase;color:rgba(165,160,223,0.4);padding:8px 0 6px;margin-top:4px;border-top:1px solid rgba(255,255,255,0.05);}
+.block-cat-header:first-child{border-top:none;margin-top:0;}
+.add-block-grid-small{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-bottom:2px;}
+.add-block-btn-sm{padding:8px 6px;border-radius:9px;border:1px solid rgba(255,255,255,0.07);background:rgba(255,255,255,0.03);cursor:pointer;text-align:center;transition:all 0.18s;}
+.add-block-btn-sm:hover{border-color:rgba(91,79,207,0.4);background:rgba(91,79,207,0.1);}
+.add-block-btn-sm .icon{font-size:16px;margin-bottom:3px;display:block;}
+.add-block-btn-sm .lbl{font-size:9px;font-weight:700;color:rgba(255,255,255,0.5);line-height:1.2;}
+
+/* Pair/turn rows */
+.pair-row{display:grid;grid-template-columns:1fr 1fr auto;gap:8px;align-items:center;margin-bottom:8px;}
+.turn-row{display:grid;grid-template-columns:80px 1fr auto;gap:8px;align-items:start;margin-bottom:8px;}
+.simple-row{display:grid;grid-template-columns:1fr auto;gap:8px;align-items:center;margin-bottom:8px;}
+.triple-row{display:grid;grid-template-columns:1fr 1fr 1fr auto;gap:8px;align-items:center;margin-bottom:8px;}
+
+/* Select input */
+.field-select{width:100%;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:10px 13px;font-size:13px;color:white;font-family:'Inter',sans-serif;outline:none;appearance:none;cursor:pointer;}
+.field-select:focus{border-color:rgba(91,79,207,0.6);}
+.field-select option{background:#13102a;color:white;}
+
+/* Radio group */
+.radio-group{display:flex;gap:8px;flex-wrap:wrap;}
+.radio-pill{display:flex;align-items:center;gap:5px;padding:5px 10px;border-radius:7px;border:1px solid rgba(255,255,255,0.1);background:rgba(255,255,255,0.04);cursor:pointer;font-size:11px;font-weight:700;color:rgba(255,255,255,0.5);transition:all 0.15s;}
+.radio-pill input{accent-color:#5b4fcf;cursor:pointer;}
+.radio-pill:has(input:checked){background:rgba(91,79,207,0.2);border-color:rgba(91,79,207,0.4);color:white;}
+
+/* ── Device Preview ──────────────────────────────────────────────────── */
+#preview-wrap{display:flex;gap:24px;align-items:flex-start;padding-bottom:40px;}
+#preview-device{flex-shrink:0;width:360px;}
+.device-frame{width:360px;background:#111;border:2.5px solid #2a2a2a;border-radius:44px;box-shadow:0 0 0 1px #1a1a1a,0 30px 70px rgba(0,0,0,0.7),inset 0 0 0 1px #333;overflow:hidden;position:relative;}
+.device-notch{width:100px;height:30px;background:#111;border-radius:0 0 20px 20px;margin:0 auto;position:relative;z-index:2;}
+.device-screen{background:#0a0818;min-height:600px;overflow-y:auto;max-height:620px;}
+.device-homebutton{width:40px;height:5px;background:#2a2a2a;border-radius:3px;margin:12px auto 8px;}
+.device-toggle{display:flex;gap:6px;margin-bottom:12px;}
+.device-toggle button{flex:1;padding:6px;font-size:11px;font-weight:700;border-radius:8px;border:1px solid rgba(255,255,255,0.1);background:rgba(255,255,255,0.05);color:rgba(255,255,255,0.4);cursor:pointer;transition:all 0.15s;font-family:'Plus Jakarta Sans',sans-serif;}
+.device-toggle button.active{background:rgba(91,79,207,0.25);border-color:rgba(91,79,207,0.4);color:white;}
+
+/* Preview block cards inside the device */
+.pv-block{border-radius:14px;margin-bottom:10px;overflow:hidden;}
+.pv-label{font-size:10px;font-weight:800;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:8px;opacity:0.7;}
+.pv-text-block{background:rgba(91,79,207,0.1);border:1px solid rgba(91,79,207,0.2);padding:14px;border-radius:14px;}
+.pv-tip-block{background:rgba(245,158,11,0.1);border-left:3px solid #f59e0b;padding:12px 14px;border-radius:0 12px 12px 0;}
+.pv-quiz-opt{display:flex;align-items:center;gap:8px;padding:9px 12px;border-radius:9px;border:1px solid rgba(255,255,255,0.1);background:rgba(255,255,255,0.03);margin-bottom:6px;font-size:13px;}
+.pv-quiz-opt.correct{background:rgba(16,185,129,0.15);border-color:rgba(16,185,129,0.4);color:#34d399;}
+.pv-bubble-a{background:rgba(91,79,207,0.2);border:1px solid rgba(91,79,207,0.3);border-radius:16px 16px 16px 4px;padding:10px 14px;margin-bottom:6px;max-width:85%;}
+.pv-bubble-b{background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.1);border-radius:16px 16px 4px 16px;padding:10px 14px;margin-bottom:6px;max-width:85%;margin-left:auto;}
+.pv-grammar-formula{background:rgba(91,79,207,0.15);border:1px solid rgba(91,79,207,0.3);border-radius:10px;padding:10px 14px;font-size:13px;font-weight:700;color:#a5a0df;text-align:center;margin-bottom:10px;}
+.pv-flashcard{background:linear-gradient(135deg,rgba(14,165,233,0.15),rgba(91,79,207,0.15));border:1px solid rgba(14,165,233,0.3);border-radius:16px;padding:20px;text-align:center;cursor:pointer;}
+.pv-word-family{display:grid;grid-template-columns:1fr 1fr;gap:6px;}
+.pv-wf-cell{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:9px;padding:8px 10px;}
+.pv-tf-item{display:flex;gap:8px;align-items:flex-start;padding:9px 12px;border-radius:9px;border:1px solid rgba(255,255,255,0.08);background:rgba(255,255,255,0.03);margin-bottom:6px;}
+.pv-tf-badge{font-size:10px;font-weight:800;padding:2px 7px;border-radius:5px;flex-shrink:0;margin-top:1px;}
+.pv-tf-badge.true{background:rgba(16,185,129,0.2);color:#34d399;}
+.pv-tf-badge.false{background:rgba(239,68,68,0.2);color:#f87171;}
+.pv-tf-badge.ng{background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.5);}
+.pv-match-row{display:flex;align-items:center;gap:8px;margin-bottom:6px;}
+.pv-match-pill{flex:1;padding:7px 10px;border-radius:8px;border:1px solid rgba(255,255,255,0.1);background:rgba(255,255,255,0.04);font-size:12px;text-align:center;}
+.pv-match-pill.left{border-color:rgba(91,79,207,0.3);background:rgba(91,79,207,0.1);}
+.pv-match-pill.right{border-color:rgba(14,165,233,0.3);background:rgba(14,165,233,0.1);}
+.pv-minimal-pair{display:flex;gap:0;border-radius:10px;overflow:hidden;margin-bottom:6px;border:1px solid rgba(255,255,255,0.08);}
+.pv-mp-word{flex:1;padding:10px;text-align:center;font-size:14px;font-weight:800;}
+.pv-mp-word:first-child{background:rgba(139,92,246,0.15);color:#c4b5fd;}
+.pv-mp-word:last-child{background:rgba(236,72,153,0.15);color:#f9a8d4;}
+.pv-stress-word{display:inline-flex;gap:2px;align-items:flex-end;margin-right:12px;margin-bottom:8px;}
+.pv-syl{padding:4px 7px;border-radius:6px;font-size:13px;font-weight:700;}
+.pv-syl.stressed{background:rgba(245,158,11,0.25);color:#fcd34d;font-size:15px;transform:translateY(-3px);}
+.pv-syl.unstressed{background:rgba(255,255,255,0.06);color:rgba(255,255,255,0.5);}
+.pv-seq-item{display:flex;gap:8px;align-items:center;padding:8px 10px;border-radius:9px;border:1px solid rgba(255,255,255,0.08);background:rgba(255,255,255,0.03);margin-bottom:5px;}
+.pv-seq-num{width:24px;height:24px;border-radius:6px;background:rgba(91,79,207,0.25);color:#a5a0df;font-size:11px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.pv-role-card{border-radius:12px;padding:12px 14px;margin-bottom:8px;}
+.pv-role-a{background:rgba(91,79,207,0.12);border:1px solid rgba(91,79,207,0.25);}
+.pv-role-b{background:rgba(14,165,233,0.12);border:1px solid rgba(14,165,233,0.25);}
+.pv-step{display:flex;gap:10px;margin-bottom:10px;}
+.pv-step-num{width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,#5b4fcf,#7c6fd4);color:white;font-size:11px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.pv-fill-blank{display:inline;background:rgba(245,158,11,0.15);border-bottom:2px solid #f59e0b;padding:0 4px;border-radius:4px 4px 0 0;color:#fcd34d;font-weight:700;}
+.pv-audio-player{display:flex;align-items:center;gap:10px;background:rgba(6,182,212,0.1);border:1px solid rgba(6,182,212,0.25);border-radius:12px;padding:12px 14px;}
+.pv-play-btn{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#06b6d4,#0ea5e9);display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;}
+.pv-vocab-row{display:grid;grid-template-columns:1fr 1.2fr 1.5fr;gap:8px;padding:7px 0;border-bottom:1px solid rgba(255,255,255,0.05);font-size:12px;}
+.pv-vocab-word{font-weight:700;color:white;}
+.pv-vocab-meaning{color:rgba(255,255,255,0.6);}
+.pv-vocab-example{color:rgba(165,160,223,0.7);font-style:italic;}
+.pv-idiom{background:linear-gradient(135deg,rgba(236,72,153,0.12),rgba(139,92,246,0.12));border:1px solid rgba(236,72,153,0.25);border-radius:14px;padding:16px;}
+.pv-cultural{background:rgba(16,185,129,0.08);border-left:4px solid #10b981;border-radius:0 12px 12px 0;padding:14px;}
+.pv-debate-side{border-radius:10px;padding:10px 12px;margin-bottom:6px;}
+.pv-debate-pro{background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.25);}
+.pv-debate-con{background:rgba(239,68,68,0.1);border:1px solid rgba(239,68,68,0.25);}
+.pv-video{background:rgba(0,0,0,0.4);border-radius:12px;aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;border:1px solid rgba(255,255,255,0.1);margin-bottom:8px;position:relative;overflow:hidden;}
+.pv-video-thumb{position:absolute;inset:0;background:linear-gradient(135deg,#1a0a2e,#0d1b3e);display:flex;align-items:center;justify-content:center;}
+.pv-video-play{width:52px;height:52px;border-radius:50%;background:rgba(255,255,255,0.15);backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;border:2px solid rgba(255,255,255,0.3);}
+.pv-cloze-blank{display:inline-block;width:70px;border-bottom:2px solid #a5a0df;margin:0 2px;vertical-align:bottom;}
+.pv-short-answer{background:rgba(255,255,255,0.03);border:1px dashed rgba(255,255,255,0.15);border-radius:10px;padding:12px;min-height:70px;font-size:12px;color:rgba(255,255,255,0.25);}
+</style>
+</head>
+<body>
+<div id="app">
+
+<!-- TOP BAR -->
+<div id="topbar">
+  <div style="display:flex;align-items:center;gap:8px;">
+    <div style="width:30px;height:30px;border-radius:8px;background:linear-gradient(135deg,#5b4fcf,#7c6fd4);display:flex;align-items:center;justify-content:center;">
+      <span class="material-symbols-outlined" style="font-size:17px;color:white;">admin_panel_settings</span>
+    </div>
+    <div>
+      <span style="font-weight:900;font-size:15px;color:white;">LearnWise</span>
+      <span style="font-size:12px;color:rgba(165,160,223,0.6);margin-left:8px;">Admin Dashboard</span>
+    </div>
+  </div>
+
+  <div style="margin-left:auto;display:flex;align-items:center;gap:10px;">
+    <!-- Stats -->
+    <div class="stat-pill" id="stats-pill">
+      <span class="material-symbols-outlined" style="font-size:14px;color:#34d399;">check_circle</span>
+      <span id="stat-coverage" style="color:#34d399;">0 activities with content</span>
+    </div>
+    <button class="btn btn-secondary btn-sm" onclick="openImport()">
+      <span class="material-symbols-outlined" style="font-size:15px;">upload</span> Import JSON
+    </button>
+    <button class="btn btn-success btn-sm" onclick="exportJSON()">
+      <span class="material-symbols-outlined" style="font-size:15px;">download</span> Export JSON
+    </button>
+    <a href="roadmap.html" class="btn btn-secondary btn-sm">
+      <span class="material-symbols-outlined" style="font-size:15px;">map</span> View Roadmap
+    </a>
+  </div>
+</div>
+
+<!-- BODY -->
+<div id="body">
+
+<!-- LEFT SIDEBAR -->
+<div id="sidebar">
+  <div class="sb-section">
+    <div class="sb-label">Languages</div>
+    <div id="lang-list"></div>
+  </div>
+  <div class="sb-section">
+    <div class="sb-label">Activity Type</div>
+    <div id="type-list"></div>
+  </div>
+</div>
+
+<!-- CENTER: Activity List -->
+<div id="activity-list-panel">
+  <!-- Month tabs -->
+  <div style="padding:14px 14px 0;flex-shrink:0;">
+    <div style="font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:0.08em;color:rgba(165,160,223,0.5);margin-bottom:10px;">Month</div>
+    <div id="month-tabs" style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px;"></div>
+    <input class="search-box" placeholder="Search activities…" id="search-input" oninput="renderActivityList()"/>
+  </div>
+  <div style="padding:8px 0;flex:1;overflow-y:auto;" id="act-list"></div>
+</div>
+
+<!-- RIGHT: Editor Panel -->
+<div id="editor-panel">
+  <div id="ed-empty" class="empty-state">
+    <span class="material-symbols-outlined" style="font-size:48px;opacity:0.3;">edit_document</span>
+    <div style="font-size:16px;font-weight:700;color:rgba(255,255,255,0.3);">Select an activity to edit</div>
+    <div style="font-size:13px;color:rgba(255,255,255,0.18);">Choose a language, activity type, and activity from the list on the left</div>
+  </div>
+
+  <div id="ed-content" style="display:none;flex-direction:column;height:100%;">
+    <div id="ed-header">
+      <div style="display:flex;align-items:center;gap:12px;">
+        <div id="ed-type-icon" style="width:40px;height:40px;border-radius:11px;display:flex;align-items:center;justify-content:center;">
+          <span class="material-symbols-outlined" style="font-size:22px;color:white;font-variation-settings:'FILL' 1;" id="ed-icon-sym">school</span>
+        </div>
+        <div>
+          <div id="ed-type-label" style="font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:0.1em;color:#a5a0df;margin-bottom:2px;"></div>
+          <div id="ed-act-title" style="font-size:16px;font-weight:800;color:white;"></div>
+        </div>
+        <div style="margin-left:auto;display:flex;gap:8px;align-items:center;">
+          <button class="btn btn-danger btn-sm" onclick="clearContent()">
+            <span class="material-symbols-outlined" style="font-size:14px;">delete</span> Clear
+          </button>
+          <button class="btn btn-primary" onclick="saveActivity()">
+            <span class="material-symbols-outlined" style="font-size:16px;">save</span> Save Changes
+          </button>
+        </div>
+      </div>
+      <div class="ed-tabs">
+        <div class="ed-tab active" onclick="switchTab('info',this)">
+          <span class="material-symbols-outlined" style="font-size:14px;vertical-align:middle;margin-right:4px;">info</span>Basic Info
+        </div>
+        <div class="ed-tab" onclick="switchTab('content',this)">
+          <span class="material-symbols-outlined" style="font-size:14px;vertical-align:middle;margin-right:4px;">view_agenda</span>Content Blocks
+        </div>
+        <div class="ed-tab" onclick="switchTab('points',this)">
+          <span class="material-symbols-outlined" style="font-size:14px;vertical-align:middle;margin-right:4px;">bolt</span>Points & Settings
+        </div>
+        <div class="ed-tab" onclick="switchTab('preview',this)">
+          <span class="material-symbols-outlined" style="font-size:14px;vertical-align:middle;margin-right:4px;">visibility</span>Preview
+        </div>
+      </div>
+    </div>
+
+    <div id="ed-body">
+      <!-- TAB: Basic Info -->
+      <div id="tab-info" class="tab-pane fade-in">
+        <div style="margin-bottom:16px;">
+          <div class="field-label">Activity Title</div>
+          <input class="field-input" id="f-title" placeholder="Enter activity title…"/>
+        </div>
+        <div style="margin-bottom:16px;">
+          <div class="field-label">Description</div>
+          <textarea class="field-input" id="f-desc" placeholder="Brief description shown in roadmap modal…"></textarea>
+        </div>
+        <div class="field-row" style="margin-bottom:16px;">
+          <div>
+            <div class="field-label">Duration</div>
+            <input class="field-input" id="f-duration" placeholder="e.g. 15 min"/>
+          </div>
+          <div>
+            <div class="field-label">Week</div>
+            <input class="field-input" id="f-week" placeholder="e.g. Week 1" readonly style="opacity:0.5;cursor:default;"/>
+          </div>
+        </div>
+        <div style="margin-bottom:16px;">
+          <div class="field-label">Internal Notes (admin only)</div>
+          <textarea class="field-input" id="f-notes" placeholder="Admin notes, source references, TODOs…" style="min-height:60px;"></textarea>
+        </div>
+      </div>
+
+      <!-- TAB: Content Blocks -->
+      <div id="tab-content" class="tab-pane" style="display:none;">
+        <div id="blocks-list"></div>
+        <div style="margin-top:16px;">
+          <div style="font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:0.08em;color:rgba(165,160,223,0.5);margin-bottom:10px;">Add Content Block</div>
+          <div class="add-block-grid" id="add-block-grid"></div>
+        </div>
+      </div>
+
+      <!-- TAB: Points & Settings -->
+      <div id="tab-points" class="tab-pane" style="display:none;">
+        <div style="margin-bottom:24px;">
+          <div class="field-label">XP Points Reward</div>
+          <div style="display:flex;align-items:center;gap:12px;margin-top:8px;">
+            <input class="xp-input" type="number" id="f-xp" min="5" max="500" step="5"/>
+            <span style="font-size:13px;color:rgba(255,255,255,0.4);">XP awarded on completion</span>
+          </div>
+          <div style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap;" id="xp-presets"></div>
+        </div>
+
+        <div style="margin-bottom:24px;">
+          <div class="field-label">Locked State</div>
+          <div style="display:flex;align-items:center;gap:10px;margin-top:8px;">
+            <label style="display:flex;align-items:center;gap:8px;cursor:pointer;font-size:13px;color:rgba(255,255,255,0.6);">
+              <input type="checkbox" id="f-locked" style="accent-color:#5b4fcf;width:16px;height:16px;"/>
+              Activity starts locked
+            </label>
+          </div>
+        </div>
+
+        <div style="margin-bottom:24px;">
+          <div class="field-label">Completion Requirements</div>
+          <div style="margin-top:10px;display:flex;flex-direction:column;gap:10px;">
+            <label style="display:flex;align-items:center;gap:8px;cursor:pointer;font-size:13px;color:rgba(255,255,255,0.6);">
+              <input type="checkbox" id="f-req-all-steps" style="accent-color:#5b4fcf;width:16px;height:16px;"/>
+              Require completing all content steps
+            </label>
+            <label style="display:flex;align-items:center;gap:8px;cursor:pointer;font-size:13px;color:rgba(255,255,255,0.6);">
+              <input type="checkbox" id="f-req-score" style="accent-color:#5b4fcf;width:16px;height:16px;"/>
+              Require minimum score (for quizzes)
+            </label>
+          </div>
+          <div id="min-score-row" style="margin-top:10px;display:none;align-items:center;gap:8px;">
+            <span style="font-size:12px;color:rgba(255,255,255,0.4);">Minimum score:</span>
+            <input type="number" class="field-input" id="f-min-score" style="width:80px;" min="0" max="100" placeholder="70"/>
+            <span style="font-size:12px;color:rgba(255,255,255,0.4);">%</span>
+          </div>
+        </div>
+
+        <div>
+          <div class="field-label">Activity Tags</div>
+          <input class="field-input" id="f-tags" placeholder="grammar, beginner, speaking…" style="margin-top:8px;"/>
+          <div style="font-size:11px;color:rgba(255,255,255,0.25);margin-top:6px;">Comma-separated tags for filtering</div>
+        </div>
+      </div>
+
+      <!-- TAB: Preview -->
+      <div id="tab-preview" class="tab-pane" style="display:none;overflow-x:auto;">
+        <div id="preview-content"></div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+
+<!-- IMPORT MODAL -->
+<div id="modal-overlay" onclick="closeModal(event)">
+  <div class="modal-box" onclick="event.stopPropagation()">
+    <h3 style="font-size:16px;font-weight:800;color:white;margin-bottom:16px;">Import JSON Content</h3>
+    <p style="font-size:13px;color:rgba(255,255,255,0.45);margin-bottom:14px;">Paste your exported JSON or paste content from another admin session. This will merge with existing content.</p>
+    <textarea id="import-textarea" style="width:100%;height:180px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:12px;color:white;font-size:12px;font-family:monospace;outline:none;resize:vertical;" placeholder='{"101": {"blocks": [...], ...}}'></textarea>
+    <div style="display:flex;gap:10px;margin-top:16px;justify-content:flex-end;">
+      <button class="btn btn-secondary" onclick="document.getElementById('modal-overlay').classList.remove('show')">Cancel</button>
+      <button class="btn btn-primary" onclick="doImport()">Import & Merge</button>
+    </div>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div id="toast">
+  <div class="toast-inner">
+    <span class="material-symbols-outlined" id="toast-icon" style="font-size:18px;color:#34d399;">check_circle</span>
+    <span id="toast-msg">Saved!</span>
+  </div>
+</div>
+
+<script>
+// ── State ──────────────────────────────────────────────────────────────────
+let selectedLang = 'hindi';
+let selectedType = 'lesson';
+let selectedMonth = 0;
+let selectedActivity = null;
+let currentBlocks = [];
+let currentTab = 'info';
+
+const TYPE_INFO = {
+  lesson:        { label:'Lesson',        icon:'school',              color:'#5b4fcf' },
+  vocab:         { label:'Vocabulary',     icon:'abc',                 color:'#0ea5e9' },
+  reading:       { label:'Reading',        icon:'menu_book',           color:'#10b981' },
+  writing:       { label:'Writing',        icon:'edit_note',           color:'#f59e0b' },
+  pronunciation: { label:'Pronunciation',  icon:'record_voice_over',   color:'#ec4899' },
+  speaking:      { label:'Speaking',       icon:'mic',                 color:'#8b5cf6' },
+  test:          { label:'Quick Test',     icon:'quiz',                color:'#ef4444' },
+  listening:     { label:'Listening',      icon:'hearing',             color:'#06b6d4' },
+};
+
+const BLOCK_CATS = [
+  { key:'core',          label:'Core', color:'#5b4fcf' },
+  { key:'vocab',         label:'Vocabulary', color:'#0ea5e9' },
+  { key:'lesson',        label:'Grammar & Lesson', color:'#8b5cf6' },
+  { key:'reading',       label:'Reading', color:'#10b981' },
+  { key:'writing',       label:'Writing', color:'#f59e0b' },
+  { key:'speaking',      label:'Speaking', color:'#ec4899' },
+  { key:'pronunciation', label:'Pronunciation', color:'#06b6d4' },
+  { key:'listening',     label:'Listening', color:'#f97316' },
+  { key:'test',          label:'Test & Quiz', color:'#ef4444' },
+];
+const BLOCK_TYPES = [
+  // Core
+  { type:'text',               icon:'📝', label:'Text Block',           cat:'core' },
+  { type:'keypoints',          icon:'🎯', label:'Key Points',           cat:'core' },
+  { type:'tip',                icon:'💡', label:'Tip / Note',           cat:'core' },
+  { type:'audio',              icon:'🎵', label:'Audio Clip',           cat:'core' },
+  { type:'video_embed',        icon:'🎬', label:'Video Embed',          cat:'core' },
+  // Vocabulary
+  { type:'vocab_table',        icon:'📊', label:'Vocab Table',          cat:'vocab' },
+  { type:'flashcard_set',      icon:'🃏', label:'Flashcard Set',        cat:'vocab' },
+  { type:'word_family',        icon:'🌳', label:'Word Family',          cat:'vocab' },
+  { type:'idiom_card',         icon:'💬', label:'Idiom Card',           cat:'vocab' },
+  { type:'fill_blank',         icon:'📝', label:'Fill in Blank',        cat:'vocab' },
+  // Grammar & Lesson
+  { type:'grammar_rule',       icon:'📐', label:'Grammar Rule',         cat:'lesson' },
+  { type:'dialogue',           icon:'💭', label:'Dialogue',             cat:'lesson' },
+  { type:'cultural_note',      icon:'🌍', label:'Cultural Note',        cat:'lesson' },
+  { type:'sentence_starters',  icon:'✨', label:'Sentence Starters',    cat:'lesson' },
+  // Reading
+  { type:'reading',            icon:'📖', label:'Reading Passage',      cat:'reading' },
+  { type:'annotated_passage',  icon:'🖊️', label:'Annotated Text',       cat:'reading' },
+  { type:'true_false',         icon:'✅', label:'True / False',         cat:'reading' },
+  { type:'sequencing',         icon:'🔢', label:'Sequencing',           cat:'reading' },
+  // Writing
+  { type:'writing',            icon:'✍️', label:'Writing Task',         cat:'writing' },
+  { type:'word_bank',          icon:'🔤', label:'Word Bank',            cat:'writing' },
+  { type:'error_correction',   icon:'🔍', label:'Error Correction',     cat:'writing' },
+  { type:'guided_steps',       icon:'🪜', label:'Guided Steps',         cat:'writing' },
+  // Speaking
+  { type:'speaking',           icon:'🗣️', label:'Speaking Prompt',      cat:'speaking' },
+  { type:'role_play',          icon:'🎭', label:'Role Play',            cat:'speaking' },
+  { type:'debate_topic',       icon:'⚖️', label:'Debate Topic',         cat:'speaking' },
+  { type:'conversation_starters', icon:'💬', label:'Conversation Starters', cat:'speaking' },
+  // Pronunciation
+  { type:'minimal_pairs',      icon:'🔊', label:'Minimal Pairs',        cat:'pronunciation' },
+  { type:'stress_pattern',     icon:'🎵', label:'Stress Pattern',       cat:'pronunciation' },
+  { type:'tongue_twister',     icon:'👅', label:'Tongue Twister',       cat:'pronunciation' },
+  { type:'pronunciation_guide',icon:'📢', label:'Pronun. Guide',        cat:'pronunciation' },
+  // Listening
+  { type:'transcript_cloze',   icon:'📋', label:'Transcript Cloze',     cat:'listening' },
+  { type:'listen_repeat',      icon:'🔁', label:'Listen & Repeat',      cat:'listening' },
+  { type:'audio_questions',    icon:'🎧', label:'Audio Questions',      cat:'listening' },
+  // Test
+  { type:'quiz',               icon:'❓', label:'Quiz Question',        cat:'test' },
+  { type:'matching',           icon:'🔗', label:'Matching',             cat:'test' },
+  { type:'ordering',           icon:'📋', label:'Ordering',             cat:'test' },
+  { type:'short_answer',       icon:'💬', label:'Short Answer',         cat:'test' },
+];
+
+const XP_PRESETS = [10,20,25,30,35,50,75,100,150,200,500];
+
+// ── Init ───────────────────────────────────────────────────────────────────
+document.addEventListener('DOMContentLoaded', () => {
+  renderLangList();
+  renderTypeList();
+  renderMonthTabs();
+  renderActivityList();
+  renderAddBlockGrid();
+  renderXpPresets();
+  updateStats();
+
+  document.getElementById('f-req-score').addEventListener('change', function(){
+    document.getElementById('min-score-row').style.display = this.checked ? 'flex' : 'none';
+  });
+});
+
+// ── Languages ──────────────────────────────────────────────────────────────
+function renderLangList() {
+  const langs = LWData.getLanguages();
+  const container = document.getElementById('lang-list');
+  container.innerHTML = '';
+  langs.forEach(lang => {
+    const card = document.createElement('div');
+    card.className = `lang-card ${lang.id === selectedLang ? 'active' : ''}`;
+    card.innerHTML = `
+      <span class="lang-flag">${lang.flag}</span>
+      <div>
+        <div class="lang-name">${lang.name}</div>
+        <div style="font-size:10px;color:rgba(255,255,255,0.3);">${lang.native}</div>
+      </div>
+      <span class="lang-count" id="lang-cnt-${lang.id}">—</span>
+    `;
+    card.onclick = () => { selectedLang = lang.id; selectedActivity = null; renderLangList(); renderActivityList(); clearEditor(); };
+    container.appendChild(card);
+  });
+  updateLangCounts();
+}
+
+function updateLangCounts() {
+  const all = LWContent.getAllContent();
+  LWData.getLanguages().forEach(lang => {
+    const acts = LWData.getActivities(lang.id);
+    let total = 0, withC = 0;
+    acts.forEach(m => m.activities.forEach(a => {
+      total++;
+      const c = all[String(a.id)];
+      if (c && c.blocks && c.blocks.length > 0) withC++;
+    }));
+    const el = document.getElementById(`lang-cnt-${lang.id}`);
+    if (el) el.textContent = withC > 0 ? `${withC}/${total}` : total;
+  });
+}
+
+// ── Types ──────────────────────────────────────────────────────────────────
+function renderTypeList() {
+  const container = document.getElementById('type-list');
+  container.innerHTML = '';
+  Object.entries(TYPE_INFO).forEach(([type, info]) => {
+    const pill = document.createElement('div');
+    pill.className = `type-pill ${type === selectedType ? 'active' : ''}`;
+    pill.innerHTML = `
+      <div class="type-dot" style="background:${info.color};"></div>
+      <span class="material-symbols-outlined" style="font-size:16px;color:${type === selectedType ? 'white' : info.color};">${info.icon}</span>
+      <span class="type-name">${info.label}</span>
+    `;
+    pill.onclick = () => { selectedType = type; selectedActivity = null; renderTypeList(); renderActivityList(); clearEditor(); };
+    container.appendChild(pill);
+  });
+}
+
+// ── Month Tabs ─────────────────────────────────────────────────────────────
+function renderMonthTabs() {
+  const container = document.getElementById('month-tabs');
+  container.innerHTML = '';
+  const allBtn = document.createElement('button');
+  allBtn.className = `month-btn ${selectedMonth === -1 ? 'active' : ''}`;
+  allBtn.textContent = 'All';
+  allBtn.onclick = () => { selectedMonth = -1; renderMonthTabs(); renderActivityList(); };
+  container.appendChild(allBtn);
+  LWData.MONTHS_META.forEach((m, i) => {
+    const btn = document.createElement('button');
+    btn.className = `month-btn ${selectedMonth === i ? 'active' : ''}`;
+    btn.textContent = `M${i+1}`;
+    btn.title = m.title;
+    btn.onclick = () => { selectedMonth = i; renderMonthTabs(); renderActivityList(); };
+    container.appendChild(btn);
+  });
+}
+
+// ── Activity List ──────────────────────────────────────────────────────────
+function renderActivityList() {
+  const searchQ = (document.getElementById('search-input')?.value || '').toLowerCase();
+  const allContent = LWContent.getAllContent();
+  const container = document.getElementById('act-list');
+  container.innerHTML = '';
+
+  const monthData = LWData.getActivities(selectedLang);
+  let count = 0;
+
+  monthData.forEach((monthObj, mIdx) => {
+    if (selectedMonth !== -1 && mIdx !== selectedMonth) return;
+    const filtered = monthObj.activities.filter(a => {
+      if (a.type !== selectedType && !(selectedType === 'all')) return false;
+      if (searchQ && !a.title.toLowerCase().includes(searchQ)) return false;
+      return true;
+    });
+    if (filtered.length === 0) return;
+
+    // Month header
+    const mh = document.createElement('div');
+    mh.style.cssText = 'padding:6px 14px;font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:0.08em;color:rgba(165,160,223,0.4);background:rgba(91,79,207,0.06);border-bottom:1px solid rgba(255,255,255,0.04);';
+    mh.textContent = `Month ${mIdx+1} · ${monthObj.monthMeta.title}`;
+    container.appendChild(mh);
+
+    filtered.forEach(act => {
+      const hasContent = !!(allContent[String(act.id)]?.blocks?.length);
+      const item = document.createElement('div');
+      item.className = `act-item ${selectedActivity?.id === act.id ? 'active' : ''}`;
+      item.innerHTML = `
+        <div class="act-item-title">${act.title}</div>
+        <div class="act-item-meta">
+          <span>Week ${act.week}</span>·
+          <span>⚡${act.xp} XP</span>·
+          <span>⏱${act.duration}</span>
+          <span class="act-item-badge ${hasContent ? 'has-content' : 'no-content'}" style="margin-left:auto;">
+            ${hasContent ? '✓ Has content' : '○ Empty'}
+          </span>
+        </div>
+      `;
+      item.onclick = () => selectActivity(act);
+      container.appendChild(item);
+      count++;
+    });
+  });
+
+  if (count === 0) {
+    container.innerHTML = `<div style="padding:24px;text-align:center;color:rgba(255,255,255,0.2);font-size:12px;">No activities found</div>`;
+  }
+}
+
+// ── Select & Load Activity ─────────────────────────────────────────────────
+function selectActivity(act) {
+  selectedActivity = act;
+  renderActivityList();
+
+  // Show editor
+  document.getElementById('ed-empty').style.display = 'none';
+  document.getElementById('ed-content').style.display = 'flex';
+
+  // Set header
+  const ti = TYPE_INFO[act.type] || TYPE_INFO.lesson;
+  const iconEl = document.getElementById('ed-type-icon');
+  iconEl.style.background = `linear-gradient(135deg,${ti.color},${ti.color}cc)`;
+  iconEl.style.boxShadow = `0 4px 14px ${ti.color}44`;
+  document.getElementById('ed-icon-sym').textContent = ti.icon;
+  document.getElementById('ed-type-label').textContent = ti.label;
+  document.getElementById('ed-type-label').style.color = ti.color;
+  document.getElementById('ed-act-title').textContent = act.title;
+
+  // Load saved content or defaults
+  const saved = LWContent.getContent(act.id) || {};
+  currentBlocks = (saved.blocks || []).map(b => ({...b}));
+
+  // Fill fields
+  document.getElementById('f-title').value = saved.title || act.title;
+  document.getElementById('f-desc').value = saved.description || act.description || '';
+  document.getElementById('f-duration').value = saved.duration || act.duration || '';
+  document.getElementById('f-week').value = act.weekLabel || `Week ${act.week}`;
+  document.getElementById('f-notes').value = saved.notes || '';
+  document.getElementById('f-xp').value = saved.xp ?? act.xp;
+  document.getElementById('f-locked').checked = saved.locked ?? act.locked ?? true;
+  document.getElementById('f-req-all-steps').checked = saved.requireAllSteps ?? true;
+  document.getElementById('f-req-score').checked = saved.requireScore ?? false;
+  document.getElementById('f-min-score').value = saved.minScore || 70;
+  document.getElementById('f-tags').value = (saved.tags || []).join(', ');
+  document.getElementById('min-score-row').style.display = (saved.requireScore) ? 'flex' : 'none';
+
+  switchTab(currentTab);
+  renderBlocksList();
+}
+
+// ── Tabs ───────────────────────────────────────────────────────────────────
+function switchTab(name, el) {
+  currentTab = name;
+  document.querySelectorAll('.tab-pane').forEach(p => p.style.display = 'none');
+  document.querySelectorAll('.ed-tab').forEach(t => t.classList.remove('active'));
+  const pane = document.getElementById(`tab-${name}`);
+  if (pane) { pane.style.display = 'block'; pane.classList.add('fade-in'); }
+  if (el) el.classList.add('active');
+  else {
+    const tabs = document.querySelectorAll('.ed-tab');
+    const tabNames = ['info','content','points','preview'];
+    const idx = tabNames.indexOf(name);
+    if (tabs[idx]) tabs[idx].classList.add('active');
+  }
+  if (name === 'preview') renderPreview();
+}
+
+// ── Content Blocks ─────────────────────────────────────────────────────────
+function renderAddBlockGrid() {
+  const grid = document.getElementById('add-block-grid');
+  grid.innerHTML = '';
+  BLOCK_CATS.forEach(cat => {
+    const types = BLOCK_TYPES.filter(b => b.cat === cat.key);
+    if (!types.length) return;
+    const hdr = document.createElement('div');
+    hdr.className = 'block-cat-header';
+    hdr.style.color = cat.color + 'aa';
+    hdr.innerHTML = `<span style="display:inline-block;width:7px;height:7px;border-radius:50%;background:${cat.color};margin-right:6px;vertical-align:middle;"></span>${cat.label}`;
+    grid.appendChild(hdr);
+    const g = document.createElement('div');
+    g.className = 'add-block-grid-small';
+    types.forEach(bt => {
+      const btn = document.createElement('div');
+      btn.className = 'add-block-btn-sm';
+      btn.title = bt.label;
+      btn.innerHTML = `<span class="icon">${bt.icon}</span><span class="lbl">${bt.label}</span>`;
+      btn.onclick = () => addBlock(bt.type);
+      g.appendChild(btn);
+    });
+    grid.appendChild(g);
+  });
+}
+
+function addBlock(type) {
+  const block = LWContent.createBlock(type);
+  currentBlocks.push(block);
+  renderBlocksList();
+  showToast(`Added ${type} block`);
+}
+
+function renderBlocksList() {
+  const container = document.getElementById('blocks-list');
+  container.innerHTML = '';
+  if (currentBlocks.length === 0) {
+    container.innerHTML = `<div style="text-align:center;padding:24px;color:rgba(255,255,255,0.2);font-size:13px;">
+      <span class="material-symbols-outlined" style="font-size:32px;display:block;margin-bottom:8px;opacity:0.3;">layers</span>
+      No content blocks yet. Add blocks below.
+    </div>`;
+    return;
+  }
+  currentBlocks.forEach((block, idx) => {
+    const card = buildBlockCard(block, idx);
+    container.appendChild(card);
+  });
+}
+
+function buildBlockCard(block, idx) {
+  const card = document.createElement('div');
+  card.className = 'block-card fade-in';
+  const blockMeta = BLOCK_TYPES.find(b => b.type === block.type) || { icon:'📝', label:'Block' };
+  const catInfo = BLOCK_CATS.find(c => c.key === (blockMeta.cat||'core'));
+  const col = (catInfo && catInfo.color) || '#5b4fcf';
+
+  // ── Helpers ─────────────────────────────────────────────────────────────
+  const fieldLbl = (t) => `<div class="field-label">${t}</div>`;
+  const fi = (key, val, ph, extra='') => `<input class="field-input" style="margin-bottom:10px;" value="${esc(val||'')}" placeholder="${ph}" onchange="updateBlock(${idx},'${key}',this.value)" ${extra}/>`;
+  const ta = (key, val, ph, rows=3) => `<textarea class="field-input" rows="${rows}" onchange="updateBlock(${idx},'${key}',this.value)" placeholder="${ph}">${esc(val||'')}</textarea>`;
+  const sel = (key, val, opts) => `<select class="field-select" style="margin-bottom:10px;" onchange="updateBlock(${idx},'${key}',this.value)">${opts.map(o=>`<option value="${o.v}" ${val===o.v?'selected':''}>${o.l}</option>`).join('')}</select>`;
+  const delBtn = (arr, i) => `<button class="block-btn del" onclick="removeNested(${idx},'${arr}',${i})"><span class="material-symbols-outlined" style="font-size:14px;">delete</span></button>`;
+  const addBtn = (arr, obj, lbl='Add') => `<button class="btn btn-secondary btn-sm" onclick="addNested(${idx},'${arr}',${JSON.stringify(obj).replace(/'/g,'\\u0027')})" style="margin-top:6px;"><span class="material-symbols-outlined" style="font-size:14px;">add</span> ${lbl}</button>`;
+
+  let bodyHTML = '';
+  switch(block.type) {
+    // ── CORE ────────────────────────────────────────────────────────────────
+    case 'text':
+      bodyHTML = fieldLbl('Title') + fi('title',block.title,'Section title…') + fieldLbl('Body Text') + ta('body',block.body,'Explanation text…',4);
+      break;
+    case 'keypoints':
+      bodyHTML = fieldLbl('Section Title') + fi('title',block.title,'Key Points title…') + fieldLbl('Points (one per line)') +
+        `<textarea class="field-input" rows="4" onchange="updateBlock(${idx},'points',this.value.split('\\n').filter(s=>s.trim()))" placeholder="Point 1&#10;Point 2&#10;Point 3">${(block.points||[]).join('\n')}</textarea>`;
+      break;
+    case 'tip':
+      bodyHTML = fieldLbl('Style') + sel('style', block.style||'tip',[{v:'tip',l:'💡 Tip'},{v:'warning',l:'⚠️ Warning'},{v:'info',l:'ℹ️ Info'},{v:'success',l:'✅ Success'}]) +
+        fieldLbl('Content') + ta('body', block.body,'Helpful tip or cultural note…',3);
+      break;
+    case 'audio':
+      bodyHTML = fieldLbl('Label') + fi('label',block.label,'Audio clip label…') + fieldLbl('Audio URL') + fi('url',block.url,'https://example.com/audio.mp3') + fieldLbl('Transcript') + ta('transcript',block.transcript,'Audio transcript text…',3);
+      break;
+    case 'video_embed':
+      bodyHTML = fieldLbl('Video Title') + fi('title',block.title,'Video title…') + fieldLbl('Platform') +
+        sel('platform',block.platform||'youtube',[{v:'youtube',l:'YouTube'},{v:'vimeo',l:'Vimeo'},{v:'other',l:'Other'}]) +
+        fieldLbl('Video URL / Embed URL') + fi('url',block.url,'https://youtube.com/watch?v=…') + fieldLbl('Discussion Questions (one per line)') +
+        `<textarea class="field-input" rows="3" onchange="updateBlock(${idx},'discussion_questions',this.value.split('\\n').filter(s=>s.trim()))" placeholder="What is the video about?&#10;What did you learn?">${(block.discussion_questions||[]).join('\n')}</textarea>`;
+      break;
+
+    // ── VOCABULARY ───────────────────────────────────────────────────────────
+    case 'vocab_table': {
+      const wordsHTML = (block.words||[]).map((w,wi) => `
+        <div class="word-row" style="grid-template-columns:1fr 1fr 1.5fr 80px auto;">
+          <input class="field-input" value="${esc(w.word||'')}" placeholder="Word" onchange="updateBlockNested(${idx},'words',${wi},'word',this.value)"/>
+          <input class="field-input" value="${esc(w.meaning||'')}" placeholder="Meaning" onchange="updateBlockNested(${idx},'words',${wi},'meaning',this.value)"/>
+          <input class="field-input" value="${esc(w.example||'')}" placeholder="Example sentence" onchange="updateBlockNested(${idx},'words',${wi},'example',this.value)"/>
+          <input class="field-input" value="${esc(w.pronunciation||'')}" placeholder="/prəˌnʌn/" onchange="updateBlockNested(${idx},'words',${wi},'pronunciation',this.value)"/>
+          ${delBtn('words',wi)}
+        </div>`).join('');
+      bodyHTML = fieldLbl('Vocabulary Table') +
+        `<div style="font-size:10px;color:rgba(255,255,255,0.3);margin-bottom:8px;display:grid;grid-template-columns:1fr 1fr 1.5fr 80px auto;gap:8px;padding:0 4px;"><span>WORD</span><span>MEANING</span><span>EXAMPLE</span><span>PRONUN.</span><span></span></div>` +
+        wordsHTML + addBtn('words',{word:'',meaning:'',example:'',pronunciation:''},'Add Word');
+      break;
+    }
+    case 'flashcard_set': {
+      const cardsHTML = (block.cards||[]).map((c,ci) => `
+        <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:10px;padding:10px;margin-bottom:8px;">
+          <div style="display:flex;gap:8px;margin-bottom:8px;">
+            <input class="field-input" value="${esc(c.front||'')}" placeholder="Front (word)" onchange="updateBlockNested(${idx},'cards',${ci},'front',this.value)" style="flex:1;"/>
+            <input class="field-input" value="${esc(c.back||'')}" placeholder="Back (translation/meaning)" onchange="updateBlockNested(${idx},'cards',${ci},'back',this.value)" style="flex:1;"/>
+            ${delBtn('cards',ci)}
+          </div>
+          <input class="field-input" value="${esc(c.example||'')}" placeholder="Example sentence…" onchange="updateBlockNested(${idx},'cards',${ci},'example',this.value)"/>
+        </div>`).join('');
+      bodyHTML = fieldLbl('Set Title') + fi('title',block.title,'Flashcard set title…') + fieldLbl('Cards') + cardsHTML + addBtn('cards',{front:'',back:'',example:'',notes:''},'Add Card');
+      break;
+    }
+    case 'word_family':
+      bodyHTML = fieldLbl('Base Word') + fi('base_word',block.base_word,'Base word…') +
+        `<div class="field-row" style="margin-bottom:10px;">
+          <div>${fieldLbl('Noun Form')}<input class="field-input" value="${esc(block.noun||'')}" placeholder="e.g. beauty" onchange="updateBlock(${idx},'noun',this.value)"/></div>
+          <div>${fieldLbl('Verb Form')}<input class="field-input" value="${esc(block.verb||'')}" placeholder="e.g. beautify" onchange="updateBlock(${idx},'verb',this.value)"/></div>
+        </div>
+        <div class="field-row" style="margin-bottom:10px;">
+          <div>${fieldLbl('Adjective Form')}<input class="field-input" value="${esc(block.adjective||'')}" placeholder="e.g. beautiful" onchange="updateBlock(${idx},'adjective',this.value)"/></div>
+          <div>${fieldLbl('Adverb Form')}<input class="field-input" value="${esc(block.adverb||'')}" placeholder="e.g. beautifully" onchange="updateBlock(${idx},'adverb',this.value)"/></div>
+        </div>` +
+        fieldLbl('Example Sentence') + ta('example_sentence',block.example_sentence,'Use the word family in a sentence…',2);
+      break;
+    case 'idiom_card':
+      bodyHTML = fieldLbl('Idiom / Phrase') + fi('idiom',block.idiom,'e.g. "Break a leg"') +
+        fieldLbl('Meaning') + fi('meaning',block.meaning,'What does it mean?') +
+        fieldLbl('Example in Context') + ta('example',block.example,'She told him to "break a leg" before the performance.',2) +
+        fieldLbl('Context Tip / Origin (optional)') + ta('context_tip',block.context_tip,'Where/when is this used?',2);
+      break;
+    case 'fill_blank': {
+      const sentsHTML = (block.sentences||[]).map((s,si) => `
+        <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:10px;padding:10px;margin-bottom:8px;">
+          <div class="field-label">Sentence (use __ for blank)</div>
+          <input class="field-input" style="margin-bottom:8px;" value="${esc(s.sentence||'')}" placeholder="He __ to school every day." onchange="updateBlockNested(${idx},'sentences',${si},'sentence',this.value)"/>
+          <div style="display:flex;gap:8px;">
+            <div style="flex:1;">${fieldLbl('Correct Answer')}<input class="field-input" value="${esc(s.answer||'')}" placeholder="goes" onchange="updateBlockNested(${idx},'sentences',${si},'answer',this.value)"/></div>
+            <div style="flex:1;">${fieldLbl('Hint (optional)')}<input class="field-input" value="${esc(s.hint||'')}" placeholder="present tense" onchange="updateBlockNested(${idx},'sentences',${si},'hint',this.value)"/></div>
+            <div style="display:flex;align-items:flex-end;padding-bottom:2px;">${delBtn('sentences',si)}</div>
+          </div>
+        </div>`).join('');
+      bodyHTML = fieldLbl('Instruction') + fi('instruction',block.instruction,'Fill in the blank…') + fieldLbl('Sentences') + sentsHTML + addBtn('sentences',{sentence:'',answer:'',hint:''},'Add Sentence');
+      break;
+    }
+
+    // ── GRAMMAR & LESSON ────────────────────────────────────────────────────
+    case 'grammar_rule': {
+      const examplesHTML = (block.examples||[]).map((e,ei) => `
+        <div class="pair-row">
+          <input class="field-input" value="${esc(e.sentence||'')}" placeholder="Example sentence…" onchange="updateBlockNested(${idx},'examples',${ei},'sentence',this.value)"/>
+          <input class="field-input" value="${esc(e.translation||'')}" placeholder="Translation/meaning" onchange="updateBlockNested(${idx},'examples',${ei},'translation',this.value)"/>
+          ${delBtn('examples',ei)}
+        </div>`).join('');
+      bodyHTML = fieldLbl('Rule Name') + fi('rule_name',block.rule_name,'e.g. Simple Present Tense') +
+        fieldLbl('Formula / Pattern') + fi('formula',block.formula,'Subject + Verb + Object') +
+        fieldLbl('Explanation') + ta('explanation',block.explanation,'Explain when and how to use this rule…',3) +
+        fieldLbl('Examples') + `<div style="font-size:10px;color:rgba(255,255,255,0.3);display:grid;grid-template-columns:1fr 1fr auto;gap:8px;padding:0 4px;margin-bottom:6px;"><span>SENTENCE</span><span>TRANSLATION</span><span></span></div>` +
+        examplesHTML + addBtn('examples',{sentence:'',translation:''},'Add Example') +
+        `<div style="margin-top:10px;">` + fieldLbl('Exceptions (optional)') + ta('exceptions',block.exceptions,'Any exceptions to this rule?',2) + `</div>`;
+      break;
+    }
+    case 'dialogue': {
+      const turnsHTML = (block.turns||[]).map((t,ti) => `
+        <div class="turn-row">
+          <select class="field-select" onchange="updateBlockNested(${idx},'turns',${ti},'speaker',this.value)">
+            <option value="A" ${t.speaker==='A'?'selected':''}>Person A</option>
+            <option value="B" ${t.speaker==='B'?'selected':''}>Person B</option>
+            <option value="C" ${t.speaker==='C'?'selected':''}>Person C</option>
+          </select>
+          <input class="field-input" value="${esc(t.text||'')}" placeholder="What they say…" onchange="updateBlockNested(${idx},'turns',${ti},'text',this.value)"/>
+          ${delBtn('turns',ti)}
+        </div>`).join('');
+      bodyHTML = fieldLbl('Dialogue Title') + fi('title',block.title,'Conversation title…') +
+        fieldLbl('Context / Scene Setting') + ta('context',block.context,'Where is this taking place?',2) +
+        fieldLbl('Dialogue Turns') + turnsHTML + addBtn('turns',{speaker:'A',text:''},'Add Turn');
+      break;
+    }
+    case 'cultural_note':
+      bodyHTML = fieldLbl('Title') + fi('title',block.title,'Cultural Note title…') +
+        fieldLbl('Category') + sel('category',block.category||'custom',[{v:'festival',l:'🎉 Festival'},{v:'food',l:'🍽️ Food'},{v:'custom',l:'🙏 Custom'},{v:'language',l:'💬 Language'},{v:'history',l:'📜 History'},{v:'etiquette',l:'🤝 Etiquette'}]) +
+        fieldLbl('Main Content') + ta('body',block.body,'Describe the cultural context…',4) +
+        fieldLbl('Fun Fact (optional)') + ta('fun_fact',block.fun_fact,'Did you know…',2);
+      break;
+    case 'sentence_starters': {
+      const startersHTML = (block.starters||[]).map((s,si) => `
+        <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:9px;padding:9px;margin-bottom:7px;">
+          <div style="display:flex;gap:8px;margin-bottom:6px;">
+            <input class="field-input" value="${esc(s.starter||'')}" placeholder="Sentence starter…" onchange="updateBlockNested(${idx},'starters',${si},'starter',this.value)" style="flex:1;"/>
+            ${delBtn('starters',si)}
+          </div>
+          <div style="display:flex;gap:8px;">
+            <input class="field-input" value="${esc(s.translation||'')}" placeholder="Translation" onchange="updateBlockNested(${idx},'starters',${si},'translation',this.value)" style="flex:1;"/>
+            <input class="field-input" value="${esc(s.example||'')}" placeholder="Full example sentence…" onchange="updateBlockNested(${idx},'starters',${si},'example',this.value)" style="flex:1.5;"/>
+          </div>
+        </div>`).join('');
+      bodyHTML = fieldLbl('Title') + fi('title',block.title,'Sentence Starters') + fieldLbl('Instruction') + fi('instruction',block.instruction,'Use these starters…') + fieldLbl('Starters') + startersHTML + addBtn('starters',{starter:'',translation:'',example:''},'Add Starter');
+      break;
+    }
+
+    // ── READING ──────────────────────────────────────────────────────────────
+    case 'reading': {
+      const qHTML = (block.questions||[]).map((q,qi) => `
+        <div class="pair-row">
+          <input class="field-input" value="${esc(q.q||'')}" placeholder="Question…" onchange="updateBlockNested(${idx},'questions',${qi},'q',this.value)"/>
+          <input class="field-input" value="${esc(q.a||'')}" placeholder="Answer…" onchange="updateBlockNested(${idx},'questions',${qi},'a',this.value)"/>
+          ${delBtn('questions',qi)}
+        </div>`).join('');
+      bodyHTML = fieldLbl('Reading Passage') + ta('passage',block.passage,'The reading text goes here…',5) + fieldLbl('Comprehension Questions') +
+        `<div style="font-size:10px;color:rgba(255,255,255,0.3);display:grid;grid-template-columns:1fr 1fr auto;gap:8px;padding:0 4px;margin-bottom:6px;"><span>QUESTION</span><span>ANSWER</span><span></span></div>` + qHTML + addBtn('questions',{q:'',a:''},'Add Question');
+      break;
+    }
+    case 'annotated_passage': {
+      const annHTML = (block.annotations||[]).map((a,ai) => `
+        <div class="triple-row">
+          <input class="field-input" value="${esc(a.word||'')}" placeholder="Word/phrase" onchange="updateBlockNested(${idx},'annotations',${ai},'word',this.value)"/>
+          <input class="field-input" value="${esc(a.meaning||'')}" placeholder="Meaning" onchange="updateBlockNested(${idx},'annotations',${ai},'meaning',this.value)"/>
+          <input class="field-input" value="${esc(a.note||'')}" placeholder="Extra note (optional)" onchange="updateBlockNested(${idx},'annotations',${ai},'note',this.value)"/>
+          ${delBtn('annotations',ai)}
+        </div>`).join('');
+      bodyHTML = fieldLbl('Title (optional)') + fi('title',block.title,'Passage title…') +
+        fieldLbl('Passage Text') + ta('passage',block.passage,'The text to annotate…',5) +
+        fieldLbl('Annotations (highlighted words/phrases)') +
+        `<div style="font-size:10px;color:rgba(255,255,255,0.3);display:grid;grid-template-columns:1fr 1fr 1fr auto;gap:8px;padding:0 4px;margin-bottom:6px;"><span>WORD</span><span>MEANING</span><span>NOTE</span><span></span></div>` + annHTML + addBtn('annotations',{word:'',meaning:'',note:''},'Add Annotation');
+      break;
+    }
+    case 'true_false': {
+      const stmtHTML = (block.statements||[]).map((s,si) => `
+        <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:9px;padding:9px;margin-bottom:8px;">
+          <div style="display:flex;gap:8px;margin-bottom:8px;">
+            <input class="field-input" value="${esc(s.text||'')}" placeholder="Statement…" onchange="updateBlockNested(${idx},'statements',${si},'text',this.value)" style="flex:1;"/>
+            <select class="field-select" style="width:120px;margin-bottom:0;" onchange="updateBlockNested(${idx},'statements',${si},'answer',this.value)">
+              <option value="true" ${s.answer==='true'?'selected':''}>✅ True</option>
+              <option value="false" ${s.answer==='false'?'selected':''}>❌ False</option>
+              <option value="ng" ${s.answer==='ng'?'selected':''}>🔍 Not Given</option>
+            </select>
+            ${delBtn('statements',si)}
+          </div>
+          <input class="field-input" value="${esc(s.explanation||'')}" placeholder="Explanation (shown after answering)…" onchange="updateBlockNested(${idx},'statements',${si},'explanation',this.value)"/>
+        </div>`).join('');
+      bodyHTML = fieldLbl('Instruction') + fi('instruction',block.instruction,'Mark each statement T/F/NG…') + fieldLbl('Statements') + stmtHTML + addBtn('statements',{text:'',answer:'true',explanation:''},'Add Statement');
+      break;
+    }
+    case 'sequencing': {
+      const seqHTML = (block.items||[]).map((s,si) => `
+        <div class="pair-row">
+          <input type="number" class="field-input" style="width:60px;" value="${s.order||si+1}" min="1" onchange="updateBlockNested(${idx},'items',${si},'order',parseInt(this.value))" placeholder="#"/>
+          <input class="field-input" value="${esc(s.text||'')}" placeholder="Event/step text…" onchange="updateBlockNested(${idx},'items',${si},'text',this.value)"/>
+          ${delBtn('items',si)}
+        </div>`).join('');
+      bodyHTML = fieldLbl('Instruction') + fi('instruction',block.instruction,'Put these events in order…') + fieldLbl('Items (# = correct position)') + seqHTML + addBtn('items',{text:'',order:(block.items||[]).length+1},'Add Item');
+      break;
+    }
+
+    // ── WRITING ──────────────────────────────────────────────────────────────
+    case 'writing':
+      bodyHTML = fieldLbl('Writing Prompt') + ta('prompt',block.prompt,'Describe your daily routine in 50 words…',3) +
+        `<div style="display:flex;gap:12px;margin-bottom:10px;"><div style="flex:1;">${fieldLbl('Minimum Words')}<input type="number" class="field-input" value="${block.minWords||50}" onchange="updateBlock(${idx},'minWords',parseInt(this.value))" placeholder="50"/></div></div>` +
+        fieldLbl('Sample Answer') + ta('sampleAnswer',block.sampleAnswer,'Example answer for reference…',3);
+      break;
+    case 'word_bank': {
+      const wbHTML = (block.words||[]).map((w,wi) => `
+        <div class="triple-row">
+          <input class="field-input" value="${esc(w.word||'')}" placeholder="Word" onchange="updateBlockNested(${idx},'words',${wi},'word',this.value)"/>
+          <select class="field-select" style="margin-bottom:0;" onchange="updateBlockNested(${idx},'words',${wi},'pos',this.value)">
+            <option value="noun" ${w.pos==='noun'?'selected':''}>Noun</option>
+            <option value="verb" ${w.pos==='verb'?'selected':''}>Verb</option>
+            <option value="adjective" ${w.pos==='adjective'?'selected':''}>Adjective</option>
+            <option value="adverb" ${w.pos==='adverb'?'selected':''}>Adverb</option>
+            <option value="phrase" ${w.pos==='phrase'?'selected':''}>Phrase</option>
+          </select>
+          <input class="field-input" value="${esc(w.meaning||'')}" placeholder="Meaning/hint" onchange="updateBlockNested(${idx},'words',${wi},'meaning',this.value)"/>
+          ${delBtn('words',wi)}
+        </div>`).join('');
+      bodyHTML = fieldLbl('Title') + fi('title',block.title,'Word Bank') + fieldLbl('Instruction') + fi('instruction',block.instruction,'Use these words in your writing.') +
+        `<div style="font-size:10px;color:rgba(255,255,255,0.3);display:grid;grid-template-columns:1fr 1fr 1fr auto;gap:8px;padding:0 4px;margin-bottom:6px;"><span>WORD</span><span>TYPE</span><span>MEANING</span><span></span></div>` + wbHTML + addBtn('words',{word:'',pos:'noun',meaning:''},'Add Word');
+      break;
+    }
+    case 'error_correction': {
+      const errHTML = (block.errors||[]).map((e,ei) => `
+        <div style="background:rgba(239,68,68,0.05);border:1px solid rgba(239,68,68,0.15);border-radius:9px;padding:9px;margin-bottom:7px;">
+          <div style="display:flex;gap:8px;margin-bottom:6px;">
+            <div style="flex:1;">${fieldLbl('Error')}<input class="field-input" value="${esc(e.error||'')}" placeholder="Incorrect text…" onchange="updateBlockNested(${idx},'errors',${ei},'error',this.value)"/></div>
+            <div style="flex:1;">${fieldLbl('Correction')}<input class="field-input" value="${esc(e.correction||'')}" placeholder="Correct text…" onchange="updateBlockNested(${idx},'errors',${ei},'correction',this.value)"/></div>
+            <div style="display:flex;align-items:flex-end;padding-bottom:2px;">${delBtn('errors',ei)}</div>
+          </div>
+          <input class="field-input" value="${esc(e.explanation||'')}" placeholder="Why is this wrong?" onchange="updateBlockNested(${idx},'errors',${ei},'explanation',this.value)"/>
+        </div>`).join('');
+      bodyHTML = fieldLbl('Instruction') + fi('instruction',block.instruction,'Find and correct the mistakes…') +
+        fieldLbl('Original Text (with errors)') + ta('original_text',block.original_text,'He go to school yesterday.',4) +
+        fieldLbl('Corrected Version') + ta('corrected_text',block.corrected_text,'He went to school yesterday.',3) +
+        fieldLbl('Error List') + errHTML + addBtn('errors',{error:'',correction:'',explanation:''},'Add Error');
+      break;
+    }
+    case 'guided_steps': {
+      const stepsHTML = (block.steps||[]).map((s,si) => `
+        <div style="display:flex;gap:8px;align-items:flex-start;margin-bottom:10px;">
+          <div style="width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,#5b4fcf,#7c6fd4);color:white;font-size:11px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:4px;">${si+1}</div>
+          <div style="flex:1;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:9px;padding:9px;">
+            <input class="field-input" style="margin-bottom:6px;" value="${esc(s.step_title||'')}" placeholder="Step title…" onchange="updateBlockNested(${idx},'steps',${si},'step_title',this.value)"/>
+            <textarea class="field-input" rows="2" onchange="updateBlockNested(${idx},'steps',${si},'instruction',this.value)" placeholder="Instruction…">${esc(s.instruction||'')}</textarea>
+            <input class="field-input" style="margin-top:6px;" value="${esc(s.example||'')}" placeholder="Example (optional)…" onchange="updateBlockNested(${idx},'steps',${si},'example',this.value)"/>
+          </div>
+          ${delBtn('steps',si)}
+        </div>`).join('');
+      bodyHTML = fieldLbl('Guide Title') + fi('title',block.title,'Writing Guide') + fieldLbl('Steps') + stepsHTML + addBtn('steps',{step_title:'',instruction:'',example:''},'Add Step');
+      break;
+    }
+
+    // ── SPEAKING ─────────────────────────────────────────────────────────────
+    case 'speaking':
+      bodyHTML = fieldLbl('Speaking Prompt') + ta('prompt',block.prompt,'What should the learner say or practice?',3) +
+        fieldLbl('Hints (one per line)') +
+        `<textarea class="field-input" rows="3" onchange="updateBlock(${idx},'hints',this.value.split('\\n').filter(s=>s.trim()))" placeholder="Hint 1&#10;Hint 2">${(block.hints||[]).join('\n')}</textarea>`;
+      break;
+    case 'role_play': {
+      const rolesHTML = (block.roles||[]).map((r,ri) => `
+        <div style="display:flex;gap:8px;margin-bottom:7px;">
+          <input class="field-input" value="${esc(r.name||'')}" placeholder="Role name…" onchange="updateBlockNested(${idx},'roles',${ri},'name',this.value)" style="width:120px;"/>
+          <input class="field-input" value="${esc(r.description||'')}" placeholder="Role description / instructions…" onchange="updateBlockNested(${idx},'roles',${ri},'description',this.value)" style="flex:1;"/>
+          ${delBtn('roles',ri)}
+        </div>`).join('');
+      bodyHTML = fieldLbl('Scenario') + ta('scenario',block.scenario,'Set the scene for the role play…',3) +
+        fieldLbl('Roles') + rolesHTML + addBtn('roles',{name:'',description:''},'Add Role') +
+        `<div style="margin-top:10px;">` + fieldLbl('Key Phrases (one per line)') +
+        `<textarea class="field-input" rows="3" onchange="updateBlock(${idx},'key_phrases',this.value.split('\\n').filter(s=>s.trim()))" placeholder="Excuse me, could you…&#10;I'd like to…">${(block.key_phrases||[]).join('\n')}</textarea></div>` +
+        `<div style="margin-top:8px;display:flex;align-items:center;gap:8px;">${fieldLbl('Duration (min)')}<input type="number" class="field-input" style="width:80px;margin-bottom:0;" value="${block.duration_minutes||5}" onchange="updateBlock(${idx},'duration_minutes',parseInt(this.value))"/></div>`;
+      break;
+    }
+    case 'debate_topic':
+      bodyHTML = fieldLbl('Topic / Statement') + fi('topic',block.topic,'e.g. Social media does more harm than good.') +
+        fieldLbl('Background / Context') + ta('background',block.background,'Brief context for the debate…',2) +
+        fieldLbl('FOR arguments (one per line)') +
+        `<textarea class="field-input" rows="3" style="margin-bottom:10px;" onchange="updateBlock(${idx},'pro_points',this.value.split('\\n').filter(s=>s.trim()))" placeholder="It connects people globally&#10;Supports small businesses">${(block.pro_points||[]).join('\n')}</textarea>` +
+        fieldLbl('AGAINST arguments (one per line)') +
+        `<textarea class="field-input" rows="3" style="margin-bottom:10px;" onchange="updateBlock(${idx},'con_points',this.value.split('\\n').filter(s=>s.trim()))" placeholder="Spreads misinformation&#10;Causes anxiety">${(block.con_points||[]).join('\n')}</textarea>` +
+        fieldLbl('Discussion Questions (one per line)') +
+        `<textarea class="field-input" rows="2" onchange="updateBlock(${idx},'discussion_questions',this.value.split('\\n').filter(s=>s.trim()))" placeholder="What do you think?&#10;Can you give an example?">${(block.discussion_questions||[]).join('\n')}</textarea>`;
+      break;
+    case 'conversation_starters': {
+      const csHTML = (block.starters||[]).map((s,si) => `
+        <div style="display:flex;gap:8px;margin-bottom:7px;">
+          <input class="field-input" value="${esc(s.prompt||'')}" placeholder="Conversation starter…" onchange="updateBlockNested(${idx},'starters',${si},'prompt',this.value)" style="flex:1;"/>
+          <input class="field-input" value="${esc(s.follow_up||'')}" placeholder="Follow-up question…" onchange="updateBlockNested(${idx},'starters',${si},'follow_up',this.value)" style="flex:1;"/>
+          ${delBtn('starters',si)}
+        </div>`).join('');
+      bodyHTML = fieldLbl('Title') + fi('title',block.title,'Conversation Starters') + fieldLbl('Level') +
+        sel('level',block.level||'beginner',[{v:'beginner',l:'Beginner'},{v:'intermediate',l:'Intermediate'},{v:'advanced',l:'Advanced'}]) +
+        fieldLbl('Starters (prompt + follow-up pairs)') +
+        `<div style="font-size:10px;color:rgba(255,255,255,0.3);display:grid;grid-template-columns:1fr 1fr auto;gap:8px;padding:0 4px;margin-bottom:6px;"><span>STARTER</span><span>FOLLOW-UP</span><span></span></div>` + csHTML + addBtn('starters',{prompt:'',follow_up:''},'Add Starter');
+      break;
+    }
+
+    // ── PRONUNCIATION ─────────────────────────────────────────────────────────
+    case 'minimal_pairs': {
+      const pairsHTML = (block.pairs||[]).map((p,pi) => `
+        <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:9px;padding:9px;margin-bottom:7px;">
+          <div style="display:flex;gap:8px;margin-bottom:6px;">
+            <input class="field-input" value="${esc(p.word1||'')}" placeholder="Word 1 (e.g. ship)" onchange="updateBlockNested(${idx},'pairs',${pi},'word1',this.value)" style="flex:1;"/>
+            <input class="field-input" value="${esc(p.word2||'')}" placeholder="Word 2 (e.g. sheep)" onchange="updateBlockNested(${idx},'pairs',${pi},'word2',this.value)" style="flex:1;"/>
+            ${delBtn('pairs',pi)}
+          </div>
+          <div style="display:flex;gap:8px;">
+            <input class="field-input" value="${esc(p.sound_difference||'')}" placeholder="Sound difference (e.g. /ɪ/ vs /iː/)" onchange="updateBlockNested(${idx},'pairs',${pi},'sound_difference',this.value)" style="flex:1;"/>
+            <input class="field-input" value="${esc(p.tip||'')}" placeholder="Practice tip…" onchange="updateBlockNested(${idx},'pairs',${pi},'tip',this.value)" style="flex:1;"/>
+          </div>
+        </div>`).join('');
+      bodyHTML = fieldLbl('Instruction') + fi('instruction',block.instruction,'Listen and repeat these minimal pairs.') + fieldLbl('Word Pairs') + pairsHTML + addBtn('pairs',{word1:'',word2:'',sound_difference:'',tip:''},'Add Pair');
+      break;
+    }
+    case 'stress_pattern': {
+      const spHTML = (block.words||[]).map((w,wi) => `
+        <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:9px;padding:9px;margin-bottom:7px;">
+          <div style="display:flex;gap:8px;margin-bottom:6px;">
+            <input class="field-input" value="${esc(w.word||'')}" placeholder="Word (e.g. photograph)" onchange="updateBlockNested(${idx},'words',${wi},'word',this.value)" style="flex:1;"/>
+            <input class="field-input" value="${esc(w.pattern||'')}" placeholder="Pattern (e.g. PHO-to-graph)" onchange="updateBlockNested(${idx},'words',${wi},'pattern',this.value)" style="flex:1;"/>
+            ${delBtn('words',wi)}
+          </div>
+          <div style="display:flex;gap:8px;">
+            <input class="field-input" value="${esc(w.ipa||'')}" placeholder="IPA (e.g. /ˈfəʊtəɡrɑːf/)" onchange="updateBlockNested(${idx},'words',${wi},'ipa',this.value)" style="flex:1;"/>
+            <input class="field-input" value="${esc(w.example||'')}" placeholder="Example sentence" onchange="updateBlockNested(${idx},'words',${wi},'example',this.value)" style="flex:1;"/>
+          </div>
+        </div>`).join('');
+      bodyHTML = fieldLbl('Instruction') + fi('instruction',block.instruction,'CAPITALS = stressed syllable.') + fieldLbl('Words') + spHTML + addBtn('words',{word:'',pattern:'',ipa:'',example:''},'Add Word');
+      break;
+    }
+    case 'tongue_twister':
+      bodyHTML = fieldLbl('Tongue Twister Text') + ta('text',block.text,'She sells seashells by the seashore…',3) +
+        fieldLbl('Translation (optional)') + ta('translation',block.translation,'Translation in target language…',2) +
+        fieldLbl('Practice Tip') + ta('tip',block.tip,'Start slowly, then increase speed…',2) +
+        fieldLbl('Difficulty') + sel('difficulty',block.difficulty||'medium',[{v:'easy',l:'🟢 Easy'},{v:'medium',l:'🟡 Medium'},{v:'hard',l:'🔴 Hard'}]);
+      break;
+    case 'pronunciation_guide': {
+      const pgHTML = (block.words||[]).map((w,wi) => `
+        <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:9px;padding:9px;margin-bottom:7px;">
+          <div style="display:flex;gap:8px;margin-bottom:6px;">
+            <input class="field-input" value="${esc(w.word||'')}" placeholder="Word" onchange="updateBlockNested(${idx},'words',${wi},'word',this.value)" style="flex:1;"/>
+            <input class="field-input" value="${esc(w.phonetic||'')}" placeholder="Phonetic /fəˈnɛtɪk/" onchange="updateBlockNested(${idx},'words',${wi},'phonetic',this.value)" style="flex:1;"/>
+            ${delBtn('words',wi)}
+          </div>
+          <div style="display:flex;gap:8px;">
+            <input class="field-input" value="${esc(w.native_equivalent||'')}" placeholder="Native lang. sound hint" onchange="updateBlockNested(${idx},'words',${wi},'native_equivalent',this.value)" style="flex:1;"/>
+            <input class="field-input" value="${esc(w.tip||'')}" placeholder="Pronunciation tip" onchange="updateBlockNested(${idx},'words',${wi},'tip',this.value)" style="flex:1;"/>
+          </div>
+        </div>`).join('');
+      bodyHTML = fieldLbl('Title') + fi('title',block.title,'Pronunciation Guide') + fieldLbl('Words') + pgHTML + addBtn('words',{word:'',phonetic:'',native_equivalent:'',tip:''},'Add Word');
+      break;
+    }
+
+    // ── LISTENING ─────────────────────────────────────────────────────────────
+    case 'transcript_cloze':
+      bodyHTML = fieldLbl('Audio Label') + fi('audio_label',block.audio_label,'Listening exercise…') + fieldLbl('Audio URL') + fi('audio_url',block.audio_url,'https://example.com/audio.mp3') +
+        fieldLbl('Transcript with Blanks (use [blank] for gaps)') + ta('transcript_with_blanks',block.transcript_with_blanks,'He [blank] to the market every [blank].',5) +
+        fieldLbl('Answers (one per line, in order)') +
+        `<textarea class="field-input" rows="3" onchange="updateBlock(${idx},'answers',this.value.split('\\n').filter(s=>s.trim()).map((a,i)=>({position:i+1,answer:a})))" placeholder="goes&#10;morning">${(block.answers||[]).map(a=>a.answer).join('\n')}</textarea>`;
+      break;
+    case 'listen_repeat': {
+      const lrHTML = (block.segments||[]).map((s,si) => `
+        <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:9px;padding:9px;margin-bottom:7px;">
+          <div style="display:flex;gap:8px;margin-bottom:6px;">
+            <input class="field-input" value="${esc(s.text||'')}" placeholder="Text segment…" onchange="updateBlockNested(${idx},'segments',${si},'text',this.value)" style="flex:1.5;"/>
+            <input class="field-input" value="${esc(s.phonetic||'')}" placeholder="Phonetic guide" onchange="updateBlockNested(${idx},'segments',${si},'phonetic',this.value)" style="flex:1;"/>
+            ${delBtn('segments',si)}
+          </div>
+          <div style="display:flex;gap:8px;">
+            <input class="field-input" value="${esc(s.meaning||'')}" placeholder="Meaning/translation" onchange="updateBlockNested(${idx},'segments',${si},'meaning',this.value)" style="flex:1;"/>
+            <input type="number" class="field-input" value="${s.repetitions||3}" placeholder="Reps" min="1" max="10" onchange="updateBlockNested(${idx},'segments',${si},'repetitions',parseInt(this.value))" style="width:70px;"/>
+          </div>
+        </div>`).join('');
+      bodyHTML = fieldLbl('Audio Label') + fi('audio_label',block.audio_label,'Listen and Repeat') + fieldLbl('Audio URL') + fi('audio_url',block.audio_url,'https://example.com/audio.mp3') + fieldLbl('Segments') + lrHTML + addBtn('segments',{text:'',phonetic:'',meaning:'',repetitions:3},'Add Segment');
+      break;
+    }
+    case 'audio_questions': {
+      const preQHTML = (block.pre_questions||[]).map((q,qi) => `
+        <div class="pair-row">
+          <input class="field-input" value="${esc(q.q||'')}" placeholder="Pre-listening question…" onchange="updateBlockNested(${idx},'pre_questions',${qi},'q',this.value)"/>
+          <input class="field-input" value="${esc(q.a||'')}" placeholder="Expected answer…" onchange="updateBlockNested(${idx},'pre_questions',${qi},'a',this.value)"/>
+          ${delBtn('pre_questions',qi)}
+        </div>`).join('');
+      const postQHTML = (block.post_questions||[]).map((q,qi) => `
+        <div class="pair-row">
+          <input class="field-input" value="${esc(q.q||'')}" placeholder="Post-listening question…" onchange="updateBlockNested(${idx},'post_questions',${qi},'q',this.value)"/>
+          <input class="field-input" value="${esc(q.a||'')}" placeholder="Answer…" onchange="updateBlockNested(${idx},'post_questions',${qi},'a',this.value)"/>
+          ${delBtn('post_questions',qi)}
+        </div>`).join('');
+      bodyHTML = fieldLbl('Audio Label') + fi('audio_label',block.audio_label,'Audio exercise…') + fieldLbl('Audio URL') + fi('audio_url',block.audio_url,'https://example.com/audio.mp3') +
+        fieldLbl('Pre-Listening Questions') + `<div style="font-size:10px;color:rgba(255,255,255,0.3);display:grid;grid-template-columns:1fr 1fr auto;gap:8px;padding:0 4px;margin-bottom:6px;"><span>QUESTION</span><span>ANSWER</span><span></span></div>` +
+        preQHTML + addBtn('pre_questions',{q:'',a:''},'Add Pre-Q') +
+        `<div style="margin-top:12px;">` + fieldLbl('Post-Listening Questions') + `<div style="font-size:10px;color:rgba(255,255,255,0.3);display:grid;grid-template-columns:1fr 1fr auto;gap:8px;padding:0 4px;margin-bottom:6px;"><span>QUESTION</span><span>ANSWER</span><span></span></div>` + postQHTML + addBtn('post_questions',{q:'',a:''},'Add Post-Q') + `</div>`;
+      break;
+    }
+
+    // ── TEST / QUIZ ────────────────────────────────────────────────────────────
+    case 'quiz': {
+      const optsHTML = (block.options||['','','','']).map((opt,oi) => `
+        <div class="quiz-opt">
+          <input type="radio" class="quiz-opt-radio" name="quiz_correct_${idx}" value="${oi}" ${block.correct===oi?'checked':''} onchange="updateBlock(${idx},'correct',${oi})"/>
+          <input class="field-input" value="${esc(opt)}" placeholder="Option ${oi+1}…" onchange="updateBlockOption(${idx},${oi},this.value)" style="flex:1;"/>
+        </div>`).join('');
+      bodyHTML = fieldLbl('Question') + fi('question',block.question,'Question text…') + fieldLbl('Options (● = correct answer)') + optsHTML +
+        `<div style="margin-top:10px;">` + fieldLbl('Explanation (shown after answer)') + ta('explanation',block.explanation,'Why is this the correct answer?',2) + `</div>`;
+      break;
+    }
+    case 'matching': {
+      const matchHTML = (block.pairs||[]).map((p,pi) => `
+        <div class="pair-row">
+          <input class="field-input" value="${esc(p.left||'')}" placeholder="Left item…" onchange="updateBlockNested(${idx},'pairs',${pi},'left',this.value)"/>
+          <input class="field-input" value="${esc(p.right||'')}" placeholder="Right item (correct match)…" onchange="updateBlockNested(${idx},'pairs',${pi},'right',this.value)"/>
+          ${delBtn('pairs',pi)}
+        </div>`).join('');
+      bodyHTML = fieldLbl('Instruction') + fi('instruction',block.instruction,'Match each item on the left with the correct item on the right.') +
+        `<div style="font-size:10px;color:rgba(255,255,255,0.3);display:grid;grid-template-columns:1fr 1fr auto;gap:8px;padding:0 4px;margin-bottom:6px;"><span>LEFT COLUMN</span><span>RIGHT COLUMN (match)</span><span></span></div>` + matchHTML + addBtn('pairs',{left:'',right:''},'Add Pair');
+      break;
+    }
+    case 'ordering': {
+      const ordHTML = (block.items||[]).map((item,ii) => `
+        <div class="pair-row">
+          <input type="number" class="field-input" style="width:60px;" value="${item.correct_position||ii+1}" min="1" onchange="updateBlockNested(${idx},'items',${ii},'correct_position',parseInt(this.value))" placeholder="#"/>
+          <input class="field-input" value="${esc(item.text||'')}" placeholder="Sentence / step text…" onchange="updateBlockNested(${idx},'items',${ii},'text',this.value)"/>
+          ${delBtn('items',ii)}
+        </div>`).join('');
+      bodyHTML = fieldLbl('Instruction') + fi('instruction',block.instruction,'Put the sentences in the correct order.') +
+        `<div style="font-size:10px;color:rgba(255,255,255,0.3);display:grid;grid-template-columns:60px 1fr auto;gap:8px;padding:0 4px;margin-bottom:6px;"><span>#</span><span>ITEM</span><span></span></div>` + ordHTML + addBtn('items',{text:'',correct_position:(block.items||[]).length+1},'Add Item');
+      break;
+    }
+    case 'short_answer': {
+      const kpHTML = (block.key_points||[]).map((kp,ki) => `
+        <div class="simple-row">
+          <input class="field-input" value="${esc(kp||'')}" placeholder="Key point to mention…" onchange="updateBlockArrayItem(${idx},'key_points',${ki},this.value)"/>
+          ${delBtn('key_points',ki)}
+        </div>`).join('');
+      bodyHTML = fieldLbl('Question') + ta('question',block.question,'Open-ended question…',3) +
+        `<div style="display:flex;gap:12px;margin-bottom:10px;"><div style="flex:1;">${fieldLbl('Word Limit')}<input type="number" class="field-input" value="${block.word_limit||50}" onchange="updateBlock(${idx},'word_limit',parseInt(this.value))"/></div></div>` +
+        fieldLbl('Model Answer') + ta('model_answer',block.model_answer,'Sample/expected answer…',3) +
+        fieldLbl('Key Points (marking criteria)') + kpHTML + addBtn('key_points','','Add Key Point');
+      break;
+    }
+    default:
+      bodyHTML = `<p style="font-size:12px;color:rgba(255,255,255,0.35);">Unknown block type: ${esc(block.type)}</p>`;
+  }
+
+  card.innerHTML = `
+    <div class="block-header" style="border-left:3px solid ${col};">
+      <div class="block-icon" style="background:${col}22;">
+        <span style="font-size:16px;">${blockMeta.icon}</span>
+      </div>
+      <div>
+        <span class="block-title">${blockMeta.label}</span>
+        <span style="font-size:10px;color:${col}99;margin-left:6px;font-weight:600;">${(BLOCK_CATS.find(c=>c.key===blockMeta.cat)||{label:''}).label}</span>
+      </div>
+      <div class="block-actions">
+        <button class="block-btn" title="Move up" onclick="moveBlock(${idx},-1)"><span class="material-symbols-outlined" style="font-size:14px;">arrow_upward</span></button>
+        <button class="block-btn" title="Move down" onclick="moveBlock(${idx},1)"><span class="material-symbols-outlined" style="font-size:14px;">arrow_downward</span></button>
+        <button class="block-btn del" title="Delete block" onclick="deleteBlock(${idx})"><span class="material-symbols-outlined" style="font-size:14px;">delete</span></button>
+      </div>
+    </div>
+    <div class="block-body">${bodyHTML}</div>
+  `;
+  return card;
+}
+
+function updateBlockArrayItem(idx, arr, i, val) {
+  if (!currentBlocks[idx]?.[arr]) return;
+  currentBlocks[idx][arr][i] = val;
+}
+
+function updateBlock(idx, key, val) {
+  if (!currentBlocks[idx]) return;
+  currentBlocks[idx][key] = val;
+}
+function updateBlockNested(idx, arr, i, key, val) {
+  if (!currentBlocks[idx]?.[arr]) return;
+  currentBlocks[idx][arr][i][key] = val;
+}
+function updateBlockOption(idx, optIdx, val) {
+  if (!currentBlocks[idx]?.options) return;
+  currentBlocks[idx].options[optIdx] = val;
+}
+function removeNested(idx, arr, i) {
+  if (!currentBlocks[idx]?.[arr]) return;
+  currentBlocks[idx][arr].splice(i, 1);
+  renderBlocksList();
+}
+function addNested(idx, arr, defaultObj) {
+  if (!currentBlocks[idx]?.[arr]) return;
+  currentBlocks[idx][arr].push({...defaultObj});
+  renderBlocksList();
+}
+function deleteBlock(idx) {
+  currentBlocks.splice(idx, 1);
+  renderBlocksList();
+  showToast('Block removed', 'warning');
+}
+function moveBlock(idx, dir) {
+  const newIdx = idx + dir;
+  if (newIdx < 0 || newIdx >= currentBlocks.length) return;
+  [currentBlocks[idx], currentBlocks[newIdx]] = [currentBlocks[newIdx], currentBlocks[idx]];
+  renderBlocksList();
+}
+
+// ── XP Presets ─────────────────────────────────────────────────────────────
+function renderXpPresets() {
+  const container = document.getElementById('xp-presets');
+  container.innerHTML = '';
+  XP_PRESETS.forEach(xp => {
+    const btn = document.createElement('button');
+    btn.className = 'btn btn-secondary btn-sm';
+    btn.style.cssText = 'font-size:12px;padding:5px 10px;';
+    btn.innerHTML = `⚡${xp}`;
+    btn.onclick = () => { document.getElementById('f-xp').value = xp; };
+    container.appendChild(btn);
+  });
+}
+
+// ── Save ───────────────────────────────────────────────────────────────────
+function saveActivity() {
+  if (!selectedActivity) return;
+  const tags = document.getElementById('f-tags').value.split(',').map(t=>t.trim()).filter(Boolean);
+  const content = {
+    title: document.getElementById('f-title').value,
+    description: document.getElementById('f-desc').value,
+    duration: document.getElementById('f-duration').value,
+    notes: document.getElementById('f-notes').value,
+    xp: parseInt(document.getElementById('f-xp').value) || selectedActivity.xp,
+    locked: document.getElementById('f-locked').checked,
+    requireAllSteps: document.getElementById('f-req-all-steps').checked,
+    requireScore: document.getElementById('f-req-score').checked,
+    minScore: parseInt(document.getElementById('f-min-score').value) || 70,
+    tags,
+    blocks: currentBlocks,
+    savedAt: new Date().toISOString(),
+    activityId: selectedActivity.id,
+    activityType: selectedActivity.type,
+  };
+  LWContent.saveContent(selectedActivity.id, content);
+  document.getElementById('ed-act-title').textContent = content.title;
+  showToast('Activity saved! ✓');
+  renderActivityList();
+  updateStats();
+  updateLangCounts();
+}
+
+function clearContent() {
+  if (!selectedActivity) return;
+  if (!confirm('Clear all content for this activity? This cannot be undone.')) return;
+  LWContent.deleteContent(selectedActivity.id);
+  currentBlocks = [];
+  renderBlocksList();
+  showToast('Content cleared', 'warning');
+  renderActivityList();
+  updateStats();
+}
+
+function clearEditor() {
+  document.getElementById('ed-empty').style.display = 'flex';
+  document.getElementById('ed-content').style.display = 'none';
+}
+
+// ── Preview ────────────────────────────────────────────────────────────────
+
+
+function renderPreview() {
+  const container = document.getElementById('preview-content');
+  if (!selectedActivity) { container.innerHTML = '<p style="color:rgba(255,255,255,0.3)">No activity selected.</p>'; return; }
+  const title = document.getElementById('f-title').value;
+  const desc = document.getElementById('f-desc').value;
+  const xp = document.getElementById('f-xp').value;
+  const duration = document.getElementById('f-duration').value;
+  const ti = TYPE_INFO[selectedActivity.type] || TYPE_INFO.lesson;
+  const actPageMap = {lesson:'activity-lesson',vocab:'activity-vocabulary',reading:'activity-reading',writing:'activity-writing',pronunciation:'activity-pronunciation',speaking:'activity-speaking',test:'activity-test',listening:'activity-listening',final_exam:'activity-test'};
+  const actPage = actPageMap[selectedActivity.type] || 'activity-lesson';
+
+  const blocksHTML = currentBlocks.length === 0
+    ? `<div style="text-align:center;padding:28px 16px;color:rgba(255,255,255,0.2);border:1px dashed rgba(255,255,255,0.1);border-radius:12px;font-size:12px;">No content blocks added yet</div>`
+    : currentBlocks.map(b => renderPreviewBlock(b)).join('');
+
+  container.innerHTML = `
+  <div id="preview-wrap">
+    <!-- Device mockup -->
+    <div id="preview-device">
+      <div class="device-toggle">
+        <button class="active" onclick="this.parentElement.querySelectorAll('button').forEach(b=>b.classList.remove('active'));this.classList.add('active')">📱 Mobile</button>
+        <button onclick="setPreviewWide(this,400)">💻 Tablet</button>
+      </div>
+      <div class="device-frame" id="device-frame">
+        <div class="device-notch"></div>
+        <div class="device-screen" id="device-screen" style="padding:14px;">
+          <!-- Activity header -->
+          <div style="background:linear-gradient(135deg,${ti.color}22,${ti.color}0a);border:1px solid ${ti.color}33;border-radius:16px;padding:14px;margin-bottom:12px;">
+            <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
+              <div style="width:38px;height:38px;border-radius:11px;background:${ti.color}22;border:1px solid ${ti.color}44;display:flex;align-items:center;justify-content:center;">
+                <span class="material-symbols-outlined" style="color:${ti.color};font-size:20px;font-variation-settings:'FILL' 1;">${ti.icon}</span>
+              </div>
+              <div>
+                <div style="font-size:9px;font-weight:800;text-transform:uppercase;letter-spacing:0.1em;color:${ti.color};">${ti.label}</div>
+                <div style="font-size:14px;font-weight:800;color:white;line-height:1.2;">${esc(title)||'Activity Title'}</div>
+              </div>
+            </div>
+            <div style="display:flex;gap:6px;margin-bottom:8px;">
+              <span style="background:rgba(91,79,207,0.25);color:#a5a0df;padding:3px 9px;border-radius:999px;font-size:10px;font-weight:700;">⚡${xp} XP</span>
+              <span style="background:rgba(16,185,129,0.18);color:#34d399;padding:3px 9px;border-radius:999px;font-size:10px;font-weight:700;">⏱ ${esc(duration)||'—'}</span>
+            </div>
+            ${desc ? `<p style="font-size:11px;color:rgba(255,255,255,0.5);line-height:1.55;margin:0;">${esc(desc)}</p>` : ''}
+          </div>
+          <!-- Blocks -->
+          <div style="font-size:9px;font-weight:800;text-transform:uppercase;letter-spacing:0.1em;color:rgba(165,160,223,0.4);margin-bottom:8px;">${currentBlocks.length} CONTENT BLOCK${currentBlocks.length!==1?'S':''}</div>
+          ${blocksHTML}
+          <!-- Bottom CTA -->
+          <div style="margin-top:16px;text-align:center;">
+            <div style="background:linear-gradient(135deg,#5b4fcf,#7c6fd4);border-radius:14px;padding:13px 20px;font-size:13px;font-weight:800;color:white;cursor:pointer;box-shadow:0 4px 20px rgba(91,79,207,0.4);">
+              Start Activity →
+            </div>
+          </div>
+        </div>
+        <div class="device-homebutton"></div>
+      </div>
+    </div>
+    <!-- Block summary sidebar -->
+    <div style="flex:1;min-width:0;">
+      <div style="font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:0.08em;color:rgba(165,160,223,0.5);margin-bottom:10px;">Block Summary</div>
+      ${currentBlocks.length === 0 ? '<p style="font-size:12px;color:rgba(255,255,255,0.25);">No blocks added yet</p>' :
+        currentBlocks.map((b,i) => {
+          const bm = BLOCK_TYPES.find(t=>t.type===b.type)||{icon:'📝',label:b.type,cat:'core'};
+          const cc = BLOCK_CATS.find(c=>c.key===bm.cat);
+          const col = cc?cc.color:'#5b4fcf';
+          return `<div style="display:flex;align-items:center;gap:8px;padding:8px 10px;border-radius:9px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);margin-bottom:5px;">
+            <span style="font-size:13px;">${bm.icon}</span>
+            <div style="flex:1;min-width:0;">
+              <div style="font-size:12px;font-weight:700;color:white;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${bm.label}</div>
+              <div style="font-size:10px;color:${col}99;">${(cc||{label:''}).label}</div>
+            </div>
+            <span style="font-size:10px;font-weight:700;color:rgba(255,255,255,0.25);">#${i+1}</span>
+          </div>`;
+        }).join('')
+      }
+      <div style="margin-top:16px;">
+        <a href="${actPage}.html?lang=${selectedLang}&id=${selectedActivity.id}&xp=${xp}" target="_blank" class="btn btn-primary btn-sm" style="width:100%;justify-content:center;">
+          <span class="material-symbols-outlined" style="font-size:14px;">open_in_new</span> Open Activity Page
+        </a>
+      </div>
+    </div>
+  </div>`;
+}
+
+function setPreviewWide(btn, w) {
+  btn.parentElement.querySelectorAll('button').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  const frame = document.getElementById('device-frame');
+  frame.style.width = w+'px';
+  frame.style.borderRadius = '20px';
+}
+
+function renderPreviewBlock(b) {
+  const bm = BLOCK_TYPES.find(t=>t.type===b.type)||{icon:'📝',label:b.type,cat:'core'};
+  const cc = BLOCK_CATS.find(c=>c.key===bm.cat);
+  const col = cc?cc.color:'#5b4fcf';
+
+  const header = `<div class="pv-label" style="color:${col}aa;">${bm.icon} ${bm.label}</div>`;
+
+  let inner = '';
+  switch(b.type) {
+    case 'text':
+      inner = `<div class="pv-text-block">
+        ${b.title?`<div style="font-size:13px;font-weight:800;color:white;margin-bottom:6px;">${esc(b.title)}</div>`:''}
+        <div style="font-size:12px;color:rgba(255,255,255,0.65);line-height:1.65;">${esc(b.body||'(no content)')}</div>
+      </div>`;
+      break;
+    case 'keypoints':
+      inner = `<div style="background:rgba(16,185,129,0.08);border:1px solid rgba(16,185,129,0.2);border-radius:14px;padding:12px;">
+        ${b.title?`<div style="font-size:11px;font-weight:800;color:#34d399;margin-bottom:8px;">${esc(b.title)}</div>`:''}
+        ${(b.points||[]).map(p=>`<div style="display:flex;gap:8px;align-items:flex-start;margin-bottom:5px;"><span style="color:#34d399;font-size:14px;line-height:1.3;">•</span><span style="font-size:12px;color:rgba(255,255,255,0.75);line-height:1.55;">${esc(p)}</span></div>`).join('')}
+      </div>`;
+      break;
+    case 'tip': {
+      const styleMap = {tip:{bg:'rgba(245,158,11,0.1)',border:'#f59e0b',icon:'💡'},warning:{bg:'rgba(239,68,68,0.1)',border:'#ef4444',icon:'⚠️'},info:{bg:'rgba(14,165,233,0.1)',border:'#0ea5e9',icon:'ℹ️'},success:{bg:'rgba(16,185,129,0.1)',border:'#10b981',icon:'✅'}};
+      const s = styleMap[b.style||'tip']||styleMap.tip;
+      inner = `<div style="background:${s.bg};border-left:3px solid ${s.border};border-radius:0 12px 12px 0;padding:12px 14px;">
+        <span style="font-size:12px;color:rgba(255,255,255,0.7);">${s.icon} ${esc(b.body||'(empty tip)')}</span>
+      </div>`;
+      break;
+    }
+    case 'audio':
+      inner = `<div class="pv-audio-player">
+        <div class="pv-play-btn"><span style="color:white;font-size:16px;margin-left:3px;">▶</span></div>
+        <div><div style="font-size:12px;font-weight:700;color:white;">${esc(b.label||'Audio Clip')}</div>${b.url?`<div style="font-size:10px;color:rgba(255,255,255,0.35);">Click to play</div>`:''}</div>
+        <div style="flex:1;height:3px;background:rgba(255,255,255,0.1);border-radius:2px;"><div style="width:30%;height:100%;background:#06b6d4;border-radius:2px;"></div></div>
+      </div>
+      ${b.transcript?`<div style="font-size:11px;color:rgba(255,255,255,0.4);margin-top:8px;padding:8px;background:rgba(255,255,255,0.03);border-radius:8px;line-height:1.5;">${esc(b.transcript.substring(0,120))}${b.transcript.length>120?'…':''}</div>`:``}`;
+      break;
+    case 'video_embed':
+      inner = `<div class="pv-video">
+        <div class="pv-video-thumb">
+          <div style="position:absolute;top:8px;left:8px;font-size:9px;font-weight:800;color:rgba(255,255,255,0.4);text-transform:uppercase;">${esc(b.platform||'video')}</div>
+          <div class="pv-video-play"><span style="color:white;font-size:20px;margin-left:3px;">▶</span></div>
+        </div>
+      </div>
+      ${b.title?`<div style="font-size:12px;font-weight:700;color:white;margin-bottom:4px;">${esc(b.title)}</div>`:''}
+      ${(b.discussion_questions||[]).filter(q=>q).length?`<div style="font-size:11px;color:rgba(165,160,223,0.7);margin-top:6px;">${(b.discussion_questions||[]).filter(q=>q).map(q=>`💬 ${esc(q)}`).join('<br>')}</div>`:''}`;
+      break;
+    case 'vocab_table':
+      inner = `<div style="background:rgba(14,165,233,0.08);border:1px solid rgba(14,165,233,0.2);border-radius:14px;padding:12px;">
+        ${b.title?`<div style="font-size:11px;font-weight:800;color:#38bdf8;margin-bottom:8px;">${esc(b.title)}</div>`:''}
+        <div style="font-size:10px;color:rgba(255,255,255,0.3);display:grid;grid-template-columns:1fr 1fr 1.5fr;gap:4px;margin-bottom:6px;padding-bottom:6px;border-bottom:1px solid rgba(255,255,255,0.06);">
+          <span style="font-weight:700;">WORD</span><span style="font-weight:700;">MEANING</span><span style="font-weight:700;">EXAMPLE</span>
+        </div>
+        ${(b.words||[]).map(w=>`<div class="pv-vocab-row"><span class="pv-vocab-word">${esc(w.word)}</span><span class="pv-vocab-meaning">${esc(w.meaning)}</span><span class="pv-vocab-example">${esc(w.example)}</span></div>`).join('')}
+      </div>`;
+      break;
+    case 'flashcard_set': {
+      const card0 = (b.cards||[])[0]||{front:'',back:'',example:''};
+      const total = (b.cards||[]).length;
+      inner = `<div class="pv-flashcard">
+        <div style="font-size:10px;font-weight:800;color:rgba(255,255,255,0.35);margin-bottom:12px;">CARD 1 of ${total} · Tap to flip</div>
+        <div style="font-size:20px;font-weight:800;color:white;margin-bottom:6px;">${esc(card0.front||'(front)')}</div>
+        <div style="height:1px;background:rgba(255,255,255,0.1);margin-bottom:10px;"></div>
+        <div style="font-size:14px;color:rgba(165,160,223,0.8);">${esc(card0.back||'(back)')}</div>
+        ${card0.example?`<div style="font-size:11px;color:rgba(255,255,255,0.4);margin-top:8px;font-style:italic;">${esc(card0.example)}</div>`:''}
+        <div style="display:flex;gap:6px;margin-top:14px;justify-content:center;">
+          <div style="padding:5px 14px;border-radius:8px;background:rgba(239,68,68,0.2);color:#f87171;font-size:11px;font-weight:700;">✗ Again</div>
+          <div style="padding:5px 14px;border-radius:8px;background:rgba(245,158,11,0.2);color:#fcd34d;font-size:11px;font-weight:700;">~ Hard</div>
+          <div style="padding:5px 14px;border-radius:8px;background:rgba(16,185,129,0.2);color:#34d399;font-size:11px;font-weight:700;">✓ Good</div>
+        </div>
+      </div>`;
+      break;
+    }
+    case 'word_family':
+      inner = `<div style="background:rgba(139,92,246,0.08);border:1px solid rgba(139,92,246,0.2);border-radius:14px;padding:12px;">
+        <div style="text-align:center;font-size:18px;font-weight:900;color:white;margin-bottom:12px;">${esc(b.base_word||'base word')}</div>
+        <div class="pv-word-family">
+          ${[{k:'noun',l:'Noun',c:'#38bdf8'},{k:'verb',l:'Verb',c:'#34d399'},{k:'adjective',l:'Adjective',c:'#c4b5fd'},{k:'adverb',l:'Adverb',c:'#fcd34d'}].map(f=>`
+          <div class="pv-wf-cell">
+            <div style="font-size:9px;font-weight:800;color:${f.c};margin-bottom:3px;">${f.l}</div>
+            <div style="font-size:13px;font-weight:700;color:white;">${esc(b[f.k]||'—')}</div>
+          </div>`).join('')}
+        </div>
+        ${b.example_sentence?`<div style="font-size:11px;color:rgba(255,255,255,0.45);margin-top:10px;font-style:italic;text-align:center;">${esc(b.example_sentence)}</div>`:''}
+      </div>`;
+      break;
+    case 'idiom_card':
+      inner = `<div class="pv-idiom">
+        <div style="font-size:10px;font-weight:800;color:#f9a8d4;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:6px;">Idiom</div>
+        <div style="font-size:16px;font-weight:800;color:white;margin-bottom:8px;">"${esc(b.idiom||'(no idiom)')}"</div>
+        <div style="height:1px;background:rgba(236,72,153,0.2);margin-bottom:8px;"></div>
+        <div style="font-size:11px;color:rgba(255,255,255,0.5);margin-bottom:4px;">Meaning</div>
+        <div style="font-size:12px;color:rgba(255,255,255,0.8);margin-bottom:8px;">${esc(b.meaning||'—')}</div>
+        ${b.example?`<div style="background:rgba(255,255,255,0.06);border-radius:8px;padding:8px 10px;font-size:11px;color:rgba(255,255,255,0.55);font-style:italic;">${esc(b.example)}</div>`:''}
+      </div>`;
+      break;
+    case 'fill_blank': {
+      const s0 = (b.sentences||[])[0]||{sentence:'',answer:'',hint:''};
+      const rendered = (s0.sentence||'(no sentence)').replace(/__/g,`<span class="pv-fill-blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>`);
+      inner = `<div style="background:rgba(245,158,11,0.08);border:1px solid rgba(245,158,11,0.2);border-radius:14px;padding:12px;">
+        <div style="font-size:11px;color:rgba(255,255,255,0.45);margin-bottom:10px;">${esc(b.instruction||'Fill in the blank')}</div>
+        <div style="font-size:14px;color:white;line-height:1.8;">${rendered}</div>
+        ${s0.hint?`<div style="font-size:10px;color:#fcd34d;margin-top:6px;">💡 ${esc(s0.hint)}</div>`:''}
+        ${(b.sentences||[]).length>1?`<div style="font-size:10px;color:rgba(255,255,255,0.3);margin-top:8px;">+ ${(b.sentences||[]).length-1} more sentence${(b.sentences||[]).length>2?'s':''}</div>`:''}
+      </div>`;
+      break;
+    }
+    case 'grammar_rule':
+      inner = `<div style="background:rgba(91,79,207,0.08);border:1px solid rgba(91,79,207,0.2);border-radius:14px;padding:12px;">
+        ${b.rule_name?`<div style="font-size:11px;font-weight:800;color:#a5a0df;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:6px;">${esc(b.rule_name)}</div>`:''}
+        <div class="pv-grammar-formula">${esc(b.formula||'Pattern goes here')}</div>
+        ${b.explanation?`<div style="font-size:12px;color:rgba(255,255,255,0.6);margin-bottom:10px;line-height:1.55;">${esc(b.explanation)}</div>`:''}
+        ${(b.examples||[]).filter(e=>e.sentence).slice(0,2).map(e=>`
+          <div style="display:flex;gap:8px;margin-bottom:6px;">
+            <span style="color:#a5a0df;font-size:14px;flex-shrink:0;">✦</span>
+            <div><div style="font-size:12px;color:white;">${esc(e.sentence)}</div>${e.translation?`<div style="font-size:11px;color:rgba(255,255,255,0.4);font-style:italic;">${esc(e.translation)}</div>`:''}</div>
+          </div>`).join('')}
+        ${b.exceptions?`<div style="background:rgba(239,68,68,0.08);border-radius:8px;padding:8px 10px;font-size:11px;color:#fca5a5;margin-top:8px;">⚠️ ${esc(b.exceptions)}</div>`:''}
+      </div>`;
+      break;
+    case 'dialogue':
+      inner = `<div style="background:rgba(139,92,246,0.07);border:1px solid rgba(139,92,246,0.2);border-radius:14px;padding:12px;">
+        ${b.title?`<div style="font-size:11px;font-weight:800;color:#c4b5fd;margin-bottom:4px;">${esc(b.title)}</div>`:''}
+        ${b.context?`<div style="font-size:10px;color:rgba(255,255,255,0.4);margin-bottom:10px;font-style:italic;">${esc(b.context)}</div>`:''}
+        ${(b.turns||[]).slice(0,4).map(t=>`<div class="${t.speaker==='A'?'pv-bubble-a':'pv-bubble-b'}">
+          <span style="font-size:10px;font-weight:800;color:${t.speaker==='A'?'#c4b5fd':'rgba(255,255,255,0.4)'};display:block;margin-bottom:3px;">Person ${esc(t.speaker)}</span>
+          <span style="font-size:12px;color:rgba(255,255,255,0.8);">${esc(t.text||'…')}</span>
+        </div>`).join('')}
+        ${(b.turns||[]).length>4?`<div style="font-size:10px;color:rgba(255,255,255,0.3);text-align:center;margin-top:4px;">+ ${(b.turns||[]).length-4} more lines</div>`:''}
+      </div>`;
+      break;
+    case 'cultural_note': {
+      const catEmojis = {festival:'🎉',food:'🍽️',custom:'🙏',language:'💬',history:'📜',etiquette:'🤝'};
+      const emoji = catEmojis[b.category||'custom']||'🌍';
+      inner = `<div class="pv-cultural">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+          <span style="font-size:20px;">${emoji}</span>
+          <div><div style="font-size:9px;font-weight:800;text-transform:uppercase;color:#6ee7b7;letter-spacing:0.08em;">Cultural Note · ${esc(b.category||'')}</div>${b.title?`<div style="font-size:13px;font-weight:800;color:white;">${esc(b.title)}</div>`:''}</div>
+        </div>
+        <div style="font-size:12px;color:rgba(255,255,255,0.65);line-height:1.6;">${esc((b.body||'').substring(0,180))}${(b.body||'').length>180?'…':''}</div>
+        ${b.fun_fact?`<div style="background:rgba(16,185,129,0.15);border-radius:8px;padding:8px 10px;margin-top:8px;font-size:11px;color:#6ee7b7;">⭐ ${esc(b.fun_fact)}</div>`:''}
+      </div>`;
+      break;
+    }
+    case 'sentence_starters':
+      inner = `<div style="background:rgba(139,92,246,0.08);border:1px solid rgba(139,92,246,0.2);border-radius:14px;padding:12px;">
+        ${b.title?`<div style="font-size:11px;font-weight:800;color:#c4b5fd;margin-bottom:6px;">${esc(b.title)}</div>`:''}
+        <div style="font-size:11px;color:rgba(255,255,255,0.4);margin-bottom:8px;">${esc(b.instruction||'')}</div>
+        ${(b.starters||[]).slice(0,3).map(s=>`<div style="background:rgba(139,92,246,0.12);border-left:3px solid #8b5cf6;border-radius:0 9px 9px 0;padding:8px 10px;margin-bottom:5px;">
+          <div style="font-size:13px;font-weight:700;color:white;">${esc(s.starter||'')}</div>
+          ${s.translation?`<div style="font-size:10px;color:rgba(255,255,255,0.4);">${esc(s.translation)}</div>`:''}
+        </div>`).join('')}
+      </div>`;
+      break;
+    case 'reading':
+      inner = `<div style="background:rgba(16,185,129,0.07);border:1px solid rgba(16,185,129,0.2);border-radius:14px;padding:12px;">
+        <div style="font-size:12px;color:rgba(255,255,255,0.7);line-height:1.7;margin-bottom:10px;">${esc((b.passage||'No passage').substring(0,200))}${(b.passage||'').length>200?'…':''}</div>
+        ${(b.questions||[]).length?`<div style="border-top:1px solid rgba(16,185,129,0.15);padding-top:10px;">${(b.questions||[]).slice(0,2).map(q=>`<div style="font-size:11px;font-weight:700;color:#6ee7b7;margin-bottom:3px;">Q: ${esc(q.q)}</div>`).join('')}</div>`:``}
+      </div>`;
+      break;
+    case 'annotated_passage': {
+      let passageHtml = esc(b.passage||'No passage');
+      (b.annotations||[]).forEach(a => { if(a.word) passageHtml = passageHtml.replace(new RegExp(esc(a.word),'g'), `<span style="background:rgba(245,158,11,0.25);border-radius:3px;padding:0 2px;color:#fcd34d;cursor:help;" title="${esc(a.meaning)}">${esc(a.word)}</span>`); });
+      inner = `<div style="background:rgba(245,158,11,0.07);border:1px solid rgba(245,158,11,0.2);border-radius:14px;padding:12px;">
+        ${b.title?`<div style="font-size:11px;font-weight:800;color:#fcd34d;margin-bottom:6px;">${esc(b.title)}</div>`:''}
+        <div style="font-size:12px;color:rgba(255,255,255,0.7);line-height:1.8;">${passageHtml.substring(0,250)}${passageHtml.length>250?'…':''}</div>
+        <div style="font-size:10px;color:rgba(255,255,255,0.3);margin-top:8px;">Tap highlighted words to see meaning</div>
+      </div>`;
+      break;
+    }
+    case 'true_false':
+      inner = `<div style="background:rgba(16,185,129,0.07);border:1px solid rgba(16,185,129,0.2);border-radius:14px;padding:12px;">
+        <div style="font-size:11px;color:rgba(255,255,255,0.45);margin-bottom:10px;">${esc(b.instruction||'')}</div>
+        ${(b.statements||[]).slice(0,3).map(s=>`<div class="pv-tf-item">
+          <span class="pv-tf-badge ${s.answer||'true'}">${{true:'T',false:'F',ng:'NG'}[s.answer||'true']}</span>
+          <span style="font-size:12px;color:rgba(255,255,255,0.75);">${esc(s.text||'Statement')}</span>
+        </div>`).join('')}
+      </div>`;
+      break;
+    case 'sequencing': {
+      const sorted = [...(b.items||[])].sort((a,b)=>a.order-b.order);
+      inner = `<div style="background:rgba(91,79,207,0.08);border:1px solid rgba(91,79,207,0.2);border-radius:14px;padding:12px;">
+        <div style="font-size:11px;color:rgba(255,255,255,0.45);margin-bottom:10px;">${esc(b.instruction||'')}</div>
+        ${sorted.slice(0,4).map((s,i)=>`<div class="pv-seq-item"><span class="pv-seq-num">${i+1}</span><span style="font-size:12px;color:rgba(255,255,255,0.75);">${esc(s.text||'')}</span></div>`).join('')}
+      </div>`;
+      break;
+    }
+    case 'writing':
+      inner = `<div style="background:rgba(245,158,11,0.08);border:1px solid rgba(245,158,11,0.2);border-radius:14px;padding:12px;">
+        <div style="font-size:12px;font-weight:700;color:white;margin-bottom:8px;">${esc(b.prompt||'Writing prompt here')}</div>
+        <div class="pv-short-answer">Start writing here…</div>
+        <div style="display:flex;justify-content:space-between;margin-top:8px;">
+          <div style="font-size:10px;color:rgba(255,255,255,0.35);">0 / ${b.minWords||50} words min.</div>
+          <div style="font-size:10px;color:rgba(255,255,255,0.25);">Submit ›</div>
+        </div>
+      </div>`;
+      break;
+    case 'word_bank':
+      inner = `<div style="background:rgba(245,158,11,0.08);border:1px solid rgba(245,158,11,0.2);border-radius:14px;padding:12px;">
+        ${b.title?`<div style="font-size:11px;font-weight:800;color:#fcd34d;margin-bottom:6px;">${esc(b.title)}</div>`:''}
+        <div style="font-size:11px;color:rgba(255,255,255,0.4);margin-bottom:8px;">${esc(b.instruction||'')}</div>
+        <div style="display:flex;flex-wrap:wrap;gap:5px;">
+          ${(b.words||[]).map(w=>`<span style="padding:4px 10px;border-radius:7px;background:rgba(245,158,11,0.15);border:1px solid rgba(245,158,11,0.3);font-size:11px;font-weight:700;color:#fcd34d;">${esc(w.word)}</span>`).join('')}
+        </div>
+      </div>`;
+      break;
+    case 'error_correction':
+      inner = `<div style="background:rgba(239,68,68,0.08);border:1px solid rgba(239,68,68,0.2);border-radius:14px;padding:12px;">
+        <div style="font-size:11px;color:rgba(255,255,255,0.45);margin-bottom:8px;">${esc(b.instruction||'Find the mistakes')}</div>
+        <div style="font-size:12px;color:rgba(255,255,255,0.7);line-height:1.7;background:rgba(255,255,255,0.04);border-radius:8px;padding:10px;">${esc((b.original_text||'No text').substring(0,180))}</div>
+        <div style="font-size:10px;color:rgba(239,68,68,0.7);margin-top:6px;">🔍 ${(b.errors||[]).length} error${(b.errors||[]).length!==1?'s':''} to find</div>
+      </div>`;
+      break;
+    case 'guided_steps':
+      inner = `<div style="background:rgba(245,158,11,0.07);border:1px solid rgba(245,158,11,0.2);border-radius:14px;padding:12px;">
+        ${b.title?`<div style="font-size:12px;font-weight:800;color:#fcd34d;margin-bottom:10px;">${esc(b.title)}</div>`:''}
+        ${(b.steps||[]).slice(0,3).map((s,i)=>`<div class="pv-step"><div class="pv-step-num">${i+1}</div><div>
+          ${s.step_title?`<div style="font-size:12px;font-weight:700;color:white;">${esc(s.step_title)}</div>`:''}
+          <div style="font-size:11px;color:rgba(255,255,255,0.55);line-height:1.5;">${esc(s.instruction||'')}</div>
+          ${s.example?`<div style="font-size:11px;color:#fcd34d;margin-top:3px;">e.g. ${esc(s.example)}</div>`:''}
+        </div></div>`).join('')}
+      </div>`;
+      break;
+    case 'speaking':
+      inner = `<div style="background:rgba(139,92,246,0.08);border:1px solid rgba(139,92,246,0.2);border-radius:14px;padding:12px;">
+        <div style="font-size:12px;font-weight:700;color:white;margin-bottom:8px;">${esc(b.prompt||'Speaking prompt')}</div>
+        ${(b.hints||[]).filter(h=>h).length?`<div style="margin-top:6px;">${(b.hints||[]).filter(h=>h).map(h=>`<div style="font-size:11px;color:rgba(255,255,255,0.5);margin-bottom:3px;">💭 ${esc(h)}</div>`).join('')}</div>`:''}
+        <div style="margin-top:10px;display:flex;align-items:center;gap:8px;">
+          <div style="width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,#8b5cf6,#ec4899);display:flex;align-items:center;justify-content:center;">🎤</div>
+          <div style="font-size:11px;color:rgba(255,255,255,0.35);">Tap to start recording</div>
+        </div>
+      </div>`;
+      break;
+    case 'role_play':
+      inner = `<div style="background:rgba(236,72,153,0.08);border:1px solid rgba(236,72,153,0.2);border-radius:14px;padding:12px;">
+        <div style="font-size:11px;font-weight:800;color:#f9a8d4;margin-bottom:6px;">Role Play</div>
+        <div style="font-size:12px;color:rgba(255,255,255,0.65);margin-bottom:10px;">${esc((b.scenario||'').substring(0,120))}</div>
+        <div style="display:flex;gap:6px;margin-bottom:10px;">
+          ${(b.roles||[]).map((r,i)=>`<div class="${i===0?'pv-role-card pv-role-a':'pv-role-card pv-role-b'}" style="flex:1;">
+            <div style="font-size:10px;font-weight:800;color:${i===0?'#a5a0df':'#38bdf8'};">${esc(r.name)}</div>
+            <div style="font-size:11px;color:rgba(255,255,255,0.5);margin-top:3px;">${esc(r.description.substring(0,60))}</div>
+          </div>`).join('')}
+        </div>
+        ${b.duration_minutes?`<div style="font-size:10px;color:rgba(255,255,255,0.3);">⏱ ${b.duration_minutes} minutes</div>`:''}
+      </div>`;
+      break;
+    case 'debate_topic':
+      inner = `<div style="background:rgba(245,158,11,0.07);border:1px solid rgba(245,158,11,0.2);border-radius:14px;padding:12px;">
+        <div style="font-size:11px;font-weight:800;color:#fcd34d;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:6px;">⚖️ Debate</div>
+        <div style="font-size:13px;font-weight:700;color:white;margin-bottom:10px;">${esc(b.topic||'Debate topic')}</div>
+        <div class="pv-debate-side pv-debate-pro">
+          <div style="font-size:10px;font-weight:800;color:#34d399;margin-bottom:4px;">FOR ✓</div>
+          ${(b.pro_points||[]).filter(p=>p).slice(0,2).map(p=>`<div style="font-size:11px;color:rgba(255,255,255,0.6);">• ${esc(p)}</div>`).join('')}
+        </div>
+        <div class="pv-debate-side pv-debate-con">
+          <div style="font-size:10px;font-weight:800;color:#f87171;margin-bottom:4px;">AGAINST ✗</div>
+          ${(b.con_points||[]).filter(p=>p).slice(0,2).map(p=>`<div style="font-size:11px;color:rgba(255,255,255,0.6);">• ${esc(p)}</div>`).join('')}
+        </div>
+      </div>`;
+      break;
+    case 'conversation_starters':
+      inner = `<div style="background:rgba(236,72,153,0.08);border:1px solid rgba(236,72,153,0.2);border-radius:14px;padding:12px;">
+        ${b.title?`<div style="font-size:11px;font-weight:800;color:#f9a8d4;margin-bottom:6px;">${esc(b.title)}</div>`:''}
+        <div style="font-size:10px;background:rgba(236,72,153,0.15);color:#f9a8d4;padding:2px 8px;border-radius:5px;display:inline-block;margin-bottom:8px;font-weight:700;">${esc(b.level||'beginner').toUpperCase()}</div>
+        ${(b.starters||[]).slice(0,3).map(s=>`<div style="border-left:3px solid rgba(236,72,153,0.4);padding:6px 10px;margin-bottom:5px;border-radius:0 8px 8px 0;background:rgba(236,72,153,0.06);">
+          <div style="font-size:12px;color:white;">${esc(s.prompt||'')}</div>
+          ${s.follow_up?`<div style="font-size:10px;color:rgba(255,255,255,0.4);margin-top:2px;">↪ ${esc(s.follow_up)}</div>`:''}
+        </div>`).join('')}
+      </div>`;
+      break;
+    case 'minimal_pairs':
+      inner = `<div style="background:rgba(6,182,212,0.07);border:1px solid rgba(6,182,212,0.2);border-radius:14px;padding:12px;">
+        <div style="font-size:11px;color:rgba(255,255,255,0.45);margin-bottom:10px;">${esc(b.instruction||'')}</div>
+        ${(b.pairs||[]).slice(0,3).map(p=>`<div class="pv-minimal-pair">
+          <div class="pv-mp-word">${esc(p.word1||'word1')}</div>
+          <div style="background:rgba(255,255,255,0.05);width:1px;"></div>
+          <div class="pv-mp-word">${esc(p.word2||'word2')}</div>
+        </div>
+        ${p.sound_difference?`<div style="font-size:10px;color:rgba(255,255,255,0.35);text-align:center;margin:-4px 0 6px;">${esc(p.sound_difference)}</div>`:''}`).join('')}
+      </div>`;
+      break;
+    case 'stress_pattern':
+      inner = `<div style="background:rgba(245,158,11,0.08);border:1px solid rgba(245,158,11,0.2);border-radius:14px;padding:12px;">
+        <div style="font-size:11px;color:rgba(255,255,255,0.45);margin-bottom:10px;">${esc(b.instruction||'')}</div>
+        ${(b.words||[]).slice(0,3).map(w=>`<div style="margin-bottom:10px;">
+          <div class="pv-stress-word">${(w.pattern||w.word||'').split('-').map(syl=>`<span class="pv-syl ${syl===syl.toUpperCase()&&syl.length>0?'stressed':'unstressed'}">${esc(syl.toLowerCase())}</span>`).join('')}</div>
+          ${w.ipa?`<div style="font-size:10px;color:rgba(255,255,255,0.35);margin-top:2px;">${esc(w.ipa)}</div>`:''}
+        </div>`).join('')}
+      </div>`;
+      break;
+    case 'tongue_twister': {
+      const diffCol = {easy:'#34d399',medium:'#fcd34d',hard:'#f87171'};
+      inner = `<div style="background:rgba(6,182,212,0.08);border:1px solid rgba(6,182,212,0.2);border-radius:14px;padding:12px;">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+          <span style="font-size:20px;">👅</span>
+          <span style="font-size:10px;font-weight:800;color:${diffCol[b.difficulty||'medium']||'#fcd34d'};text-transform:uppercase;">${esc(b.difficulty||'medium')}</span>
+        </div>
+        <div style="font-size:14px;font-weight:700;color:white;line-height:1.6;margin-bottom:6px;">${esc(b.text||'(no tongue twister)')}</div>
+        ${b.translation?`<div style="font-size:11px;color:rgba(255,255,255,0.4);font-style:italic;">${esc(b.translation)}</div>`:''}
+        ${b.tip?`<div style="font-size:11px;color:#38bdf8;margin-top:8px;">💡 ${esc(b.tip)}</div>`:''}
+      </div>`;
+      break;
+    }
+    case 'pronunciation_guide':
+      inner = `<div style="background:rgba(6,182,212,0.07);border:1px solid rgba(6,182,212,0.2);border-radius:14px;padding:12px;">
+        ${b.title?`<div style="font-size:11px;font-weight:800;color:#38bdf8;margin-bottom:8px;">${esc(b.title)}</div>`:''}
+        ${(b.words||[]).slice(0,3).map(w=>`<div style="display:flex;gap:8px;align-items:flex-start;padding:7px 0;border-bottom:1px solid rgba(255,255,255,0.05);">
+          <div style="font-size:14px;font-weight:800;color:white;width:80px;">${esc(w.word||'')}</div>
+          <div style="flex:1;">
+            ${w.phonetic?`<div style="font-size:12px;color:#38bdf8;font-style:italic;">${esc(w.phonetic)}</div>`:''}
+            ${w.native_equivalent?`<div style="font-size:10px;color:rgba(255,255,255,0.45);">≈ ${esc(w.native_equivalent)}</div>`:''}
+            ${w.tip?`<div style="font-size:10px;color:rgba(255,255,255,0.35);">💡 ${esc(w.tip)}</div>`:''}
+          </div>
+        </div>`).join('')}
+      </div>`;
+      break;
+    case 'transcript_cloze': {
+      const rendered = (b.transcript_with_blanks||'').replace(/\[blank\]/g,`<span class="pv-cloze-blank"></span>`);
+      inner = `<div style="background:rgba(249,115,22,0.08);border:1px solid rgba(249,115,22,0.2);border-radius:14px;padding:12px;">
+        <div class="pv-audio-player" style="margin-bottom:10px;">
+          <div class="pv-play-btn"><span style="color:white;font-size:14px;margin-left:2px;">▶</span></div>
+          <div style="font-size:12px;font-weight:700;color:white;">${esc(b.audio_label||'Audio')}</div>
+        </div>
+        <div style="font-size:12px;color:rgba(255,255,255,0.7);line-height:1.9;">${rendered.substring(0,200)}</div>
+      </div>`;
+      break;
+    }
+    case 'listen_repeat': {
+      const seg0 = (b.segments||[])[0]||{text:'',phonetic:'',meaning:''};
+      inner = `<div style="background:rgba(249,115,22,0.08);border:1px solid rgba(249,115,22,0.2);border-radius:14px;padding:12px;">
+        <div class="pv-audio-player" style="margin-bottom:10px;">
+          <div class="pv-play-btn"><span style="color:white;font-size:14px;margin-left:2px;">▶</span></div>
+          <div><div style="font-size:12px;font-weight:700;color:white;">${esc(b.audio_label||'Listen & Repeat')}</div></div>
+        </div>
+        ${seg0.text?`<div style="background:rgba(255,255,255,0.04);border-radius:10px;padding:10px;">
+          <div style="font-size:15px;font-weight:700;color:white;text-align:center;margin-bottom:4px;">${esc(seg0.text)}</div>
+          ${seg0.phonetic?`<div style="font-size:11px;color:#fb923c;text-align:center;font-style:italic;">${esc(seg0.phonetic)}</div>`:''}
+          ${seg0.meaning?`<div style="font-size:10px;color:rgba(255,255,255,0.4);text-align:center;margin-top:3px;">${esc(seg0.meaning)}</div>`:''}
+          <div style="text-align:center;margin-top:8px;font-size:10px;color:rgba(255,255,255,0.3);">Repeat ${seg0.repetitions||3}x</div>
+        </div>`:''}
+      </div>`;
+      break;
+    }
+    case 'audio_questions': {
+      const preQ = (b.pre_questions||[]).filter(q=>q.q);
+      const postQ = (b.post_questions||[]).filter(q=>q.q);
+      inner = `<div style="background:rgba(249,115,22,0.08);border:1px solid rgba(249,115,22,0.2);border-radius:14px;padding:12px;">
+        <div class="pv-audio-player" style="margin-bottom:10px;">
+          <div class="pv-play-btn"><span style="color:white;font-size:14px;margin-left:2px;">▶</span></div>
+          <div><div style="font-size:12px;font-weight:700;color:white;">${esc(b.audio_label||'Audio')}</div></div>
+        </div>
+        ${preQ.length?`<div style="font-size:10px;font-weight:800;color:#fb923c;margin-bottom:4px;">BEFORE LISTENING</div>${preQ.slice(0,2).map(q=>`<div style="font-size:11px;color:rgba(255,255,255,0.6);margin-bottom:3px;">❓ ${esc(q.q)}</div>`).join('')}`:''}
+        ${postQ.length?`<div style="font-size:10px;font-weight:800;color:#fb923c;margin-top:6px;margin-bottom:4px;">AFTER LISTENING</div>${postQ.slice(0,2).map(q=>`<div style="font-size:11px;color:rgba(255,255,255,0.6);margin-bottom:3px;">❓ ${esc(q.q)}</div>`).join('')}`:''}
+      </div>`;
+      break;
+    }
+    case 'quiz':
+      inner = `<div style="background:rgba(239,68,68,0.08);border:1px solid rgba(239,68,68,0.2);border-radius:14px;padding:12px;">
+        <div style="font-size:13px;font-weight:700;color:white;margin-bottom:10px;">${esc(b.question||'Quiz question here')}</div>
+        ${(b.options||[]).map((o,i)=>`<div class="pv-quiz-opt ${i===b.correct?'correct':''}">${i===b.correct?'●':'○'} ${esc(o||`Option ${i+1}`)}</div>`).join('')}
+      </div>`;
+      break;
+    case 'matching':
+      inner = `<div style="background:rgba(239,68,68,0.08);border:1px solid rgba(239,68,68,0.2);border-radius:14px;padding:12px;">
+        <div style="font-size:11px;color:rgba(255,255,255,0.45);margin-bottom:10px;">${esc(b.instruction||'Match the items')}</div>
+        ${(b.pairs||[]).slice(0,3).map(p=>`<div class="pv-match-row">
+          <div class="pv-match-pill left">${esc(p.left||'—')}</div>
+          <span style="color:rgba(255,255,255,0.3);font-size:12px;">⟶</span>
+          <div class="pv-match-pill right">${esc(p.right||'—')}</div>
+        </div>`).join('')}
+      </div>`;
+      break;
+    case 'ordering': {
+      const shuffled = [...(b.items||[])].sort(()=>Math.random()-0.5);
+      inner = `<div style="background:rgba(239,68,68,0.08);border:1px solid rgba(239,68,68,0.2);border-radius:14px;padding:12px;">
+        <div style="font-size:11px;color:rgba(255,255,255,0.45);margin-bottom:10px;">${esc(b.instruction||'')}</div>
+        ${shuffled.slice(0,4).map((item,i)=>`<div class="pv-seq-item"><span class="pv-seq-num" style="background:rgba(239,68,68,0.25);color:#f87171;">${i+1}</span><span style="font-size:12px;color:rgba(255,255,255,0.75);">${esc(item.text||'')}</span></div>`).join('')}
+      </div>`;
+      break;
+    }
+    case 'short_answer':
+      inner = `<div style="background:rgba(239,68,68,0.08);border:1px solid rgba(239,68,68,0.2);border-radius:14px;padding:12px;">
+        <div style="font-size:13px;font-weight:700;color:white;margin-bottom:8px;">${esc(b.question||'Question here')}</div>
+        <div class="pv-short-answer">Write your answer here… (max ${b.word_limit||50} words)</div>
+      </div>`;
+      break;
+    default:
+      inner = `<div style="font-size:12px;color:rgba(255,255,255,0.4);padding:10px;">Block: ${esc(b.type)}</div>`;
+  }
+
+  return `<div class="pv-block">${header}${inner}</div>`;
+}
+
+// ── Export / Import ────────────────────────────────────────────────────────
+function exportJSON() {
+  const json = LWContent.exportJSON();
+  const blob = new Blob([json], { type: 'application/json' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = `learnwise-content-${new Date().toISOString().slice(0,10)}.json`;
+  a.click();
+  showToast('JSON exported!');
+}
+function openImport() {
+  document.getElementById('import-textarea').value = '';
+  document.getElementById('modal-overlay').classList.add('show');
+}
+function doImport() {
+  const txt = document.getElementById('import-textarea').value;
+  const result = LWContent.importJSON(txt);
+  document.getElementById('modal-overlay').classList.remove('show');
+  if (result.success) { showToast(`Imported ${result.count} activities!`); updateStats(); renderActivityList(); }
+  else showToast('Import failed: ' + result.error, 'error');
+}
+function closeModal(e) {
+  if (e.target === document.getElementById('modal-overlay')) document.getElementById('modal-overlay').classList.remove('show');
+}
+
+// ── Stats ──────────────────────────────────────────────────────────────────
+function updateStats() {
+  const stats = LWContent.getStats();
+  document.getElementById('stat-coverage').textContent = `${stats.totalWithContent} activities with content`;
+}
+
+// ── Toast ──────────────────────────────────────────────────────────────────
+function showToast(msg, type='success') {
+  const t = document.getElementById('toast');
+  const icon = document.getElementById('toast-icon');
+  icon.textContent = type === 'error' ? 'error' : type === 'warning' ? 'warning' : 'check_circle';
+  icon.style.color = type === 'error' ? '#ef4444' : type === 'warning' ? '#f59e0b' : '#34d399';
+  document.getElementById('toast-msg').textContent = msg;
+  t.classList.add('show');
+  clearTimeout(t._to);
+  t._to = setTimeout(() => t.classList.remove('show'), 3000);
+}
+
+// ── Escape ─────────────────────────────────────────────────────────────────
+function esc(str) {
+  return String(str||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Lesson · LearnWise</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600&family=Noto+Sans+Gujarati:wght@400;600;700;900&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script src="data/roadmap-data.js"></script>
+<script src="data/activities-content.js"></script>
+<script src="data/en-gu-month1.js"></script>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Inter',sans-serif;color:#e2e8f0;min-height:100vh;background:#07061a;overflow-x:hidden;}
+h1,h2,h3,h4,button,.headline{font-family:'Plus Jakarta Sans',sans-serif;}
+.gu{font-family:'Noto Sans Gujarati','Shruti',sans-serif;}
+.ms{font-variation-settings:'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 24;}
+
+/* BG */
+.bg-base{position:fixed;inset:0;z-index:0;background:radial-gradient(ellipse 90% 70% at 15% 5%,#1e1464 0%,#0d0b22 50%,#060410 100%);}
+.bg-grid{position:fixed;inset:0;z-index:0;opacity:.4;background:repeating-linear-gradient(0deg,transparent,transparent 47px,rgba(91,79,207,.06) 47px,rgba(91,79,207,.06) 48px),repeating-linear-gradient(90deg,transparent,transparent 47px,rgba(91,79,207,.06) 47px,rgba(91,79,207,.06) 48px);}
+.orb{position:fixed;border-radius:50%;filter:blur(90px);pointer-events:none;z-index:0;}
+@keyframes fl{0%,100%{transform:translateY(0) scale(1);}50%{transform:translateY(-30px) scale(1.07);}}
+
+/* Page */
+.page{position:relative;z-index:1;}
+.content-max{max-width:720px;margin:0 auto;padding:0 16px;}
+
+/* NAV */
+.top-nav{position:sticky;top:0;z-index:50;background:rgba(7,6,26,.88);backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px);border-bottom:1px solid rgba(91,79,207,.22);height:56px;display:flex;align-items:center;padding:0 16px;gap:10px;}
+.nav-back{width:34px;height:34px;border-radius:9px;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.05);display:flex;align-items:center;justify-content:center;cursor:pointer;color:rgba(255,255,255,.55);transition:all .18s;text-decoration:none;flex-shrink:0;}
+.nav-back:hover{background:rgba(255,255,255,.13);color:#fff;}
+
+/* Prog bar */
+.prog-track{height:3px;background:rgba(255,255,255,.06);}
+.prog-fill{height:3px;background:linear-gradient(90deg,#5b4fcf,#a78bfa);transition:width .7s cubic-bezier(.4,0,.2,1);}
+
+/* Step dots row */
+.steps-row{display:flex;align-items:center;gap:0;overflow-x:auto;scrollbar-width:none;padding:14px 0 4px;}
+.steps-row::-webkit-scrollbar{display:none;}
+.sdot{width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;cursor:pointer;transition:all .25s cubic-bezier(.34,1.2,.64,1);flex-shrink:0;border:2px solid transparent;}
+.sdot.done{background:linear-gradient(135deg,#10b981,#059669);border-color:#10b981;color:#fff;box-shadow:0 0 0 3px rgba(16,185,129,.2);}
+.sdot.cur{background:linear-gradient(135deg,#5b4fcf,#7c6fd4);border-color:#7c6fd4;color:#fff;box-shadow:0 0 0 4px rgba(91,79,207,.25);}
+.sdot.todo{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.1);color:rgba(255,255,255,.3);}
+.sline{flex:1;height:2px;background:rgba(255,255,255,.07);min-width:8px;}
+.sline.done{background:linear-gradient(90deg,#10b981,#059669);}
+
+/* Hero card */
+.hero{background:linear-gradient(135deg,rgba(91,79,207,.22),rgba(91,79,207,.07));border:1px solid rgba(91,79,207,.3);border-radius:20px;padding:22px;margin:16px 0 20px;position:relative;overflow:hidden;}
+.hero::after{content:'';position:absolute;top:-40px;right:-40px;width:160px;height:160px;border-radius:50%;background:rgba(91,79,207,.15);filter:blur(40px);pointer-events:none;}
+.hero-icon{width:54px;height:54px;border-radius:15px;background:linear-gradient(135deg,#5b4fcf,#7c6fd4);display:flex;align-items:center;justify-content:center;box-shadow:0 8px 28px rgba(91,79,207,.5);flex-shrink:0;}
+
+/* Block styles */
+.block{background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:20px;margin-bottom:14px;animation:fadeup .45s ease both;}
+@keyframes fadeup{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:translateY(0);}}
+.block-header{display:flex;align-items:center;gap:10px;margin-bottom:14px;}
+.bicon{width:28px;height:28px;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.btitle{font-size:13px;font-weight:800;color:rgba(255,255,255,.9);}
+.body-p{font-size:14px;color:rgba(255,255,255,.62);line-height:1.9;}
+.gu-highlight{font-family:'Noto Sans Gujarati',sans-serif;color:#a5a0df;font-size:1.1em;font-weight:600;}
+
+/* keypoints */
+.kp{display:flex;gap:10px;padding:9px 0;border-bottom:1px solid rgba(255,255,255,.05);animation:kpin .4s ease both;}
+.kp:last-child{border:none;}
+@keyframes kpin{from{opacity:0;transform:translateX(-10px);}to{opacity:1;transform:translateX(0);}}
+.kp-dot{width:7px;height:7px;border-radius:50%;background:#5b4fcf;flex-shrink:0;margin-top:6px;}
+.kp-text{font-size:13px;color:rgba(255,255,255,.72);line-height:1.65;}
+
+/* vocab table */
+.vrow{display:flex;align-items:center;gap:12px;padding:10px 13px;background:rgba(14,165,233,.07);border:1px solid rgba(14,165,233,.15);border-radius:11px;margin-bottom:7px;cursor:pointer;transition:all .18s;}
+.vrow:hover{background:rgba(14,165,233,.14);border-color:rgba(14,165,233,.3);transform:translateX(5px);}
+.vgu{font-family:'Noto Sans Gujarati',sans-serif;font-size:18px;font-weight:700;color:#38bdf8;min-width:90px;}
+.vmean{font-size:13px;color:rgba(255,255,255,.7);}
+.vex{font-size:11px;color:rgba(255,255,255,.3);margin-top:2px;}
+
+/* tip */
+.tip{background:rgba(245,158,11,.08);border-left:3px solid #f59e0b;border-radius:0 12px 12px 0;padding:13px 16px;margin-bottom:14px;display:flex;gap:11px;animation:fadeup .45s ease both;}
+.tip-txt{font-size:13px;color:rgba(245,158,11,.9);line-height:1.72;}
+
+/* Bottom bar */
+.bbar{position:fixed;bottom:0;left:0;right:0;z-index:40;background:rgba(7,6,26,.94);backdrop-filter:blur(22px);border-top:1px solid rgba(91,79,207,.2);padding:12px 16px;padding-bottom:max(12px,env(safe-area-inset-bottom,12px));}
+.bbar-inner{max-width:720px;margin:0 auto;display:flex;gap:9px;align-items:center;}
+.btn-nav{width:44px;height:44px;border-radius:12px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);cursor:pointer;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.5);transition:all .18s;flex-shrink:0;}
+.btn-nav:hover{background:rgba(255,255,255,.12);color:#fff;}
+.btn-nav:active{transform:scale(.92);}
+.btn-main{flex:1;background:linear-gradient(135deg,#5b4fcf,#7c6fd4);color:#fff;font-weight:800;border:none;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;border-radius:13px;padding:13px 20px;font-size:15px;display:flex;align-items:center;justify-content:center;gap:8px;transition:all .25s cubic-bezier(.34,1.2,.64,1);box-shadow:0 6px 24px rgba(91,79,207,.45);position:relative;overflow:hidden;}
+.btn-main:hover{transform:translateY(-2px);box-shadow:0 10px 32px rgba(91,79,207,.6);}
+.btn-main:active{transform:scale(.97);}
+.btn-main.green{background:linear-gradient(135deg,#10b981,#059669);box-shadow:0 6px 24px rgba(16,185,129,.4);}
+.ripple{position:absolute;border-radius:50%;background:rgba(255,255,255,.2);transform:scale(0);animation:rip .55s linear;pointer-events:none;}
+@keyframes rip{to{transform:scale(4);opacity:0;}}
+
+/* Overlay */
+#ov{display:none;position:fixed;inset:0;z-index:900;background:rgba(4,3,14,.92);backdrop-filter:blur(20px);align-items:center;justify-content:center;padding:20px;}
+#ov.show{display:flex;}
+.ov-card{background:linear-gradient(145deg,#1a1532,#0d0b1e);border:1.5px solid rgba(91,79,207,.4);border-radius:24px;padding:40px 28px;text-align:center;max-width:340px;width:100%;animation:popin .45s cubic-bezier(.34,1.4,.64,1);}
+@keyframes popin{from{opacity:0;transform:scale(.75);}to{opacity:1;transform:scale(1);}}
+.ov-ring{width:76px;height:76px;border-radius:50%;background:linear-gradient(135deg,#5b4fcf,#7c6fd4);display:flex;align-items:center;justify-content:center;margin:0 auto 18px;box-shadow:0 10px 40px rgba(91,79,207,.55);}
+.ov-xp{font-size:38px;font-weight:900;background:linear-gradient(135deg,#a5a0df,#7c6fd4);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+
+#fw{position:fixed;inset:0;z-index:800;pointer-events:none;display:none;}
+::-webkit-scrollbar{width:4px;height:4px;}::-webkit-scrollbar-thumb{background:rgba(91,79,207,.3);border-radius:2px;}
+</style>
+</head>
+<body>
+<div class="bg-base"></div>
+<div class="bg-grid"></div>
+<div class="orb" style="width:380px;height:380px;background:rgba(91,79,207,.18);top:-100px;left:-80px;animation:fl 14s ease-in-out infinite;"></div>
+<div class="orb" style="width:280px;height:280px;background:rgba(124,111,212,.12);bottom:5%;right:-60px;animation:fl 18s ease-in-out -8s infinite;"></div>
+<canvas id="fw"></canvas>
+
+<div id="ov">
+  <div class="ov-card">
+    <div class="ov-ring"><span class="ms material-symbols-outlined" style="font-size:36px;color:#fff;font-variation-settings:'FILL' 1">school</span></div>
+    <h2 style="font-size:22px;font-weight:900;color:#fff;margin-bottom:6px;">Lesson Complete!</h2>
+    <p style="font-size:13px;color:rgba(255,255,255,.4);margin-bottom:16px;" id="ov-name"></p>
+    <div class="ov-xp" id="ov-xp">+30 XP</div>
+    <p style="font-size:12px;color:rgba(255,255,255,.28);margin:6px 0 26px;">Saved to your progress 🎉</p>
+    <button onclick="goBack()" style="width:100%;background:linear-gradient(135deg,#5b4fcf,#7c6fd4);color:#fff;font-weight:800;border:none;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;border-radius:13px;padding:13px;font-size:14px;display:flex;align-items:center;justify-content:center;gap:8px;transition:all .2s;box-shadow:0 6px 22px rgba(91,79,207,.45);" onmouseover="this.style.transform='translateY(-1px)'" onmouseout="this.style.transform='translateY(0)'">
+      <span class="ms material-symbols-outlined" style="font-size:18px;font-variation-settings:'FILL' 1">map</span>Back to Roadmap
+    </button>
+  </div>
+</div>
+
+<div class="page">
+  <nav class="top-nav">
+    <a class="nav-back" id="back-a" href="roadmap.html">
+      <span class="ms material-symbols-outlined" style="font-size:20px;">arrow_back</span>
+    </a>
+    <div style="width:30px;height:30px;border-radius:9px;background:linear-gradient(135deg,#5b4fcf,#7c6fd4);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+      <span class="ms material-symbols-outlined" style="font-size:16px;color:#fff;font-variation-settings:'FILL' 1">school</span>
+    </div>
+    <div style="flex:1;min-width:0;overflow:hidden;">
+      <div style="font-size:13px;font-weight:800;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;" id="nav-title">Lesson</div>
+    </div>
+    <div style="display:flex;gap:6px;flex-shrink:0;">
+      <span style="background:rgba(91,79,207,.15);border:1px solid rgba(91,79,207,.3);color:#a5a0df;border-radius:999px;padding:4px 10px;font-size:11px;font-weight:700;" id="lp-badge">🇬🇧→🇮🇳</span>
+      <span style="background:rgba(91,79,207,.2);border:1px solid rgba(91,79,207,.3);color:#a5a0df;border-radius:999px;padding:4px 10px;font-size:11px;font-weight:800;" id="nav-xp">⚡30</span>
+    </div>
+  </nav>
+  <div class="prog-track"><div class="prog-fill" id="prog" style="width:0%"></div></div>
+
+  <div class="content-max" style="padding-bottom:90px;">
+    <div id="content"></div>
+  </div>
+</div>
+
+<div class="bbar">
+  <div class="bbar-inner">
+    <button class="btn-nav" id="btn-prev" onclick="prevStep()" title="Back">
+      <span class="ms material-symbols-outlined" style="font-size:18px;">arrow_back</span>
+    </button>
+    <button class="btn-main" id="btn-main" onclick="nextOrComplete()">
+      <span class="ms material-symbols-outlined" style="font-size:19px;font-variation-settings:'FILL' 1" id="btn-icon">arrow_forward</span>
+      <span id="btn-txt">Continue</span>
+    </button>
+  </div>
+</div>
+
+<script>
+const P=new URLSearchParams(location.search);
+const LANG=P.get('lang')||LWData?.getSelectedLanguage?.()||'gujarati';
+const AID=parseInt(P.get('id'))||1;
+const AXP=parseInt(P.get('xp'))||30;
+let act=null,cnt=null,blks=[],step=0,completed=false;
+
+function init(){
+  const all=LWData.getActivities(LANG);
+  outer:for(const m of all)for(const a of m.activities){if(a.id===AID){act=a;break outer;}}
+  const lp=window.LW_LANG_PAIR;
+  if(lp){document.getElementById('lp-badge').textContent=lp.fromFlag+'→'+lp.toFlag;}
+  setTimeout(()=>{
+    cnt=LWContent.getContent(AID);
+    blks=cnt?.blocks||[];
+    document.getElementById('nav-title').textContent=cnt?.title||act?.title||'Lesson';
+    document.getElementById('nav-xp').textContent='⚡'+(cnt?.xp||act?.xp||AXP);
+    render();
+  },150);
+}
+
+function render(){
+  const c=document.getElementById('content');
+  if(!cnt||!blks.length){c.innerHTML=skeletonHTML();return;}
+  const xp=cnt.xp||AXP;
+  c.innerHTML=`
+  <div class="hero" style="animation:fadeup .4s ease both;">
+    <div style="display:flex;gap:14px;align-items:flex-start;">
+      <div class="hero-icon"><span class="ms material-symbols-outlined" style="font-size:26px;color:#fff;font-variation-settings:'FILL' 1">school</span></div>
+      <div style="flex:1;">
+        <div style="font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.12em;color:#a5a0df;margin-bottom:4px;">LESSON · Week ${cnt.week||1}</div>
+        <h1 style="font-size:19px;font-weight:900;color:#fff;line-height:1.25;">${esc(cnt.title)}</h1>
+        <p style="font-size:13px;color:rgba(255,255,255,.45);margin-top:10px;line-height:1.7;">${esc(cnt.description||'')}</p>
+        <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:12px;">
+          <span style="background:rgba(91,79,207,.2);color:#a5a0df;border:1px solid rgba(91,79,207,.25);border-radius:999px;padding:3px 10px;font-size:11px;font-weight:700;">⚡ ${xp} XP</span>
+          <span style="background:rgba(16,185,129,.12);color:#34d399;border:1px solid rgba(16,185,129,.2);border-radius:999px;padding:3px 10px;font-size:11px;font-weight:700;">⏱ ${esc(cnt.duration||'—')}</span>
+          <span style="background:rgba(255,255,255,.06);color:rgba(255,255,255,.4);border:1px solid rgba(255,255,255,.08);border-radius:999px;padding:3px 10px;font-size:11px;font-weight:700;">📋 ${blks.length} sections</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="steps-row" id="srow"></div>
+  <div style="text-align:center;font-size:11px;color:rgba(255,255,255,.25);margin-bottom:18px;" id="slabel">Section 1 of ${blks.length}</div>
+  <div id="bcontainer"></div>`;
+  renderSteps();renderBlock(step);
+}
+
+function renderSteps(){
+  const row=document.getElementById('srow');
+  if(!row)return;
+  let h='';
+  blks.forEach((_,i)=>{
+    if(i)h+=`<div class="sline${i<=step?' done':''}"></div>`;
+    const s=i<step?'done':i===step?'cur':'todo';
+    h+=`<div class="sdot ${s}" onclick="jumpStep(${i})" title="Section ${i+1}">
+      ${s==='done'?'<span class="ms material-symbols-outlined" style="font-size:14px;font-variation-settings:\'FILL\' 1">check</span>':i+1}
+    </div>`;
+  });
+  row.innerHTML=h;
+  const l=document.getElementById('slabel');
+  if(l)l.textContent=`Section ${step+1} of ${blks.length}`;
+  // progress bar
+  const pct=Math.round(((step+(completed?1:0))/Math.max(blks.length,1))*100);
+  const p=document.getElementById('prog');
+  if(p)p.style.width=pct+'%';
+  // buttons
+  const isLast=step===blks.length-1;
+  const bi=document.getElementById('btn-icon'),bt=document.getElementById('btn-txt'),bm=document.getElementById('btn-main');
+  if(completed){bm.className='btn-main green';bi.textContent='check_circle';bt.textContent='Completed ✓';}
+  else if(isLast){bi.textContent='check_circle';bt.textContent='Complete Lesson';}
+  else{bi.textContent='arrow_forward';bt.textContent='Continue';}
+}
+
+function renderBlock(i){
+  const bc=document.getElementById('bcontainer');
+  if(!bc||!blks[i])return;
+  const b=blks[i];
+  let html='';
+  switch(b.type){
+    case'text':html=buildText(b);break;
+    case'keypoints':html=buildKP(b);break;
+    case'vocab_table':html=buildVocab(b);break;
+    case'tip':html=buildTip(b);break;
+    case'audio':html=buildAudio(b);break;
+    default:html=`<div class="block"><p class="body-p">[${b.type}]</p></div>`;
+  }
+  bc.innerHTML=html;
+  bc.querySelectorAll('.kp').forEach((el,i)=>{el.style.animationDelay=`${i*.07}s`;});
+  renderSteps();
+}
+
+function buildText(b){
+  const body=guHighlight(esc(b.body||'')).replace(/\n/g,'<br>');
+  return`<div class="block">
+    <div class="block-header">
+      <div class="bicon" style="background:rgba(91,79,207,.2);"><span class="ms material-symbols-outlined" style="font-size:15px;color:#7c6fd4;">auto_stories</span></div>
+      <span class="btitle">${esc(b.title||'Explanation')}</span>
+    </div>
+    <div class="body-p">${body}</div>
+  </div>`;}
+
+function buildKP(b){
+  const items=(b.points||[]).map(p=>`<div class="kp"><div class="kp-dot"></div><div class="kp-text">${guHighlight(esc(p))}</div></div>`).join('');
+  return`<div class="block">
+    <div class="block-header">
+      <div class="bicon" style="background:rgba(16,185,129,.2);"><span class="ms material-symbols-outlined" style="font-size:15px;color:#34d399;">checklist</span></div>
+      <span class="btitle">${esc(b.title||'Key Points')}</span>
+    </div>
+    ${items}
+  </div>`;}
+
+function buildVocab(b){
+  const rows=(b.words||[]).slice(0,6).map(w=>`
+    <div class="vrow">
+      <div class="vgu gu">${esc(w.word)}</div>
+      <div style="flex:1;"><div class="vmean">${esc(w.meaning)}</div><div class="vex">${esc(w.example||'')}</div></div>
+    </div>`).join('');
+  const extra=(b.words||[]).length>6?`<div style="font-size:12px;color:rgba(91,79,207,.7);text-align:center;margin-top:8px;font-weight:600;">+${(b.words||[]).length-6} more in Vocabulary activity</div>`:'';
+  return`<div class="block">
+    <div class="block-header">
+      <div class="bicon" style="background:rgba(14,165,233,.2);"><span class="ms material-symbols-outlined" style="font-size:15px;color:#38bdf8;">abc</span></div>
+      <span class="btitle">${esc(b.title||'Vocabulary')}</span>
+    </div>
+    ${rows}${extra}
+  </div>`;}
+
+function buildTip(b){
+  return`<div class="tip">
+    <span style="font-size:20px;flex-shrink:0;margin-top:1px;">💡</span>
+    <div class="tip-txt">${guHighlight(esc(b.body||'')).replace(/\n/g,'<br>')}</div>
+  </div>`;}
+
+function buildAudio(b){
+  return`<div class="block" style="background:rgba(6,182,212,.06);border-color:rgba(6,182,212,.2);">
+    <div class="block-header">
+      <div class="bicon" style="background:rgba(6,182,212,.2);"><span class="ms material-symbols-outlined" style="font-size:15px;color:#22d3ee;">volume_up</span></div>
+      <span class="btitle">${esc(b.label||'Audio')}</span>
+    </div>
+    <div style="display:flex;align-items:center;gap:12px;">
+      <button onclick="playAu('${esc(b.url||'')}',this)" style="width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,#06b6d4,#0891b2);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:transform .2s;box-shadow:0 4px 16px rgba(6,182,212,.4);" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
+        <span class="ms material-symbols-outlined" style="font-size:24px;color:#fff;font-variation-settings:'FILL' 1">play_arrow</span>
+      </button>
+      ${b.transcript?`<span style="font-size:13px;color:rgba(255,255,255,.55);line-height:1.6;">${esc(b.transcript)}</span>`:''}
+    </div>
+  </div>`;}
+
+function skeletonHTML(){
+  return`<div style="background:linear-gradient(135deg,rgba(91,79,207,.15),rgba(91,79,207,.05));border:1px solid rgba(91,79,207,.25);border-radius:20px;padding:22px;margin:16px 0 20px;">
+    <div style="display:flex;gap:14px;align-items:center;">
+      <div style="width:54px;height:54px;border-radius:15px;background:linear-gradient(135deg,#5b4fcf,#7c6fd4);display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 8px 24px rgba(91,79,207,.5);">
+        <span class="ms material-symbols-outlined" style="font-size:26px;color:#fff;font-variation-settings:'FILL' 1">school</span>
+      </div>
+      <div style="flex:1;"><div style="height:12px;background:rgba(255,255,255,.08);border-radius:6px;width:55%;margin-bottom:10px;"></div><div style="height:18px;background:rgba(255,255,255,.1);border-radius:8px;width:80%;"></div></div>
+    </div>
+  </div>
+  <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:16px;padding:48px 20px;text-align:center;">
+    <span class="ms material-symbols-outlined" style="font-size:52px;color:rgba(91,79,207,.35);font-variation-settings:'FILL' 1">construction</span>
+    <h2 style="font-size:17px;font-weight:800;color:rgba(255,255,255,.5);margin:14px 0 8px;">Lesson Content Coming Soon</h2>
+    <p style="font-size:13px;color:rgba(255,255,255,.3);max-width:260px;margin:0 auto 22px;line-height:1.7;">Admin is preparing this lesson. Mark complete to earn XP!</p>
+    <button onclick="doComplete()" style="background:linear-gradient(135deg,#5b4fcf,#7c6fd4);color:#fff;font-weight:800;border:none;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;border-radius:12px;padding:12px 22px;font-size:14px;display:inline-flex;align-items:center;gap:8px;">
+      <span class="ms material-symbols-outlined" style="font-size:18px;font-variation-settings:'FILL' 1">check_circle</span>Mark Complete
+    </button>
+  </div>`;}
+
+function nextOrComplete(){
+  if(completed){showOv();return;}
+  if(step<blks.length-1){step++;renderBlock(step);window.scrollTo({top:0,behavior:'smooth'});}
+  else doComplete();
+  ripple(document.getElementById('btn-main'));
+}
+function prevStep(){if(step>0){step--;renderBlock(step);window.scrollTo({top:0,behavior:'smooth'});}}
+function jumpStep(i){if(i<=step+1){step=i;renderBlock(step);}}
+
+function doComplete(){
+  const xp=cnt?.xp||AXP;
+  const pr=LWData.getProgress(LANG);
+  const ids=pr.completedIds||[];
+  if(!ids.includes(AID))ids.push(AID);
+  LWData.saveProgress(LANG,ids,(pr.totalXP||0)+xp);
+  completed=true;step=Math.max(blks.length-1,0);
+  renderBlock(step);showOv();
+}
+function showOv(){
+  const xp=cnt?.xp||AXP;
+  document.getElementById('ov-name').textContent=cnt?.title||act?.title||'Lesson';
+  document.getElementById('ov-xp').textContent='+'+xp+' XP';
+  document.getElementById('ov').classList.add('show');
+  launchFW();
+}
+function goBack(){
+  const pr=LWData.getProgress(LANG);
+  const d=(pr.completedIds||[]).includes(AID);
+  window.location.href='roadmap.html?lang='+LANG+(d?'&completed='+AID+'&xp='+(cnt?.xp||AXP):'');
+}
+function playAu(url){if(url)try{new Audio(url).play();}catch(e){}}
+function guHighlight(s){return s.replace(/([\u0A80-\u0AFF]+)/g,'<span class="gu gu-highlight">$1</span>');}
+function esc(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+function ripple(el){const r=document.createElement('div');r.className='ripple';const rect=el.getBoundingClientRect();const sz=Math.max(rect.width,rect.height);r.style.cssText=`width:${sz}px;height:${sz}px;left:${sz/2*-1+40}px;top:${sz/2*-1+22}px`;el.appendChild(r);setTimeout(()=>r.remove(),600);}
+function launchFW(){const c=document.getElementById('fw');c.style.display='block';c.width=innerWidth;c.height=innerHeight;const ctx=c.getContext('2d');const cols=['#5b4fcf','#a78bfa','#7c6fd4','#10b981','#f59e0b','#fff'];const ps=Array.from({length:110},()=>({x:innerWidth/2+(Math.random()-.5)*300,y:innerHeight*.3,vx:(Math.random()-.5)*16,vy:(Math.random()-.5)*16-6,alpha:1,color:cols[Math.floor(Math.random()*cols.length)],sz:Math.random()*5+2}));const t=()=>{ctx.clearRect(0,0,c.width,c.height);ps.forEach(p=>{p.x+=p.vx;p.y+=p.vy;p.vy+=.24;p.alpha-=.013;ctx.globalAlpha=Math.max(0,p.alpha);ctx.fillStyle=p.color;ctx.beginPath();ctx.arc(p.x,p.y,p.sz,0,Math.PI*2);ctx.fill();});if(ps.some(p=>p.alpha>0))requestAnimationFrame(t);else c.style.display='none';};t();}
+init();
+</script>
+</body>
+</html>
