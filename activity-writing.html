@@ -126,15 +126,13 @@ const P=new URLSearchParams(location.search);
 const LANG=P.get('lang')||'gujarati',AID=parseInt(P.get('id'))||5,AXP=parseInt(P.get('xp'))||35;
 let act=null,cnt=null,minWords=30,sampleOpen=false,submitted=false;
 
-function init(){
+async function init(){
   const all=LWData.getActivities(LANG);
   outer:for(const m of all)for(const a of m.activities){if(a.id===AID){act=a;break outer;}}
-  setTimeout(()=>{
-    cnt=LWContent.getContent(AID);
-    document.getElementById('nav-title').textContent=cnt?.title||act?.title||'Writing';
-    document.getElementById('nav-xp').textContent='⚡'+(cnt?.xp||act?.xp||AXP);
-    render();
-  },150);
+  cnt = await LWInit.loadActivityContent(AID, LANG);
+  document.getElementById('nav-title').textContent=cnt?.title||act?.title||'Writing';
+  document.getElementById('nav-xp').textContent='⚡'+(cnt?.xp||act?.xp||AXP);
+  render();
 }
 
 function render(){
@@ -149,14 +147,14 @@ function render(){
   const tipBlocks=cnt?.blocks?.filter(b=>b.type==='tip')||[];
 
   // Phrase suggestions parsed from text blocks
-  const phrases=[
+  const phrases = (LANG.includes('gu') || LANG === 'gujarati') ? [
     {gu:'નમસ્તે!',rom:'Namaste!',en:'Hello!'},
     {gu:'મારું નામ',rom:'Maaru naam',en:'My name is'},
     {gu:'હું ___ થી છું',rom:'Hun ___ thi chhun',en:'I am from'},
     {gu:'ગુજરાતી ભાષા',rom:'Gujarati bhaashaa',en:'Gujarati language'},
     {gu:'ખૂબ ખૂબ આભાર',rom:'Khoob khoob aabhaar',en:'Thank you very much'},
     {gu:'ઠીક છે',rom:'Theek chhe',en:"That's OK"},
-  ];
+  ] : [];
 
   let html=`
   <div style="animation:fadeup .4s ease both;">
@@ -187,19 +185,22 @@ function render(){
   });
 
   // Phrase guide
-  html+=`<div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:14px;padding:16px;margin-bottom:16px;">
-    <div style="font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:rgba(255,255,255,.3);margin-bottom:10px;">💬 Tap a phrase to insert it</div>
-    <div style="display:flex;flex-wrap:wrap;gap:4px;">
-      ${phrases.map(p=>`<button class="phrase-chip" onclick="insertPhrase('${esc(p.rom)} ')" title="${esc(p.en)}">
-        <span class="phrase-gu">${esc(p.gu)}</span>
-        <span class="phrase-en">(${esc(p.rom)})</span>
-      </button>`).join('')}
-    </div>
-  </div>`;
+  if (phrases.length > 0) {
+    html+=`<div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:14px;padding:16px;margin-bottom:16px;">
+      <div style="font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:rgba(255,255,255,.3);margin-bottom:10px;">💬 Tap a phrase to insert it</div>
+      <div style="display:flex;flex-wrap:wrap;gap:4px;">
+        ${phrases.map(p=>`<button class="phrase-chip" onclick="insertPhrase('${esc(p.rom)} ')" title="${esc(p.en)}">
+          <span class="phrase-gu">${esc(p.gu)}</span>
+          <span class="phrase-en">(${esc(p.rom)})</span>
+        </button>`).join('')}
+      </div>
+    </div>`;
+  }
 
   // Writing area
+  const placeholderText = LANG.includes('gu') || LANG === 'gujarati' ? "Start writing here... (mix of English and Gujarati transliteration is fine!)" : "Start writing here...";
   html+=`<div class="write-wrap">
-    <textarea class="write-area" id="warea" placeholder="Start writing here... (mix of English and Gujarati transliteration is fine!)" oninput="onInput(this)"></textarea>
+    <textarea class="write-area" id="warea" placeholder="${placeholderText}" oninput="onInput(this)"></textarea>
     <div class="write-footer">
       <div class="word-ctr" id="wctr">0 / ${minWords} words</div>
       <div style="display:flex;gap:8px;align-items:center;">
