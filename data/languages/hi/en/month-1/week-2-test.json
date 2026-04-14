@@ -1,0 +1,190 @@
+{
+  "id": 17,
+  "type": "test",
+  "week": 2,
+  "month": 1,
+  "langPair": "hi-en",
+  "title": "सप्ताह 2 परीक्षा — am/is/are और दैनिक शब्द",
+  "description": "10 सवाल: to be conjugation, daily vocabulary, और negatives।",
+  "duration": "8 मिनट",
+  "xp": 50,
+  "tags": [
+    "test",
+    "week2"
+  ],
+  "passingScore": 70,
+  "blocks": [
+    {
+      "id": "q1",
+      "type": "quiz",
+      "question": "'She ___ a doctor' — सही form?",
+      "options": [
+        "am",
+        "is",
+        "are",
+        "be"
+      ],
+      "correct": 1,
+      "explanation": "She (third person singular) के साथ 'is' लगता है। I=am, He/She/It=is, You/We/They=are."
+    },
+    {
+      "id": "q2",
+      "type": "quiz",
+      "question": "'Hungry' का हिन्दी अर्थ?",
+      "options": [
+        "थका हुआ",
+        "खुश",
+        "भूखा",
+        "बीमार"
+      ],
+      "correct": 2,
+      "explanation": "Hungry = भूखा। Tired = थका हुआ। Happy = खुश। Sick = बीमार।"
+    },
+    {
+      "id": "q3",
+      "type": "quiz",
+      "question": "'I am not tired' का short form?",
+      "options": [
+        "I amn't tired",
+        "I'm not tired",
+        "I not tired",
+        "I am'nt tired"
+      ],
+      "correct": 1,
+      "explanation": "'I am not' = 'I'm not' — 'amn't' नहीं होता। यह English का exception है!"
+    },
+    {
+      "id": "q4",
+      "type": "quiz",
+      "question": "'They ___ not happy.' — सही form?",
+      "options": [
+        "am",
+        "is",
+        "are",
+        "be"
+      ],
+      "correct": 2,
+      "explanation": "They (plural) के साथ 'are' लगता है। They are not happy = वे खुश नहीं हैं।"
+    },
+    {
+      "id": "q5",
+      "type": "quiz",
+      "question": "'घर' के लिए अंग्रेज़ी में क्या कहते हैं?",
+      "options": [
+        "Market",
+        "Hospital",
+        "School",
+        "House/Home"
+      ],
+      "correct": 3,
+      "explanation": "House = घर (building)। Home = घर (where you belong)। दोनों correct हैं। Market=बाज़ार, Hospital=अस्पताल, School=स्कूल।"
+    },
+    {
+      "id": "q6",
+      "type": "quiz",
+      "question": "'Are you hungry?' का जवाब?",
+      "options": [
+        "Yes, I am.",
+        "Yes, I is.",
+        "Yes, you are.",
+        "Yes, am I."
+      ],
+      "correct": 0,
+      "explanation": "Question 'Are you...?' का short answer: 'Yes, I am.' या 'No, I'm not.' — question के verb को reverse करते हैं।"
+    },
+    {
+      "id": "q7",
+      "type": "quiz",
+      "question": "'We are in the office' का negative?",
+      "options": [
+        "We not are in office",
+        "We are not in the office",
+        "We is not in the office",
+        "We aren't in office"
+      ],
+      "correct": 1,
+      "explanation": "'We are not in the office.' OR 'We aren't in the office.' — दोनों correct। 'aren't' = 'are not' का contraction।"
+    },
+    {
+      "id": "q8",
+      "type": "quiz",
+      "question": "'ship' vs 'sheep' में क्या अंतर है?",
+      "options": [
+        "कोई अंतर नहीं",
+        "ship छोटा 'i', sheep लंबा 'ee'",
+        "ship लंबा, sheep छोटा",
+        "spelling का फ़र्क नहीं है"
+      ],
+      "correct": 1,
+      "explanation": "ship = /ʃɪp/ (छोटा 'i') = जहाज़। sheep = /ʃiːp/ (लंबा 'ee') = भेड़। यह बहुत important distinction है!"
+    },
+    {
+      "id": "q9",
+      "type": "quiz",
+      "question": "'It is cold' का short form?",
+      "options": [
+        "It's cold",
+        "Its cold",
+        "It cold",
+        "It're cold"
+      ],
+      "correct": 0,
+      "explanation": "'It is' = 'It's' (apostrophe के साथ)। 'Its' (बिना apostrophe) = possessive — 'its color' (उसका रंग)। अंतर याद रखें!"
+    },
+    {
+      "id": "q10",
+      "type": "quiz",
+      "question": "'मैं बस से ऑफिस जाता हूँ' को अंग्रेज़ी में?",
+      "options": [
+        "I am take bus to office",
+        "I takes bus to office",
+        "I take the bus to work",
+        "I taking bus to office"
+      ],
+      "correct": 2,
+      "explanation": "'I take the bus to work.' — Simple present tense। 'I' के साथ 'take' (base form)। The = निश्चित article bus के साथ।"
+    },
+    {
+      "id": "q11",
+      "type": "matching",
+      "title": "am/is/are जोड़ी",
+      "instruction": "Subject और correct verb form मिलाएँ:",
+      "leftItems": [
+        "I",
+        "She",
+        "We",
+        "He",
+        "They"
+      ],
+      "rightItems": [
+        "are",
+        "is",
+        "am",
+        "are",
+        "is"
+      ],
+      "pairs": [
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          4,
+          3
+        ]
+      ]
+    }
+  ]
+}

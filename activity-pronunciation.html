@@ -6,7 +6,9 @@
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800;900&family=Inter:wght@300;400;500&family=Noto+Sans+Gujarati:wght@400;700;900&display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
 <script src="data/roadmap-data.js"></script><script src="data/activities-content.js"></script>
+<script src="data/content-bundle.js"></script>
 <script src="data/content-loader.js"></script>
+<script src="data/lw-init.js"></script>
 <script src="data/blocks-renderer.js"></script><script src="data/en-gu-month1.js"></script>
 <style>
 *{box-sizing:border-box;margin:0;padding:0;}
@@ -141,19 +143,18 @@ const P=new URLSearchParams(location.search);
 const LANG=P.get('lang')||'gujarati',AID=parseInt(P.get('id'))||4,AXP=parseInt(P.get('xp'))||30;
 let act=null,cnt=null,phonems=[],cur=0,practiced=new Set(),isRec=false;
 
-function init(){
+async function init(){
   const all=LWData.getActivities(LANG);
   outer:for(const m of all)for(const a of m.activities){if(a.id===AID){act=a;break outer;}}
-  setTimeout(()=>{
-    cnt=LWContent.getContent(AID);
+  cnt = await LWInit.loadActivityContent(AID, LANG); // BUG #4 FIX
     if(cnt?.blocks){cnt.blocks.forEach(b=>{if(b.type==='keypoints'&&b.points)phonems.push(...b.points);});}
     // Fallback phonemes
     if(!phonems.length)phonems=['અ (a) — like "u" in cup','આ (aa) — like "a" in father','ઇ (i) — like "i" in bit','ઈ (ee) — like "ee" in feet','ઉ (u) — like "u" in put','ઊ (oo) — like "oo" in food','એ (e) — like "e" in café','ઓ (o) — like "o" in note'];
     document.getElementById('nav-title').textContent=cnt?.title||act?.title||'Pronunciation';
     document.getElementById('nav-xp').textContent='⚡'+(cnt?.xp||act?.xp||AXP);
     render();
-  },150);
 }
+
 
 function render(){
   const c=document.getElementById('content');

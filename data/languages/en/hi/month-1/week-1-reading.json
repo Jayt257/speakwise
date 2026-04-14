@@ -1,0 +1,77 @@
+{
+  "id": 3,
+  "type": "reading",
+  "title": "A First Meeting in Hindi",
+  "description": "Read and answer questions about greetings.",
+  "duration": "20 min",
+  "xp": 25,
+  "week": 1,
+  "month": 1,
+  "langPair": "en-hi",
+  "tags": [
+    "english",
+    "hindi",
+    "devanagari",
+    "week-1",
+    "script-vowels-and-greetings"
+  ],
+  "blocks": [
+    {
+      "id": "b1",
+      "type": "reading",
+      "passage": "📖 Meeting a New Friend\n\nनमस्ते, मेरा नाम सिया है। (Namaste, mera naam Siya hai.) I am learning Hindi one letter at a time. Today I meet a new friend at school. I say, नमस्ते! वह मुस्कुराता है और जवाब देता है, नमस्ते! Then I ask, आपका नाम क्या है? (Aapka naam kya hai?) He says, मेरा नाम आरव है। (Mera naam Aarav hai.)\n\nWe look at the Hindi script together. I notice that some letters feel familiar and some feel new. I do not try to read everything at once. Instead, I focus on a few words: नमस्ते, नाम, and धन्यवाद. By the end of the day, I can greet someone politely and introduce myself in Hindi.",
+      "questions": [
+        {
+          "q": "What is the learner practicing first?",
+          "a": "The learner is practicing greetings and self-introduction."
+        },
+        {
+          "q": "What is one Hindi word they focus on?",
+          "a": "नमस्ते, नाम, or धन्यवाद."
+        },
+        {
+          "q": "Where do they meet the new friend?",
+          "a": "At school."
+        },
+        {
+          "q": "What does the learner do instead of reading everything at once?",
+          "a": "They focus on a few words at a time."
+        }
+      ]
+    },
+    {
+      "id": "b2",
+      "type": "true_false",
+      "title": "Quick Check",
+      "items": [
+        {
+          "statement": "The learner practices one word at a time.",
+          "answer": true,
+          "explanation": "The passage describes slow, step-by-step learning."
+        },
+        {
+          "statement": "Hindi is only used in formal books.",
+          "answer": false,
+          "explanation": "Hindi is used in daily conversation too."
+        },
+        {
+          "statement": "The learner learns useful everyday language.",
+          "answer": true,
+          "explanation": "The passage focuses on practical words and sentences."
+        }
+      ]
+    },
+    {
+      "id": "b3",
+      "type": "cultural_note",
+      "title": "Cultural Note",
+      "icon": "🌍",
+      "content": "In Hindi-speaking settings, polite greetings are very common. Using नमस्ते is safe and respectful in most everyday situations.",
+      "tags": [
+        "culture",
+        "hindi",
+        "daily-life"
+      ]
+    }
+  ]
+}

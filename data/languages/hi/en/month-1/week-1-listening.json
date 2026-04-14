@@ -1,0 +1,95 @@
+{
+  "id": 6,
+  "type": "listening",
+  "week": 1,
+  "month": 1,
+  "langPair": "hi-en",
+  "title": "अभिवादन सुनना और समझना",
+  "description": "अंग्रेज़ी अभिवादन की बातचीत सुनें और comprehension exercises करें।",
+  "duration": "10 मिनट",
+  "xp": 40,
+  "tags": [
+    "listening",
+    "greetings"
+  ],
+  "audioUrl": null,
+  "blocks": [
+    {
+      "id": "l1",
+      "type": "note_template",
+      "title": "Listening Notes — सुनते समय नोट्स लें",
+      "instruction": "अंग्रेज़ी बातचीत सुनें और ये भरें:",
+      "sections": [
+        {
+          "label": "कितने लोग बात कर रहे हैं?",
+          "placeholder": "1 / 2 / 3 लोग"
+        },
+        {
+          "label": "कौन से अभिवादन शब्द सुने?",
+          "placeholder": "जैसे: Hello, Hi, Good morning..."
+        },
+        {
+          "label": "किसी ने अपना नाम बताया?",
+          "placeholder": "नाम(s) जो सुना..."
+        },
+        {
+          "label": "एक नया शब्द जो सुना:",
+          "placeholder": "कोई नया शब्द..."
+        }
+      ]
+    },
+    {
+      "id": "l2",
+      "type": "gap_fill",
+      "title": "अभिवादन की Script में खाली जगह भरें",
+      "text": "___ ! My ___ is Raj. ___ to meet you! I am ___ India.",
+      "gaps": [
+        "Hello",
+        "name",
+        "Nice",
+        "from"
+      ],
+      "hints": [
+        "अभिवादन",
+        "परिचय शब्द",
+        "मिलकर खुशी",
+        "कहाँ से"
+      ]
+    },
+    {
+      "id": "l3",
+      "type": "true_false",
+      "title": "समझ की जाँच — True or False?",
+      "items": [
+        {
+          "statement": "'Good morning' सुबह कहते हैं।",
+          "answer": true,
+          "explanation": "हाँ! Good morning = सुबह का अभिवादन। Good afternoon = दोपहर। Good evening = शाम।"
+        },
+        {
+          "statement": "'How are you?' का जवाब हमेशा 'I am from India' होता है।",
+          "answer": false,
+          "explanation": "नहीं! 'How are you?' का जवाब है 'I am fine, thank you.' या 'I am good, thanks!'"
+        },
+        {
+          "statement": "अंग्रेज़ी में 'phone' पर भी Hello से शुरू करते हैं।",
+          "answer": true,
+          "explanation": "हाँ! अंग्रेज़ी में phone calls भी 'Hello!' से शुरू होती हैं।"
+        }
+      ]
+    },
+    {
+      "id": "l4",
+      "type": "cultural_note",
+      "title": "अंग्रेज़ी में Small Talk",
+      "icon": "💬",
+      "content": "अंग्रेज़ी बोलने वाले देशों में 'small talk' बहुत ज़रूरी है। मौसम, खेल, छुट्टियाँ — ये common topics हैं। 'How are you?' एक formality है — वे actually detailed जवाब नहीं चाहते, बस 'Fine, thanks!' चाहते हैं!",
+      "tags": [
+        "culture",
+        "small-talk",
+        "british",
+        "american"
+      ]
+    }
+  ]
+}

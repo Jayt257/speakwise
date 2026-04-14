@@ -3,7 +3,18 @@
  * Supports 29 block types for rich language learning content.
  */
 window.LWContent = {
-  STORAGE_KEY: 'lw_activities_content',
+  // BUG #5 FIX: Dynamic storage key per language pair — prevents cross-language data collision
+  _activePair: 'default',
+  get STORAGE_KEY() { return `lw_activities_content_${this._activePair}`; },
+
+  /** Call this whenever the active language pair changes (called by content-loader autoInit) */
+  setActivePair(pair) {
+    if (pair && pair !== this._activePair) {
+      this._activePair = pair;
+      this._cache = null; // Invalidate cache so next _load() reads from correct key
+    }
+  },
+
   _cache: null,
   _load() {
     if (this._cache) return this._cache;

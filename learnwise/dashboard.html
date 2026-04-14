@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta name="theme-color" content="#5b4fcf"/>
+<meta name="description" content="LearnWise - Master pronunciation with AI-powered speech recognition"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>LearnWise - Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Be+Vietnam+Pro:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary-fixed-dim": "#58e7ab",
+              "on-primary-fixed": "#00452d",
+              "error-container": "#fa7150",
+              "on-tertiary-fixed": "#311c00",
+              "on-tertiary": "#fff7f3",
+              "on-secondary-fixed-variant": "#476400",
+              "surface-container-highest": "#cde6f4",
+              "secondary-container": "#c8f17a",
+              "secondary-fixed": "#c8f17a",
+              "on-primary-container": "#005a3c",
+              "outline-variant": "#9db6c3",
+              "primary": "#5b4fcf",
+              "surface-container-low": "#e7f6ff",
+              "surface": "#f4faff",
+              "surface-container-high": "#d5ecf8",
+              "inverse-on-surface": "#929fa6",
+              "error": "#aa371c",
+              "on-background": "#1d3540",
+              "error-dim": "#821a01",
+              "on-tertiary-fixed-variant": "#5c3700",
+              "outline": "#667e8a",
+              "on-error-container": "#671200",
+              "tertiary-fixed-dim": "#ed9912",
+              "primary-container": "#69f6b8",
+              "tertiary-container": "#fda625",
+              "background": "#f4faff",
+              "on-secondary": "#f0ffce",
+              "surface-container": "#def1fc",
+              "on-surface-variant": "#4b626e",
+              "surface-bright": "#f4faff",
+              "surface-dim": "#c2deee",
+              "secondary-dim": "#405b00",
+              "on-error": "#fff7f6",
+              "primary-dim": "#005f40",
+              "surface-variant": "#cde6f4",
+              "on-secondary-container": "#3f5a00",
+              "tertiary-fixed": "#fda625",
+              "inverse-surface": "#041015",
+              "surface-tint": "#5b4fcf",
+              "on-tertiary-container": "#502f00",
+              "tertiary": "#875400",
+              "on-primary-fixed-variant": "#006544",
+              "on-primary": "#e6ffee",
+              "secondary-fixed-dim": "#bae26e",
+              "primary-fixed": "#69f6b8",
+              "on-secondary-fixed": "#304600",
+              "on-surface": "#1d3540",
+              "tertiary-dim": "#764900",
+              "surface-container-lowest": "#ffffff",
+              "inverse-primary": "#69f6b8",
+              "secondary": "#4a6800"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans"],
+              "body": ["Be Vietnam Pro"],
+              "label": ["Plus Jakarta Sans"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Be Vietnam Pro', sans-serif; }
+        h1, h2, h3, h4, .font-headline { font-family: 'Plus Jakarta Sans', sans-serif; }
+    </style>
+<style>
+        body {
+          min-height:100%;
+        }
+        .scrollbar-hide::-webkit-scrollbar {
+          display: none;
+        }
+        .scrollbar-hide {
+          -ms-overflow-style: none;
+          scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface min-h-screen pb-32">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 flex justify-between items-center px-6 h-16 bg-[#f4faff] dark:bg-slate-950">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-container-highest overflow-hidden">
+<img alt="User Profile Photo" class="w-full h-full object-cover" data-alt="close-up portrait of a friendly young man with short dark hair and a warm smile against a soft blue background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCtkKtVX04r8It4Iguvv6a2FbqjIluK-fqz-RUd-sSNkNN8fRQ23dWqPstZVUm3QY-kQvHAH8tK4FSK8UM-IuzBjK1oMW_veFNSkyImNmHYFtsOcO5_50anm1WVJQWUllcblBjyoQ6j9DTL3jknjl7ZgM-AETZlj0tSEeDy87ApNEZabpu7DKXG1LwXzkb59P75wOMHSBdyK7K0Dzr6oNhYIEUJL1d6kmH_bNLGM9YjTDRSX-MeBJ7QwspwWJGGZt-GWsTsmNQ7pE9e"/>
+</div>
+<span class="text-xl font-extrabold text-[#5b4fcf] dark:text-[#69f6b8] font-headline tracking-tight">LearnWise</span>
+</div>
+<div class="flex items-center gap-4 bg-surface-container-low px-4 py-1.5 rounded-full">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-tertiary-container" style="font-variation-settings: 'FILL' 1;">local_fire_department</span>
+<span class="font-bold text-on-surface">12</span>
+</div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">stars</span>
+<span class="font-bold text-on-surface">1.2k</span>
+</div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-error" style="font-variation-settings: 'FILL' 1;">favorite</span>
+<span class="font-bold text-on-surface">5</span>
+</div>
+</div>
+</header>
+<main class="pt-24 px-6 max-w-5xl mx-auto space-y-8">
+<!-- Welcome Card & Daily Goal (Bento Layout) -->
+<section class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="md:col-span-2 bg-surface-container-lowest p-8 rounded-[2rem] shadow-[0_12px_32px_-4px_rgba(29,53,64,0.06)] flex flex-col justify-between relative overflow-hidden">
+<div class="relative z-10">
+<h1 class="text-4xl font-extrabold text-on-surface tracking-tight leading-tight">Bonjour, Alex!</h1>
+<p class="text-on-surface-variant mt-2 text-lg">You're only 200 XP away from your daily goal.</p>
+</div>
+<div class="mt-8 flex items-center gap-6 relative z-10">
+<button class="bg-primary text-on-primary px-8 py-4 rounded-full font-bold text-lg hover:bg-primary-dim transition-all flex items-center gap-2" onclick="window.location.href='active-lesson.html'">
+                        Continue Learning
+                        <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+<div class="hidden sm:block">
+<span class="text-xs font-bold uppercase tracking-widest text-outline">Up Next</span>
+<p class="font-semibold text-on-surface">Unit 4: Travel Essentials</p>
+</div>
+</div>
+<!-- Abstract decorative background element -->
+<div class="absolute -right-12 -bottom-12 w-64 h-64 bg-primary-container/20 rounded-full blur-3xl"></div>
+</div>
+<div class="bg-surface-container-low p-8 rounded-[2rem] flex flex-col items-center justify-center text-center">
+<div class="relative w-32 h-32 flex items-center justify-center">
+<svg class="w-full h-full transform -rotate-90">
+<circle class="text-surface-container-highest" cx="64" cy="64" fill="transparent" r="58" stroke="currentColor" stroke-width="12"></circle>
+<circle class="text-primary rounded-full" cx="64" cy="64" fill="transparent" r="58" stroke="currentColor" stroke-dasharray="364.4" stroke-dashoffset="109.3" stroke-width="12"></circle>
+</svg>
+<div class="absolute flex flex-col items-center">
+<span class="text-2xl font-extrabold text-on-surface">70%</span>
+</div>
+</div>
+<h3 class="mt-6 font-headline font-bold text-on-surface">Daily Goal</h3>
+<p class="text-sm text-on-surface-variant">350 / 500 XP</p>
+</div>
+</section>
+<!-- Stats Row -->
+<section class="grid grid-cols-3 gap-4">
+<div class="bg-surface-container-highest/40 p-5 rounded-2xl flex flex-col items-center gap-1 border border-outline-variant/10">
+<span class="text-2xl font-extrabold text-primary">1,420</span>
+<span class="text-[10px] font-bold uppercase tracking-wider text-outline">Words Learned</span>
+</div>
+<div class="bg-surface-container-highest/40 p-5 rounded-2xl flex flex-col items-center gap-1 border border-outline-variant/10">
+<span class="text-2xl font-extrabold text-secondary">84</span>
+<span class="text-[10px] font-bold uppercase tracking-wider text-outline">Lessons Done</span>
+</div>
+<div class="bg-surface-container-highest/40 p-5 rounded-2xl flex flex-col items-center gap-1 border border-outline-variant/10">
+<span class="text-2xl font-extrabold text-tertiary">12</span>
+<span class="text-[10px] font-bold uppercase tracking-wider text-outline">Day Streak</span>
+</div>
+</section>
+<!-- Quick Access Entry Points -->
+<section class="grid grid-cols-2 gap-4">
+<button class="bg-primary-container/20 p-6 rounded-[2rem] flex flex-col items-center gap-3 border border-primary/10 hover:bg-primary-container/30 transition-colors" onclick="window.location.href='vocabulary.html'">
+<div class="w-14 h-14 bg-white rounded-2xl flex items-center justify-center text-primary shadow-sm">
+<span class="material-symbols-outlined text-3xl">psychology</span>
+</div>
+<span class="font-bold text-on-surface">Practice</span>
+</button>
+<button class="bg-secondary-container/20 p-6 rounded-[2rem] flex flex-col items-center gap-3 border border-secondary/10 hover:bg-secondary-container/30 transition-colors" onclick="window.location.href='roadmap.html'">
+<div class="w-14 h-14 bg-white rounded-2xl flex items-center justify-center text-secondary shadow-sm">
+<span class="material-symbols-outlined text-3xl">menu_book</span>
+</div>
+<span class="font-bold text-on-surface">Library</span>
+</button>
+</section>
+<!-- Skill Tree (Asymmetric Horizontal Scroll) -->
+<section class="space-y-4">
+<div class="flex justify-between items-end">
+<h2 class="text-2xl font-extrabold text-on-surface tracking-tight">Your Learning Path</h2>
+<button class="text-primary font-bold text-sm">View Map</button>
+</div>
+<div class="flex gap-6 overflow-x-auto pb-6 scrollbar-hide snap-x">
+<!-- Completed Nodes -->
+<div class="flex-shrink-0 snap-center">
+<div class="w-24 h-24 rounded-full bg-secondary-container flex items-center justify-center relative">
+<span class="material-symbols-outlined text-on-secondary-container scale-150" style="font-variation-settings: 'FILL' 1;">restaurant</span>
+<div class="absolute -bottom-1 -right-1 bg-primary text-on-primary w-8 h-8 rounded-full flex items-center justify-center border-4 border-surface">
+<span class="material-symbols-outlined text-xs">check</span>
+</div>
+</div>
+<p class="text-center mt-3 font-bold text-sm">Food</p>
+</div>
+<div class="flex-shrink-0 snap-center">
+<div class="w-24 h-24 rounded-full bg-secondary-container flex items-center justify-center relative">
+<span class="material-symbols-outlined text-on-secondary-container scale-150" style="font-variation-settings: 'FILL' 1;">commute</span>
+<div class="absolute -bottom-1 -right-1 bg-primary text-on-primary w-8 h-8 rounded-full flex items-center justify-center border-4 border-surface">
+<span class="material-symbols-outlined text-xs">check</span>
+</div>
+</div>
+<p class="text-center mt-3 font-bold text-sm">Travel</p>
+</div>
+<div class="flex-shrink-0 snap-center">
+<div class="w-24 h-24 rounded-full bg-secondary-container flex items-center justify-center relative">
+<span class="material-symbols-outlined text-on-secondary-container scale-150" style="font-variation-settings: 'FILL' 1;">family_restroom</span>
+<div class="absolute -bottom-1 -right-1 bg-primary text-on-primary w-8 h-8 rounded-full flex items-center justify-center border-4 border-surface">
+<span class="material-symbols-outlined text-xs">check</span>
+</div>
+</div>
+<p class="text-center mt-3 font-bold text-sm">Family</p>
+</div>
+<!-- Current Active -->
+<div class="flex-shrink-0 snap-center scale-110 px-4">
+<div class="w-24 h-24 rounded-full bg-primary flex items-center justify-center relative shadow-xl shadow-primary/20 ring-4 ring-primary-container ring-offset-4 ring-offset-surface">
+<span class="material-symbols-outlined text-on-primary scale-150" style="font-variation-settings: 'FILL' 1;">work</span>
+</div>
+<p class="text-center mt-4 font-bold text-sm text-primary">Careers</p>
+</div>
+<!-- Locked Nodes -->
+<div class="flex-shrink-0 snap-center opacity-40">
+<div class="w-24 h-24 rounded-full bg-surface-container-highest flex items-center justify-center">
+<span class="material-symbols-outlined text-on-surface-variant scale-150">lock</span>
+</div>
+<p class="text-center mt-3 font-bold text-sm">Health</p>
+</div>
+<div class="flex-shrink-0 snap-center opacity-40">
+<div class="w-24 h-24 rounded-full bg-surface-container-highest flex items-center justify-center">
+<span class="material-symbols-outlined text-on-surface-variant scale-150">lock</span>
+</div>
+<p class="text-center mt-3 font-bold text-sm">Leisure</p>
+</div>
+</div>
+</section>
+<!-- Recommendations & Leaderboard (Asymmetric Grid) -->
+<section class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+<div class="space-y-6">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-tertiary">auto_awesome</span>
+<h2 class="text-2xl font-extrabold text-on-surface tracking-tight">Today's Recommendations</h2>
+</div>
+<div class="space-y-4">
+<div class="bg-surface-container-low p-6 rounded-[1.5rem] flex items-center gap-5 group hover:bg-surface-container transition-all cursor-pointer" onclick="window.location.href='roadmap.html'">
+<div class="w-14 h-14 bg-surface-container-lowest rounded-2xl flex items-center justify-center text-primary shadow-sm">
+<span class="material-symbols-outlined text-3xl">history_edu</span>
+</div>
+<div class="flex-1">
+<h4 class="font-bold text-on-surface">Review 5 words</h4>
+<p class="text-sm text-on-surface-variant">Focusing on: Professional Vocabulary</p>
+</div>
+<span class="material-symbols-outlined text-outline group-hover:translate-x-1 transition-transform">chevron_right</span>
+</div>
+<div class="bg-surface-container-low p-6 rounded-[1.5rem] flex items-center gap-5 group hover:bg-surface-container transition-all cursor-pointer" onclick="window.location.href='active-lesson.html'">
+<div class="w-14 h-14 bg-surface-container-lowest rounded-2xl flex items-center justify-center text-secondary-dim shadow-sm">
+<span class="material-symbols-outlined text-3xl">quiz</span>
+</div>
+<div class="flex-1">
+<h4 class="font-bold text-on-surface">Try this quiz</h4>
+<p class="text-sm text-on-surface-variant">Past Tense Mastery • 50 XP</p>
+</div>
+<span class="material-symbols-outlined text-outline group-hover:translate-x-1 transition-transform">chevron_right</span>
+</div>
+</div>
+</div>
+<div class="bg-inverse-surface text-on-surface p-8 rounded-[2rem] flex flex-col justify-between overflow-hidden relative cursor-pointer" onclick="window.location.href='scenarios.html'">
+<div>
+<div class="flex justify-between items-center mb-6">
+<h3 class="text-white text-xl font-bold font-headline">Diamond League</h3>
+<span class="text-xs font-bold text-primary-fixed bg-primary-fixed/10 px-3 py-1 rounded-full uppercase tracking-tighter">4 days left</span>
+</div>
+<div class="space-y-4">
+<div class="flex items-center gap-4 py-2 opacity-50">
+<span class="text-xs font-bold text-outline w-4">1</span>
+<div class="w-8 h-8 rounded-full bg-slate-700 overflow-hidden">
+<img alt="Rank 1" class="w-full h-full object-cover" data-alt="close-up portrait of a woman with curly hair and glasses smiling in soft natural light" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAfjhHrfkpddVK-6fHKXXWwfNed5J5rV7qpWkZn2L5lRYYw8cDUQXdMJ2pG1czySNyWD2SVzl9QzZEGc85NfSs-TP8c7CvyKQrkQOaDyWHhkC1P39INH3SsPALSXxaqDKnoY8oxDTxgExfs2OHuS9Av4M33NQulntOcyjl0ug6-_QHAgCdMnNk0sYUcSL6QTx5M4hO8LjBHTSOZsYBW5M210fRns6WDrI-nwSj1v1YJwHUJIOYOsTygl3mXp1J0yUXM6JDNA_uWUAif"/>
+</div>
+<span class="flex-1 font-semibold text-white/70">Marie C.</span>
+<span class="text-xs font-bold text-white/50">2,480 XP</span>
+</div>
+<div class="flex items-center gap-4 py-3 bg-white/10 rounded-xl px-4 ring-1 ring-white/10">
+<span class="text-xs font-bold text-primary-fixed w-4">2</span>
+<div class="w-10 h-10 rounded-full border-2 border-primary-fixed overflow-hidden">
+<img alt="You" class="w-full h-full object-cover" data-alt="portrait of a young man with dark hair smiling against a soft blue background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAPbtrYAB_YHS82X3kGnzZ-7pTsbHvyIbLNAKSoP1jzsCSkj_Osf7Cg0sjOdKafIVWhXKAtjheEsmvlB3UnPlwEF6J49n9TvJ3MvJW4UtSTdyf-o-Kr1-4y0HPseFnKfOlUH4WMu7eUDjVjabP9KKcCMcN9EphTdRuu1Wu2RcVMQ27gla2d7nSEKHZGC-WNsYyi7LJNENPoUqLag0xGu-vYyDoQV4Giw4c16zn9woREM8tKKHP7yjDo1edqR_LD3gB7qlgnAcAE-1hP"/>
+</div>
+<span class="flex-1 font-bold text-white">Alex (You)</span>
+<span class="text-sm font-bold text-primary-fixed">2,240 XP</span>
+</div>
+<div class="flex items-center gap-4 py-2 opacity-50">
+<span class="text-xs font-bold text-outline w-4">3</span>
+<div class="w-8 h-8 rounded-full bg-slate-700 overflow-hidden">
+<img alt="Rank 3" class="w-full h-full object-cover" data-alt="portrait of a man with short brown hair and a friendly expression wearing a casual shirt" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC5HhvbY9TqWv3czIDKJ-2Fuk33ROWvkI62-3OqHzfw5zuVnKAsTCK8OhkXTtZ39s9U1tND_1eaty5o6bvZmgJvD8R45e33tb5mihNjN9k8dx2BAzO5vM0O12Z7nykrIjvrj-zy71kmsgXt5KJSaJtck4AAiPa7fWQ6TAgdo1jP1aobeJjEyBonqePE8wnumLtuHpro1YkUQxEDuWy_LkZ77O2yj49mdJP1Zr1_u3Fzxib7EEpC1OMTz436xaRaQ3KRWALez8Suv0WR"/>
+</div>
+<span class="flex-1 font-semibold text-white/70">Luca R.</span>
+<span class="text-xs font-bold text-white/50">2,110 XP</span>
+</div>
+</div>
+</div>
+<div class="mt-6">
+<button class="w-full py-3 bg-white/5 hover:bg-white/10 text-white rounded-xl font-bold text-sm transition-all">View Full Leaderboard</button>
+</div>
+<!-- Abstract shape for depth -->
+<div class="absolute -right-20 -bottom-20 w-48 h-48 bg-primary/10 rounded-full blur-3xl"></div>
+</div>
+</section>
+</main>
+<!-- Updated BottomNavBar with 4 tabs -->
+<nav id="bottom-nav" class="fixed bottom-0 left-0 w-full flex justify-around items-center px-4 pb-safe pt-2 pb-4 bg-[#f4faff]/95 backdrop-blur-md border-t border-[#9db6c3]/15 shadow-[0_-4px_20px_-4px_rgba(29,53,64,0.06)] z-50 rounded-t-[1.5rem]">
+<a class="flex flex-col items-center justify-center bg-[#c8f17a] text-[#5b4fcf] rounded-[1.5rem] px-4 py-2 transition-all duration-300 transform active:scale-90" href="dashboard.html">
+<span class="material-symbols-outlined text-[22px]" style="font-variation-settings:'FILL' 1;">home</span>
+<span class="text-[10px] font-semibold mt-0.5">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#1d3540] px-4 py-2 hover:bg-[#e7f6ff] rounded-xl transition-all duration-300 transform active:scale-90" href="roadmap.html">
+<span class="material-symbols-outlined text-[22px]" style="font-variation-settings:'FILL' 0;">school</span>
+<span class="text-[10px] font-semibold mt-0.5">Roadmap</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#1d3540] px-4 py-2 hover:bg-[#e7f6ff] rounded-xl transition-all duration-300 transform active:scale-90" href="speech.html">
+<span class="material-symbols-outlined text-[22px]" style="font-variation-settings:'FILL' 0;">mic</span>
+<span class="text-[10px] font-semibold mt-0.5">Practice</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#1d3540] px-4 py-2 hover:bg-[#e7f6ff] rounded-xl transition-all duration-300 transform active:scale-90" href="leaderboard.html">
+<span class="material-symbols-outlined text-[22px]" style="font-variation-settings:'FILL' 0;">leaderboard</span>
+<span class="text-[10px] font-semibold mt-0.5">Rank</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#1d3540] px-4 py-2 hover:bg-[#e7f6ff] rounded-xl transition-all duration-300 transform active:scale-90" href="achievements.html">
+<span class="material-symbols-outlined text-[22px]" style="font-variation-settings:'FILL' 0;">person</span>
+<span class="text-[10px] font-semibold mt-0.5">Profile</span>
+</a>
+</nav>
+
+<script>
+// ——— LearnWise SPA Router ———
+(function() {
+  const PAGE = 'dashboard.html';
+
+  // Active nav item highlight
+  document.querySelectorAll('a[href], button[data-nav]').forEach(el => {
+    const href = el.getAttribute('href') || '';
+    if (href === PAGE) {
+      el.classList.add('nav-active');
+    }
+  });
+
+  // Smooth page transitions
+  document.addEventListener('click', function(e) {
+    const link = e.target.closest('a[href]');
+    if (!link) return;
+    const href = link.getAttribute('href');
+    if (!href || href === '#' || href.startsWith('http') || href.startsWith('mailto')) return;
+    e.preventDefault();
+    document.body.style.opacity = '0';
+    document.body.style.transition = 'opacity 0.2s ease';
+    setTimeout(() => { window.location.href = href; }, 200);
+  });
+
+  // Fade in on load
+  document.body.style.opacity = '0';
+  window.addEventListener('DOMContentLoaded', () => {
+    requestAnimationFrame(() => {
+      document.body.style.transition = 'opacity 0.3s ease';
+      document.body.style.opacity = '1';
+    });
+  });
+})();
+</script>
+
+<script>
+(function(){
+  // Animate XP / streak counters
+  function animateCounter(el, target, suffix=''){
+    let current = 0;
+    const step = Math.ceil(target/40);
+    const timer = setInterval(()=>{
+      current = Math.min(current+step, target);
+      el.textContent = current.toLocaleString() + suffix;
+      if(current>=target) clearInterval(timer);
+    },30);
+  }
+
+  document.querySelectorAll('[class*="text-4xl"],[class*="text-3xl"],[class*="text-2xl"]').forEach(el=>{
+    const text = el.textContent.trim();
+    const num = parseInt(text.replace(/[^0-9]/g,''));
+    if(num>0 && num < 100000 && text.length < 10){
+      const suffix = text.includes('%')?'%': text.includes('XP')?'XP':'';
+      animateCounter(el, num, suffix);
+    }
+  });
+
+  // Daily goal progress bar animation
+  document.querySelectorAll('[class*="bg-primary"][class*="rounded-full"][style*="width"]').forEach(bar=>{
+    const w = bar.style.width;
+    bar.style.width = '0%';
+    setTimeout(()=>{ bar.style.transition='width 1.2s cubic-bezier(0.34,1.56,0.64,1)'; bar.style.width=w; },300);
+  });
+
+  // Continue Lesson card pulse
+  const heroCTA = document.querySelector('button[onclick*="active-lesson"]');
+  if(heroCTA){
+    setTimeout(()=>{
+      heroCTA.classList.add('animate-pulse');
+      setTimeout(()=>heroCTA.classList.remove('animate-pulse'),2000);
+    },1500);
+  }
+
+  // Toast notification
+  const toast = document.createElement('div');
+  toast.className='fixed top-4 right-4 bg-[#5b4fcf] text-white px-4 py-3 rounded-2xl shadow-xl flex items-center gap-2 z-[9999] transform translate-x-full transition-transform duration-500';
+  toast.innerHTML='<span class="material-symbols-outlined text-[#c8f17a]">local_fire_department</span><span class="text-sm font-semibold">7-day streak! Keep it up 🔥</span>';
+  document.body.appendChild(toast);
+  setTimeout(()=>toast.style.transform='translateX(0)',500);
+  setTimeout(()=>toast.style.transform='translateX(150%)',4000);
+})();
+</script>
+</body></html>

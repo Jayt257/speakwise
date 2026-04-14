@@ -1,6 +1,5 @@
 {
   "_comment": "English → Hindi language pair metadata",
-  "_status": "stub — content not yet created",
   "pairId": "en-hi",
   "source": {
     "id": "en",
@@ -12,15 +11,517 @@
     "name": "Hindi",
     "flag": "🇮🇳"
   },
-  "status": "planned",
+  "status": "active",
   "months": [
     {
       "month": 1,
       "title": "Foundation",
       "description": "Learn Hindi basics from English.",
-      "status": "not-started",
-      "weeks": []
+      "status": "ready",
+      "weeks": [
+        {
+          "week": 1,
+          "theme": "Script, vowels, and greetings",
+          "activityIds": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10
+          ]
+        },
+        {
+          "week": 2,
+          "theme": "Consonants and daily objects",
+          "activityIds": [
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21
+          ]
+        },
+        {
+          "week": 3,
+          "theme": "Numbers, time, and questions",
+          "activityIds": [
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29,
+            30,
+            31,
+            32
+          ]
+        },
+        {
+          "week": 4,
+          "theme": "Family and basic sentences",
+          "activityIds": [
+            33,
+            34,
+            35,
+            36,
+            37,
+            38,
+            39,
+            40,
+            41,
+            42,
+            43
+          ]
+        }
+      ]
     }
   ],
+  "activities": [
+    {
+      "id": 1,
+      "type": "lesson",
+      "file": "month-1/week-1-lesson.json",
+      "xp": 30,
+      "week": 1,
+      "month": 1,
+      "title": "Welcome to Hindi Script and Greetings"
+    },
+    {
+      "id": 2,
+      "type": "vocab",
+      "file": "month-1/week-1-vocab.json",
+      "xp": 20,
+      "week": 1,
+      "month": 1,
+      "title": "Greetings and Essential Words"
+    },
+    {
+      "id": 3,
+      "type": "reading",
+      "file": "month-1/week-1-reading.json",
+      "xp": 25,
+      "week": 1,
+      "month": 1,
+      "title": "A First Meeting in Hindi"
+    },
+    {
+      "id": 4,
+      "type": "pronunciation",
+      "file": "month-1/week-1-pronunciation.json",
+      "xp": 30,
+      "week": 1,
+      "month": 1,
+      "title": "Hindi Vowels and Clear Sounds"
+    },
+    {
+      "id": 5,
+      "type": "writing",
+      "file": "month-1/week-1-writing.json",
+      "xp": 35,
+      "week": 1,
+      "month": 1,
+      "title": "Write Your First Greetings"
+    },
+    {
+      "id": 6,
+      "type": "listening",
+      "file": "month-1/week-1-listening.json",
+      "xp": 40,
+      "week": 1,
+      "month": 1,
+      "title": "Listening for Greetings"
+    },
+    {
+      "id": 7,
+      "type": "test",
+      "file": "month-1/week-1-test.json",
+      "xp": 50,
+      "week": 1,
+      "month": 1,
+      "title": "Week 1 Quiz"
+    },
+    {
+      "id": 8,
+      "type": "speaking",
+      "file": "month-1/week-1-speaking.json",
+      "xp": 35,
+      "week": 1,
+      "month": 1,
+      "title": "Introduce Yourself"
+    },
+    {
+      "id": 9,
+      "type": "vocab_review",
+      "file": "month-1/week-1-vocab-review.json",
+      "xp": 20,
+      "week": 1,
+      "month": 1,
+      "title": "Week 1 Review"
+    },
+    {
+      "id": 10,
+      "type": "pronunciation",
+      "file": "month-1/week-1-pronunciation-2.json",
+      "xp": 30,
+      "week": 1,
+      "month": 1,
+      "title": "Sound Practice 2"
+    },
+    {
+      "id": 11,
+      "type": "lesson",
+      "file": "month-1/week-2-lesson.json",
+      "xp": 30,
+      "week": 2,
+      "month": 1,
+      "title": "Hindi Consonants and Daily Life"
+    },
+    {
+      "id": 12,
+      "type": "vocab",
+      "file": "month-1/week-2-vocab.json",
+      "xp": 20,
+      "week": 2,
+      "month": 1,
+      "title": "Daily Objects and Places"
+    },
+    {
+      "id": 13,
+      "type": "reading",
+      "file": "month-1/week-2-reading.json",
+      "xp": 25,
+      "week": 2,
+      "month": 1,
+      "title": "At Home in Hindi"
+    },
+    {
+      "id": 14,
+      "type": "pronunciation",
+      "file": "month-1/week-2-pronunciation.json",
+      "xp": 30,
+      "week": 2,
+      "month": 1,
+      "title": "Aspirated and Unaspirated Sounds"
+    },
+    {
+      "id": 15,
+      "type": "writing",
+      "file": "month-1/week-2-writing.json",
+      "xp": 35,
+      "week": 2,
+      "month": 1,
+      "title": "Describe the Things Around You"
+    },
+    {
+      "id": 16,
+      "type": "listening",
+      "file": "month-1/week-2-listening.json",
+      "xp": 40,
+      "week": 2,
+      "month": 1,
+      "title": "Listening for Daily Objects"
+    },
+    {
+      "id": 17,
+      "type": "test",
+      "file": "month-1/week-2-test.json",
+      "xp": 50,
+      "week": 2,
+      "month": 1,
+      "title": "Week 2 Quiz"
+    },
+    {
+      "id": 18,
+      "type": "speaking",
+      "file": "month-1/week-2-speaking.json",
+      "xp": 35,
+      "week": 2,
+      "month": 1,
+      "title": "Talk About Your Room"
+    },
+    {
+      "id": 19,
+      "type": "reading",
+      "file": "month-1/week-2-reading-ext.json",
+      "xp": 25,
+      "week": 2,
+      "month": 1,
+      "title": "Extended Reading: Rooms and Routine"
+    },
+    {
+      "id": 20,
+      "type": "pronunciation",
+      "file": "month-1/week-2-pronunciation-2.json",
+      "xp": 30,
+      "week": 2,
+      "month": 1,
+      "title": "Sound Practice 2"
+    },
+    {
+      "id": 21,
+      "type": "test",
+      "file": "month-1/week-2-midtest.json",
+      "xp": 75,
+      "week": 2,
+      "month": 1,
+      "title": "Week 2 Mid-test"
+    },
+    {
+      "id": 22,
+      "type": "lesson",
+      "file": "month-1/week-3-lesson.json",
+      "xp": 30,
+      "week": 3,
+      "month": 1,
+      "title": "Numbers, Time, and Question Words"
+    },
+    {
+      "id": 23,
+      "type": "vocab",
+      "file": "month-1/week-3-vocab.json",
+      "xp": 20,
+      "week": 3,
+      "month": 1,
+      "title": "Numbers and Time Words"
+    },
+    {
+      "id": 24,
+      "type": "reading",
+      "file": "month-1/week-3-reading.json",
+      "xp": 25,
+      "week": 3,
+      "month": 1,
+      "title": "A Busy Day in Numbers"
+    },
+    {
+      "id": 25,
+      "type": "pronunciation",
+      "file": "month-1/week-3-pronunciation.json",
+      "xp": 30,
+      "week": 3,
+      "month": 1,
+      "title": "Question Intonation and Clarity"
+    },
+    {
+      "id": 26,
+      "type": "writing",
+      "file": "month-1/week-3-writing.json",
+      "xp": 35,
+      "week": 3,
+      "month": 1,
+      "title": "Ask and Answer Simple Questions"
+    },
+    {
+      "id": 27,
+      "type": "listening",
+      "file": "month-1/week-3-listening.json",
+      "xp": 40,
+      "week": 3,
+      "month": 1,
+      "title": "Listening for Numbers and Time"
+    },
+    {
+      "id": 28,
+      "type": "test",
+      "file": "month-1/week-3-test.json",
+      "xp": 50,
+      "week": 3,
+      "month": 1,
+      "title": "Week 3 Quiz"
+    },
+    {
+      "id": 29,
+      "type": "speaking",
+      "file": "month-1/week-3-speaking.json",
+      "xp": 35,
+      "week": 3,
+      "month": 1,
+      "title": "Ask Questions in Daily Conversation"
+    },
+    {
+      "id": 30,
+      "type": "vocab_review",
+      "file": "month-1/week-3-vocab-review.json",
+      "xp": 20,
+      "week": 3,
+      "month": 1,
+      "title": "Week 3 Review"
+    },
+    {
+      "id": 31,
+      "type": "pronunciation",
+      "file": "month-1/week-3-pronunciation-2.json",
+      "xp": 30,
+      "week": 3,
+      "month": 1,
+      "title": "Sound Practice 2"
+    },
+    {
+      "id": 32,
+      "type": "test",
+      "file": "month-1/week-3-midtest.json",
+      "xp": 75,
+      "week": 3,
+      "month": 1,
+      "title": "Week 3 Mid-test"
+    },
+    {
+      "id": 33,
+      "type": "lesson",
+      "file": "month-1/week-4-lesson.json",
+      "xp": 30,
+      "week": 4,
+      "month": 1,
+      "title": "Family Words and Simple Sentences"
+    },
+    {
+      "id": 34,
+      "type": "vocab",
+      "file": "month-1/week-4-vocab.json",
+      "xp": 20,
+      "week": 4,
+      "month": 1,
+      "title": "Family and Feelings"
+    },
+    {
+      "id": 35,
+      "type": "reading",
+      "file": "month-1/week-4-reading.json",
+      "xp": 25,
+      "week": 4,
+      "month": 1,
+      "title": "My Family in Hindi"
+    },
+    {
+      "id": 36,
+      "type": "pronunciation",
+      "file": "month-1/week-4-pronunciation.json",
+      "xp": 30,
+      "week": 4,
+      "month": 1,
+      "title": "Sentence Rhythm and Natural Flow"
+    },
+    {
+      "id": 37,
+      "type": "writing",
+      "file": "month-1/week-4-writing.json",
+      "xp": 35,
+      "week": 4,
+      "month": 1,
+      "title": "Describe Your Family"
+    },
+    {
+      "id": 38,
+      "type": "listening",
+      "file": "month-1/week-4-listening.json",
+      "xp": 40,
+      "week": 4,
+      "month": 1,
+      "title": "Listening for Family Words"
+    },
+    {
+      "id": 39,
+      "type": "test",
+      "file": "month-1/week-4-test.json",
+      "xp": 50,
+      "week": 4,
+      "month": 1,
+      "title": "Week 4 Quiz"
+    },
+    {
+      "id": 40,
+      "type": "speaking",
+      "file": "month-1/week-4-speaking.json",
+      "xp": 35,
+      "week": 4,
+      "month": 1,
+      "title": "Talk About Family and Friends"
+    },
+    {
+      "id": 41,
+      "type": "reading",
+      "file": "month-1/week-4-reading-ext.json",
+      "xp": 25,
+      "week": 4,
+      "month": 1,
+      "title": "Extended Reading: Family and Respect"
+    },
+    {
+      "id": 42,
+      "type": "pronunciation",
+      "file": "month-1/week-4-pronunciation-2.json",
+      "xp": 30,
+      "week": 4,
+      "month": 1,
+      "title": "Sound Practice 2"
+    },
+    {
+      "id": 43,
+      "type": "milestone",
+      "file": "month-1/milestone.json",
+      "xp": 100,
+      "week": 4,
+      "month": 1,
+      "title": "Month 1 Milestone"
+    }
+  ],
+  "activityMap": {
+    "1": "month-1/week-1-lesson.json",
+    "2": "month-1/week-1-vocab.json",
+    "3": "month-1/week-1-reading.json",
+    "4": "month-1/week-1-pronunciation.json",
+    "5": "month-1/week-1-writing.json",
+    "6": "month-1/week-1-listening.json",
+    "7": "month-1/week-1-test.json",
+    "8": "month-1/week-1-speaking.json",
+    "9": "month-1/week-1-vocab-review.json",
+    "10": "month-1/week-1-pronunciation-2.json",
+    "11": "month-1/week-2-lesson.json",
+    "12": "month-1/week-2-vocab.json",
+    "13": "month-1/week-2-reading.json",
+    "14": "month-1/week-2-pronunciation.json",
+    "15": "month-1/week-2-writing.json",
+    "16": "month-1/week-2-listening.json",
+    "17": "month-1/week-2-test.json",
+    "18": "month-1/week-2-speaking.json",
+    "19": "month-1/week-2-reading-ext.json",
+    "20": "month-1/week-2-pronunciation-2.json",
+    "21": "month-1/week-2-midtest.json",
+    "22": "month-1/week-3-lesson.json",
+    "23": "month-1/week-3-vocab.json",
+    "24": "month-1/week-3-reading.json",
+    "25": "month-1/week-3-pronunciation.json",
+    "26": "month-1/week-3-writing.json",
+    "27": "month-1/week-3-listening.json",
+    "28": "month-1/week-3-test.json",
+    "29": "month-1/week-3-speaking.json",
+    "30": "month-1/week-3-vocab-review.json",
+    "31": "month-1/week-3-pronunciation-2.json",
+    "32": "month-1/week-3-midtest.json",
+    "33": "month-1/week-4-lesson.json",
+    "34": "month-1/week-4-vocab.json",
+    "35": "month-1/week-4-reading.json",
+    "36": "month-1/week-4-pronunciation.json",
+    "37": "month-1/week-4-writing.json",
+    "38": "month-1/week-4-listening.json",
+    "39": "month-1/week-4-test.json",
+    "40": "month-1/week-4-speaking.json",
+    "41": "month-1/week-4-reading-ext.json",
+    "42": "month-1/week-4-pronunciation-2.json",
+    "43": "month-1/milestone.json"
+  },
   "_howToCreate": "See /data/README.md for instructions on creating en-hi content."
 }

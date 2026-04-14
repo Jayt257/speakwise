@@ -1,0 +1,291 @@
+{
+  "id": 12,
+  "type": "vocab",
+  "title": "Daily Objects and Places",
+  "description": "Build 25 daily object words.",
+  "duration": "20 min",
+  "xp": 20,
+  "week": 2,
+  "month": 1,
+  "langPair": "en-hi",
+  "tags": [
+    "english",
+    "hindi",
+    "devanagari",
+    "week-2",
+    "consonants-and-daily-objects"
+  ],
+  "blocks": [
+    {
+      "id": "b1",
+      "type": "image_word",
+      "title": "Visual Vocabulary",
+      "items": [
+        {
+          "emoji": "🏠",
+          "word": "घर",
+          "meaning": "House",
+          "example": "यह घर है। (ghar)"
+        },
+        {
+          "emoji": "🛏️",
+          "word": "कमरा",
+          "meaning": "Room",
+          "example": "यह कमरा है। (कमरा)"
+        },
+        {
+          "emoji": "🪑",
+          "word": "मेज़",
+          "meaning": "Table",
+          "example": "यह मेज़ है। (मेज़)"
+        },
+        {
+          "emoji": "🪑",
+          "word": "कुर्सी",
+          "meaning": "Chair",
+          "example": "यह कुर्सी है। (कुर्सी)"
+        },
+        {
+          "emoji": "📘",
+          "word": "किताब",
+          "meaning": "Book",
+          "example": "यह किताब है। (किताब)"
+        },
+        {
+          "emoji": "🖊️",
+          "word": "कलम",
+          "meaning": "Pen",
+          "example": "यह कलम है। (कलम)"
+        },
+        {
+          "emoji": "🎒",
+          "word": "बैग",
+          "meaning": "Bag",
+          "example": "यह बैग है। (बैग)"
+        },
+        {
+          "emoji": "🚪",
+          "word": "दरवाज़ा",
+          "meaning": "Door",
+          "example": "यह दरवाज़ा है। (दरवाज़ा)"
+        },
+        {
+          "emoji": "🪟",
+          "word": "खिड़की",
+          "meaning": "Window",
+          "example": "यह खिड़की है। (खिड़की)"
+        },
+        {
+          "emoji": "🧱",
+          "word": "दीवार",
+          "meaning": "Wall",
+          "example": "यह दीवार है। (दीवार)"
+        }
+      ]
+    },
+    {
+      "id": "b2",
+      "type": "vocab_table",
+      "title": "Vocabulary List",
+      "words": [
+        {
+          "word": "घर",
+          "meaning": "House",
+          "example": "घर — house"
+        },
+        {
+          "word": "कमरा",
+          "meaning": "Room",
+          "example": "कमरा — room"
+        },
+        {
+          "word": "मेज़",
+          "meaning": "Table",
+          "example": "मेज़ — table"
+        },
+        {
+          "word": "कुर्सी",
+          "meaning": "Chair",
+          "example": "कुर्सी — chair"
+        },
+        {
+          "word": "किताब",
+          "meaning": "Book",
+          "example": "किताब — book"
+        },
+        {
+          "word": "कलम",
+          "meaning": "Pen",
+          "example": "कलम — pen"
+        },
+        {
+          "word": "बैग",
+          "meaning": "Bag",
+          "example": "बैग — bag"
+        },
+        {
+          "word": "दरवाज़ा",
+          "meaning": "Door",
+          "example": "दरवाज़ा — door"
+        },
+        {
+          "word": "खिड़की",
+          "meaning": "Window",
+          "example": "खिड़की — window"
+        },
+        {
+          "word": "दीवार",
+          "meaning": "Wall",
+          "example": "दीवार — wall"
+        },
+        {
+          "word": "स्कूल",
+          "meaning": "School",
+          "example": "स्कूल — school"
+        },
+        {
+          "word": "कक्षा",
+          "meaning": "Classroom",
+          "example": "कक्षा — classroom"
+        },
+        {
+          "word": "बाज़ार",
+          "meaning": "Market",
+          "example": "बाज़ार — market"
+        },
+        {
+          "word": "दुकान",
+          "meaning": "Shop",
+          "example": "दुकान — shop"
+        },
+        {
+          "word": "सड़क",
+          "meaning": "Road",
+          "example": "सड़क — road"
+        },
+        {
+          "word": "शहर",
+          "meaning": "City",
+          "example": "शहर — city"
+        },
+        {
+          "word": "गाँव",
+          "meaning": "Village",
+          "example": "गाँव — village"
+        },
+        {
+          "word": "पानी",
+          "meaning": "Water",
+          "example": "पानी — water"
+        },
+        {
+          "word": "लैम्प",
+          "meaning": "Lamp",
+          "example": "लैम्प — lamp"
+        },
+        {
+          "word": "घड़ी",
+          "meaning": "Clock",
+          "example": "घड़ी — clock"
+        },
+        {
+          "word": "कप",
+          "meaning": "Cup",
+          "example": "कप — cup"
+        },
+        {
+          "word": "प्लेट",
+          "meaning": "Plate",
+          "example": "प्लेट — plate"
+        },
+        {
+          "word": "बिस्तर",
+          "meaning": "Bed",
+          "example": "बिस्तर — bed"
+        },
+        {
+          "word": "फाइल",
+          "meaning": "File",
+          "example": "फाइल — file"
+        },
+        {
+          "word": "मोबाइल",
+          "meaning": "Mobile Phone",
+          "example": "मोबाइल — mobile phone"
+        }
+      ]
+    },
+    {
+      "id": "b3",
+      "type": "matching",
+      "title": "Match the pairs",
+      "instruction": "Match the Hindi word to its English meaning.",
+      "leftItems": [
+        "घर",
+        "कमरा",
+        "मेज़",
+        "कुर्सी",
+        "किताब",
+        "कलम",
+        "बैग",
+        "दरवाज़ा",
+        "खिड़की",
+        "दीवार"
+      ],
+      "rightItems": [
+        "Wall",
+        "Window",
+        "Door",
+        "Bag",
+        "Pen",
+        "Book",
+        "Chair",
+        "Table",
+        "Room",
+        "House"
+      ],
+      "pairs": [
+        [
+          0,
+          9
+        ],
+        [
+          1,
+          8
+        ],
+        [
+          2,
+          7
+        ],
+        [
+          3,
+          6
+        ],
+        [
+          4,
+          5
+        ],
+        [
+          5,
+          4
+        ],
+        [
+          6,
+          3
+        ],
+        [
+          7,
+          2
+        ],
+        [
+          8,
+          1
+        ],
+        [
+          9,
+          0
+        ]
+      ]
+    }
+  ]
+}

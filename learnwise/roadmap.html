@@ -1,0 +1,1077 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="theme-color" content="#5b4fcf"/>
+<meta name="description" content="LearnWise – Your Language Learning Roadmap"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Roadmap · LearnWise</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script>
+tailwind.config={darkMode:"class",theme:{extend:{colors:{
+  "primary":"#5b4fcf","primary-container":"#ede9ff","on-primary":"#ffffff",
+  "surface":"#f8f9ff","on-surface":"#1a1b2e","on-surface-secondary":"#4b4e6d",
+  "outline-light":"#d1d3e5","success":"#10b981","error":"#ef4444","warning":"#f59e0b",
+},fontFamily:{"headline":["Plus Jakarta Sans"],"body":["Inter"]}}}}
+</script>
+<style>
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Inter',sans-serif;color:#1a1b2e;min-height:100vh;background:#0a0818;overflow-x:hidden;}
+h1,h2,h3,h4,h5,button,label{font-family:'Plus Jakarta Sans',sans-serif;}
+.material-symbols-outlined{font-variation-settings:'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 24;}
+
+/* ─── BACKGROUND ─── */
+.bg-deep{position:fixed;inset:0;z-index:0;background:radial-gradient(ellipse at 25% 25%,#1a1040 0%,#0d0b22 55%,#060410 100%);}
+.bg-grid{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:0.4;
+  background-image:linear-gradient(rgba(91,79,207,0.07) 1px,transparent 1px),linear-gradient(90deg,rgba(91,79,207,0.07) 1px,transparent 1px);
+  background-size:48px 48px;}
+.bg-orb{position:fixed;border-radius:50%;filter:blur(90px);pointer-events:none;z-index:0;}
+@keyframes orb-float{0%,100%{transform:translateY(0) scale(1);}50%{transform:translateY(-35px) scale(1.06);}}
+#stars-canvas{position:fixed;inset:0;z-index:0;pointer-events:none;}
+
+/* ─── TOPBAR ─── */
+.top-nav{background:rgba(10,8,24,0.9);backdrop-filter:blur(20px);border-bottom:1px solid rgba(91,79,207,0.18);position:sticky;top:0;z-index:50;width:100%;}
+.lang-tab-bar{background:rgba(10,8,24,0.82);backdrop-filter:blur(16px);border-bottom:1px solid rgba(91,79,207,0.1);position:sticky;top:57px;z-index:40;width:100%;}
+
+/* ─── LANG TABS ─── */
+.lang-tab{display:flex;align-items:center;gap:8px;padding:8px 16px;border-radius:999px;border:none;cursor:pointer;transition:all 0.22s cubic-bezier(.34,1.2,.64,1);font-family:'Plus Jakarta Sans',sans-serif;font-size:13px;font-weight:700;white-space:nowrap;}
+.lang-tab:hover{transform:translateY(-1px);}
+.lang-tab.active{color:white;box-shadow:0 4px 16px rgba(91,79,207,0.4);}
+.lang-tab.inactive{background:rgba(255,255,255,0.07);color:rgba(255,255,255,0.55);border:1.5px solid rgba(255,255,255,0.1);}
+.lang-tab.inactive:hover{background:rgba(255,255,255,0.13);color:rgba(255,255,255,0.85);}
+.lang-tab-add{display:flex;align-items:center;gap:6px;padding:8px 14px;border-radius:999px;background:transparent;border:1.5px dashed rgba(91,79,207,0.4);cursor:pointer;transition:all 0.2s ease;font-size:13px;font-weight:600;color:rgba(165,160,223,0.7);white-space:nowrap;text-decoration:none;}
+.lang-tab-add:hover{border-color:#7c6fd4;color:#a5a0df;background:rgba(91,79,207,0.12);}
+
+/* ─── LAYOUT ─── */
+.page-wrap{position:relative;z-index:1;min-height:100vh;}
+.main-grid{display:grid;grid-template-columns:1fr;gap:24px;max-width:1152px;margin:0 auto;padding:24px 16px;}
+@media(min-width:1024px){.main-grid{grid-template-columns:1fr 340px;}}
+
+/* ─── SIDEBAR STICKY ─── */
+#sidebar-col{order:2;}
+@media(min-width:1024px){
+  #sidebar-col{position:sticky;top:129px;height:calc(100vh - 145px);overflow-y:auto;scrollbar-width:none;order:2;align-self:start;}
+  #sidebar-col::-webkit-scrollbar{display:none;}
+}
+
+/* ─── SIDEBAR CARDS ─── */
+.sc{background:rgba(255,255,255,0.06);backdrop-filter:blur(18px);border:1px solid rgba(255,255,255,0.1);border-radius:1.25rem;box-shadow:0 4px 24px rgba(0,0,0,0.3);color:white;padding:20px;}
+.sc+.sc{margin-top:16px;}
+
+/* ─── LANG INFO BAR ─── */
+.lang-info-bar{background:rgba(255,255,255,0.05);backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,0.1);border-radius:1.25rem;padding:20px;margin-bottom:20px;display:flex;align-items:center;gap:16px;}
+
+/* ─── MONTH TABS ─── */
+.month-tab{padding:8px 16px;border-radius:999px;font-size:12px;font-weight:700;cursor:pointer;transition:all 0.22s cubic-bezier(.34,1.2,.64,1);white-space:nowrap;font-family:'Plus Jakarta Sans',sans-serif;border:none;}
+.month-tab.active{color:white;box-shadow:0 4px 14px rgba(0,0,0,0.35);}
+.month-tab.inactive{background:rgba(255,255,255,0.07);color:rgba(255,255,255,0.45);border:1px solid rgba(255,255,255,0.08);}
+.month-tab.inactive:hover{background:rgba(255,255,255,0.13);color:rgba(255,255,255,0.8);}
+
+/* ─── ROADMAP PATH ─── */
+.roadmap-path{position:relative;padding:0 20px;}
+.path-spine{position:absolute;left:50%;transform:translateX(-1.5px);width:3px;top:0;bottom:0;background:rgba(255,255,255,0.07);border-radius:2px;z-index:0;}
+.path-spine-fill{position:absolute;left:50%;transform:translateX(-1.5px);width:3px;top:0;height:0;border-radius:2px;z-index:1;transition:height 1.3s cubic-bezier(.4,0,.2,1);}
+
+/* ─── MONTH HEADER ─── */
+.month-header-card{background:rgba(255,255,255,0.07);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,0.12);border-radius:1.25rem;padding:16px 20px;margin:28px 0 20px;display:flex;align-items:center;gap:14px;position:relative;z-index:5;box-shadow:0 4px 20px rgba(0,0,0,0.25);}
+
+/* ─── CLOUD DIVIDER ─── */
+.cloud-divider{position:relative;width:100%;height:90px;margin:4px 0;overflow:hidden;z-index:6;display:flex;align-items:center;justify-content:center;}
+.cloud-puff{position:absolute;border-radius:50%;background:rgba(255,255,255,0.05);animation:cloud-drift var(--dur,8s) ease-in-out var(--delay,0s) infinite;}
+@keyframes cloud-drift{0%,100%{transform:translateX(0) scale(1);opacity:var(--op,0.3);}50%{transform:translateX(var(--tx,18px)) scale(1.08);opacity:calc(var(--op,0.3)*1.6);}}
+
+/* ─── MONTH SECTION ─── */
+.month-section{opacity:1;}
+.month-section.entering{animation:month-reveal 0.75s cubic-bezier(.34,1.1,.64,1) both;}
+@keyframes month-reveal{from{opacity:0;transform:translateY(36px) scale(0.97);}to{opacity:1;transform:translateY(0) scale(1);}}
+
+/* ─── ACTIVITY NODE ─── */
+.activity-node{position:relative;z-index:2;display:flex;align-items:center;padding:10px 0;}
+.activity-node.left{flex-direction:row;}
+.activity-node.right{flex-direction:row-reverse;}
+.node-circle-wrap{position:relative;flex-shrink:0;z-index:4;}
+
+.node-circle{width:54px;height:54px;border-radius:50%;display:flex;align-items:center;justify-content:center;position:relative;transition:transform 0.25s cubic-bezier(.34,1.4,.64,1),box-shadow 0.2s ease;cursor:pointer;}
+.node-circle:hover{transform:scale(1.18);}
+.node-circle:active{transform:scale(0.93);}
+.node-circle.nc-done{background:linear-gradient(135deg,#10b981,#059669);box-shadow:0 6px 24px rgba(16,185,129,0.5);}
+.node-circle.nc-active{box-shadow:0 6px 28px var(--nc,rgba(91,79,207,0.5));}
+.node-circle.nc-locked{background:rgba(255,255,255,0.07);border:2px solid rgba(255,255,255,0.1);}
+.node-ping{position:absolute;inset:-8px;border-radius:50%;animation:node-ping 2.3s ease-out infinite;}
+@keyframes node-ping{0%{opacity:0.5;transform:scale(1);}80%,100%{opacity:0;transform:scale(1.75);}}
+
+/* ─── TOOLTIP (highest z-index of all inline elements) ─── */
+.node-tooltip{
+  position:absolute;z-index:9999;bottom:calc(100% + 14px);left:50%;
+  transform:translateX(-50%) scale(0.88) translateY(6px);
+  opacity:0;pointer-events:none;
+  transition:opacity 0.18s ease,transform 0.22s cubic-bezier(.34,1.2,.64,1);
+  width:230px;
+  background:rgba(8,6,22,0.97);backdrop-filter:blur(20px);
+  border:1px solid rgba(91,79,207,0.35);border-radius:14px;padding:12px 14px;
+  box-shadow:0 24px 60px rgba(0,0,0,0.7),0 0 0 1px rgba(255,255,255,0.03);
+}
+.node-circle-wrap:hover .node-tooltip{opacity:1;transform:translateX(-50%) scale(1) translateY(0);}
+.node-tooltip::after{content:'';position:absolute;bottom:-6px;left:50%;transform:translateX(-50%);width:0;height:0;border:6px solid transparent;border-top-color:rgba(91,79,207,0.35);border-bottom-width:0;}
+
+/* ─── ACTIVITY CARD ─── */
+.activity-card{flex:1;border-radius:1rem;padding:12px 14px;cursor:pointer;transition:all 0.22s cubic-bezier(.34,1.2,.64,1);max-width:262px;backdrop-filter:blur(10px);}
+.activity-card:hover{transform:translateY(-3px);}
+.ac-done{background:rgba(16,185,129,0.12);border:1.5px solid rgba(16,185,129,0.3);box-shadow:0 4px 16px rgba(16,185,129,0.1);}
+.ac-active{background:rgba(91,79,207,0.15);border:1.5px solid rgba(91,79,207,0.4);box-shadow:0 6px 20px rgba(91,79,207,0.15);}
+.ac-locked{background:rgba(255,255,255,0.04);border:1.5px solid rgba(255,255,255,0.07);opacity:0.5;cursor:not-allowed;}
+.ac-locked:hover{transform:none!important;}
+
+.connector{height:2px;flex:0 0 18px;background:rgba(255,255,255,0.1);border-radius:1px;}
+.conn-done{background:linear-gradient(90deg,#10b981,#6ee7b7);}
+
+/* ─── MILESTONE / FINAL ─── */
+.milestone-node{width:100%;padding:18px 20px;margin:24px 0;border-radius:1.25rem;display:flex;align-items:center;gap:14px;cursor:pointer;position:relative;z-index:5;overflow:hidden;transition:all 0.25s cubic-bezier(.34,1.2,.64,1);}
+.milestone-node:hover{transform:translateY(-3px);}
+.final-exam-node{width:100%;padding:22px;margin:24px 0;border-radius:1.5rem;background:linear-gradient(135deg,rgba(91,79,207,0.22),rgba(45,31,110,0.38));border:2px solid rgba(91,79,207,0.55);display:flex;align-items:center;gap:18px;cursor:pointer;position:relative;z-index:5;overflow:hidden;box-shadow:0 12px 48px rgba(91,79,207,0.28);transition:all 0.3s cubic-bezier(.34,1.2,.64,1);}
+.final-exam-node:hover{transform:translateY(-4px);box-shadow:0 20px 60px rgba(91,79,207,0.45);}
+@keyframes exam-shimmer{0%{transform:translateX(-200%);opacity:0;}40%{opacity:1;}100%{transform:translateX(200%);opacity:0;}}
+.exam-shimmer{position:absolute;top:0;left:0;width:50%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.08),transparent);animation:exam-shimmer 4s ease-in-out infinite;}
+
+/* ─── XP / BADGE ─── */
+.xp-pill{display:inline-flex;align-items:center;gap:3px;background:rgba(91,79,207,0.25);color:#a5a0df;border-radius:999px;padding:2px 8px;font-size:11px;font-weight:700;font-family:'Plus Jakarta Sans',sans-serif;border:1px solid rgba(91,79,207,0.2);}
+.type-badge{display:inline-flex;align-items:center;gap:3px;font-size:10px;font-weight:700;padding:2px 7px;border-radius:999px;}
+
+/* ─── MODAL ─── */
+#activity-modal{display:none;position:fixed;inset:0;z-index:800;background:rgba(4,3,14,0.82);backdrop-filter:blur(14px);align-items:center;justify-content:center;padding:16px;}
+#activity-modal.show{display:flex;}
+.modal-card{background:linear-gradient(145deg,#1a1532,#0d0b1e);border:1px solid rgba(91,79,207,0.28);border-radius:1.5rem;max-width:500px;width:100%;padding:28px;box-shadow:0 40px 100px rgba(0,0,0,0.8);animation:modal-in 0.32s cubic-bezier(.34,1.3,.64,1);color:white;max-height:90vh;overflow-y:auto;}
+@keyframes modal-in{from{opacity:0;transform:scale(0.86) translateY(24px);}to{opacity:1;transform:scale(1) translateY(0);}}
+
+/* ─── FIREWORKS ─── */
+#fw-canvas{display:none;position:fixed;inset:0;z-index:900;pointer-events:none;}
+
+/* ─── TOAST ─── */
+#toast{position:fixed;bottom:32px;left:50%;transform:translateX(-50%) translateY(20px);z-index:700;opacity:0;transition:all 0.35s cubic-bezier(.34,1.3,.64,1);pointer-events:none;}
+#toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
+.toast-inner{background:rgba(8,6,22,0.96);backdrop-filter:blur(20px);border:1px solid rgba(91,79,207,0.3);border-radius:1.25rem;padding:14px 20px;display:flex;align-items:center;gap:12px;box-shadow:0 16px 48px rgba(0,0,0,0.6);white-space:nowrap;}
+
+/* ─── CLOUD OVERLAY ─── */
+#cloud-overlay{position:fixed;inset:0;z-index:600;pointer-events:none;opacity:0;transition:opacity 0.45s ease;background:radial-gradient(ellipse at 50% 50%,rgba(91,79,207,0.18) 0%,rgba(4,3,14,0.7) 100%);}
+#cloud-overlay.show{opacity:1;}
+
+/* ─── ANIMS ─── */
+@keyframes fade-up{from{opacity:0;transform:translateY(14px);}to{opacity:1;transform:translateY(0);}}
+.anim-up{animation:fade-up 0.45s ease both;}
+.d1{animation-delay:0.1s;}.d2{animation-delay:0.2s;}.d3{animation-delay:0.3s;}
+
+/* ─── SCROLLBAR ─── */
+::-webkit-scrollbar{width:4px;height:4px;}
+::-webkit-scrollbar-thumb{background:rgba(91,79,207,0.3);border-radius:2px;}
+
+/* ─── BUTTON ─── */
+.btn-cta{background:linear-gradient(135deg,#5b4fcf,#7c6fd4);box-shadow:0 6px 24px rgba(91,79,207,0.45),inset 0 1px 0 rgba(255,255,255,0.15);transition:all 0.22s cubic-bezier(.34,1.2,.64,1);font-family:'Plus Jakarta Sans',sans-serif;color:white;font-weight:700;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;}
+.btn-cta:hover{transform:translateY(-2px);box-shadow:0 10px 32px rgba(91,79,207,0.55);}
+.btn-cta:active{transform:scale(0.97);}
+</style>
+</head>
+<body>
+
+<!-- BACKGROUND -->
+<div class="bg-deep"></div>
+<div class="bg-grid"></div>
+<div id="bg-orbs"></div>
+<canvas id="stars-canvas"></canvas>
+<div id="cloud-overlay"></div>
+
+<div class="page-wrap">
+
+<!-- TOP NAV -->
+<nav class="top-nav">
+  <div style="max-width:1152px;margin:0 auto;padding:0 16px;height:57px;display:flex;align-items:center;justify-content:space-between;gap:12px;">
+    <div style="display:flex;align-items:center;gap:8px;">
+      <a href="dashboard.html" style="width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,0.55);border:1px solid rgba(255,255,255,0.1);background:rgba(255,255,255,0.05);transition:all 0.2s;text-decoration:none;" onmouseover="this.style.background='rgba(255,255,255,0.12)'" onmouseout="this.style.background='rgba(255,255,255,0.05)'">
+        <span class="material-symbols-outlined" style="font-size:20px;">arrow_back</span>
+      </a>
+      <div style="display:flex;align-items:center;gap:8px;margin-left:4px;">
+        <div style="width:28px;height:28px;border-radius:8px;background:linear-gradient(135deg,#5b4fcf,#7c6fd4);display:flex;align-items:center;justify-content:center;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 16.93V17c0-.55-.45-1-1-1s-1 .45-1 1v1.93C6.61 18.43 4 15.57 4 12c0-4.41 3.59-8 8-8s8 3.59 8 8c0 3.57-2.61 6.43-6 6.93V17c0-.55-.45-1-1-1s-1 .45-1 1v1.93z" fill="white" opacity="0.9"/><circle cx="12" cy="9" r="3" fill="white"/></svg>
+        </div>
+        <span style="font-weight:900;color:white;font-size:15px;">LearnWise</span>
+        <span style="color:rgba(255,255,255,0.25);font-size:13px;">· Roadmap</span>
+      </div>
+    </div>
+    <div style="display:flex;align-items:center;gap:8px;">
+      <div class="xp-pill" style="font-size:13px;padding:6px 12px;">
+        <span class="material-symbols-outlined" style="font-size:14px;font-variation-settings:'FILL' 1">bolt</span>
+        <span id="total-xp">0</span> XP
+      </div>
+      <div style="display:flex;align-items:center;gap:4px;padding:6px 12px;border-radius:999px;background:rgba(234,88,12,0.18);color:#fb923c;border:1px solid rgba(234,88,12,0.28);font-weight:700;font-size:13px;">
+        <span class="material-symbols-outlined" style="font-size:14px;font-variation-settings:'FILL' 1">local_fire_department</span>12
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- LANG TAB BAR -->
+<div class="lang-tab-bar">
+  <div style="max-width:1152px;margin:0 auto;padding:10px 16px;">
+    <div id="lang-tabs" style="display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;padding-bottom:2px;"></div>
+  </div>
+</div>
+
+<!-- MAIN -->
+<div class="main-grid">
+
+  <!-- ROADMAP COL -->
+  <div id="roadmap-col" style="order:1;min-width:0;">
+    <div class="lang-info-bar anim-up">
+      <div style="font-size:48px;line-height:1;" id="lang-flag">🌍</div>
+      <div style="flex:1;min-width:0;">
+        <h1 style="font-size:18px;font-weight:900;color:white;line-height:1.2;" id="lang-name">Loading…</h1>
+        <p style="font-size:13px;color:rgba(255,255,255,0.45);margin-top:4px;" id="lang-desc">Building your roadmap…</p>
+      </div>
+      <div id="lang-badge" style="padding:4px 12px;border-radius:999px;font-size:11px;font-weight:700;background:rgba(91,79,207,0.22);color:#a5a0df;border:1px solid rgba(91,79,207,0.28);white-space:nowrap;">Beginner</div>
+    </div>
+
+    <!-- Month tabs -->
+    <div id="month-tabs" style="display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;padding-bottom:4px;margin-bottom:20px;" class="anim-up d1"></div>
+
+    <!-- Roadmap -->
+    <div id="roadmap-container" class="anim-up d2"></div>
+  </div>
+
+  <!-- SIDEBAR -->
+  <div id="sidebar-col">
+    <!-- Progress -->
+    <div class="sc anim-up d1">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;">
+        <h3 style="font-weight:900;font-size:14px;color:rgba(255,255,255,0.9);">Your Progress</h3>
+        <div style="font-weight:900;font-size:24px;color:#a5a0df;" id="progress-pct">0%</div>
+      </div>
+      <div style="display:flex;align-items:center;gap:16px;margin-bottom:16px;">
+        <svg width="80" height="80" viewBox="0 0 80 80" style="flex-shrink:0;">
+          <circle cx="40" cy="40" r="34" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="7"/>
+          <circle id="progress-ring" cx="40" cy="40" r="34" fill="none" stroke="url(#rg1)" stroke-width="7" stroke-linecap="round" stroke-dasharray="213.6" stroke-dashoffset="213.6" transform="rotate(-90 40 40)" style="transition:stroke-dashoffset 1s cubic-bezier(.4,0,.2,1);"/>
+          <defs><linearGradient id="rg1" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#5b4fcf"/><stop offset="100%" stop-color="#10b981"/></linearGradient></defs>
+          <text x="40" y="45" text-anchor="middle" font-size="13" font-weight="900" fill="white" font-family="Plus Jakarta Sans" id="ring-txt">0%</text>
+        </svg>
+        <div>
+          <div style="font-size:13px;color:rgba(255,255,255,0.45);margin-bottom:4px;">Activities done</div>
+          <div style="font-size:24px;font-weight:900;color:white;"><span id="done-count">0</span> <span style="font-size:14px;font-weight:500;color:rgba(255,255,255,0.35);">/ <span id="total-count">0</span></span></div>
+          <div style="font-size:12px;color:rgba(255,255,255,0.35);margin-top:4px;">XP: <span style="color:#a5a0df;font-weight:700;" id="sidebar-xp">0</span></div>
+        </div>
+      </div>
+      <div style="width:100%;height:8px;border-radius:4px;background:rgba(255,255,255,0.08);overflow:hidden;">
+        <div id="progress-bar" style="height:100%;border-radius:4px;background:linear-gradient(90deg,#5b4fcf,#10b981);transition:width 1s ease;width:0%;"></div>
+      </div>
+      <div style="display:flex;justify-content:space-between;margin-top:10px;font-size:11px;color:rgba(255,255,255,0.35);">
+        <span style="font-weight:600;" id="prog-level">🌱 Beginner</span>
+        <span id="prog-month">Month 1 of 6</span>
+      </div>
+    </div>
+
+    <!-- Next Up -->
+    <div class="sc anim-up d2" style="margin-top:16px;">
+      <h3 style="font-weight:900;font-size:14px;color:rgba(255,255,255,0.9);margin-bottom:12px;">Next Up</h3>
+      <div style="display:flex;align-items:center;gap:12px;padding:12px;border-radius:12px;background:rgba(91,79,207,0.18);border:1px solid rgba(91,79,207,0.22);margin-bottom:12px;">
+        <div id="next-icon-wrap" style="width:40px;height:40px;border-radius:10px;background:linear-gradient(135deg,#5b4fcf,#7c6fd4);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+          <span class="material-symbols-outlined" style="color:white;font-size:18px;font-variation-settings:'FILL' 1" id="next-icon">school</span>
+        </div>
+        <div style="flex:1;min-width:0;">
+          <div style="font-size:10px;font-weight:700;color:#a5a0df;" id="next-type">LESSON</div>
+          <div style="font-size:13px;font-weight:700;color:white;line-height:1.3;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;" id="next-title">Loading…</div>
+        </div>
+        <span class="xp-pill" id="next-xp">+30</span>
+      </div>
+      <button class="btn-cta w-full" style="width:100%;padding:12px;border-radius:12px;font-size:14px;" id="next-btn" onclick="startNext()">
+        <span class="material-symbols-outlined" style="font-size:18px;font-variation-settings:'FILL' 1">play_circle</span>Start Now
+      </button>
+    </div>
+
+    <!-- Activity Types -->
+    <div class="sc anim-up d3" style="margin-top:16px;">
+      <h3 style="font-weight:900;font-size:14px;color:rgba(255,255,255,0.9);margin-bottom:12px;">Activity Types</h3>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+        <div style="display:flex;align-items:center;gap:8px;font-size:12px;font-weight:600;color:rgba(255,255,255,0.45);"><span style="width:20px;height:20px;border-radius:6px;background:rgba(91,79,207,0.3);display:flex;align-items:center;justify-content:center;"><span class="material-symbols-outlined" style="font-size:12px;color:#a5a0df;font-variation-settings:'FILL' 1">school</span></span>Lesson</div>
+        <div style="display:flex;align-items:center;gap:8px;font-size:12px;font-weight:600;color:rgba(255,255,255,0.45);"><span style="width:20px;height:20px;border-radius:6px;background:rgba(14,165,233,0.3);display:flex;align-items:center;justify-content:center;"><span class="material-symbols-outlined" style="font-size:12px;color:#38bdf8;font-variation-settings:'FILL' 1">abc</span></span>Vocabulary</div>
+        <div style="display:flex;align-items:center;gap:8px;font-size:12px;font-weight:600;color:rgba(255,255,255,0.45);"><span style="width:20px;height:20px;border-radius:6px;background:rgba(16,185,129,0.3);display:flex;align-items:center;justify-content:center;"><span class="material-symbols-outlined" style="font-size:12px;color:#34d399;font-variation-settings:'FILL' 1">menu_book</span></span>Reading</div>
+        <div style="display:flex;align-items:center;gap:8px;font-size:12px;font-weight:600;color:rgba(255,255,255,0.45);"><span style="width:20px;height:20px;border-radius:6px;background:rgba(245,158,11,0.3);display:flex;align-items:center;justify-content:center;"><span class="material-symbols-outlined" style="font-size:12px;color:#fbbf24;font-variation-settings:'FILL' 1">edit_note</span></span>Writing</div>
+        <div style="display:flex;align-items:center;gap:8px;font-size:12px;font-weight:600;color:rgba(255,255,255,0.45);"><span style="width:20px;height:20px;border-radius:6px;background:rgba(236,72,153,0.3);display:flex;align-items:center;justify-content:center;"><span class="material-symbols-outlined" style="font-size:12px;color:#f472b6;font-variation-settings:'FILL' 1">record_voice_over</span></span>Pronunciation</div>
+        <div style="display:flex;align-items:center;gap:8px;font-size:12px;font-weight:600;color:rgba(255,255,255,0.45);"><span style="width:20px;height:20px;border-radius:6px;background:rgba(239,68,68,0.3);display:flex;align-items:center;justify-content:center;"><span class="material-symbols-outlined" style="font-size:12px;color:#f87171;font-variation-settings:'FILL' 1">quiz</span></span>Test</div>
+        <div style="display:flex;align-items:center;gap:8px;font-size:12px;font-weight:600;color:rgba(255,255,255,0.45);"><span style="width:20px;height:20px;border-radius:6px;background:rgba(139,92,246,0.3);display:flex;align-items:center;justify-content:center;"><span class="material-symbols-outlined" style="font-size:12px;color:#c4b5fd;font-variation-settings:'FILL' 1">mic</span></span>Speaking</div>
+        <div style="display:flex;align-items:center;gap:8px;font-size:12px;font-weight:600;color:rgba(255,255,255,0.45);"><span style="width:20px;height:20px;border-radius:6px;background:rgba(245,158,11,0.25);display:flex;align-items:center;justify-content:center;"><span class="material-symbols-outlined" style="font-size:12px;color:#fbbf24;font-variation-settings:'FILL' 1">workspace_premium</span></span>Milestone</div>
+      </div>
+    </div>
+
+    <!-- Month overview -->
+    <div class="sc anim-up d3" style="margin-top:16px;">
+      <h3 style="font-weight:900;font-size:14px;color:rgba(255,255,255,0.9);margin-bottom:12px;">Month Overview</h3>
+      <div id="month-pills" style="display:flex;flex-direction:column;gap:10px;"></div>
+    </div>
+
+  </div>
+</div>
+</div><!-- /page-wrap -->
+
+<!-- MODAL -->
+<div id="activity-modal" onclick="closeMBg(event)">
+  <div class="modal-card" id="modal-content"></div>
+</div>
+
+<!-- FIREWORKS -->
+<canvas id="fw-canvas"></canvas>
+
+<!-- TOAST -->
+<div id="toast">
+  <div class="toast-inner">
+    <span class="material-symbols-outlined" style="color:#34d399;font-size:22px;font-variation-settings:'FILL' 1">celebration</span>
+    <span style="font-weight:700;color:white;font-size:14px;" id="toast-msg">Done!</span>
+    <span class="xp-pill" id="toast-xp">+30 XP</span>
+  </div>
+</div>
+
+<script src="data/roadmap-data.js"></script>
+<script src="data/activity-content.js"></script>
+<script>
+'use strict';
+
+// ══════════════════════════════════════════════════════
+//  BACKGROUND INIT
+// ══════════════════════════════════════════════════════
+(function() {
+  // Starfield
+  const c = document.getElementById('stars-canvas');
+  c.width = window.innerWidth; c.height = window.innerHeight;
+  const ctx = c.getContext('2d');
+  const stars = Array.from({length:200}, () => ({
+    x:Math.random()*c.width, y:Math.random()*c.height,
+    r:Math.random()*1.6+0.2, a:Math.random()*0.7+0.1,
+    sp:Math.random()*0.012+0.004, ph:Math.random()*Math.PI*2
+  }));
+  function drawStars(t) {
+    ctx.clearRect(0,0,c.width,c.height);
+    stars.forEach(s => {
+      const alpha = s.a*(0.4+0.6*Math.sin(t*s.sp+s.ph));
+      ctx.globalAlpha=alpha; ctx.fillStyle='#fff';
+      ctx.beginPath(); ctx.arc(s.x,s.y,s.r,0,Math.PI*2); ctx.fill();
+    });
+    ctx.globalAlpha=1;
+    requestAnimationFrame(drawStars);
+  }
+  requestAnimationFrame(drawStars);
+  window.addEventListener('resize',()=>{c.width=window.innerWidth;c.height=window.innerHeight;});
+
+  // Orbs
+  const wrap = document.getElementById('bg-orbs');
+  [{c:'#5b4fcf',s:520,t:'4%',l:'3%',d:16,dl:0,op:0.18},
+   {c:'#0ea5e9',s:420,t:'52%',r:'2%',d:20,dl:5,op:0.11},
+   {c:'#10b981',s:320,t:'78%',l:'18%',d:25,dl:9,op:0.09},
+   {c:'#f59e0b',s:260,t:'28%',r:'20%',d:18,dl:13,op:0.07}
+  ].forEach(o => {
+    const d = document.createElement('div');
+    d.className = 'bg-orb';
+    d.style.cssText = `width:${o.s}px;height:${o.s}px;background:${o.c};opacity:${o.op};`
+      +(o.t?`top:${o.t};`:'')+(o.l?`left:${o.l};`:'')+(o.r?`right:${o.r};`:'')
+      +`animation:orb-float ${o.d}s ease-in-out ${o.dl}s infinite;`;
+    wrap.appendChild(d);
+  });
+})();
+
+// ══════════════════════════════════════════════════════
+//  FIREWORKS
+// ══════════════════════════════════════════════════════
+const FW = (() => {
+  const canvas = document.getElementById('fw-canvas');
+  const ctx = canvas.getContext('2d');
+  let particles = [], running = false, raf = null;
+
+  function resize() { canvas.width=window.innerWidth; canvas.height=window.innerHeight; }
+  resize();
+  window.addEventListener('resize', resize);
+
+  const PALETTES = [
+    ['#7c6fd4','#a5a0df','#c4b5fd','#ffffff','#ede9ff'],
+    ['#34d399','#6ee7b7','#a7f3d0','#ffffff','#d1fae5'],
+    ['#fbbf24','#fcd34d','#fde68a','#ffffff','#fef3c7'],
+    ['#38bdf8','#7dd3fc','#bae6fd','#ffffff','#e0f2fe'],
+    ['#f472b6','#f9a8d4','#fce7f3','#ffffff','#fbcfe8'],
+    ['#f87171','#fca5a5','#fecaca','#ffffff','#fee2e2'],
+  ];
+
+  function burst(x, y, pal) {
+    const n = 70 + Math.floor(Math.random()*50);
+    for (let i=0;i<n;i++) {
+      const angle = (Math.PI*2/n)*i + Math.random()*0.4;
+      const speed = 1.5 + Math.random()*7;
+      const color = pal[Math.floor(Math.random()*pal.length)];
+      particles.push({
+        x, y, vx:Math.cos(angle)*speed, vy:Math.sin(angle)*speed,
+        alpha:1, decay:0.012+Math.random()*0.014, gravity:0.1+Math.random()*0.07,
+        size:2.5+Math.random()*5.5, color,
+        shape:Math.random()>0.45?'circle':'star',
+        rot:Math.random()*Math.PI*2, rotsp:(Math.random()-.5)*0.25
+      });
+    }
+    // Glitter sparks
+    for (let i=0;i<25;i++) {
+      const a=Math.random()*Math.PI*2, sp=0.5+Math.random()*3.5;
+      particles.push({
+        x:x+(Math.random()-.5)*40, y:y+(Math.random()-.5)*40,
+        vx:Math.cos(a)*sp, vy:Math.sin(a)*sp,
+        alpha:0.9, decay:0.022, gravity:0.06,
+        size:1+Math.random()*2.5, color:'#ffffff',
+        shape:'circle', rot:0, rotsp:0
+      });
+    }
+    // Rising trail
+    for (let i=0;i<15;i++) {
+      particles.push({
+        x:x+(Math.random()-.5)*20, y:y+(Math.random()*80+20),
+        vx:(Math.random()-.5)*0.8, vy:-(3+Math.random()*4),
+        alpha:0.7, decay:0.03, gravity:0.04,
+        size:1.5+Math.random()*2, color:pal[Math.floor(Math.random()*pal.length)],
+        shape:'circle', rot:0, rotsp:0
+      });
+    }
+  }
+
+  function drawStar(x,y,r,rot) {
+    ctx.beginPath();
+    for(let i=0;i<5;i++){
+      const a=rot+(i*Math.PI*2)/5-Math.PI/2;
+      const b=rot+((i+.5)*Math.PI*2)/5-Math.PI/2;
+      i===0?ctx.moveTo(x+Math.cos(a)*r,y+Math.sin(a)*r):ctx.lineTo(x+Math.cos(a)*r,y+Math.sin(a)*r);
+      ctx.lineTo(x+Math.cos(b)*r*.42,y+Math.sin(b)*r*.42);
+    }
+    ctx.closePath();
+  }
+
+  function loop() {
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    particles = particles.filter(p=>p.alpha>0.01);
+    for(const p of particles) {
+      p.vx*=0.97; p.vy*=0.97; p.vy+=p.gravity;
+      p.x+=p.vx; p.y+=p.vy; p.alpha-=p.decay; p.rot+=p.rotsp;
+      ctx.globalAlpha=Math.max(0,p.alpha);
+      ctx.fillStyle=p.color;
+      ctx.beginPath();
+      if(p.shape==='star') drawStar(p.x,p.y,p.size,p.rot);
+      else ctx.arc(p.x,p.y,p.size*.5,0,Math.PI*2);
+      ctx.fill();
+    }
+    ctx.globalAlpha=1;
+    if(particles.length>0||running) raf=requestAnimationFrame(loop);
+    else { canvas.style.display='none'; running=false; }
+  }
+
+  return {
+    launch(x,y) {
+      canvas.style.display='block';
+      const p1 = PALETTES[Math.floor(Math.random()*PALETTES.length)];
+      const p2 = PALETTES[Math.floor(Math.random()*PALETTES.length)];
+      const p3 = PALETTES[Math.floor(Math.random()*PALETTES.length)];
+      burst(x, y, p1);
+      setTimeout(()=>burst(x+(Math.random()-.5)*180, y-30+Math.random()*80, p2), 220);
+      setTimeout(()=>burst(x+(Math.random()-.5)*220, y-50+Math.random()*100, p3), 480);
+      setTimeout(()=>burst(x+(Math.random()-.5)*100, y+Math.random()*60, p1), 700);
+      if(!running){running=true;loop();}
+    }
+  };
+})();
+
+// ══════════════════════════════════════════════════════
+//  STATE
+// ══════════════════════════════════════════════════════
+let langId    = LWData.getSelectedLanguage();
+let langData  = LWData.getLanguage(langId);
+let monthData = LWData.getActivities(langId);
+let prog      = LWData.getProgress(langId);
+let doneSet   = new Set(prog.completedIds||[]);
+let totalXP   = prog.totalXP||0;
+let monthFilter = null;
+let _nextCache  = null;
+
+// ══════════════════════════════════════════════════════
+//  CLOUD TRANSITION
+// ══════════════════════════════════════════════════════
+function cloudTrans(cb) {
+  const ov = document.getElementById('cloud-overlay');
+  ov.classList.add('show');
+  setTimeout(()=>{ cb(); setTimeout(()=>ov.classList.remove('show'),450); },320);
+}
+
+// ══════════════════════════════════════════════════════
+//  INIT
+// ══════════════════════════════════════════════════════
+function init() {
+  renderLangTabs(); renderLangBar(); renderMonthTabs();
+  renderRoadmap(); updateProgress(); updateNext(); renderMonthPills();
+  requestAnimationFrame(scrollToActive);
+}
+
+// ══════════════════════════════════════════════════════
+//  SCROLL TO ACTIVE NODE
+// ══════════════════════════════════════════════════════
+function scrollToActive() {
+  const node = document.querySelector('[data-is-active="1"]');
+  if (node) {
+    const top = window.scrollY + node.getBoundingClientRect().top - window.innerHeight*0.42;
+    window.scrollTo({ top: Math.max(0,top), behavior:'smooth' });
+  }
+}
+
+// ══════════════════════════════════════════════════════
+//  LANG TABS
+// ══════════════════════════════════════════════════════
+function renderLangTabs() {
+  const el = document.getElementById('lang-tabs');
+  el.innerHTML = '';
+  LWData.getLearningLanguages().forEach(id => {
+    const l = LWData.getLanguage(id);
+    if (!l) return;
+    const btn = document.createElement('button');
+    btn.className = 'lang-tab '+(id===langId?'active':'inactive');
+    if (id===langId) btn.style.background=`linear-gradient(135deg,${l.color},${l.color}bb)`;
+    btn.innerHTML = `<span style="font-size:17px">${l.flag}</span>${l.name}`;
+    btn.onclick = ()=>switchLang(id);
+    el.appendChild(btn);
+  });
+  const a = document.createElement('a');
+  a.href='onboarding.html'; a.className='lang-tab-add';
+  a.innerHTML='<span class="material-symbols-outlined" style="font-size:15px">add</span>Add Language';
+  el.appendChild(a);
+}
+
+function switchLang(id) {
+  langId=id; langData=LWData.getLanguage(id); monthData=LWData.getActivities(id);
+  prog=LWData.getProgress(id); doneSet=new Set(prog.completedIds||[]); totalXP=prog.totalXP||0;
+  _nextCache=null; monthFilter=null;
+  localStorage.setItem('lw_selected_lang',id);
+  cloudTrans(()=>{ renderLangTabs();renderLangBar();renderMonthTabs();renderRoadmap();updateProgress();updateNext();renderMonthPills(); requestAnimationFrame(scrollToActive); });
+}
+
+// ══════════════════════════════════════════════════════
+//  LANG BAR
+// ══════════════════════════════════════════════════════
+function renderLangBar() {
+  if (!langData) return;
+  document.getElementById('lang-flag').textContent = langData.flag;
+  document.getElementById('lang-name').textContent = langData.name+' · '+langData.native;
+  document.getElementById('lang-desc').textContent = `${langData.speakers} speakers · AI-powered 6-month roadmap`;
+}
+
+// ══════════════════════════════════════════════════════
+//  MONTH TABS
+// ══════════════════════════════════════════════════════
+function renderMonthTabs() {
+  const el = document.getElementById('month-tabs');
+  el.innerHTML = '';
+  const allBtn = document.createElement('button');
+  allBtn.className = 'month-tab '+(monthFilter===null?'active':'inactive');
+  if(monthFilter===null) allBtn.style.background='linear-gradient(135deg,#5b4fcf,#7c6fd4)';
+  allBtn.textContent='📋 All';
+  allBtn.onclick=()=>{ if(monthFilter===null)return; monthFilter=null; renderMonthTabs(); cloudTrans(()=>renderRoadmap()); };
+  el.appendChild(allBtn);
+  LWData.MONTHS_META.forEach((m,i)=>{
+    const btn=document.createElement('button');
+    btn.className='month-tab '+(monthFilter===i?'active':'inactive');
+    if(monthFilter===i) btn.style.background=`linear-gradient(135deg,${m.color},${m.color}dd)`;
+    btn.innerHTML=`${m.emoji} Month ${m.id}`;
+    btn.onclick=()=>{ if(monthFilter===i)return; monthFilter=i; renderMonthTabs(); cloudTrans(()=>renderRoadmap()); };
+    el.appendChild(btn);
+  });
+}
+
+// ══════════════════════════════════════════════════════
+//  RENDER ROADMAP
+// ══════════════════════════════════════════════════════
+function renderRoadmap() {
+  const root = document.getElementById('roadmap-container');
+  root.innerHTML = '';
+  const months = monthFilter!==null ? [monthData[monthFilter]] : monthData;
+  const startIdx = monthFilter!==null ? monthFilter : 0;
+
+  months.forEach((mObj, ri) => {
+    const mIdx = startIdx+ri;
+    const meta = LWData.MONTHS_META[mIdx];
+
+    // Cloud divider between months
+    if (ri>0) root.appendChild(mkCloudDivider(meta.color));
+
+    // Month section
+    const sec = document.createElement('div');
+    sec.className = 'month-section';
+    sec.id = `ms-${mIdx}`;
+    root.appendChild(sec);
+
+    sec.appendChild(mkMonthHeader(mIdx, meta));
+
+    const path = document.createElement('div');
+    path.className = 'roadmap-path';
+    sec.appendChild(path);
+
+    // Spine
+    const spine = document.createElement('div'); spine.className='path-spine'; path.appendChild(spine);
+    const spineFill = document.createElement('div'); spineFill.className='path-spine-fill'; spineFill.id=`sf-${mIdx}`; path.appendChild(spineFill);
+
+    const acts = mObj.activities||[];
+    let mDone=0;
+    acts.forEach((act,ai)=>{
+      const isDone = doneSet.has(act.id);
+      const unlocked = calcUnlock(act,ai,mIdx,acts);
+      const isActive = unlocked&&!isDone;
+      if(isDone) mDone++;
+      if(act.isMilestone) { path.appendChild(mkMilestone(act,isDone,unlocked,meta)); return; }
+      if(act.isFinalExam) { path.appendChild(mkFinalExam(act,isDone,unlocked)); return; }
+      path.appendChild(mkActivityRow(act,ai,isDone,isActive,unlocked,ai%2===1,meta));
+    });
+
+    // Animate spine fill after render
+    const pct = acts.length ? Math.round(mDone/acts.length*100) : 0;
+    setTimeout(()=>{
+      const sf=document.getElementById(`sf-${mIdx}`);
+      const pe=document.getElementById(`mpct-${mIdx}`);
+      if(sf){sf.style.height=pct+'%';sf.style.background=`linear-gradient(to bottom,${meta.color},${meta.color}55)`;}
+      if(pe) pe.textContent=pct+'%';
+    }, 250+ri*120);
+  });
+
+  // Scroll observer for cloud entrance on month sections
+  setupObserver();
+}
+
+// ══════════════════════════════════════════════════════
+//  SCROLL OBSERVER
+// ══════════════════════════════════════════════════════
+let _obs=null;
+function setupObserver() {
+  if(_obs) _obs.disconnect();
+  _obs = new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting) {
+        e.target.classList.add('entering');
+        setTimeout(()=>e.target.classList.remove('entering'),900);
+      }
+    });
+  },{threshold:0.03,rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('.month-section').forEach((s,i)=>{ if(i>0) _obs.observe(s); });
+}
+
+// ══════════════════════════════════════════════════════
+//  UNLOCK CALC
+// ══════════════════════════════════════════════════════
+function calcUnlock(act,ai,mIdx,acts) {
+  if(mIdx===0&&ai===0) return true;
+  if(ai===0) {
+    const prev=monthData[mIdx-1];
+    if(!prev) return false;
+    const last=prev.activities[prev.activities.length-1];
+    return last&&doneSet.has(last.id);
+  }
+  return doneSet.has(acts[ai-1].id)||doneSet.has(act.id);
+}
+
+// ══════════════════════════════════════════════════════
+//  BUILD ELEMENTS
+// ══════════════════════════════════════════════════════
+function mkCloudDivider(color) {
+  const div = document.createElement('div');
+  div.className='cloud-divider';
+  // Unique gradient id
+  const gid='cg'+Math.random().toString(36).slice(2,8);
+  div.innerHTML=`
+    <svg viewBox="0 0 800 90" preserveAspectRatio="none" style="position:absolute;width:100%;height:100%;">
+      <defs><linearGradient id="${gid}" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" stop-color="${color}" stop-opacity="0.03"/>
+        <stop offset="50%" stop-color="${color}" stop-opacity="0.15"/>
+        <stop offset="100%" stop-color="${color}" stop-opacity="0.03"/>
+      </linearGradient></defs>
+      <ellipse cx="140" cy="45" rx="170" ry="36" fill="${color}" fill-opacity="0.07"/>
+      <ellipse cx="400" cy="32" rx="240" ry="30" fill="${color}" fill-opacity="0.11"/>
+      <ellipse cx="660" cy="50" rx="190" ry="34" fill="${color}" fill-opacity="0.07"/>
+      <ellipse cx="400" cy="55" rx="380" ry="24" fill="${color}" fill-opacity="0.05"/>
+      <path d="M0,65 Q120,20 280,58 Q400,5 520,55 Q660,8 800,65 L800,90 L0,90 Z" fill="${color}" fill-opacity="0.07"/>
+    </svg>
+    <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;gap:6px;z-index:2;">
+      <div style="height:1px;flex:1;max-width:100px;background:linear-gradient(to right,transparent,${color}55);"></div>
+      <div style="width:5px;height:5px;border-radius:50%;background:${color};opacity:0.5;box-shadow:0 0 6px ${color};"></div>
+      <div style="width:9px;height:9px;border-radius:50%;background:${color};opacity:0.85;box-shadow:0 0 12px ${color},0 0 24px ${color}55;animation:node-ping 2.5s ease-out infinite;"></div>
+      <div style="width:5px;height:5px;border-radius:50%;background:${color};opacity:0.5;box-shadow:0 0 6px ${color};"></div>
+      <div style="height:1px;flex:1;max-width:100px;background:linear-gradient(to left,transparent,${color}55);"></div>
+    </div>`;
+  // Animated cloud puffs
+  for(let i=0;i<6;i++){
+    const p=document.createElement('div'); p.className='cloud-puff';
+    const s=24+Math.random()*55;
+    p.style.cssText=`width:${s}px;height:${s*.55}px;top:${8+Math.random()*55}%;left:${Math.random()*88}%;--dur:${5+Math.random()*7}s;--delay:${Math.random()*3}s;--op:${0.05+Math.random()*0.1};--tx:${(Math.random()-.5)*36}px;`;
+    div.appendChild(p);
+  }
+  return div;
+}
+
+function mkMonthHeader(mIdx, meta) {
+  const el=document.createElement('div');
+  el.className='month-header-card';
+  el.style.borderColor=meta.color+'28';
+  el.innerHTML=`
+    <div style="width:46px;height:46px;border-radius:13px;background:linear-gradient(135deg,${meta.color},${meta.color}bb);display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 6px 20px ${meta.color}45;">
+      <span class="material-symbols-outlined" style="color:white;font-size:20px;font-variation-settings:'FILL' 1">${meta.icon}</span>
+    </div>
+    <div style="flex:1;">
+      <div style="font-size:10px;font-weight:900;text-transform:uppercase;letter-spacing:0.12em;color:${meta.color};margin-bottom:3px;">Month ${meta.id} ${meta.emoji}</div>
+      <div style="font-weight:900;font-size:15px;color:rgba(255,255,255,0.92);line-height:1.25;">${meta.title}</div>
+    </div>
+    <div style="text-align:right;flex-shrink:0;">
+      <div style="font-size:22px;font-weight:900;color:${meta.color};" id="mpct-${mIdx}">0%</div>
+      <div style="font-size:10px;color:rgba(255,255,255,0.3);">done</div>
+    </div>`;
+  return el;
+}
+
+function mkActivityRow(act, ai, isDone, isActive, isUnlocked, isRight, meta) {
+  const typeInfo = LWData.ACTIVITY_TYPES[act.type]||LWData.ACTIVITY_TYPES.lesson;
+  const row = document.createElement('div');
+  row.className = `activity-node ${isRight?'right':'left'}`;
+  row.id = `ar-${act.id}`;
+  if(isActive) row.dataset.isActive='1'; // for scroll-to
+
+  // Node circle
+  const wrap = document.createElement('div');
+  wrap.className = 'node-circle-wrap';
+
+  const nc = document.createElement('div');
+  const ncColor = isDone?'#10b981':(isActive?(langData?.color||typeInfo.color):'rgba(255,255,255,0.15)');
+  nc.className = `node-circle ${isDone?'nc-done':isActive?'nc-active':'nc-locked'}`;
+  if(isActive) nc.style.setProperty('--nc',ncColor+'55');
+  nc.style.cssText += isDone
+    ? `background:linear-gradient(135deg,#10b981,#059669);box-shadow:0 6px 24px rgba(16,185,129,0.5);`
+    : isActive
+      ? `background:linear-gradient(135deg,${ncColor},${ncColor}cc);box-shadow:0 6px 28px ${ncColor}50;`
+      : `background:rgba(255,255,255,0.06);border:2px solid rgba(255,255,255,0.1);`;
+
+  const icon = document.createElement('span');
+  icon.className='material-symbols-outlined';
+  icon.style.cssText=`font-size:22px;font-variation-settings:'FILL' 1;color:${isDone||isActive?'white':'rgba(255,255,255,0.28)'}`;
+  icon.textContent = isDone?'check_circle':typeInfo.icon;
+  nc.appendChild(icon);
+
+  if(isActive){
+    const ping=document.createElement('div'); ping.className='node-ping';
+    ping.style.background=ncColor+'80'; nc.appendChild(ping);
+  }
+
+  // Tooltip
+  const tip=document.createElement('div');
+  tip.className='node-tooltip';
+  tip.innerHTML=`
+    <div style="font-weight:700;font-size:12px;color:white;margin-bottom:5px;">${act.title}</div>
+    <div style="font-size:11px;line-height:1.5;color:rgba(255,255,255,0.5);">${act.description.slice(0,88)}${act.description.length>88?'…':''}</div>
+    <div style="display:flex;align-items:center;gap:6px;margin-top:8px;">
+      <span style="background:${typeInfo.color}25;color:${typeInfo.color};border-radius:4px;padding:2px 7px;font-size:10px;font-weight:700;">${typeInfo.label}</span>
+      <span style="color:rgba(255,255,255,0.35);font-size:10px;">⚡ +${act.xp} XP · ${act.duration}</span>
+    </div>`;
+  wrap.appendChild(nc);
+  wrap.appendChild(tip);
+
+  if(isDone||isUnlocked){nc.style.cursor='pointer';nc.onclick=()=>openModal(act,isDone,isUnlocked);}
+
+  // Connector
+  const conn=document.createElement('div');
+  conn.className='connector'+(isDone?' conn-done':'');
+
+  // Card
+  const card=mkActivityCard(act,isDone,isActive,isUnlocked,typeInfo,isRight);
+
+  if(isRight){ row.appendChild(wrap);row.appendChild(conn);row.appendChild(card); }
+  else       { row.appendChild(card);row.appendChild(conn);row.appendChild(wrap); }
+  return row;
+}
+
+function mkActivityCard(act,isDone,isActive,isUnlocked,typeInfo,isRight) {
+  const card=document.createElement('div');
+  card.className=`activity-card ${isDone?'ac-done':isActive?'ac-active':'ac-locked'}`;
+  if(isRight) card.style.textAlign='right';
+  const jc=isRight?'justify-content:flex-end;':'';
+  card.innerHTML=`
+    <div style="display:flex;align-items:center;gap:5px;margin-bottom:6px;${jc}">
+      <span class="type-badge" style="background:${typeInfo.color}22;color:${typeInfo.color};">
+        <span class="material-symbols-outlined" style="font-size:10px;font-variation-settings:'FILL' 1">${typeInfo.icon}</span>
+        ${typeInfo.label.toUpperCase()}
+      </span>
+      ${act.isMidTest?'<span class="type-badge" style="background:rgba(239,68,68,0.2);color:#f87171;">MID</span>':''}
+    </div>
+    <div style="font-size:12px;font-weight:700;color:rgba(255,255,255,0.88);line-height:1.35;margin-bottom:6px;">${act.title}</div>
+    <div style="display:flex;align-items:center;gap:6px;${jc}">
+      ${isDone?`<span style="font-size:11px;font-weight:700;color:#34d399;display:flex;align-items:center;gap:2px;"><span class="material-symbols-outlined" style="font-size:12px;font-variation-settings:'FILL' 1">check_circle</span>Done</span>`
+        :isActive?`<span style="font-size:11px;font-weight:600;color:#a5a0df;">Tap to start →</span>`
+        :`<span style="font-size:11px;color:rgba(255,255,255,0.25);display:flex;align-items:center;gap:2px;"><span class="material-symbols-outlined" style="font-size:11px;">lock</span>Locked</span>`}
+      <span class="xp-pill" style="margin-left:auto;">+${act.xp}</span>
+    </div>`;
+  if(isDone||isActive||isUnlocked){card.style.cursor='pointer';card.onclick=()=>openModal(act,isDone,isUnlocked);}
+  return card;
+}
+
+function mkMilestone(act,isDone,isUnlocked,meta) {
+  const el=document.createElement('div');
+  el.className=`milestone-node ${isDone?'done-ms':''}`;
+  el.style.cssText+=isDone
+    ?`background:rgba(16,185,129,0.14);border:1.5px solid rgba(16,185,129,0.35);box-shadow:0 6px 24px rgba(16,185,129,0.1);`
+    :`background:rgba(245,158,11,0.1);border:1.5px solid rgba(245,158,11,0.32);box-shadow:0 6px 24px rgba(245,158,11,0.08);`;
+  el.innerHTML=`
+    <div style="width:50px;height:50px;border-radius:14px;background:linear-gradient(135deg,${isDone?'#10b981,#059669':meta.color+','+meta.color+'aa'});display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 6px 20px ${isDone?'rgba(16,185,129,0.35)':meta.color+'40'};">
+      <span class="material-symbols-outlined" style="color:white;font-size:24px;font-variation-settings:'FILL' 1">${isDone?'workspace_premium':'emoji_events'}</span>
+    </div>
+    <div style="flex:1;">
+      <div style="font-size:10px;font-weight:900;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:3px;color:${isDone?'#34d399':'#fbbf24'};">🏅 Month ${meta.id} Milestone</div>
+      <div style="font-weight:900;font-size:15px;color:rgba(255,255,255,0.92);">${act.title}</div>
+      <div style="font-size:12px;color:rgba(255,255,255,0.4);margin-top:2px;">${act.description.slice(0,75)}…</div>
+    </div>
+    <div style="flex-shrink:0;text-align:right;">
+      ${isDone?`<div style="font-size:12px;font-weight:700;color:#34d399;">✓ Claimed!</div>`:`<div class="xp-pill" style="font-size:12px;padding:4px 10px;">+${act.xp} XP</div>`}
+    </div>`;
+  if(isDone||isUnlocked) el.onclick=()=>openModal(act,isDone,isUnlocked);
+  return el;
+}
+
+function mkFinalExam(act,isDone,isUnlocked) {
+  const el=document.createElement('div');
+  el.className='final-exam-node';
+  el.innerHTML=`
+    <div class="exam-shimmer"></div>
+    <div style="width:64px;height:64px;border-radius:18px;background:linear-gradient(135deg,#5b4fcf,#7c6fd4);display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 8px 28px rgba(91,79,207,0.55);">
+      <span class="material-symbols-outlined" style="color:white;font-size:30px;font-variation-settings:'FILL' 1">military_tech</span>
+    </div>
+    <div style="flex:1;position:relative;z-index:1;">
+      <div style="font-size:10px;font-weight:900;text-transform:uppercase;letter-spacing:0.12em;color:#c4b5fd;margin-bottom:4px;">🏆 Final Certification Exam</div>
+      <div style="font-weight:900;font-size:16px;color:white;line-height:1.25;">${act.title}</div>
+      <div style="font-size:12px;color:rgba(255,255,255,0.38);margin-top:4px;">${act.description.slice(0,95)}…</div>
+      <div style="display:flex;align-items:center;gap:8px;margin-top:8px;">
+        <span style="font-size:11px;font-weight:700;padding:3px 8px;border-radius:6px;background:rgba(245,158,11,0.2);color:#fbbf24;">100 Marks</span>
+        <span style="font-size:11px;font-weight:700;padding:3px 8px;border-radius:6px;background:rgba(91,79,207,0.3);color:#c4b5fd;">⚡ 500 XP</span>
+        <span style="font-size:11px;color:rgba(255,255,255,0.28);">45 min</span>
+      </div>
+    </div>
+    <div style="position:relative;z-index:1;flex-shrink:0;text-align:center;">
+      ${isDone?`<div style="font-weight:700;font-size:13px;color:#fbbf24;">✓ Certified!</div>`:
+        isUnlocked?`<div style="font-size:12px;font-weight:700;color:#a5a0df;">Ready!</div>`:
+        `<div style="font-size:11px;color:rgba(255,255,255,0.25);line-height:1.4;">Complete all<br>activities first</div>`}
+    </div>`;
+  if(isDone||isUnlocked) el.onclick=()=>openModal(act,isDone,isUnlocked);
+  return el;
+}
+
+// ══════════════════════════════════════════════════════
+//  MODAL
+// ══════════════════════════════════════════════════════
+function openModal(act,isDone,isUnlocked) {
+  const ti = LWData.ACTIVITY_TYPES[act.type]||LWData.ACTIVITY_TYPES.lesson;
+  const canStart = isUnlocked&&!isDone;
+  document.getElementById('modal-content').innerHTML=`
+    <div style="display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:20px;gap:12px;">
+      <div style="display:flex;align-items:center;gap:12px;">
+        <div style="width:50px;height:50px;border-radius:13px;background:linear-gradient(135deg,${ti.color},${ti.color}cc);display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 6px 20px ${ti.color}44;">
+          <span class="material-symbols-outlined" style="color:white;font-size:22px;font-variation-settings:'FILL' 1">${ti.icon}</span>
+        </div>
+        <div>
+          <div style="font-size:10px;font-weight:900;text-transform:uppercase;letter-spacing:0.12em;color:${ti.color};margin-bottom:4px;">${ti.label}</div>
+          <h2 style="font-weight:900;font-size:17px;color:white;line-height:1.25;">${act.title}</h2>
+        </div>
+      </div>
+      <button onclick="closeModal()" style="width:34px;height:34px;border-radius:9px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.1);display:flex;align-items:center;justify-content:center;cursor:pointer;color:rgba(255,255,255,0.45);flex-shrink:0;transition:background 0.15s;" onmouseover="this.style.background='rgba(255,255,255,0.14)'" onmouseout="this.style.background='rgba(255,255,255,0.08)'">
+        <span class="material-symbols-outlined" style="font-size:18px;">close</span>
+      </button>
+    </div>
+    <p style="font-size:13px;line-height:1.65;color:rgba(255,255,255,0.5);margin-bottom:20px;">${act.description}</p>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:20px;">
+      <div style="padding:12px;border-radius:12px;text-align:center;background:rgba(91,79,207,0.15);border:1px solid rgba(91,79,207,0.2);">
+        <div style="font-size:16px;font-weight:900;color:#a5a0df;">⚡${act.xp}</div>
+        <div style="font-size:10px;color:rgba(255,255,255,0.3);margin-top:3px;">XP Reward</div>
+      </div>
+      <div style="padding:12px;border-radius:12px;text-align:center;background:rgba(16,185,129,0.12);border:1px solid rgba(16,185,129,0.2);">
+        <div style="font-size:16px;font-weight:900;color:#34d399;">⏱${act.duration}</div>
+        <div style="font-size:10px;color:rgba(255,255,255,0.3);margin-top:3px;">Duration</div>
+      </div>
+      <div style="padding:12px;border-radius:12px;text-align:center;background:rgba(245,158,11,0.12);border:1px solid rgba(245,158,11,0.2);">
+        <div style="font-size:16px;font-weight:900;color:#fbbf24;">${act.questions?'📝'+act.questions+'Q':act.wordCount?'📖'+act.wordCount:'🤖 AI'}</div>
+        <div style="font-size:10px;color:rgba(255,255,255,0.3);margin-top:3px;">${act.questions?'Questions':act.wordCount?'Words':'Powered'}</div>
+      </div>
+    </div>
+    ${act.isFinalExam?`<div style="padding:16px;border-radius:12px;margin-bottom:20px;background:rgba(245,158,11,0.1);border:1.5px dashed rgba(245,158,11,0.3);">
+      <div style="font-weight:700;font-size:13px;color:#fbbf24;margin-bottom:8px;">🏆 Exam Breakdown</div>
+      <div style="font-size:12px;line-height:1.8;color:rgba(255,255,255,0.45);">
+        Writing Tasks — 25 marks<br>Pronunciation — 20 marks<br>Vocabulary — 20 marks<br>Listening — 15 marks<br>Q&A Discussion — 20 marks
+        <div style="margin-top:8px;font-weight:700;color:rgba(255,255,255,0.75);">Total: 100 marks · ⚡ 500 XP</div>
+      </div>
+    </div>`:''}
+    ${isDone?`
+    <div style="display:flex;align-items:center;gap:12px;padding:14px;border-radius:12px;margin-bottom:16px;background:rgba(16,185,129,0.12);border:1px solid rgba(16,185,129,0.25);">
+      <span class="material-symbols-outlined" style="color:#34d399;font-size:26px;font-variation-settings:'FILL' 1">check_circle</span>
+      <div><div style="font-weight:700;font-size:13px;color:#34d399;">Completed! ✓</div><div style="font-size:12px;color:rgba(255,255,255,0.38);">You earned ${act.xp} XP</div></div>
+    </div>
+    <button onclick="closeModal()" style="width:100%;padding:12px;border-radius:12px;background:rgba(255,255,255,0.07);color:rgba(255,255,255,0.45);border:1px solid rgba(255,255,255,0.1);cursor:pointer;font-weight:700;font-size:14px;font-family:'Plus Jakarta Sans',sans-serif;">Close</button>`
+    :canStart?`<button class="btn-cta" style="width:100%;padding:14px;border-radius:12px;font-size:15px;" onclick="navigateToActivity(${act.id},'${act.type}',${act.xp},${!!act.isFinalExam},${!!act.isMilestone})">
+      <span class="material-symbols-outlined" style="font-size:20px;font-variation-settings:'FILL' 1">play_circle</span>
+      ${act.isFinalExam?'Start Final Exam':act.type==='test'?'Start Quiz':'Start Activity'}
+    </button>`
+    :`<div style="padding:16px;border-radius:12px;text-align:center;font-size:14px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);color:rgba(255,255,255,0.3);">
+      <span class="material-symbols-outlined" style="font-size:28px;display:block;margin-bottom:6px;">lock</span>
+      Complete previous activities to unlock.
+    </div>`}`;
+  document.getElementById('activity-modal').classList.add('show');
+}
+function closeModal(){document.getElementById('activity-modal').classList.remove('show');}
+function closeMBg(e){if(e.target===document.getElementById('activity-modal'))closeModal();}
+
+// ══════════════════════════════════════════════════════
+//  NAVIGATE TO ACTIVITY PAGE
+// ══════════════════════════════════════════════════════
+function navigateToActivity(actId, actType, xp, isFinalExam, isMilestone) {
+  // Milestones and final exams complete in-modal (no separate page)
+  if (isMilestone || isFinalExam) {
+    completeAct(actId, xp);
+    return;
+  }
+  // Get the correct page for this activity type
+  const page = LWContent.getPageForType(actType);
+  closeModal();
+  window.location.href = `${page}?lang=${langId}&id=${actId}`;
+}
+
+// ══════════════════════════════════════════════════════
+//  COMPLETE
+// ══════════════════════════════════════════════════════
+function completeAct(id,xp) {
+  closeModal();
+  doneSet.add(id); totalXP+=xp; _nextCache=null;
+  LWData.saveProgress(langId,Array.from(doneSet),totalXP);
+  renderRoadmap(); updateProgress(); updateNext(); renderMonthPills();
+  // Fireworks – random position around center
+  const x=window.innerWidth*(0.35+Math.random()*0.3);
+  const y=window.innerHeight*(0.25+Math.random()*0.25);
+  FW.launch(x,y);
+  showToast('Activity completed! 🎉',`+${xp} XP`);
+  setTimeout(scrollToActive,700);
+}
+
+// ══════════════════════════════════════════════════════
+//  TOAST
+// ══════════════════════════════════════════════════════
+function showToast(msg,xpStr) {
+  const t=document.getElementById('toast');
+  document.getElementById('toast-msg').textContent=msg;
+  document.getElementById('toast-xp').textContent=xpStr;
+  t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'),3800);
+}
+
+// ══════════════════════════════════════════════════════
+//  PROGRESS
+// ══════════════════════════════════════════════════════
+function updateProgress() {
+  let total=0,done=0;
+  monthData.forEach(m=>m.activities.forEach(a=>{total++;if(doneSet.has(a.id))done++;}));
+  const pct=total?Math.round(done/total*100):0;
+  document.getElementById('progress-pct').textContent=pct+'%';
+  document.getElementById('ring-txt').textContent=pct+'%';
+  document.getElementById('done-count').textContent=done;
+  document.getElementById('total-count').textContent=total;
+  document.getElementById('sidebar-xp').textContent=totalXP;
+  document.getElementById('total-xp').textContent=totalXP;
+  document.getElementById('progress-bar').style.width=pct+'%';
+  document.getElementById('progress-ring').setAttribute('stroke-dashoffset',213.6*(1-pct/100));
+  const lv=pct<15?'🌱 Beginner':pct<35?'🌿 Elementary':pct<55?'🌳 Intermediate':pct<75?'⭐ Upper-Inter':'🏆 Advanced';
+  const mn=Math.min(Math.ceil((done+1)/Math.max(total/6,1)),6)||1;
+  document.getElementById('prog-level').textContent=lv;
+  document.getElementById('prog-month').textContent=`Month ${mn} of 6`;
+}
+
+// ══════════════════════════════════════════════════════
+//  NEXT ACTIVITY
+// ══════════════════════════════════════════════════════
+function findNext() {
+  if(_nextCache) return _nextCache;
+  for(let mi=0;mi<monthData.length;mi++){
+    const acts=monthData[mi].activities;
+    for(let ai=0;ai<acts.length;ai++){
+      const act=acts[ai];
+      if(!doneSet.has(act.id)&&calcUnlock(act,ai,mi,acts)){_nextCache=act;return act;}
+    }
+  }
+  return null;
+}
+function updateNext() {
+  const act=findNext(); if(!act)return;
+  const ti=LWData.ACTIVITY_TYPES[act.type]||LWData.ACTIVITY_TYPES.lesson;
+  document.getElementById('next-icon').textContent=ti.icon;
+  document.getElementById('next-type').textContent=ti.label;
+  document.getElementById('next-title').textContent=act.title;
+  document.getElementById('next-xp').textContent='+'+act.xp;
+  document.getElementById('next-btn').dataset.actId=act.id;
+  document.getElementById('next-btn').dataset.actXp=act.xp;
+}
+function startNext() {
+  const act=findNext();
+  if(!act) return;
+  navigateToActivity(act.id, act.type, act.xp, !!act.isFinalExam, !!act.isMilestone);
+}
+
+// ══════════════════════════════════════════════════════
+//  MONTH PILLS
+// ══════════════════════════════════════════════════════
+function renderMonthPills() {
+  const el=document.getElementById('month-pills'); el.innerHTML='';
+  monthData.forEach((m,i)=>{
+    const meta=LWData.MONTHS_META[i];
+    const done=m.activities.filter(a=>doneSet.has(a.id)).length;
+    const total=m.activities.length;
+    const pct=total?Math.round(done/total*100):0;
+    const pill=document.createElement('div');
+    pill.style.cssText='display:flex;align-items:center;gap:10px;cursor:pointer;';
+    pill.onmouseover=()=>pill.style.opacity='0.8';
+    pill.onmouseout=()=>pill.style.opacity='1';
+    pill.onclick=()=>{if(monthFilter===i)return;monthFilter=i;renderMonthTabs();cloudTrans(()=>{renderRoadmap();window.scrollTo({top:0,behavior:'smooth'});});};
+    pill.innerHTML=`
+      <div style="width:28px;height:28px;border-radius:7px;background:${meta.color}1e;display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;">${meta.emoji}</div>
+      <div style="flex:1;">
+        <div style="display:flex;justify-content:space-between;margin-bottom:4px;">
+          <span style="font-size:12px;font-weight:700;color:rgba(255,255,255,0.65);">Month ${i+1}</span>
+          <span style="font-size:12px;font-weight:900;color:${meta.color};">${pct}%</span>
+        </div>
+        <div style="width:100%;height:4px;border-radius:2px;background:rgba(255,255,255,0.08);overflow:hidden;">
+          <div style="height:100%;border-radius:2px;background:${meta.color};width:${pct}%;transition:width 0.8s ease;"></div>
+        </div>
+      </div>`;
+    el.appendChild(pill);
+  });
+}
+
+// ══════════════════════════════════════════════════════
+//  BOOT
+// ══════════════════════════════════════════════════════
+const _langs=LWData.getLearningLanguages();
+if(!_langs||_langs.length===0){ window.location.href='onboarding.html'; }
+else {
+  init();
+  // ══════════════════════════════════════════════════════
+  //  HANDLE COMPLETION REDIRECT FROM ACTIVITY PAGES
+  // ══════════════════════════════════════════════════════
+  (function handleCompletionRedirect() {
+    const p = new URLSearchParams(window.location.search);
+    const completedId = parseInt(p.get('completed'));
+    const completedXP = parseInt(p.get('xp'));
+    const completedLang = p.get('lang');
+    if (isNaN(completedId) || isNaN(completedXP)) return;
+    // Switch language if needed
+    if (completedLang && completedLang !== langId) {
+      switchLang(completedLang);
+    }
+    // Clean URL
+    window.history.replaceState({}, '', window.location.pathname);
+    // Complete the activity
+    setTimeout(() => {
+      completeAct(completedId, completedXP);
+    }, 400);
+  })();
+}
+</script>
+</body>
+</html>

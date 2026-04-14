@@ -6,7 +6,9 @@
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800;900&family=Inter:wght@300;400;500;600&family=Noto+Sans+Gujarati:wght@400;700;900&display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
 <script src="data/roadmap-data.js"></script><script src="data/activities-content.js"></script>
+<script src="data/content-bundle.js"></script>
 <script src="data/content-loader.js"></script>
+<script src="data/lw-init.js"></script>
 <script src="data/blocks-renderer.js"></script><script src="data/en-gu-month1.js"></script>
 <style>
 *{box-sizing:border-box;margin:0;padding:0;}
@@ -133,18 +135,17 @@ const P=new URLSearchParams(location.search);
 const LANG=P.get('lang')||'gujarati',AID=parseInt(P.get('id'))||8,AXP=parseInt(P.get('xp'))||35;
 let act=null,cnt=null,scenarios=[],cur=0,done=new Set(),recOn=false;
 
-function init(){
+async function init(){
   const all=LWData.getActivities(LANG);
   outer:for(const m of all)for(const a of m.activities){if(a.id===AID){act=a;break outer;}}
-  setTimeout(()=>{
-    cnt=LWContent.getContent(AID);
+  cnt = await LWInit.loadActivityContent(AID, LANG); // BUG #4 FIX
     if(cnt?.blocks)cnt.blocks.forEach(b=>{if(b.type==='speaking')scenarios.push(b);});
     if(!scenarios.length)scenarios=[{type:'speaking',prompt:'Greet someone in Gujarati and ask their name.',hints:['નમસ્તે! (Hello!)','તમારું નામ શું છે? (What\'s your name?)','ખૂબ ખૂબ આભાર! (Thank you very much!)']}];
     document.getElementById('nav-title').textContent=cnt?.title||act?.title||'Speaking';
     document.getElementById('nav-xp').textContent='⚡'+(cnt?.xp||act?.xp||AXP);
     render();
-  },150);
 }
+
 
 function render(){
   const c=document.getElementById('content');

@@ -1,0 +1,98 @@
+{
+  "id": 5,
+  "type": "writing",
+  "week": 1,
+  "month": 1,
+  "langPair": "hi-en",
+  "title": "अपना परिचय लिखें",
+  "description": "अंग्रेज़ी में अपना परिचय लिखें — नाम, कहाँ से हैं, क्या सीख रहे हैं।",
+  "duration": "15 मिनट",
+  "xp": 35,
+  "tags": [
+    "writing",
+    "introduction"
+  ],
+  "blocks": [
+    {
+      "id": "w1",
+      "type": "sentence_builder",
+      "title": "वाक्य बनाएँ: 'मैं अंग्रेज़ी सीख रहा हूँ'",
+      "translation": "I am learning English",
+      "words": [
+        "English",
+        "learning",
+        "Hindi",
+        "am",
+        "I",
+        "speaking"
+      ],
+      "correctOrder": [
+        4,
+        3,
+        1,
+        0
+      ]
+    },
+    {
+      "id": "w2",
+      "type": "sentence_builder",
+      "title": "वाक्य बनाएँ: 'मेरा नाम राज है'",
+      "translation": "My name is Raj",
+      "words": [
+        "Raj",
+        "My",
+        "name",
+        "is",
+        "Hello"
+      ],
+      "correctOrder": [
+        1,
+        2,
+        3,
+        0
+      ]
+    },
+    {
+      "id": "w3",
+      "type": "translation_task",
+      "title": "हिन्दी से अंग्रेज़ी में अनुवाद करें",
+      "instruction": "इन हिन्दी वाक्यों को अंग्रेज़ी में लिखें:",
+      "items": [
+        {
+          "source": "नमस्ते! मेरा नाम ___ है।",
+          "answer": "Hello! My name is ___."
+        },
+        {
+          "source": "मैं भारत से हूँ।",
+          "answer": "I am from India."
+        },
+        {
+          "source": "मैं अंग्रेज़ी सीख रहा/रही हूँ।",
+          "answer": "I am learning English."
+        },
+        {
+          "source": "आपसे मिलकर खुशी हुई!",
+          "answer": "Nice to meet you!"
+        }
+      ]
+    },
+    {
+      "id": "w4",
+      "type": "text",
+      "title": "अपना परिचय कैसे लिखें?",
+      "body": "एक अच्छे अंग्रेज़ी परिचय में ये बातें होती हैं:\n\n1. Greeting: Hello! / Hi!\n2. Name: My name is ___.\n3. Origin: I am from ___.\n4. Learning: I am learning English.\n5. Closing: Nice to meet you! / Thank you!"
+    },
+    {
+      "id": "w5",
+      "type": "writing",
+      "prompt": "अंग्रेज़ी में अपना परिचय लिखें। इन बातों को शामिल करें: आपका नाम, आप कहाँ से हैं, आप क्यों अंग्रेज़ी सीख रहे हैं, और एक बात जो आपको अंग्रेज़ी के बारे में पसंद है।",
+      "minWords": 30,
+      "sampleAnswer": "Hello! My name is Priya. I am from Delhi, India. I am learning English because I want to work in an international company. I like English because it is spoken all over the world. Nice to meet you! Thank you."
+    },
+    {
+      "id": "w6",
+      "type": "tip",
+      "body": "💡 लिखते समय 'I' हमेशा capital (बड़ा I) लिखते हैं — चाहे वाक्य में कहीं भी हो। 'i am' ❌ → 'I am' ✓"
+    }
+  ]
+}

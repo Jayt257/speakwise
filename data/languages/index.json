@@ -31,11 +31,12 @@
   ],
 
   "activePairs": [
-    "en/gu"
+    "en/gu",
+    "en/hi"
   ],
 
   "inProgressPairs": [
-    "en/hi", "en/es", "en/fr", "en/de",
+    "en/es", "en/fr", "en/de",
     "hi/en", "hi/gu"
   ],
 

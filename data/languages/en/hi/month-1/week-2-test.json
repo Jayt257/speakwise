@@ -1,0 +1,150 @@
+{
+  "id": 17,
+  "type": "test",
+  "title": "Week 2 Quiz",
+  "description": "Check what you learned in week 2.",
+  "duration": "15 min",
+  "xp": 50,
+  "week": 2,
+  "month": 1,
+  "langPair": "en-hi",
+  "tags": [
+    "english",
+    "hindi",
+    "devanagari",
+    "week-2",
+    "consonants-and-daily-objects"
+  ],
+  "blocks": [
+    {
+      "id": "q1",
+      "type": "quiz",
+      "question": "What does यह mean?",
+      "options": [
+        "this",
+        "that",
+        "who",
+        "why"
+      ],
+      "correct": 0,
+      "explanation": "The correct answer is this."
+    },
+    {
+      "id": "q2",
+      "type": "quiz",
+      "question": "What does वह mean?",
+      "options": [
+        "that",
+        "this",
+        "where",
+        "when"
+      ],
+      "correct": 0,
+      "explanation": "The correct answer is that."
+    },
+    {
+      "id": "q3",
+      "type": "quiz",
+      "question": "Which word means house?",
+      "options": [
+        "घर",
+        "किताब",
+        "मेज़",
+        "पानी"
+      ],
+      "correct": 0,
+      "explanation": "The correct answer is घर."
+    },
+    {
+      "id": "q4",
+      "type": "quiz",
+      "question": "Which word means book?",
+      "options": [
+        "किताब",
+        "कुर्सी",
+        "दरवाज़ा",
+        "शहर"
+      ],
+      "correct": 0,
+      "explanation": "The correct answer is किताब."
+    },
+    {
+      "id": "q5",
+      "type": "quiz",
+      "question": "Which sound is aspirated?",
+      "options": [
+        "ख",
+        "क",
+        "त",
+        "प"
+      ],
+      "correct": 0,
+      "explanation": "The correct answer is ख."
+    },
+    {
+      "id": "q6",
+      "type": "quiz",
+      "question": "Choose the correct sentence.",
+      "options": [
+        "यह किताब है",
+        "यह किताब हूँ",
+        "यह किताब हैं",
+        "यह किताब हो"
+      ],
+      "correct": 0,
+      "explanation": "The correct answer is यह किताब है."
+    },
+    {
+      "id": "q7",
+      "type": "quiz",
+      "question": "What is the word for school?",
+      "options": [
+        "स्कूल",
+        "गाँव",
+        "घड़ी",
+        "बाज़ार"
+      ],
+      "correct": 0,
+      "explanation": "The correct answer is स्कूल."
+    },
+    {
+      "id": "q8",
+      "type": "quiz",
+      "question": "Which is a room object?",
+      "options": [
+        "मेज़",
+        "क्यों",
+        "आज",
+        "हाँ"
+      ],
+      "correct": 0,
+      "explanation": "The correct answer is मेज़."
+    },
+    {
+      "id": "q9",
+      "type": "quiz",
+      "question": "Which word means water?",
+      "options": [
+        "पानी",
+        "पिता",
+        "पाँच",
+        "पक्का"
+      ],
+      "correct": 0,
+      "explanation": "The correct answer is पानी."
+    },
+    {
+      "id": "q10",
+      "type": "quiz",
+      "question": "What does दरवाज़ा mean?",
+      "options": [
+        "door",
+        "window",
+        "table",
+        "chair"
+      ],
+      "correct": 0,
+      "explanation": "The correct answer is door."
+    }
+  ]
+}

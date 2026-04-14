@@ -1,0 +1,45 @@
+{
+  "id": 18,
+  "type": "speaking",
+  "title": "Talk About Your Room",
+  "description": "Describe your room in Hindi.",
+  "duration": "15 min",
+  "xp": 35,
+  "week": 2,
+  "month": 1,
+  "langPair": "en-hi",
+  "tags": [
+    "english",
+    "hindi",
+    "devanagari",
+    "week-2",
+    "consonants-and-daily-objects"
+  ],
+  "blocks": [
+    {
+      "id": "b1",
+      "type": "roleplay_card",
+      "title": "Talk About Your Room",
+      "scenario": "At home",
+      "yourRole": "Resident",
+      "partnerRole": "Visitor",
+      "context": "Someone asks about the things in your room and where they are.",
+      "goal": "Describe 2–3 objects using यह / वह.",
+      "usefulPhrases": [
+        "यह ... है। (This is ...)",
+        "वह ... है। (That is ...)",
+        "यहाँ (here)"
+      ]
+    },
+    {
+      "id": "b2",
+      "type": "speaking",
+      "prompt": "Describe your room in Hindi. Say where one book, one table, and one chair are.",
+      "hints": [
+        "यह किताब है",
+        "वह मेज़ है",
+        "यह कुर्सी है"
+      ]
+    }
+  ]
+}

@@ -6,7 +6,9 @@
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800;900&family=Inter:wght@300;400;500;600&family=Noto+Sans+Gujarati:wght@400;600;700;900&display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
 <script src="data/roadmap-data.js"></script><script src="data/activities-content.js"></script>
+<script src="data/content-bundle.js"></script>
 <script src="data/content-loader.js"></script>
+<script src="data/lw-init.js"></script>
 <script src="data/blocks-renderer.js"></script><script src="data/en-gu-month1.js"></script>
 <style>
 *{box-sizing:border-box;margin:0;padding:0;}
@@ -85,7 +87,7 @@ h1,h2,h3,button{font-family:'Plus Jakarta Sans',sans-serif;}
     <p style="font-size:12px;color:rgba(255,255,255,.28);margin-bottom:26px;">Excellent reading comprehension! 📖</p>
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:20px;">
       <div style="background:rgba(16,185,129,.1);border:1px solid rgba(16,185,129,.2);border-radius:12px;padding:12px;"><div style="font-size:20px;font-weight:900;color:#34d399;" id="ov-qa">0/0</div><div style="font-size:11px;color:rgba(255,255,255,.3);">Q&amp;A answered</div></div>
-      <div style="background:rgba(14,165,233,.1);border:1px solid rgba(14,165,233,.2);border-radius:12px;padding:12px;"><div style="font-size:20px;font-weight:900;color:#38bdf8;" id="ov-words">0</div><div style="font-size:11px;color:rgba(255,255,255,.3);">Gujarati words</div></div>
+      <div style="background:rgba(14,165,233,.1);border:1px solid rgba(14,165,233,.2);border-radius:12px;padding:12px;"><div style="font-size:20px;font-weight:900;color:#38bdf8;" id="ov-words">0</div><div style="font-size:11px;color:rgba(255,255,255,.3);" id="ov-words-label">Target words</div></div>
     </div>
     <button onclick="goBack()" style="width:100%;background:linear-gradient(135deg,#10b981,#059669);color:#fff;font-weight:800;border:none;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;border-radius:13px;padding:13px;font-size:14px;display:flex;align-items:center;justify-content:center;gap:8px;transition:transform .2s;box-shadow:0 6px 22px rgba(16,185,129,.45);" onmouseover="this.style.transform='translateY(-1px)'" onmouseout="this.style.transform='translateY(0)'">
       <span class="ms material-symbols-outlined" style="font-size:18px;font-variation-settings:'FILL' 1">map</span> Back to Roadmap
@@ -123,18 +125,19 @@ const P=new URLSearchParams(location.search);
 const LANG=P.get('lang')||'gujarati',AID=parseInt(P.get('id'))||3,AXP=parseInt(P.get('xp'))||25;
 let act=null,cnt=null,openQs=new Set(),answered=new Set(),guWordCount=0;
 
-function init(){
+async function init(){
   const all=LWData.getActivities(LANG);
   outer:for(const m of all)for(const a of m.activities){if(a.id===AID){act=a;break outer;}}
-  setTimeout(()=>{
-    cnt=LWContent.getContent(AID);
-    document.getElementById('nav-title').textContent=cnt?.title||act?.title||'Reading';
-    document.getElementById('nav-xp').textContent='⚡'+(cnt?.xp||act?.xp||AXP);
-    render();
-  },150);
+  // BUG #4 FIX: await content instead of 150ms race condition
+  cnt = await LWInit.loadActivityContent(AID, LANG);
+  const tgtName = LWInit.getTargetLangName();
+  document.getElementById('nav-title').textContent=cnt?.title||act?.title||'Reading';
+  document.getElementById('nav-xp').textContent='⚡'+(cnt?.xp||act?.xp||AXP);
+  render(tgtName);
 }
 
-function render(){
+function render(tgtName){
+  tgtName = tgtName || LWInit.getTargetLangName();
   const c=document.getElementById('content');
   const rb=cnt?.blocks?.find(b=>b.type==='reading');
   if(!rb){c.innerHTML=skeleton();return;}
@@ -142,15 +145,14 @@ function render(){
   const passage=rb.passage||'';
   const questions=rb.questions||[];
 
-  // Parse passage — highlight Gujarati chars
+  // BUG #9 FIX: highlight both Devanagari (Hindi) and Gujarati — and any other script
+  const scriptRe = LWInit.getScriptRegex(window.LW_ACTIVE_TGT || 'hi');
   const lines=passage.split('\n');
   let passageHtml='',guCount=0;
   lines.forEach(line=>{
     if(!line.trim()){passageHtml+='<br>';return;}
-    // Special heading lines start with 📖
     if(line.startsWith('📖')){passageHtml+=`<div style="font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:rgba(52,211,153,.5);margin:0 0 14px;">${esc(line)}</div>`;return;}
-    // Highlight Gujarati text
-    const highlighted=esc(line).replace(/([\u0A80-\u0AFF][\u0A80-\u0AFF\u0ABE-\u0ACD\u0ABC\u0ABD\s]*[\u0A80-\u0AFF])/g,(m)=>{guCount+=m.trim().split(/\s+/).length;return`<span class="gu gu-word" onclick="highlightWord(this)">${m}</span>`;});
+    const highlighted=esc(line).replace(scriptRe,(m)=>{guCount+=m.trim().split(/\s+/).length;return`<span class="gu gu-word" onclick="highlightWord(this)">${m}</span>`;});
     passageHtml+=`<div style="margin-bottom:8px;">${highlighted}</div>`;
   });
   guWordCount=guCount;
@@ -181,14 +183,14 @@ function render(){
 
     <!-- Passage -->
     <div class="passage-card" id="passage" onscroll="updateReadProg()">
-      <div class="passage-title">📖 Passage — tap Gujarati words to highlight</div>
+      <div class="passage-title">📖 Passage — tap ${tgtName} words to highlight</div>
       <div class="passage-text">${passageHtml}</div>
     </div>
 
     <!-- Guide tip -->
     <div style="background:rgba(16,185,129,.07);border:1px solid rgba(16,185,129,.18);border-left:3px solid #10b981;border-radius:0 12px 12px 0;padding:12px 16px;margin-bottom:18px;display:flex;gap:10px;">
       <span style="font-size:18px;">💡</span>
-      <div style="font-size:13px;color:rgba(52,211,153,.85);line-height:1.7;">Tap on any <span style="color:#34d399;font-weight:700;">green Gujarati text</span> to highlight it. Answer all questions below to deepen your understanding!</div>
+      <div style="font-size:13px;color:rgba(52,211,153,.85);line-height:1.7;">Tap on any <span style="color:#34d399;font-weight:700;">highlighted ${tgtName} text</span> to mark it. Answer all questions below to deepen your understanding!</div>
     </div>
 
     <!-- Questions -->
@@ -234,6 +236,8 @@ function doComplete(){
   document.getElementById('ov-xp').textContent='+'+xp+' XP';
   document.getElementById('ov-qa').textContent=answered.size+'/'+qs.length;
   document.getElementById('ov-words').textContent=guWordCount;
+  // BUG #10 FIX: set dynamic label
+  const lbl=document.getElementById('ov-words-label');if(lbl)lbl.textContent=LWInit.getTargetLangName()+' words';
   document.getElementById('ov').classList.add('show');launchFW();
 }
 function goBack(){const p=LWData.getProgress(LANG);const d=(p.completedIds||[]).includes(AID);window.location.href='roadmap.html?lang='+LANG+(d?'&completed='+AID+'&xp='+(cnt?.xp||AXP):'');}

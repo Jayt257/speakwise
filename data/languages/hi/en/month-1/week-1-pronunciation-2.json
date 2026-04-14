@@ -1,0 +1,92 @@
+{
+  "id": 10,
+  "type": "pronunciation",
+  "week": 1,
+  "month": 1,
+  "langPair": "hi-en",
+  "title": "उच्चारण अभ्यास 2 — Connected Speech",
+  "description": "अंग्रेज़ी में शब्द कैसे जुड़ते हैं और natural flow कैसे बनता है।",
+  "duration": "10 मिनट",
+  "xp": 30,
+  "tags": [
+    "pronunciation",
+    "fluency"
+  ],
+  "blocks": [
+    {
+      "id": "pp1",
+      "type": "keypoints",
+      "title": "Connected Speech — शब्द कैसे जुड़ते हैं",
+      "points": [
+        "Linking: 'Nice to meet you' → 'Naice-tuh-mee-choo' (शब्द जुड़ जाते हैं)",
+        "Reduction: 'I am' → 'I'm', 'I am not' → 'I'm not' (contractions)",
+        "Weak forms: 'and' → /ən/, 'to' → /tə/, 'for' → /fər/ (unstressed में कम बोलते हैं)",
+        "Intonation: questions में आवाज़ ऊपर जाती है — 'How ARE you?' ↗",
+        "Rhythm: अंग्रेज़ी stress-timed है — content words पर stress, others fast"
+      ]
+    },
+    {
+      "id": "pp2",
+      "type": "stress_pattern",
+      "title": "Common Phrases का Stress",
+      "words": [
+        {
+          "word": "NICE to MEET you",
+          "syllables": [
+            "nice",
+            "to",
+            "meet",
+            "you"
+          ],
+          "stressed": 0,
+          "note": "NICE और MEET पर stress"
+        },
+        {
+          "word": "how are YOU",
+          "syllables": [
+            "how",
+            "are",
+            "you"
+          ],
+          "stressed": 2,
+          "note": "YOU पर stress (question tag में)"
+        },
+        {
+          "word": "THANK you",
+          "syllables": [
+            "thank",
+            "you"
+          ],
+          "stressed": 0,
+          "note": "THANK पर stress"
+        },
+        {
+          "word": "I don't underSTAND",
+          "syllables": [
+            "i",
+            "don't",
+            "un",
+            "der",
+            "stand"
+          ],
+          "stressed": 4,
+          "note": "STAND पर stress"
+        }
+      ]
+    },
+    {
+      "id": "pp3",
+      "type": "tongue_twister",
+      "title": "Fluency Practice",
+      "text": "How are you? I am fine. Thank you! Nice to meet you!",
+      "romanization": "हाउ आर यू? आई एम फाइन। थैंक यू! नाइस टू मीट यू!",
+      "translation": "आप कैसे हैं? मैं ठीक हूँ। धन्यवाद! आपसे मिलकर खुशी हुई!",
+      "tip": "इसे एक साँस में बोलने की कोशिश करें, जैसे real conversation में।"
+    },
+    {
+      "id": "pp4",
+      "type": "tip",
+      "body": "💡 English में silence (चुप्पी) भी communication है! Pause = thinking। Don't say 'um um um' — instead, slow down और सोचकर बोलें। यह confident लगता है।"
+    }
+  ]
+}

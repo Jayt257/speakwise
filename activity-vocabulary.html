@@ -7,7 +7,9 @@
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800;900&family=Inter:wght@300;400;500;600&family=Noto+Sans+Gujarati:wght@400;600;700;900&display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
 <script src="data/roadmap-data.js"></script><script src="data/activities-content.js"></script>
+<script src="data/content-bundle.js"></script>
 <script src="data/content-loader.js"></script>
+<script src="data/lw-init.js"></script>
 <script src="data/blocks-renderer.js"></script><script src="data/en-gu-month1.js"></script>
 <style>
 *{box-sizing:border-box;margin:0;padding:0;}
@@ -162,18 +164,16 @@ const P=new URLSearchParams(location.search);
 const LANG=P.get('lang')||'gujarati',AID=parseInt(P.get('id'))||2,AXP=parseInt(P.get('xp'))||20;
 let act=null,cnt=null,words=[],idx=0,mode='flash',knownSet=new Set(),flipped=false;
 
-function init(){
+async function init(){
   const all=LWData.getActivities(LANG);
   outer:for(const m of all)for(const a of m.activities){if(a.id===AID){act=a;break outer;}}
-  const lp=window.LW_LANG_PAIR;
-  setTimeout(()=>{
-    cnt=LWContent.getContent(AID);
-    if(cnt?.blocks)cnt.blocks.forEach(b=>{if(b.type==='vocab_table'&&b.words)words.push(...b.words);});
-    document.getElementById('nav-title').textContent=cnt?.title||act?.title||'Vocabulary';
-    document.getElementById('nav-xp').textContent='⚡'+(cnt?.xp||act?.xp||AXP);
-    if(!words.length){document.getElementById('main-area').innerHTML=skeletonHTML();return;}
-    render();updateStats();
-  },150);
+  // BUG #4 FIX: await content
+  cnt = await LWInit.loadActivityContent(AID, LANG);
+  if(cnt?.blocks)cnt.blocks.forEach(b=>{if(b.type==='vocab_table'&&b.words)words.push(...b.words);});
+  document.getElementById('nav-title').textContent=cnt?.title||act?.title||'Vocabulary';
+  document.getElementById('nav-xp').textContent='⚡'+(cnt?.xp||act?.xp||AXP);
+  if(!words.length){document.getElementById('main-area').innerHTML=skeletonHTML();return;}
+  render();updateStats();
 }
 
 function render(){

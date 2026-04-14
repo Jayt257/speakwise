@@ -6,7 +6,9 @@
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800;900&family=Inter:wght@300;400;500;600&family=Noto+Sans+Gujarati:wght@400;700;900&display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
 <script src="data/roadmap-data.js"></script><script src="data/activities-content.js"></script>
+<script src="data/content-bundle.js"></script>
 <script src="data/content-loader.js"></script>
+<script src="data/lw-init.js"></script>
 <script src="data/blocks-renderer.js"></script><script src="data/en-gu-month1.js"></script>
 <style>
 *{box-sizing:border-box;margin:0;padding:0;}
@@ -114,18 +116,17 @@ const LANG=P.get('lang')||'gujarati',AID=parseInt(P.get('id'))||7,AXP=parseInt(P
 let act=null,cnt=null,qs=[],cur=0,answers=[],answered=false,showScore=false;
 const LETTERS=['A','B','C','D'];
 
-function init(){
+async function init(){
   const all=LWData.getActivities(LANG);
   outer:for(const m of all)for(const a of m.activities){if(a.id===AID){act=a;break outer;}}
-  setTimeout(()=>{
-    cnt=LWContent.getContent(AID);
+  cnt = await LWInit.loadActivityContent(AID, LANG); // BUG #4 FIX
     if(cnt?.blocks)qs=cnt.blocks.filter(b=>b.type==='quiz');
     if(!qs.length)qs=[{type:'quiz',question:'What does "નમસ્તે" mean?',options:['Goodbye','Thank you','Hello/Goodbye','Sorry'],correct:2,explanation:'Namaste is used for both hello and goodbye.'}];
     document.getElementById('nav-title').textContent=cnt?.title||act?.title||'Quick Test';
     document.getElementById('nav-xp').textContent='⚡'+(cnt?.xp||act?.xp||AXP);
     render();
-  },150);
 }
+
 
 function render(){
   if(showScore){renderScore();return;}

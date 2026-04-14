@@ -1,0 +1,212 @@
+{
+  "id": 7,
+  "type": "test",
+  "week": 1,
+  "month": 1,
+  "langPair": "hi-en",
+  "title": "सप्ताह 1 की परीक्षा — अभिवादन और परिचय",
+  "description": "पहले सप्ताह का test: अंग्रेज़ी अभिवादन, परिचय, और बुनियादी वाक्यांश।",
+  "duration": "8 मिनट",
+  "xp": 50,
+  "tags": [
+    "test",
+    "week1"
+  ],
+  "passingScore": 70,
+  "blocks": [
+    {
+      "id": "q1",
+      "type": "quiz",
+      "question": "'नमस्ते' के लिए अंग्रेज़ी में क्या कहते हैं?",
+      "options": [
+        "Goodbye",
+        "Thank you",
+        "Hello",
+        "Sorry"
+      ],
+      "correct": 2,
+      "explanation": "Hello = नमस्ते। Goodbye = अलविदा। Thank you = धन्यवाद। Sorry = माफ़ कीजिए।"
+    },
+    {
+      "id": "q2",
+      "type": "quiz",
+      "question": "'My name is Priya' का हिन्दी अर्थ क्या है?",
+      "options": [
+        "मेरा घर प्रिया है",
+        "मेरा नाम प्रिया है",
+        "प्रिया मेरी दोस्त है",
+        "मैं प्रिया हूँ"
+      ],
+      "correct": 1,
+      "explanation": "My = मेरा, name = नाम, is = है, Priya = प्रिया। तो 'My name is Priya' = मेरा नाम प्रिया है।"
+    },
+    {
+      "id": "q3",
+      "type": "quiz",
+      "question": "अंग्रेज़ी का वाक्य क्रम क्या है?",
+      "options": [
+        "SOV (Subject-Object-Verb)",
+        "SVO (Subject-Verb-Object)",
+        "OVS",
+        "VSO"
+      ],
+      "correct": 1,
+      "explanation": "अंग्रेज़ी SVO है: I drink tea. हिन्दी SOV है: मैं चाय पीता हूँ।"
+    },
+    {
+      "id": "q4",
+      "type": "quiz",
+      "question": "'Where are you from?' का हिन्दी अर्थ?",
+      "options": [
+        "आप कैसे हैं?",
+        "आप क्या कर रहे हैं?",
+        "आप कहाँ से हैं?",
+        "आपका नाम क्या है?"
+      ],
+      "correct": 2,
+      "explanation": "Where = कहाँ, are you = आप हैं, from = से। तो 'Where are you from?' = आप कहाँ से हैं?"
+    },
+    {
+      "id": "q5",
+      "type": "quiz",
+      "question": "'I am fine, thank you' का उचित हिन्दी अनुवाद?",
+      "options": [
+        "मैं ठीक हूँ, धन्यवाद",
+        "मैं यहाँ हूँ",
+        "मुझे खुशी है",
+        "मैं अच्छा खाता हूँ"
+      ],
+      "correct": 0,
+      "explanation": "I am fine = मैं ठीक हूँ, thank you = धन्यवाद। यह 'How are you?' का standard जवाब है।"
+    },
+    {
+      "id": "q6",
+      "type": "quiz",
+      "question": "अंग्रेज़ी में 'th' ध्वनि कैसे बनती है?",
+      "options": [
+        "जीभ मुँह के ऊपर",
+        "जीभ दाँतों के बीच",
+        "होंठ बंद करके",
+        "नाक से बोलकर"
+      ],
+      "correct": 1,
+      "explanation": "'th' के लिए जीभ को ऊपर और नीचे के दाँतों के बीच हल्के से रखें और हवा निकालें। जैसे: the, this, that."
+    },
+    {
+      "id": "q7",
+      "type": "quiz",
+      "question": "'Nice to meet you!' का सही जवाब क्या है?",
+      "options": [
+        "No problem",
+        "Nice to meet you too!",
+        "I am from India",
+        "What is your name?"
+      ],
+      "correct": 1,
+      "explanation": "'Nice to meet you!' का जवाब हमेशा 'Nice to meet you too!' होता है — 'भी' के लिए 'too' लगाते हैं।"
+    },
+    {
+      "id": "q8",
+      "type": "quiz",
+      "question": "'Good morning' कब कहते हैं?",
+      "options": [
+        "रात को",
+        "दोपहर में",
+        "शाम को",
+        "सुबह को"
+      ],
+      "correct": 3,
+      "explanation": "Good morning = सुबह। Good afternoon = दोपहर। Good evening = शाम। Good night = रात को सोते समय।"
+    },
+    {
+      "id": "q9",
+      "type": "quiz",
+      "question": "'I am from Mumbai' में 'I' हमेशा कैसा लिखते हैं?",
+      "options": [
+        "i (छोटा)",
+        "I (बड़ा)",
+        "दोनों चलता है",
+        "वाक्य की शुरुआत में बड़ा"
+      ],
+      "correct": 1,
+      "explanation": "अंग्रेज़ी में 'I' (मैं) हमेशा capital (बड़ा) लिखते हैं — वाक्य में चाहे कहीं भी हो!"
+    },
+    {
+      "id": "q10",
+      "type": "quiz",
+      "question": "'v' और 'w' में क्या अंतर है?",
+      "options": [
+        "कोई अंतर नहीं",
+        "v = होंठ दाँत पर, w = होंठ गोल",
+        "w = होंठ दाँत पर, v = होंठ गोल",
+        "दोनों नाक से"
+      ],
+      "correct": 1,
+      "explanation": "v: ऊपरी दाँत निचले होंठ पर रखें (very, vine)। w: होंठ गोल करें (water, wine)। दोनों बिल्कुल अलग हैं!"
+    },
+    {
+      "id": "q11",
+      "type": "true_false",
+      "title": "सच या झूठ?",
+      "items": [
+        {
+          "statement": "अंग्रेज़ी में हर संज्ञा का gender (लिंग) होता है।",
+          "answer": false,
+          "explanation": "नहीं! अंग्रेज़ी में अधिकतर संज्ञाओं का gender नहीं होता। 'book', 'chair', 'table' — सब 'it' होते हैं।"
+        },
+        {
+          "statement": "'How are you?' का formal जवाब 'I am fine, thank you' है।",
+          "answer": true,
+          "explanation": "हाँ! यह standard polite जवाब है। आप 'I am good, thanks!' या 'Not bad, thanks!' भी कह सकते हैं।"
+        },
+        {
+          "statement": "अंग्रेज़ी phone calls 'Hello!' से शुरू होती हैं।",
+          "answer": true,
+          "explanation": "हाँ! अंग्रेज़ी में phone उठाने पर 'Hello!' कहते हैं — जैसे हिन्दी में 'हाँ, हेलो!'"
+        }
+      ]
+    },
+    {
+      "id": "q12",
+      "type": "matching",
+      "title": "जोड़ी मिलाएँ — अंग्रेज़ी से हिन्दी",
+      "instruction": "अंग्रेज़ी शब्द और हिन्दी अर्थ की जोड़ी बनाएँ:",
+      "leftItems": [
+        "Hello",
+        "Thank you",
+        "Sorry",
+        "Goodbye",
+        "Please"
+      ],
+      "rightItems": [
+        "अलविदा",
+        "धन्यवाद",
+        "नमस्ते",
+        "माफ़ कीजिए",
+        "कृपया"
+      ],
+      "pairs": [
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          3,
+          0
+        ],
+        [
+          4,
+          4
+        ]
+      ]
+    }
+  ]
+}

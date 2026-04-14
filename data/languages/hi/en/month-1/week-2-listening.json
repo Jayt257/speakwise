@@ -1,0 +1,96 @@
+{
+  "id": 16,
+  "type": "listening",
+  "week": 2,
+  "month": 1,
+  "langPair": "hi-en",
+  "title": "दैनिक बातचीत सुनना",
+  "description": "अंग्रेज़ी में रोज़मर्रा की बातचीत — office, market, घर में।",
+  "duration": "10 मिनट",
+  "xp": 40,
+  "tags": [
+    "listening",
+    "daily-life"
+  ],
+  "blocks": [
+    {
+      "id": "l1",
+      "type": "note_template",
+      "title": "Listening Notes",
+      "instruction": "बातचीत सुनें और भरें:",
+      "sections": [
+        {
+          "label": "Conversation कहाँ हो रही है?",
+          "placeholder": "office / market / घर / बस..."
+        },
+        {
+          "label": "am/is/are किसने use किया?",
+          "placeholder": "जैसे: 'She is happy', 'I am tired'..."
+        },
+        {
+          "label": "कोई नया शब्द जो सुना:",
+          "placeholder": "..."
+        },
+        {
+          "label": "Conversation का main topic:",
+          "placeholder": "..."
+        }
+      ]
+    },
+    {
+      "id": "l2",
+      "type": "gap_fill",
+      "title": "Dialogue में खाली जगह भरें",
+      "text": "A: Good morning! How ___ you? B: I ___ fine, thanks! A: ___ you busy today? B: No, I ___ not busy. I ___ free.",
+      "gaps": [
+        "are",
+        "am",
+        "Are",
+        "am",
+        "am"
+      ],
+      "hints": [
+        "How+?",
+        "I+state",
+        "Question form",
+        "I+not",
+        "I+free"
+      ]
+    },
+    {
+      "id": "l3",
+      "type": "true_false",
+      "title": "Comprehension Check",
+      "items": [
+        {
+          "statement": "'I am not' को short form में 'I amn't' कहते हैं।",
+          "answer": false,
+          "explanation": "नहीं! 'I am not' = 'I'm not' — 'amn't' नहीं होता। यह अंग्रेज़ी का exception है!"
+        },
+        {
+          "statement": "'Are you happy?' का जवाब 'Yes, I am.' हो सकता है।",
+          "answer": true,
+          "explanation": "हाँ! Short answer: Yes, I am. / No, I'm not. — 'Yes, I am happy.' भी सही है।"
+        },
+        {
+          "statement": "'It is' को 'It's' कर सकते हैं।",
+          "answer": true,
+          "explanation": "हाँ! It is = It's (contraction)। जैसे: It's cold today. / It's a good idea."
+        }
+      ]
+    },
+    {
+      "id": "l4",
+      "type": "cultural_note",
+      "title": "British vs American English",
+      "icon": "🌍",
+      "content": "'I am fine' British और American दोनों में सही है। लेकिन कुछ अंतर हैं:\nBritish: 'I'm alright, thanks!' | American: 'I'm good, thanks!'\nBritish: 'Flat' (apartment) | American: 'Apartment'\nBritish: 'Lift' (elevator) | American: 'Elevator'\nआप दोनों सीख सकते हैं — दोनों सही हैं!",
+      "tags": [
+        "british",
+        "american",
+        "differences",
+        "culture"
+      ]
+    }
+  ]
+}

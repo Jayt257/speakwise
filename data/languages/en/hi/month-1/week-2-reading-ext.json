@@ -1,0 +1,68 @@
+{
+  "id": 19,
+  "type": "reading",
+  "title": "Extended Reading: Rooms and Routine",
+  "description": "An extended reading about homes and routine.",
+  "duration": "20 min",
+  "xp": 25,
+  "week": 2,
+  "month": 1,
+  "langPair": "en-hi",
+  "tags": [
+    "english",
+    "hindi",
+    "devanagari",
+    "week-2",
+    "consonants-and-daily-objects"
+  ],
+  "blocks": [
+    {
+      "id": "b1",
+      "type": "reading",
+      "passage": "📖 Rooms and Routine\n\nAt home, people often talk about rooms, objects, and where things are placed. This is useful because daily life is full of short descriptions. You may hear sentences like यह मेज़ है or वह खिड़की है. In Hindi, very small words like यह and वह help the listener understand distance and focus. Learning these words early makes later conversation easier. A room can become a mini classroom: book, chair, door, window, and table all become practice points.\n\nThe best habit is to point, say the word, and repeat it aloud.",
+      "questions": [
+        {
+          "q": "What do यह and वह help show?",
+          "a": "Distance or whether something is near or far."
+        },
+        {
+          "q": "Why is a room a good practice place?",
+          "a": "It has many common objects to name."
+        },
+        {
+          "q": "What is a useful habit mentioned?",
+          "a": "Point, say the word, and repeat it aloud."
+        }
+      ]
+    },
+    {
+      "id": "b2",
+      "type": "cultural_note",
+      "title": "Culture note",
+      "icon": "🌏",
+      "content": "Hindi learning connects language with everyday respect, family life, and practical conversation.",
+      "tags": [
+        "culture",
+        "respect",
+        "family"
+      ]
+    },
+    {
+      "id": "b3",
+      "type": "true_false",
+      "title": "Quick check",
+      "items": [
+        {
+          "statement": "Short practice can help memory.",
+          "answer": true,
+          "explanation": "The reading encourages small, frequent practice."
+        },
+        {
+          "statement": "Hindi words are unrelated to daily life.",
+          "answer": false,
+          "explanation": "The reading repeatedly connects language to daily life."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,179 @@
+{
+  "id": 9,
+  "type": "vocab_review",
+  "title": "Week 1 Review",
+  "description": "Review the first 15 words from the week.",
+  "duration": "20 min",
+  "xp": 20,
+  "week": 1,
+  "month": 1,
+  "langPair": "en-hi",
+  "tags": [
+    "english",
+    "hindi",
+    "devanagari",
+    "week-1",
+    "script-vowels-and-greetings"
+  ],
+  "blocks": [
+    {
+      "id": "b1",
+      "type": "vocab_table",
+      "title": "Review Words",
+      "words": [
+        {
+          "word": "नमस्ते",
+          "meaning": "Hello",
+          "example": "नमस्ते — hello"
+        },
+        {
+          "word": "नमस्कार",
+          "meaning": "Formal Hello",
+          "example": "नमस्कार — formal hello"
+        },
+        {
+          "word": "कृपया",
+          "meaning": "Please",
+          "example": "कृपया — please"
+        },
+        {
+          "word": "धन्यवाद",
+          "meaning": "Thank You",
+          "example": "धन्यवाद — thank you"
+        },
+        {
+          "word": "हाँ",
+          "meaning": "Yes",
+          "example": "हाँ — yes"
+        },
+        {
+          "word": "नहीं",
+          "meaning": "No",
+          "example": "नहीं — no"
+        },
+        {
+          "word": "मैं",
+          "meaning": "I",
+          "example": "मैं — I"
+        },
+        {
+          "word": "आप",
+          "meaning": "You (Formal)",
+          "example": "आप — you (formal)"
+        },
+        {
+          "word": "तुम",
+          "meaning": "You (Informal)",
+          "example": "तुम — you (informal)"
+        },
+        {
+          "word": "मेरा",
+          "meaning": "My",
+          "example": "मेरा — my"
+        },
+        {
+          "word": "नाम",
+          "meaning": "Name",
+          "example": "नाम — name"
+        },
+        {
+          "word": "अच्छा",
+          "meaning": "Good",
+          "example": "अच्छा — good"
+        },
+        {
+          "word": "ठीक",
+          "meaning": "Okay",
+          "example": "ठीक — okay"
+        },
+        {
+          "word": "मित्र",
+          "meaning": "Friend",
+          "example": "मित्र — friend"
+        },
+        {
+          "word": "घर",
+          "meaning": "Home",
+          "example": "घर — home"
+        }
+      ]
+    },
+    {
+      "id": "b2",
+      "type": "matching",
+      "title": "Match again",
+      "instruction": "Match the Hindi words to the English meanings.",
+      "leftItems": [
+        "नमस्ते",
+        "नमस्कार",
+        "कृपया",
+        "धन्यवाद",
+        "हाँ",
+        "नहीं",
+        "मैं",
+        "आप"
+      ],
+      "rightItems": [
+        "You (Formal)",
+        "I",
+        "No",
+        "Yes",
+        "Thank You",
+        "Please",
+        "Formal Hello",
+        "Hello"
+      ],
+      "pairs": [
+        [
+          0,
+          7
+        ],
+        [
+          1,
+          6
+        ],
+        [
+          2,
+          5
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          4,
+          3
+        ],
+        [
+          5,
+          2
+        ],
+        [
+          6,
+          1
+        ],
+        [
+          7,
+          0
+        ]
+      ]
+    },
+    {
+      "id": "b3",
+      "type": "true_false",
+      "title": "Quick review",
+      "items": [
+        {
+          "statement": "'नमस्ते' means hello.",
+          "answer": true,
+          "explanation": "This is a direct review item."
+        },
+        {
+          "statement": "Hindi has no polite form.",
+          "answer": false,
+          "explanation": "Hindi uses polite forms like आप."
+        }
+      ]
+    }
+  ]
+}

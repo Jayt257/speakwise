@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="theme-color" content="#8b5cf6"/>
+<meta name="description" content="LearnWise – Speaking Practice"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Speaking · LearnWise</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Inter',sans-serif;color:#e0ddf5;min-height:100vh;background:#0a0818;overflow-x:hidden;}
+h1,h2,h3,h4,h5,button,label{font-family:'Plus Jakarta Sans',sans-serif;}
+.material-symbols-outlined{font-variation-settings:'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 24;}
+.bg-deep{position:fixed;inset:0;z-index:0;background:radial-gradient(ellipse at 25% 25%,#1a1040 0%,#0d0b22 55%,#060410 100%);}
+.bg-grid{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:0.3;background-image:linear-gradient(rgba(139,92,246,0.05) 1px,transparent 1px),linear-gradient(90deg,rgba(139,92,246,0.05) 1px,transparent 1px);background-size:48px 48px;}
+
+.top-bar{position:sticky;top:0;z-index:50;background:rgba(10,8,24,0.92);backdrop-filter:blur(20px);border-bottom:1px solid rgba(139,92,246,0.18);padding:0 16px;height:60px;display:flex;align-items:center;justify-content:space-between;gap:12px;}
+.back-btn{width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,0.55);border:1px solid rgba(255,255,255,0.1);background:rgba(255,255,255,0.05);cursor:pointer;transition:all 0.2s;text-decoration:none;}
+.back-btn:hover{background:rgba(255,255,255,0.12);color:white;}
+.top-title{font-weight:800;font-size:14px;color:white;flex:1;text-align:center;}
+.xp-pill{display:inline-flex;align-items:center;gap:3px;background:rgba(139,92,246,0.25);color:#c4b5fd;border-radius:999px;padding:5px 12px;font-size:12px;font-weight:700;border:1px solid rgba(139,92,246,0.2);}
+
+.content{position:relative;z-index:1;max-width:700px;margin:0 auto;padding:24px 16px 120px;}
+
+.card{background:rgba(255,255,255,0.05);backdrop-filter:blur(18px);border:1px solid rgba(255,255,255,0.1);border-radius:1.25rem;padding:24px;margin-bottom:20px;box-shadow:0 4px 24px rgba(0,0,0,0.3);animation:fadeUp 0.45s ease both;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:translateY(0);}}
+
+/* SCENARIO */
+.scenario-icon{width:72px;height:72px;border-radius:20px;background:linear-gradient(135deg,#8b5cf6,#a78bfa);display:flex;align-items:center;justify-content:center;margin:0 auto 20px;box-shadow:0 8px 32px rgba(139,92,246,0.5);}
+.scenario-title{font-weight:900;font-size:22px;color:white;text-align:center;margin-bottom:8px;}
+.scenario-subtitle{font-size:14px;color:rgba(255,255,255,0.45);text-align:center;margin-bottom:20px;line-height:1.6;}
+
+/* PROMPTS */
+.prompt-list{display:flex;flex-direction:column;gap:12px;margin:20px 0;}
+.prompt-item{display:flex;align-items:flex-start;gap:12px;padding:14px 16px;border-radius:12px;background:rgba(139,92,246,0.08);border:1px solid rgba(139,92,246,0.15);transition:all 0.3s;}
+.prompt-item.active{background:rgba(139,92,246,0.18);border-color:rgba(139,92,246,0.35);box-shadow:0 4px 16px rgba(139,92,246,0.15);}
+.prompt-item.done{background:rgba(16,185,129,0.08);border-color:rgba(16,185,129,0.2);}
+.prompt-num{width:28px;height:28px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:12px;flex-shrink:0;}
+.prompt-item.active .prompt-num{background:rgba(139,92,246,0.3);color:#c4b5fd;}
+.prompt-item.done .prompt-num{background:rgba(16,185,129,0.3);color:#34d399;}
+.prompt-item:not(.active):not(.done) .prompt-num{background:rgba(255,255,255,0.08);color:rgba(255,255,255,0.3);}
+.prompt-text{font-size:13px;color:rgba(255,255,255,0.6);line-height:1.5;}
+
+/* MIC BUTTON */
+.mic-section{text-align:center;margin:32px 0;}
+.mic-btn{width:96px;height:96px;border-radius:50%;border:none;cursor:pointer;transition:all 0.3s cubic-bezier(.34,1.2,.64,1);display:flex;align-items:center;justify-content:center;margin:0 auto;position:relative;}
+.mic-btn.idle{background:linear-gradient(135deg,#8b5cf6,#a78bfa);box-shadow:0 8px 32px rgba(139,92,246,0.5);}
+.mic-btn.idle:hover{transform:scale(1.08);box-shadow:0 12px 40px rgba(139,92,246,0.6);}
+.mic-btn.recording{background:linear-gradient(135deg,#ef4444,#f87171);box-shadow:0 8px 32px rgba(239,68,68,0.5);animation:pulse-mic 1.5s ease-in-out infinite;}
+@keyframes pulse-mic{0%,100%{box-shadow:0 8px 32px rgba(239,68,68,0.5);}50%{box-shadow:0 8px 48px rgba(239,68,68,0.8),0 0 0 16px rgba(239,68,68,0.08);}}
+.mic-label{font-size:13px;color:rgba(255,255,255,0.35);margin-top:16px;font-weight:600;}
+
+/* WAVEFORM */
+.waveform{display:flex;align-items:center;justify-content:center;gap:3px;height:48px;margin:16px 0;}
+.wave-bar{width:4px;border-radius:2px;background:#8b5cf6;transition:height 0.15s ease;animation:wave-idle 1.5s ease-in-out infinite;}
+.wave-bar.active{animation:wave-active 0.3s ease-in-out infinite alternate;}
+@keyframes wave-idle{0%,100%{height:8px;opacity:0.3;}50%{height:16px;opacity:0.5;}}
+@keyframes wave-active{0%{height:8px;}100%{height:var(--h,32px);}}
+
+/* FEEDBACK */
+.speak-feedback{text-align:center;padding:20px;border-radius:16px;margin:20px 0;animation:fadeUp 0.4s ease both;}
+.score-ring{width:100px;height:100px;margin:0 auto 16px;position:relative;}
+.score-ring svg{transform:rotate(-90deg);}
+.score-text{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:900;color:white;}
+
+/* TIPS */
+.tip-card{background:rgba(139,92,246,0.08);border:1px solid rgba(139,92,246,0.2);border-radius:12px;padding:16px;margin-top:16px;}
+.tip-card h4{font-weight:700;font-size:13px;color:#c4b5fd;margin-bottom:10px;display:flex;align-items:center;gap:6px;}
+.tip-item{font-size:12px;color:rgba(255,255,255,0.4);margin-bottom:6px;padding-left:12px;line-height:1.5;}
+
+.nav-btns{display:flex;gap:12px;margin-top:20px;justify-content:center;}
+.btn-primary{padding:14px 28px;border-radius:12px;background:linear-gradient(135deg,#8b5cf6,#a78bfa);color:white;font-weight:800;font-size:15px;border:none;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;box-shadow:0 6px 24px rgba(139,92,246,0.4);transition:all 0.22s;display:flex;align-items:center;gap:8px;}
+.btn-primary:hover{transform:translateY(-2px);}
+.btn-success{padding:14px 32px;border-radius:12px;background:linear-gradient(135deg,#10b981,#059669);color:white;font-weight:800;font-size:15px;border:none;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;box-shadow:0 6px 24px rgba(16,185,129,0.45);transition:all 0.22s;display:flex;align-items:center;gap:8px;}
+.btn-success:hover{transform:translateY(-2px);}
+
+::-webkit-scrollbar{width:4px;}
+::-webkit-scrollbar-thumb{background:rgba(139,92,246,0.3);border-radius:2px;}
+</style>
+</head>
+<body>
+<div class="bg-deep"></div>
+<div class="bg-grid"></div>
+
+<div class="top-bar">
+  <a href="roadmap.html" class="back-btn"><span class="material-symbols-outlined" style="font-size:20px;">arrow_back</span></a>
+  <div class="top-title" id="top-title">Speaking Practice</div>
+  <div class="xp-pill"><span class="material-symbols-outlined" style="font-size:14px;font-variation-settings:'FILL' 1">bolt</span><span id="xp-display">+35</span> XP</div>
+</div>
+
+<div class="content" id="main-content"></div>
+
+<script src="data/roadmap-data.js"></script>
+<script src="data/activity-content.js"></script>
+<script>
+'use strict';
+const params = new URLSearchParams(window.location.search);
+const langId = params.get('lang') || LWData.getSelectedLanguage();
+const actId = parseInt(params.get('id'));
+if (isNaN(actId)) window.location.href = 'roadmap.html';
+
+const contentResult = LWContent.getActivityContent(langId, actId);
+const speakData = contentResult ? contentResult.data : null;
+
+let currentPrompt = 0;
+let isRecording = false;
+let completedPrompts = 0;
+
+function init() {
+  if (!speakData) { document.getElementById('main-content').innerHTML = '<div style="text-align:center;padding:60px;color:rgba(255,255,255,0.4);"><p style="font-weight:700;color:white;">Content not found</p><a href="roadmap.html" style="color:#c4b5fd;">Back to Roadmap</a></div>'; return; }
+  document.getElementById('top-title').textContent = speakData.title;
+  document.getElementById('xp-display').textContent = '+' + speakData.xp;
+  render();
+}
+
+function render() {
+  const root = document.getElementById('main-content');
+  const waveBars = Array.from({length:20}, (_, i) => `<div class="wave-bar" id="wb-${i}" style="--h:${12+Math.random()*36}px;animation-delay:${i*0.06}s;"></div>`).join('');
+
+  root.innerHTML = `
+    <div class="card">
+      <div class="scenario-icon">
+        <span class="material-symbols-outlined" style="font-size:36px;color:white;font-variation-settings:'FILL' 1">mic</span>
+      </div>
+      <div class="scenario-title">${speakData.scenario}</div>
+      <div class="scenario-subtitle">${speakData.description}</div>
+
+      <div style="font-size:11px;font-weight:700;color:rgba(255,255,255,0.35);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:8px;">Conversation Prompts</div>
+      <div class="prompt-list" id="prompt-list">
+        ${speakData.prompts.map((p, i) => `
+          <div class="prompt-item ${i === 0 ? 'active' : ''}" id="pi-${i}">
+            <div class="prompt-num">${i + 1}</div>
+            <div class="prompt-text">${p}</div>
+          </div>
+        `).join('')}
+      </div>
+    </div>
+
+    <div class="card" style="text-align:center;animation-delay:0.1s;">
+      <div style="font-size:11px;font-weight:700;color:rgba(255,255,255,0.35);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:16px;">🎙️ Practice Speaking</div>
+      
+      <div class="waveform" id="waveform">${waveBars}</div>
+      
+      <div class="mic-section">
+        <button class="mic-btn idle" id="mic-btn" onclick="toggleRecording()">
+          <span class="material-symbols-outlined" style="font-size:40px;color:white;font-variation-settings:'FILL' 1" id="mic-icon">mic</span>
+        </button>
+        <div class="mic-label" id="mic-label">Tap to start speaking</div>
+      </div>
+
+      <div id="feedback-area"></div>
+
+      <div class="nav-btns" id="nav-area">
+        <button class="btn-primary" id="next-prompt-btn" onclick="nextPrompt()" style="display:none;">
+          <span class="material-symbols-outlined" style="font-size:18px;">navigate_next</span>
+          Next Prompt
+        </button>
+      </div>
+    </div>
+
+    <div class="tip-card">
+      <h4><span class="material-symbols-outlined" style="font-size:16px;font-variation-settings:'FILL' 1">lightbulb</span>Speaking Tips</h4>
+      ${speakData.tips.map(t => `<div class="tip-item">• ${t}</div>`).join('')}
+    </div>
+
+    <div id="complete-section" style="display:none;">
+      <div class="card" style="text-align:center;background:linear-gradient(135deg,rgba(16,185,129,0.1),rgba(139,92,246,0.1));border-color:rgba(16,185,129,0.25);">
+        <div style="font-size:48px;margin-bottom:12px;">🗣️</div>
+        <div style="font-weight:900;font-size:20px;color:white;margin-bottom:8px;">Speaking Complete!</div>
+        <div style="font-size:14px;color:rgba(255,255,255,0.5);line-height:1.6;">You practiced all ${speakData.prompts.length} prompts. Great job!</div>
+        <div style="font-size:28px;font-weight:900;color:#c4b5fd;margin:16px 0;">⚡ +${speakData.xp} XP</div>
+        <div class="nav-btns">
+          <button class="btn-success" onclick="completeSpeaking()">
+            <span class="material-symbols-outlined" style="font-size:18px;font-variation-settings:'FILL' 1">check_circle</span>
+            Complete & Return to Roadmap
+          </button>
+        </div>
+      </div>
+    </div>`;
+}
+
+let recordingTimer = null;
+
+function toggleRecording() {
+  const btn = document.getElementById('mic-btn');
+  const icon = document.getElementById('mic-icon');
+  const label = document.getElementById('mic-label');
+  const bars = document.querySelectorAll('.wave-bar');
+
+  if (!isRecording) {
+    isRecording = true;
+    btn.className = 'mic-btn recording';
+    icon.textContent = 'stop';
+    label.textContent = 'Listening… Tap to stop';
+    bars.forEach(b => b.classList.add('active'));
+    
+    // Auto-stop after 10 seconds
+    recordingTimer = setTimeout(() => finishRecording(), 10000);
+  } else {
+    finishRecording();
+  }
+}
+
+function finishRecording() {
+  if (!isRecording) return;
+  isRecording = false;
+  clearTimeout(recordingTimer);
+
+  const btn = document.getElementById('mic-btn');
+  const icon = document.getElementById('mic-icon');
+  const label = document.getElementById('mic-label');
+  const bars = document.querySelectorAll('.wave-bar');
+
+  btn.className = 'mic-btn idle';
+  icon.textContent = 'mic';
+  label.textContent = 'Great! Listen to feedback';
+  bars.forEach(b => b.classList.remove('active'));
+
+  // Simulated feedback
+  const scores = [75 + Math.floor(Math.random() * 25), 70 + Math.floor(Math.random() * 30), 65 + Math.floor(Math.random() * 35)];
+  const overallScore = Math.round(scores.reduce((a,b) => a+b, 0) / scores.length);
+
+  document.getElementById('feedback-area').innerHTML = `
+    <div class="speak-feedback" style="background:rgba(16,185,129,0.08);border:1px solid rgba(16,185,129,0.2);">
+      <div class="score-ring">
+        <svg width="100" height="100" viewBox="0 0 100 100">
+          <circle cx="50" cy="50" r="42" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="6"/>
+          <circle cx="50" cy="50" r="42" fill="none" stroke="#10b981" stroke-width="6" stroke-linecap="round"
+            stroke-dasharray="${2*Math.PI*42}" stroke-dashoffset="${2*Math.PI*42*(1-overallScore/100)}"
+            style="transition:stroke-dashoffset 1s ease;"/>
+        </svg>
+        <div class="score-text">${overallScore}%</div>
+      </div>
+      <div style="display:flex;gap:16px;justify-content:center;margin-top:12px;">
+        <div style="text-align:center;">
+          <div style="font-size:18px;font-weight:900;color:#c4b5fd;">${scores[0]}%</div>
+          <div style="font-size:10px;color:rgba(255,255,255,0.3);">Fluency</div>
+        </div>
+        <div style="text-align:center;">
+          <div style="font-size:18px;font-weight:900;color:#34d399;">${scores[1]}%</div>
+          <div style="font-size:10px;color:rgba(255,255,255,0.3);">Pronunciation</div>
+        </div>
+        <div style="text-align:center;">
+          <div style="font-size:18px;font-weight:900;color:#fbbf24;">${scores[2]}%</div>
+          <div style="font-size:10px;color:rgba(255,255,255,0.3);">Confidence</div>
+        </div>
+      </div>
+    </div>`;
+
+  // Mark current prompt done
+  const pi = document.getElementById(`pi-${currentPrompt}`);
+  if (pi) { pi.classList.remove('active'); pi.classList.add('done'); }
+  completedPrompts++;
+
+  // Show next button or complete
+  if (currentPrompt < speakData.prompts.length - 1) {
+    document.getElementById('next-prompt-btn').style.display = 'flex';
+  } else {
+    document.getElementById('nav-area').innerHTML = '';
+    setTimeout(() => {
+      document.getElementById('complete-section').style.display = 'block';
+      document.getElementById('complete-section').scrollIntoView({ behavior: 'smooth' });
+    }, 500);
+  }
+}
+
+function nextPrompt() {
+  currentPrompt++;
+  document.getElementById('feedback-area').innerHTML = '';
+  document.getElementById('next-prompt-btn').style.display = 'none';
+  document.getElementById('mic-label').textContent = 'Tap to start speaking';
+  
+  // Update prompt highlights
+  speakData.prompts.forEach((_, i) => {
+    const pi = document.getElementById(`pi-${i}`);
+    if (!pi) return;
+    pi.classList.remove('active');
+    if (i < currentPrompt) pi.classList.add('done');
+    if (i === currentPrompt) pi.classList.add('active');
+  });
+}
+
+function completeSpeaking() {
+  window.location.href = `roadmap.html?completed=${actId}&xp=${speakData.xp}&lang=${langId}`;
+}
+
+init();
+</script>
+</body>
+</html>

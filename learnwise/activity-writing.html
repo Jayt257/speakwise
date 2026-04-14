@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="theme-color" content="#f59e0b"/>
+<meta name="description" content="LearnWise – Writing Exercise"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Writing · LearnWise</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Inter',sans-serif;color:#e0ddf5;min-height:100vh;background:#0a0818;overflow-x:hidden;}
+h1,h2,h3,h4,h5,button,label{font-family:'Plus Jakarta Sans',sans-serif;}
+.material-symbols-outlined{font-variation-settings:'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 24;}
+.bg-deep{position:fixed;inset:0;z-index:0;background:radial-gradient(ellipse at 25% 25%,#1a1808 0%,#0d0b22 55%,#060410 100%);}
+.bg-grid{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:0.3;background-image:linear-gradient(rgba(245,158,11,0.05) 1px,transparent 1px),linear-gradient(90deg,rgba(245,158,11,0.05) 1px,transparent 1px);background-size:48px 48px;}
+
+.top-bar{position:sticky;top:0;z-index:50;background:rgba(10,8,24,0.92);backdrop-filter:blur(20px);border-bottom:1px solid rgba(245,158,11,0.18);padding:0 16px;height:60px;display:flex;align-items:center;justify-content:space-between;gap:12px;}
+.back-btn{width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,0.55);border:1px solid rgba(255,255,255,0.1);background:rgba(255,255,255,0.05);cursor:pointer;transition:all 0.2s;text-decoration:none;}
+.back-btn:hover{background:rgba(255,255,255,0.12);color:white;}
+.top-title{font-weight:800;font-size:14px;color:white;flex:1;text-align:center;}
+.xp-pill{display:inline-flex;align-items:center;gap:3px;background:rgba(245,158,11,0.25);color:#fcd34d;border-radius:999px;padding:5px 12px;font-size:12px;font-weight:700;border:1px solid rgba(245,158,11,0.2);}
+
+.content{position:relative;z-index:1;max-width:700px;margin:0 auto;padding:24px 16px 120px;}
+
+/* CARDS */
+.card{background:rgba(255,255,255,0.05);backdrop-filter:blur(18px);border:1px solid rgba(255,255,255,0.1);border-radius:1.25rem;padding:24px;margin-bottom:20px;box-shadow:0 4px 24px rgba(0,0,0,0.3);animation:fadeUp 0.45s ease both;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:translateY(0);}}
+
+/* PROMPT */
+.prompt-icon{width:56px;height:56px;border-radius:16px;background:linear-gradient(135deg,#f59e0b,#fbbf24);display:flex;align-items:center;justify-content:center;margin-bottom:16px;box-shadow:0 6px 24px rgba(245,158,11,0.4);}
+.prompt-title{font-weight:900;font-size:20px;color:white;margin-bottom:8px;line-height:1.3;}
+.prompt-text{font-size:14px;color:rgba(255,255,255,0.5);line-height:1.7;margin-bottom:20px;}
+
+/* GUIDELINES */
+.guidelines{margin-bottom:20px;}
+.guideline-item{display:flex;align-items:flex-start;gap:10px;margin-bottom:8px;font-size:13px;color:rgba(255,255,255,0.5);line-height:1.5;}
+.guideline-check{width:20px;height:20px;border-radius:6px;border:1.5px solid rgba(245,158,11,0.3);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all 0.3s;}
+.guideline-check.met{background:rgba(16,185,129,0.2);border-color:rgba(16,185,129,0.4);}
+
+/* TEXTAREA */
+.write-area{width:100%;min-height:250px;padding:20px;border-radius:16px;background:rgba(255,255,255,0.04);border:1.5px solid rgba(255,255,255,0.12);color:white;font-size:15px;font-family:'Inter',sans-serif;line-height:1.8;resize:vertical;outline:none;transition:border-color 0.2s;}
+.write-area:focus{border-color:rgba(245,158,11,0.4);}
+.write-area::placeholder{color:rgba(255,255,255,0.2);}
+
+/* WORD COUNT */
+.word-count-bar{display:flex;align-items:center;justify-content:space-between;margin-top:12px;font-size:12px;color:rgba(255,255,255,0.35);}
+.word-progress{flex:1;margin:0 12px;height:6px;border-radius:3px;background:rgba(255,255,255,0.08);overflow:hidden;}
+.word-progress-fill{height:100%;border-radius:3px;background:linear-gradient(90deg,#f59e0b,#fbbf24);transition:width 0.4s ease;width:0%;}
+
+/* TIPS */
+.tip-card{background:rgba(245,158,11,0.08);border:1px solid rgba(245,158,11,0.2);border-radius:12px;padding:16px;margin-top:16px;}
+.tip-card h4{font-weight:700;font-size:13px;color:#fbbf24;margin-bottom:10px;display:flex;align-items:center;gap:6px;}
+.tip-item{font-size:12px;color:rgba(255,255,255,0.4);margin-bottom:6px;padding-left:12px;line-height:1.5;}
+
+/* FEEDBACK */
+.feedback-card{background:linear-gradient(135deg,rgba(16,185,129,0.1),rgba(91,79,207,0.08));border:1.5px solid rgba(16,185,129,0.2);border-radius:1.25rem;padding:24px;margin-top:20px;display:none;animation:fadeUp 0.4s ease both;}
+.feedback-card.show{display:block;}
+.feedback-header{display:flex;align-items:center;gap:12px;margin-bottom:16px;}
+.feedback-score{font-size:32px;font-weight:900;color:#34d399;}
+.feedback-items{display:flex;flex-direction:column;gap:8px;}
+.feedback-item{display:flex;align-items:flex-start;gap:8px;font-size:13px;line-height:1.5;}
+
+/* BUTTONS */
+.nav-btns{display:flex;gap:12px;margin-top:20px;justify-content:center;flex-wrap:wrap;}
+.btn-primary{padding:14px 28px;border-radius:12px;background:linear-gradient(135deg,#f59e0b,#fbbf24);color:#1a1040;font-weight:800;font-size:15px;border:none;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;box-shadow:0 6px 24px rgba(245,158,11,0.4);transition:all 0.22s cubic-bezier(.34,1.2,.64,1);display:flex;align-items:center;gap:8px;}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 10px 32px rgba(245,158,11,0.55);}
+.btn-primary:disabled{opacity:0.5;cursor:not-allowed;transform:none!important;}
+.btn-success{padding:14px 32px;border-radius:12px;background:linear-gradient(135deg,#10b981,#059669);color:white;font-weight:800;font-size:15px;border:none;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;box-shadow:0 6px 24px rgba(16,185,129,0.45);transition:all 0.22s cubic-bezier(.34,1.2,.64,1);display:flex;align-items:center;gap:8px;}
+.btn-success:hover{transform:translateY(-2px);box-shadow:0 10px 32px rgba(16,185,129,0.55);}
+
+::-webkit-scrollbar{width:4px;}
+::-webkit-scrollbar-thumb{background:rgba(245,158,11,0.3);border-radius:2px;}
+</style>
+</head>
+<body>
+<div class="bg-deep"></div>
+<div class="bg-grid"></div>
+
+<div class="top-bar">
+  <a href="roadmap.html" class="back-btn"><span class="material-symbols-outlined" style="font-size:20px;">arrow_back</span></a>
+  <div class="top-title" id="top-title">Writing Exercise</div>
+  <div class="xp-pill"><span class="material-symbols-outlined" style="font-size:14px;font-variation-settings:'FILL' 1">bolt</span><span id="xp-display">+35</span> XP</div>
+</div>
+
+<div class="content" id="main-content"></div>
+
+<script src="data/roadmap-data.js"></script>
+<script src="data/activity-content.js"></script>
+<script>
+'use strict';
+const params = new URLSearchParams(window.location.search);
+const langId = params.get('lang') || LWData.getSelectedLanguage();
+const actId = parseInt(params.get('id'));
+if (isNaN(actId)) window.location.href = 'roadmap.html';
+
+const contentResult = LWContent.getActivityContent(langId, actId);
+const writeData = contentResult ? contentResult.data : null;
+let submitted = false;
+
+function init() {
+  if (!writeData) { document.getElementById('main-content').innerHTML = '<div style="text-align:center;padding:60px;color:rgba(255,255,255,0.4);"><p style="font-weight:700;color:white;">Content not found</p><a href="roadmap.html" style="color:#fbbf24;">Back to Roadmap</a></div>'; return; }
+  document.getElementById('top-title').textContent = writeData.title;
+  document.getElementById('xp-display').textContent = '+' + writeData.xp;
+  render();
+}
+
+function render() {
+  const root = document.getElementById('main-content');
+  root.innerHTML = `
+    <div class="card">
+      <div class="prompt-icon">
+        <span class="material-symbols-outlined" style="font-size:28px;color:#1a1040;font-variation-settings:'FILL' 1">edit_note</span>
+      </div>
+      <div class="prompt-title">${writeData.title}</div>
+      <div class="prompt-text">${writeData.prompt}</div>
+
+      <div class="guidelines" id="guidelines">
+        <div style="font-size:11px;font-weight:700;color:rgba(255,255,255,0.35);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:8px;">Guidelines</div>
+        ${writeData.guidelines.map((g, i) => `
+          <div class="guideline-item">
+            <div class="guideline-check" id="gc-${i}">
+              <span class="material-symbols-outlined" style="font-size:14px;color:rgba(255,255,255,0.2);font-variation-settings:'FILL' 1" id="gci-${i}">check</span>
+            </div>
+            <span>${g}</span>
+          </div>
+        `).join('')}
+      </div>
+    </div>
+
+    <div class="card" style="animation-delay:0.1s;">
+      <div style="font-size:11px;font-weight:700;color:rgba(255,255,255,0.35);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:12px;">✍️ Your Writing</div>
+      <textarea class="write-area" id="write-input" placeholder="Start writing here…" oninput="onTextChange()"></textarea>
+      <div class="word-count-bar">
+        <span id="word-count">0 words</span>
+        <div class="word-progress"><div class="word-progress-fill" id="word-fill"></div></div>
+        <span>Target: ${writeData.wordTarget} words</span>
+      </div>
+
+      <div class="tip-card">
+        <h4><span class="material-symbols-outlined" style="font-size:16px;font-variation-settings:'FILL' 1">lightbulb</span>Writing Tips</h4>
+        ${writeData.tips.map(t => `<div class="tip-item">• ${t}</div>`).join('')}
+      </div>
+
+      <div class="nav-btns" style="margin-top:20px;">
+        <button class="btn-primary" id="submit-btn" onclick="submitWriting()" disabled>
+          <span class="material-symbols-outlined" style="font-size:18px;font-variation-settings:'FILL' 1">send</span>
+          Submit for AI Feedback
+        </button>
+      </div>
+    </div>
+
+    <div class="feedback-card" id="feedback-card">
+      <div class="feedback-header">
+        <div style="width:56px;height:56px;border-radius:16px;background:linear-gradient(135deg,#10b981,#34d399);display:flex;align-items:center;justify-content:center;">
+          <span class="material-symbols-outlined" style="font-size:28px;color:white;font-variation-settings:'FILL' 1">auto_awesome</span>
+        </div>
+        <div>
+          <div style="font-size:10px;font-weight:900;color:#34d399;text-transform:uppercase;letter-spacing:0.1em;">AI Feedback</div>
+          <div class="feedback-score" id="feedback-score">—</div>
+        </div>
+      </div>
+      <div class="feedback-items" id="feedback-items"></div>
+      <div class="nav-btns" style="margin-top:20px;">
+        <button class="btn-success" onclick="completeWriting()">
+          <span class="material-symbols-outlined" style="font-size:18px;font-variation-settings:'FILL' 1">check_circle</span>
+          Complete & Return to Roadmap
+        </button>
+      </div>
+    </div>`;
+}
+
+function onTextChange() {
+  const text = document.getElementById('write-input').value;
+  const words = text.trim().split(/\s+/).filter(w => w.length > 0);
+  const count = words.length;
+  const target = writeData.wordTarget;
+  const pct = Math.min(100, Math.round((count / target) * 100));
+
+  document.getElementById('word-count').textContent = `${count} words`;
+  document.getElementById('word-fill').style.width = pct + '%';
+  
+  // Enable submit if at least 3 words
+  document.getElementById('submit-btn').disabled = count < 3;
+
+  // Update guideline checks based on word count
+  const guidelines = writeData.guidelines;
+  guidelines.forEach((g, i) => {
+    const check = document.getElementById(`gc-${i}`);
+    const icon = document.getElementById(`gci-${i}`);
+    if (i === 0 && count >= 5) {
+      check.classList.add('met');
+      icon.style.color = '#34d399';
+    } else if (i === 0) {
+      check.classList.remove('met');
+      icon.style.color = 'rgba(255,255,255,0.2)';
+    }
+  });
+}
+
+function submitWriting() {
+  if (submitted) return;
+  submitted = true;
+  
+  const text = document.getElementById('write-input').value;
+  const words = text.trim().split(/\s+/).filter(w => w.length > 0);
+  const count = words.length;
+  const target = writeData.wordTarget;
+  
+  // Simulate AI feedback
+  const wordScore = Math.min(100, Math.round((count / target) * 100));
+  const sentenceCount = (text.match(/[.!?।।]+/g) || []).length || 1;
+  const avgWordLen = words.reduce((s, w) => s + w.length, 0) / Math.max(count, 1);
+  
+  let grade = 'Excellent!';
+  let gradeColor = '#34d399';
+  if (wordScore < 50) { grade = 'Good Start'; gradeColor = '#fbbf24'; }
+  else if (wordScore < 80) { grade = 'Well Done'; gradeColor = '#38bdf8'; }
+
+  const feedbackItems = [
+    { icon: 'format_size', color: '#38bdf8', label: 'Word Count', text: `${count} words written (target: ${target}). ${count >= target ? 'Target reached! 🎉' : `${target - count} more words to reach the target.`}` },
+    { icon: 'format_list_numbered', color: '#a5a0df', label: 'Sentences', text: `You wrote approximately ${sentenceCount} sentence${sentenceCount !== 1 ? 's' : ''}. ${sentenceCount >= 5 ? 'Great variety!' : 'Try writing more sentences for clarity.'}` },
+    { icon: 'spellcheck', color: '#34d399', label: 'Vocabulary', text: `Average word length: ${avgWordLen.toFixed(1)} characters. ${avgWordLen > 5 ? 'Good use of varied vocabulary!' : 'Try using more descriptive words.'}` },
+    { icon: 'auto_fix_high', color: '#fbbf24', label: 'Suggestion', text: 'Practice using connectors (and, but, because, however) to create more complex sentences.' },
+  ];
+
+  document.getElementById('feedback-score').textContent = grade;
+  document.getElementById('feedback-score').style.color = gradeColor;
+  document.getElementById('feedback-items').innerHTML = feedbackItems.map(fi => `
+    <div class="feedback-item">
+      <span class="material-symbols-outlined" style="font-size:18px;color:${fi.color};font-variation-settings:'FILL' 1;margin-top:1px;">${fi.icon}</span>
+      <div><strong style="color:rgba(255,255,255,0.8);">${fi.label}:</strong> <span style="color:rgba(255,255,255,0.5);">${fi.text}</span></div>
+    </div>
+  `).join('');
+
+  const fc = document.getElementById('feedback-card');
+  fc.classList.add('show');
+  fc.scrollIntoView({ behavior: 'smooth' });
+  
+  // Disable textarea and submit
+  document.getElementById('write-input').disabled = true;
+  document.getElementById('submit-btn').disabled = true;
+  document.getElementById('submit-btn').style.opacity = '0.5';
+}
+
+function completeWriting() {
+  window.location.href = `roadmap.html?completed=${actId}&xp=${writeData.xp}&lang=${langId}`;
+}
+
+init();
+</script>
+</body>
+</html>

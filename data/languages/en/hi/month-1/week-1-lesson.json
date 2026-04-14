@@ -1,0 +1,151 @@
+{
+  "id": 1,
+  "type": "lesson",
+  "title": "Welcome to Hindi Script and Greetings",
+  "description": "Learn the Devanagari script, common greetings, and the first sounds you need.",
+  "duration": "15 min",
+  "xp": 30,
+  "week": 1,
+  "month": 1,
+  "langPair": "en-hi",
+  "tags": [
+    "english",
+    "hindi",
+    "devanagari",
+    "week-1",
+    "script-vowels-and-greetings"
+  ],
+  "blocks": [
+    {
+      "id": "b1",
+      "type": "text",
+      "title": "Welcome to Hindi Script and Greetings",
+      "body": "Hindi uses the Devanagari script. At first, read slowly and match the letters to their sounds. Do not try to memorize everything at once. In this unit, focus on greetings, self-introduction, and the idea that Hindi letters usually sound the way they look."
+    },
+    {
+      "id": "b2",
+      "type": "grammar_rule",
+      "title": "A very simple sentence pattern",
+      "pattern": "Subject + object + है / हूँ",
+      "examples": [
+        {
+          "hi": "मैं छात्र हूँ।",
+          "romanization": "मैं छात्र हूँ।",
+          "en": "I am a student."
+        },
+        {
+          "hi": "यह किताब है।",
+          "romanization": "यह किताब है।",
+          "en": "This is a book."
+        },
+        {
+          "hi": "मेरा नाम रिया है।",
+          "romanization": "मेरा नाम रिया है।",
+          "en": "My name is Riya."
+        }
+      ],
+      "note": "Hindi often uses a form of 'to be' at the end of simple sentences."
+    },
+    {
+      "id": "b3",
+      "type": "dialogue",
+      "title": "Conversation Practice",
+      "speakers": [
+        "Speaker A",
+        "Speaker B"
+      ],
+      "lines": [
+        {
+          "speaker": 0,
+          "text": "नमस्ते!",
+          "romanization": "Namaste!",
+          "translation": "Hello!"
+        },
+        {
+          "speaker": 1,
+          "text": "नमस्ते! मेरा नाम आरव है।",
+          "romanization": "Namaste! Mera naam Aarav hai.",
+          "translation": "Hello! My name is Aarav."
+        },
+        {
+          "speaker": 0,
+          "text": "आप कैसे हैं?",
+          "romanization": "Aap kaise hain?",
+          "translation": "How are you?"
+        },
+        {
+          "speaker": 1,
+          "text": "मैं ठीक हूँ, धन्यवाद।",
+          "romanization": "Main theek hoon, dhanyavaad.",
+          "translation": "I am fine, thank you."
+        }
+      ]
+    },
+    {
+      "id": "b4",
+      "type": "comparison_table",
+      "title": "English vs Hindi",
+      "headers": [
+        "English",
+        "Hindi",
+        "Pronunciation"
+      ],
+      "rows": [
+        [
+          "Hello",
+          "नमस्ते",
+          "namaste"
+        ],
+        [
+          "My name is...",
+          "मेरा नाम ... है।",
+          "mera naam ... hai"
+        ],
+        [
+          "Thank you",
+          "धन्यवाद",
+          "dhanyavaad"
+        ],
+        [
+          "Please",
+          "कृपया",
+          "kripayā"
+        ]
+      ]
+    },
+    {
+      "id": "b5",
+      "type": "fill_blank",
+      "title": "Complete the sentence",
+      "instructions": "Type the missing Hindi word.",
+      "items": [
+        {
+          "sentence": "The Hindi greeting ___ means Hello.",
+          "answer": "नमस्ते",
+          "hint": "A very common greeting."
+        },
+        {
+          "sentence": "___ is the Hindi word for thank you.",
+          "answer": "धन्यवाद",
+          "hint": "Used after help or a gift."
+        }
+      ]
+    },
+    {
+      "id": "b6",
+      "type": "tip",
+      "body": "Start by listening for long and short vowels. In Hindi, the script is very phonetic, so careful sound practice pays off quickly."
+    },
+    {
+      "id": "b7",
+      "type": "progress_checkpoint",
+      "title": "Checkpoint",
+      "items": [
+        "Read and say four basic greetings.",
+        "Recognize the first ten Devanagari letters.",
+        "Introduce yourself using आपका नाम..."
+      ],
+      "xpBonus": 15
+    }
+  ]
+}

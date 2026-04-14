@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="theme-color" content="#5b4fcf"/>
+<meta name="description" content="LearnWise – AI-powered language learning for the modern world"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>LearnWise – Learn Any Language</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script>
+tailwind.config = {
+  darkMode:"class",
+  theme:{extend:{
+    colors:{
+      "primary":"#5b4fcf","primary-dark":"#4a3fb5","primary-light":"#7c6fd4",
+      "primary-container":"#ede9ff","on-primary":"#ffffff","on-primary-container":"#3b2fa0",
+      "secondary":"#0ea5e9","secondary-container":"#e0f2fe","on-secondary":"#ffffff",
+      "accent":"#f59e0b","accent-container":"#fef3c7",
+      "surface":"#f8f9ff","surface-card":"#ffffff","surface-elevated":"#f0f1ff",
+      "on-surface":"#1a1b2e","on-surface-secondary":"#4b4e6d",
+      "outline":"#8b8fa8","outline-light":"#d1d3e5",
+      "success":"#10b981","success-container":"#d1fae5",
+      "error":"#ef4444","error-container":"#fee2e2",
+      "warning":"#f59e0b","warning-container":"#fef3c7",
+    },
+    fontFamily:{"headline":["Plus Jakarta Sans"],"body":["Inter"]},
+    borderRadius:{"DEFAULT":"0.375rem","lg":"0.75rem","xl":"1rem","2xl":"1.5rem","3xl":"2rem","full":"9999px"},
+  }}
+}
+</script>
+<style>
+*{box-sizing:border-box;}
+body{font-family:'Inter',sans-serif;background:#0f0e23;color:#1a1b2e;overflow-x:hidden;}
+h1,h2,h3,h4,button,.font-headline{font-family:'Plus Jakarta Sans',sans-serif;}
+.material-symbols-outlined{font-variation-settings:'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 24;}
+
+/* Animated starfield background */
+.bg-stars{
+  position:fixed;inset:0;z-index:0;
+  background:radial-gradient(ellipse at 20% 50%, #1a1040 0%, #0a0818 60%, #050412 100%);
+}
+.star{position:absolute;border-radius:50%;background:#fff;animation:twinkle var(--dur) ease-in-out infinite;}
+@keyframes twinkle{0%,100%{opacity:var(--min-op);transform:scale(1);}50%{opacity:1;transform:scale(1.3);}}
+
+/* Floating orbs */
+.orb{position:absolute;border-radius:50%;filter:blur(60px);animation:float-orb var(--dur,12s) ease-in-out infinite;}
+@keyframes float-orb{0%,100%{transform:translateY(0) scale(1);}50%{transform:translateY(-30px) scale(1.05);}}
+
+/* Glass card */
+.glass{
+  background:rgba(255,255,255,0.07);
+  backdrop-filter:blur(24px);
+  -webkit-backdrop-filter:blur(24px);
+  border:1px solid rgba(255,255,255,0.12);
+}
+.glass-light{
+  background:rgba(255,255,255,0.92);
+  backdrop-filter:blur(24px);
+  border:1px solid rgba(91,79,207,0.1);
+  box-shadow:0 24px 60px rgba(91,79,207,0.12);
+}
+
+/* Premium button */
+.btn-primary{
+  background:linear-gradient(135deg,#5b4fcf,#7c6fd4);
+  box-shadow:0 8px 24px rgba(91,79,207,0.4),inset 0 1px 0 rgba(255,255,255,0.2);
+  transition:all 0.2s cubic-bezier(.34,1.2,.64,1);
+}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 32px rgba(91,79,207,0.5);}
+.btn-primary:active{transform:translateY(0) scale(0.98);}
+
+/* Social btn */
+.btn-social{
+  background:rgba(255,255,255,0.95);
+  border:1px solid rgba(91,79,207,0.15);
+  transition:all 0.2s ease;
+}
+.btn-social:hover{background:#fff;border-color:rgba(91,79,207,0.3);box-shadow:0 4px 12px rgba(91,79,207,0.1);transform:translateY(-1px);}
+
+/* Input */
+.input-field{
+  background:rgba(248,249,255,0.8);
+  border:1.5px solid rgba(91,79,207,0.15);
+  transition:all 0.2s ease;
+}
+.input-field:focus{outline:none;border-color:#5b4fcf;background:#fff;box-shadow:0 0 0 4px rgba(91,79,207,0.08);}
+
+/* Feature badges */
+.feature-badge{
+  background:rgba(255,255,255,0.08);
+  border:1px solid rgba(255,255,255,0.12);
+  backdrop-filter:blur(8px);
+  transition:all 0.2s ease;
+}
+.feature-badge:hover{background:rgba(255,255,255,0.12);transform:translateY(-2px);}
+
+@keyframes fade-in{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+.animate-in{animation:fade-in 0.6s ease both;}
+.delay-1{animation-delay:0.1s;}.delay-2{animation-delay:0.2s;}.delay-3{animation-delay:0.35s;}.delay-4{animation-delay:0.5s;}
+
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+
+/* Language ticker */
+@keyframes scroll-x{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+.lang-ticker{animation:scroll-x 20s linear infinite;}
+.lang-ticker-wrap{overflow:hidden;mask:linear-gradient(to right,transparent,black 10%,black 90%,transparent);}
+
+.tab-btn{transition:all 0.2s ease;}
+.tab-btn.active{background:white;color:#5b4fcf;box-shadow:0 2px 8px rgba(91,79,207,0.15);}
+</style>
+</head>
+<body>
+
+<!-- Starfield background -->
+<div class="bg-stars" id="stars-bg"></div>
+
+<!-- Floating orbs -->
+<div class="orb absolute top-[10%] left-[5%] w-96 h-96 opacity-30" style="background:#5b4fcf;--dur:14s;"></div>
+<div class="orb absolute top-[60%] right-[5%] w-80 h-80 opacity-20" style="background:#0ea5e9;--dur:18s;animation-delay:3s;"></div>
+<div class="orb absolute bottom-[10%] left-[30%] w-64 h-64 opacity-15" style="background:#f59e0b;--dur:22s;animation-delay:7s;"></div>
+
+<!-- Main layout -->
+<div class="relative z-10 min-h-screen flex items-center justify-center p-4 py-12">
+  <div class="w-full max-w-5xl grid lg:grid-cols-[1.2fr,1fr] gap-0 glass-light rounded-3xl overflow-hidden shadow-[0_48px_120px_rgba(91,79,207,0.25)]">
+
+    <!-- LEFT: Hero -->
+    <div class="hidden lg:flex flex-col justify-between p-12 xl:p-16 relative overflow-hidden" style="background:linear-gradient(145deg,#3d2fa8 0%,#5b4fcf 40%,#7c6fd4 100%);">
+      <!-- Decorative elements -->
+      <div class="absolute inset-0 overflow-hidden pointer-events-none">
+        <div class="absolute -top-20 -right-20 w-80 h-80 rounded-full opacity-10" style="background:radial-gradient(circle,#fff,transparent)"></div>
+        <div class="absolute bottom-0 -left-10 w-72 h-72 rounded-full opacity-10" style="background:radial-gradient(circle,#0ea5e9,transparent)"></div>
+        <!-- Grid pattern -->
+        <svg class="absolute inset-0 w-full h-full opacity-5" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="white" stroke-width="1"/></pattern></defs><rect width="100%" height="100%" fill="url(#grid)"/></svg>
+      </div>
+      
+      <!-- Logo -->
+      <div class="relative z-10 animate-in">
+        <div class="flex items-center gap-3 mb-16">
+          <div class="w-12 h-12 rounded-2xl flex items-center justify-center" style="background:rgba(255,255,255,0.2);">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 16.93V17c0-.55-.45-1-1-1s-1 .45-1 1v1.93C6.61 18.43 4 15.57 4 12c0-4.41 3.59-8 8-8s8 3.59 8 8c0 3.57-2.61 6.43-6 6.93V17c0-.55-.45-1-1-1s-1 .45-1 1v1.93z" fill="white" opacity="0.9"/>
+              <circle cx="12" cy="9" r="3" fill="white"/>
+            </svg>
+          </div>
+          <span class="text-white text-2xl font-black tracking-tight">LearnWise</span>
+        </div>
+        
+        <div class="space-y-6 mb-12">
+          <h1 class="text-5xl xl:text-6xl font-black text-white leading-[1.05] tracking-tight">
+            Master any<br/>
+            <span class="text-transparent" style="background:linear-gradient(90deg,#a5b4fc,#67e8f9);-webkit-background-clip:text;background-clip:text;">language</span><br/>
+            with AI.
+          </h1>
+          <p class="text-lg text-white/70 max-w-xs leading-relaxed font-medium">
+            Personalized roadmaps, intelligent practice, and real progress. Start speaking in weeks.
+          </p>
+        </div>
+
+        <!-- Stats -->
+        <div class="grid grid-cols-3 gap-4 mb-10">
+          <div class="text-center p-3 rounded-2xl" style="background:rgba(255,255,255,0.1)">
+            <div class="text-2xl font-black text-white">40+</div>
+            <div class="text-white/60 text-xs font-medium mt-0.5">Languages</div>
+          </div>
+          <div class="text-center p-3 rounded-2xl" style="background:rgba(255,255,255,0.1)">
+            <div class="text-2xl font-black text-white">2M+</div>
+            <div class="text-white/60 text-xs font-medium mt-0.5">Learners</div>
+          </div>
+          <div class="text-center p-3 rounded-2xl" style="background:rgba(255,255,255,0.1)">
+            <div class="text-2xl font-black text-white">94%</div>
+            <div class="text-white/60 text-xs font-medium mt-0.5">Success</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Language ticker -->
+      <div class="relative z-10 animate-in delay-2">
+        <p class="text-white/40 text-xs font-semibold uppercase tracking-widest mb-3">Available languages</p>
+        <div class="lang-ticker-wrap">
+          <div class="lang-ticker flex gap-4">
+            <span class="whitespace-nowrap text-white/70 text-sm">🇮🇳 Hindi</span><span class="text-white/30">•</span>
+            <span class="whitespace-nowrap text-white/70 text-sm">🇬🇧 English</span><span class="text-white/30">•</span>
+            <span class="whitespace-nowrap text-white/70 text-sm">🇪🇸 Spanish</span><span class="text-white/30">•</span>
+            <span class="whitespace-nowrap text-white/70 text-sm">🇫🇷 French</span><span class="text-white/30">•</span>
+            <span class="whitespace-nowrap text-white/70 text-sm">🇩🇪 German</span><span class="text-white/30">•</span>
+            <span class="whitespace-nowrap text-white/70 text-sm">🇯🇵 Japanese</span><span class="text-white/30">•</span>
+            <span class="whitespace-nowrap text-white/70 text-sm">🇨🇳 Mandarin</span><span class="text-white/30">•</span>
+            <span class="whitespace-nowrap text-white/70 text-sm">🇰🇷 Korean</span><span class="text-white/30">•</span>
+            <span class="whitespace-nowrap text-white/70 text-sm">🇧🇷 Portuguese</span><span class="text-white/30">•</span>
+            <span class="whitespace-nowrap text-white/70 text-sm">🇮🇹 Italian</span><span class="text-white/30">•</span>
+            <!-- repeat for loop -->
+            <span class="whitespace-nowrap text-white/70 text-sm">🇮🇳 Hindi</span><span class="text-white/30">•</span>
+            <span class="whitespace-nowrap text-white/70 text-sm">🇬🇧 English</span><span class="text-white/30">•</span>
+            <span class="whitespace-nowrap text-white/70 text-sm">🇪🇸 Spanish</span><span class="text-white/30">•</span>
+            <span class="whitespace-nowrap text-white/70 text-sm">🇫🇷 French</span><span class="text-white/30">•</span>
+            <span class="whitespace-nowrap text-white/70 text-sm">🇩🇪 German</span><span class="text-white/30">•</span>
+            <span class="whitespace-nowrap text-white/70 text-sm">🇯🇵 Japanese</span><span class="text-white/30">•</span>
+            <span class="whitespace-nowrap text-white/70 text-sm">🇨🇳 Mandarin</span><span class="text-white/30">•</span>
+            <span class="whitespace-nowrap text-white/70 text-sm">🇰🇷 Korean</span><span class="text-white/30">•</span>
+            <span class="whitespace-nowrap text-white/70 text-sm">🇧🇷 Portuguese</span><span class="text-white/30">•</span>
+            <span class="whitespace-nowrap text-white/70 text-sm">🇮🇹 Italian</span><span class="text-white/30">•</span>
+          </div>
+        </div>
+        <!-- Testimonial -->
+        <div class="mt-6 p-4 rounded-2xl" style="background:rgba(255,255,255,0.1)">
+          <p class="text-white/80 text-sm italic leading-relaxed">"I went from zero to conversational Spanish in just 3 months with LearnWise's AI roadmap."</p>
+          <div class="flex items-center gap-2 mt-3">
+            <div class="w-6 h-6 rounded-full bg-white/20 flex items-center justify-center text-xs text-white font-bold">A</div>
+            <span class="text-white/50 text-xs">Aisha M. · Mumbai</span>
+            <div class="ml-auto flex gap-0.5">
+              <span class="text-yellow-300 text-xs">★★★★★</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT: Auth form -->
+    <div class="p-8 xl:p-12 flex flex-col justify-center bg-white">
+      <!-- Mobile logo -->
+      <div class="lg:hidden flex items-center gap-2 mb-8">
+        <div class="w-9 h-9 rounded-xl flex items-center justify-center" style="background:linear-gradient(135deg,#5b4fcf,#7c6fd4)">
+          <span class="material-symbols-outlined text-white text-lg" style="font-variation-settings:'FILL' 1">language</span>
+        </div>
+        <span class="text-xl font-black text-on-surface">LearnWise</span>
+      </div>
+
+      <div class="max-w-sm mx-auto w-full animate-in">
+        <h2 class="text-3xl font-black text-on-surface mb-1 tracking-tight">Welcome back 👋</h2>
+        <p class="text-on-surface-secondary text-sm mb-8 font-medium">Continue your language learning journey.</p>
+
+        <!-- Tabs -->
+        <div class="flex p-1 rounded-xl mb-8 gap-1" style="background:#f0f1ff">
+          <button id="tab-login" class="tab-btn active flex-1 py-2.5 text-sm font-bold rounded-lg text-primary" onclick="switchTab('login')">Sign In</button>
+          <button id="tab-signup" class="tab-btn flex-1 py-2.5 text-sm font-bold rounded-lg text-on-surface-secondary" onclick="switchTab('signup')">Sign Up</button>
+        </div>
+
+        <!-- Login form -->
+        <div id="form-login" class="space-y-4">
+          <div>
+            <label class="text-xs font-bold uppercase tracking-wider text-on-surface-secondary block mb-1.5">Email</label>
+            <div class="relative">
+              <span class="material-symbols-outlined absolute left-3.5 top-1/2 -translate-y-1/2 text-outline text-lg">mail</span>
+              <input type="email" placeholder="you@example.com" id="email" class="input-field w-full pl-10 pr-4 py-3 rounded-xl text-sm text-on-surface"/>
+            </div>
+          </div>
+          <div>
+            <div class="flex justify-between mb-1.5">
+              <label class="text-xs font-bold uppercase tracking-wider text-on-surface-secondary">Password</label>
+              <a href="#" class="text-xs font-semibold text-primary hover:underline">Forgot?</a>
+            </div>
+            <div class="relative">
+              <span class="material-symbols-outlined absolute left-3.5 top-1/2 -translate-y-1/2 text-outline text-lg">lock</span>
+              <input type="password" placeholder="••••••••" id="password" class="input-field w-full pl-10 pr-4 py-3 rounded-xl text-sm text-on-surface"/>
+            </div>
+          </div>
+          <a href="onboarding.html" id="login-btn" class="btn-primary w-full py-3.5 rounded-xl text-white font-bold text-sm flex items-center justify-center gap-2 mt-2" onclick="handleLogin(event)">
+            <span>Continue to LearnWise</span>
+            <span class="material-symbols-outlined text-lg">arrow_forward</span>
+          </a>
+          <p class="text-center text-xs text-on-surface-secondary">Demo: any email + 6+ char password</p>
+        </div>
+
+        <!-- Signup form (hidden initially) -->
+        <div id="form-signup" class="space-y-4 hidden">
+          <div>
+            <label class="text-xs font-bold uppercase tracking-wider text-on-surface-secondary block mb-1.5">Full Name</label>
+            <div class="relative">
+              <span class="material-symbols-outlined absolute left-3.5 top-1/2 -translate-y-1/2 text-outline text-lg">person</span>
+              <input type="text" placeholder="Your name" class="input-field w-full pl-10 pr-4 py-3 rounded-xl text-sm text-on-surface"/>
+            </div>
+          </div>
+          <div>
+            <label class="text-xs font-bold uppercase tracking-wider text-on-surface-secondary block mb-1.5">Email</label>
+            <div class="relative">
+              <span class="material-symbols-outlined absolute left-3.5 top-1/2 -translate-y-1/2 text-outline text-lg">mail</span>
+              <input type="email" placeholder="you@example.com" class="input-field w-full pl-10 pr-4 py-3 rounded-xl text-sm text-on-surface"/>
+            </div>
+          </div>
+          <div>
+            <label class="text-xs font-bold uppercase tracking-wider text-on-surface-secondary block mb-1.5">Password</label>
+            <div class="relative">
+              <span class="material-symbols-outlined absolute left-3.5 top-1/2 -translate-y-1/2 text-outline text-lg">lock</span>
+              <input type="password" placeholder="Min 6 characters" class="input-field w-full pl-10 pr-4 py-3 rounded-xl text-sm text-on-surface"/>
+            </div>
+          </div>
+          <a href="onboarding.html" class="btn-primary w-full py-3.5 rounded-xl text-white font-bold text-sm flex items-center justify-center gap-2 mt-2">
+            <span>Create Account</span>
+            <span class="material-symbols-outlined text-lg">arrow_forward</span>
+          </a>
+        </div>
+
+        <!-- Divider -->
+        <div class="relative my-6">
+          <div class="absolute inset-0 flex items-center"><div class="w-full border-t border-outline-light"></div></div>
+          <div class="relative flex justify-center"><span class="bg-white px-4 text-xs font-semibold text-outline uppercase tracking-widest">or</span></div>
+        </div>
+
+        <!-- Social -->
+        <div class="grid grid-cols-2 gap-3">
+          <button class="btn-social py-3 rounded-xl flex items-center justify-center gap-2" onclick="window.location.href='onboarding.html'">
+            <svg class="w-4 h-4" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.66l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6-4.53z" fill="#EA4335"/></svg>
+            <span class="text-sm font-bold text-on-surface">Google</span>
+          </button>
+          <button class="btn-social py-3 rounded-xl flex items-center justify-center gap-2" onclick="window.location.href='onboarding.html'">
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M17.05 20.28c-.98.95-2.05 1.72-3.21 1.72-1.14 0-1.52-.68-2.85-.68-1.33 0-1.76.66-2.83.68-1.12 0-2.31-.85-3.35-1.84-2.12-2.03-3.23-5.22-3.23-7.55 0-3.66 2.37-5.59 4.67-5.59 1.21 0 2.21.75 2.96.75.73 0 1.87-.8 3.22-.8 1.41 0 2.65.68 3.41 1.72-2.73 1.55-2.28 5.25.4 6.45-.63 1.6-1.53 3.31-2.99 5.07zM12.03 5.48c-.03-2.18 1.8-4.04 3.9-4.14.23 2.5-2.25 4.38-3.9 4.14z"/></svg>
+            <span class="text-sm font-bold text-on-surface">Apple</span>
+          </button>
+        </div>
+
+        <p class="text-center text-xs text-outline mt-8 leading-relaxed">
+          By continuing, you agree to <a href="#" class="font-semibold text-primary hover:underline">Terms</a> & <a href="#" class="font-semibold text-primary hover:underline">Privacy Policy</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+// Generate stars
+(function(){
+  const bg = document.getElementById('stars-bg');
+  for(let i=0;i<150;i++){
+    const s = document.createElement('div');
+    s.className='star';
+    const size = Math.random()*2.5+0.5;
+    s.style.cssText=`width:${size}px;height:${size}px;top:${Math.random()*100}%;left:${Math.random()*100}%;--dur:${2+Math.random()*4}s;--min-op:${0.1+Math.random()*0.3};animation-delay:${Math.random()*4}s`;
+    bg.appendChild(s);
+  }
+})();
+
+// Tab switching
+function switchTab(t){
+  document.getElementById('tab-login').className='tab-btn '+(t==='login'?'active text-primary':'text-on-surface-secondary')+' flex-1 py-2.5 text-sm font-bold rounded-lg';
+  document.getElementById('tab-signup').className='tab-btn '+(t==='signup'?'active text-primary':'text-on-surface-secondary')+' flex-1 py-2.5 text-sm font-bold rounded-lg';
+  document.getElementById('form-login').classList.toggle('hidden', t!=='login');
+  document.getElementById('form-signup').classList.toggle('hidden', t!=='signup');
+}
+
+function handleLogin(e){
+  const em = document.getElementById('email').value.trim();
+  const pw = document.getElementById('password').value.trim();
+  if(!em.includes('@')||pw.length<6){
+    e.preventDefault();
+    const card = document.querySelector('.glass-light');
+    card.style.animation='shake 0.4s ease';
+    setTimeout(()=>card.style.animation='',500);
+    if(!em.includes('@')) document.getElementById('email').style.borderColor='#ef4444';
+    if(pw.length<6) document.getElementById('password').style.borderColor='#ef4444';
+  } else {
+    const btn = document.getElementById('login-btn');
+    btn.innerHTML='<span class="material-symbols-outlined animate-spin">progress_activity</span> Signing in...';
+  }
+}
+['email','password'].forEach(id=>{
+  const el=document.getElementById(id);
+  if(el) el.addEventListener('input',()=>el.style.borderColor='');
+});
+</script>
+<style>
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-8px)}75%{transform:translateX(8px)}}
+@keyframes spin{from{transform:rotate(0)}to{transform:rotate(360deg)}}
+.animate-spin{animation:spin 1s linear infinite;display:inline-block;}
+</style>
+</body>
+</html>

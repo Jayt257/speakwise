@@ -309,18 +309,19 @@ h1,h2,h3,h4,button,.font-headline{font-family:'Plus Jakarta Sans',sans-serif;}
 <script>
 // ── Data ──────────────────────────────────────────────────────────────────
 const LANGUAGES = [
-  {id:'hindi',   name:'Hindi',    native:'हिन्दी',  flag:'🇮🇳', speakers:'600M+', color:'#FF6B35'},
-  {id:'english', name:'English',  native:'English', flag:'🇬🇧', speakers:'1.5B+', color:'#003087'},
-  {id:'spanish', name:'Spanish',  native:'Español', flag:'🇪🇸', speakers:'500M+', color:'#AA151B'},
-  {id:'french',  name:'French',   native:'Français',flag:'🇫🇷', speakers:'280M+', color:'#002395'},
-  {id:'german',  name:'German',   native:'Deutsch', flag:'🇩🇪', speakers:'130M+', color:'#000000'},
-  {id:'japanese',name:'Japanese', native:'日本語',   flag:'🇯🇵', speakers:'125M+', color:'#BC002D'},
-  {id:'mandarin',name:'Mandarin', native:'普通话',   flag:'🇨🇳', speakers:'1B+',   color:'#DE2910'},
-  {id:'korean',  name:'Korean',   native:'한국어',   flag:'🇰🇷', speakers:'77M+',  color:'#003478'},
-  {id:'portuguese',name:'Portuguese',native:'Português',flag:'🇧🇷',speakers:'260M+',color:'#009C3B'},
-  {id:'italian', name:'Italian',  native:'Italiano',flag:'🇮🇹', speakers:'65M+',  color:'#009246'},
-  {id:'arabic',  name:'Arabic',   native:'العربية', flag:'🇸🇦', speakers:'420M+', color:'#006C35'},
-  {id:'russian', name:'Russian',  native:'Русский', flag:'🇷🇺', speakers:'260M+', color:'#003153'},
+  {id:'hindi',     name:'Hindi',     native:'हिन्दी',   flag:'🇮🇳', speakers:'600M+',  color:'#FF6B35'},
+  {id:'gujarati',  name:'Gujarati',  native:'ગુજરાતી', flag:'🇮🇳', speakers:'60M+',   color:'#FF8C00'},
+  {id:'english',   name:'English',   native:'English',  flag:'🇬🇧', speakers:'1.5B+',  color:'#003087'},
+  {id:'spanish',   name:'Spanish',   native:'Español',  flag:'🇪🇸', speakers:'500M+',  color:'#AA151B'},
+  {id:'french',    name:'French',    native:'Français', flag:'🇫🇷', speakers:'280M+',  color:'#002395'},
+  {id:'german',    name:'German',    native:'Deutsch',  flag:'🇩🇪', speakers:'130M+',  color:'#000000'},
+  {id:'japanese',  name:'Japanese',  native:'日本語',   flag:'🇯🇵', speakers:'125M+',  color:'#BC002D'},
+  {id:'mandarin',  name:'Mandarin',  native:'普通话',   flag:'🇨🇳', speakers:'1B+',    color:'#DE2910'},
+  {id:'korean',    name:'Korean',    native:'한국어',   flag:'🇰🇷', speakers:'77M+',   color:'#003478'},
+  {id:'portuguese',name:'Portuguese',native:'Português',flag:'🇧🇷', speakers:'260M+',  color:'#009C3B'},
+  {id:'arabic',    name:'Arabic',    native:'العربية',  flag:'🇸🇦', speakers:'420M+',  color:'#006C35'},
+  {id:'italian',   name:'Italian',   native:'Italiano', flag:'🇮🇹', speakers:'65M+',   color:'#009246'},
+  {id:'russian',   name:'Russian',   native:'Русский',  flag:'🇷🇺', speakers:'260M+',  color:'#003153'},
 ];
 
 // State
@@ -459,6 +460,7 @@ buildLanguageGrid();
 // Base language selector
 window.selectedBaseLang=(JSON.parse(localStorage.getItem('lw_lang_pair')||'{}').fromId)||'english';
 var BASE_LANGS=[{id:'english',name:'English',flag:'🇬🇧'},{id:'hindi',name:'Hindi',flag:'🇮🇳'},{id:'spanish',name:'Spanish',flag:'🇪🇸'},{id:'french',name:'French',flag:'🇫🇷'},{id:'german',name:'German',flag:'🇩🇪'},{id:'arabic',name:'Arabic',flag:'🇸🇦'},{id:'japanese',name:'Japanese',flag:'🇯🇵'}];
+// BUG #8 FIX: Base language buttons use light-theme colors (not dark-mode rgba white)
 function buildBaseLangRow(){
   var row=document.getElementById('base-lang-row');
   if(!row)return;
@@ -466,8 +468,16 @@ function buildBaseLangRow(){
   BASE_LANGS.forEach(function(bl){
     var btn=document.createElement('button');
     var sel=window.selectedBaseLang===bl.id;
-    btn.style.cssText='padding:8px 14px;border-radius:999px;font-size:13px;font-weight:700;cursor:pointer;border:1.5px solid '+(sel?'rgba(91,79,207,.55)':'rgba(255,255,255,.1)')+';background:'+(sel?'rgba(91,79,207,.18)':'rgba(255,255,255,.04)')+';color:'+(sel?'#a5a0df':'rgba(255,255,255,.45)')+';transition:all .18s;display:inline-flex;align-items:center;gap:5px;';
+    // Light-theme colors: selected = purple tint, unselected = neutral border
+    btn.style.cssText='padding:8px 14px;border-radius:999px;font-size:13px;font-weight:700;cursor:pointer;'
+      +'border:1.5px solid '+(sel?'#5b4fcf':'#d1d3e5')  +';'
+      +'background:'+(sel?'#ede9ff':'#fff')              +';'
+      +'color:'+(sel?'#3b2fa0':'#4b4e6d')                +';'
+      +'transition:all .18s;display:inline-flex;align-items:center;gap:5px;font-family:Plus Jakarta Sans,sans-serif;'
+      +'box-shadow:'+(sel?'0 2px 8px rgba(91,79,207,.2)':'0 1px 3px rgba(0,0,0,.08)')+';';
     btn.innerHTML='<span>'+bl.flag+'</span><span>'+bl.name+'</span>';
+    btn.onmouseover=function(){if(window.selectedBaseLang!==bl.id){this.style.borderColor='#a5a0df';this.style.background='#f8f9ff';}};
+    btn.onmouseout=function(){if(window.selectedBaseLang!==bl.id){this.style.borderColor='#d1d3e5';this.style.background='#fff';}};
     btn.onclick=function(){window.selectedBaseLang=bl.id;buildBaseLangRow();};
     row.appendChild(btn);
   });

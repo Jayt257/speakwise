@@ -1,0 +1,75 @@
+{
+  "id": 8,
+  "type": "speaking",
+  "week": 1,
+  "month": 1,
+  "langPair": "hi-en",
+  "title": "अंग्रेज़ी में परिचय और बातचीत",
+  "description": "3 role-play scenarios: पहली मुलाक़ात, मदद माँगना, और farewell।",
+  "duration": "12 मिनट",
+  "xp": 35,
+  "tags": [
+    "speaking",
+    "roleplay",
+    "conversation"
+  ],
+  "blocks": [
+    {
+      "id": "sp0",
+      "type": "roleplay_card",
+      "title": "Scene: Office में पहली मुलाक़ात",
+      "scenario": "Office / Workplace Introduction",
+      "yourRole": "नया employee (आप)",
+      "partnerRole": "Senior colleague (अंग्रेज़ी बोलने वाला)",
+      "context": "आप एक नई company में पहले दिन आए हैं। आपका manager आपको एक senior colleague से मिलाता है जो अंग्रेज़ी में बात करता है।",
+      "goal": "अंग्रेज़ी में अपना परिचय दें, बताएँ कि आप कहाँ से हैं, और काम के बारे में पूछें।",
+      "usefulPhrases": [
+        "Hello! My name is ___, nice to meet you!",
+        "I am from India, from ___.",
+        "I am new here. I am learning.",
+        "Could you please speak slowly? (कृपया धीरे बोलिए?)",
+        "I don't understand. Please repeat. (मुझे समझ नहीं आया।)"
+      ]
+    },
+    {
+      "id": "sp1",
+      "type": "speaking",
+      "prompt": "आप एक international conference में हैं। एक अंग्रेज़ी बोलने वाले से मिलें। अपना परिचय दें, पूछें वे कहाँ से हैं, और conference के बारे में बात करें।",
+      "hints": [
+        "Hello! My name is...",
+        "I am from India.",
+        "Where are you from?",
+        "Nice to meet you!",
+        "This conference is very interesting."
+      ]
+    },
+    {
+      "id": "sp2",
+      "type": "roleplay_card",
+      "title": "Scene: Airport में मदद माँगना",
+      "scenario": "Airport Help Desk",
+      "yourRole": "Indian traveler (भारतीय यात्री)",
+      "partnerRole": "Airport staff (अंग्रेज़ी बोलने वाला)",
+      "context": "आप London airport पर हैं और आपको departure gate नहीं मिल रहा।",
+      "goal": "Excuse me से शुरू करें, मदद माँगें, और धन्यवाद कहें।",
+      "usefulPhrases": [
+        "Excuse me! Could you help me, please?",
+        "I am looking for Gate B14.",
+        "I don't understand. Could you repeat, please?",
+        "Thank you very much! You are very helpful."
+      ]
+    },
+    {
+      "id": "sp3",
+      "type": "speaking",
+      "prompt": "आपकी English class में नया student आया है। उसे welcome करें, अपना परिचय दें, class के बारे में बताएँ, और उसकी मदद offer करें।",
+      "hints": [
+        "Welcome! My name is...",
+        "This is our English class.",
+        "We learn English here.",
+        "Do you need help? I can help you.",
+        "See you next time!"
+      ]
+    }
+  ]
+}

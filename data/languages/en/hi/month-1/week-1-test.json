@@ -1,0 +1,150 @@
+{
+  "id": 7,
+  "type": "test",
+  "title": "Week 1 Quiz",
+  "description": "Check what you learned in week 1.",
+  "duration": "15 min",
+  "xp": 50,
+  "week": 1,
+  "month": 1,
+  "langPair": "en-hi",
+  "tags": [
+    "english",
+    "hindi",
+    "devanagari",
+    "week-1",
+    "script-vowels-and-greetings"
+  ],
+  "blocks": [
+    {
+      "id": "q1",
+      "type": "quiz",
+      "question": "What does नमस्ते mean?",
+      "options": [
+        "Hello",
+        "Goodbye",
+        "Please",
+        "Sorry"
+      ],
+      "correct": 0,
+      "explanation": "The correct answer is Hello."
+    },
+    {
+      "id": "q2",
+      "type": "quiz",
+      "question": "Which word means thank you?",
+      "options": [
+        "धन्यवाद",
+        "घर",
+        "पानी",
+        "किताब"
+      ],
+      "correct": 0,
+      "explanation": "The correct answer is धन्यवाद."
+    },
+    {
+      "id": "q3",
+      "type": "quiz",
+      "question": "Which pronoun is formal 'you'?",
+      "options": [
+        "तुम",
+        "आप",
+        "मैं",
+        "वह"
+      ],
+      "correct": 1,
+      "explanation": "The correct answer is आप."
+    },
+    {
+      "id": "q4",
+      "type": "quiz",
+      "question": "Which is a self-introduction phrase?",
+      "options": [
+        "मेरा नाम ... है",
+        "यह क्या है",
+        "कहाँ है",
+        "कितने बजे हैं"
+      ],
+      "correct": 0,
+      "explanation": "The correct answer is मेरा नाम ... है."
+    },
+    {
+      "id": "q5",
+      "type": "quiz",
+      "question": "Choose the polite word.",
+      "options": [
+        "कृपया",
+        "कलम",
+        "कुर्सी",
+        "कमरा"
+      ],
+      "correct": 0,
+      "explanation": "The correct answer is कृपया."
+    },
+    {
+      "id": "q6",
+      "type": "quiz",
+      "question": "Which sentence is correct?",
+      "options": [
+        "मैं ठीक हूँ",
+        "मैं ठीक है",
+        "मैं ठीक हो",
+        "मैं ठीक हैं"
+      ],
+      "correct": 0,
+      "explanation": "The correct answer is मैं ठीक हूँ."
+    },
+    {
+      "id": "q7",
+      "type": "quiz",
+      "question": "What is the Hindi word for friend?",
+      "options": [
+        "मित्र",
+        "मेज़",
+        "किताब",
+        "स्कूल"
+      ],
+      "correct": 0,
+      "explanation": "The correct answer is मित्र."
+    },
+    {
+      "id": "q8",
+      "type": "quiz",
+      "question": "What does हाँ mean?",
+      "options": [
+        "Yes",
+        "No",
+        "Maybe",
+        "Here"
+      ],
+      "correct": 0,
+      "explanation": "The correct answer is Yes."
+    },
+    {
+      "id": "q9",
+      "type": "quiz",
+      "question": "What does नहीं mean?",
+      "options": [
+        "No",
+        "Yes",
+        "Please",
+        "Name"
+      ],
+      "correct": 0,
+      "explanation": "The correct answer is No."
+    },
+    {
+      "id": "q10",
+      "type": "quiz",
+      "question": "What script is Hindi written in?",
+      "options": [
+        "Devanagari",
+        "Latin",
+        "Cyrillic",
+        "Arabic"
+      ],
+      "correct": 0,
+      "explanation": "The correct answer is Devanagari."
+    }
+  ]
+}

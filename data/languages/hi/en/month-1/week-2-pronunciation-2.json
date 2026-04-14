@@ -1,0 +1,85 @@
+{
+  "id": 20,
+  "type": "pronunciation",
+  "week": 2,
+  "month": 1,
+  "langPair": "hi-en",
+  "title": "Consonant Clusters — व्यंजन समूह",
+  "description": "अंग्रेज़ी में एक साथ आने वाले consonants: str-, spr-, -nds, -lts, आदि।",
+  "duration": "10 मिनट",
+  "xp": 30,
+  "tags": [
+    "pronunciation",
+    "consonants"
+  ],
+  "blocks": [
+    {
+      "id": "p1",
+      "type": "keypoints",
+      "title": "Consonant Clusters — हिन्दी बोलने वालों के लिए",
+      "points": [
+        "str- cluster: 'street', 'strong', 'straight' — हिन्दी में 'स्ट्रीट' के रूप में बोलते हैं",
+        "-nd ending: 'hand', 'friend', 'find' — अंत में 'd' clearly बोलें",
+        "-nds ending: 'hands', 'friends' — '-ंड्ज़' नहीं '-ंड्स'",
+        "सबसे आम गलती: extra vowel जोड़ना — 'school' को 'iskool' नहीं",
+        "'V' at end: 'have', 'love', 'give' — अंत में 'v' clearly बोलें, 'f' नहीं"
+      ]
+    },
+    {
+      "id": "p2",
+      "type": "stress_pattern",
+      "title": "Word Stress Practice",
+      "words": [
+        {
+          "word": "IM-por-tant",
+          "syllables": [
+            "im",
+            "por",
+            "tant"
+          ],
+          "stressed": 0,
+          "note": "IM पर stress"
+        },
+        {
+          "word": "un-der-STAND",
+          "syllables": [
+            "un",
+            "der",
+            "stand"
+          ],
+          "stressed": 2,
+          "note": "STAND पर stress"
+        },
+        {
+          "word": "IN-ter-est-ing",
+          "syllables": [
+            "in",
+            "ter",
+            "est",
+            "ing"
+          ],
+          "stressed": 0,
+          "note": "IN पर stress"
+        },
+        {
+          "word": "re-MEM-ber",
+          "syllables": [
+            "re",
+            "mem",
+            "ber"
+          ],
+          "stressed": 1,
+          "note": "MEM पर stress"
+        }
+      ]
+    },
+    {
+      "id": "p3",
+      "type": "tongue_twister",
+      "text": "I scream, you scream, we all scream for ice cream!",
+      "romanization": "आई स्क्रीम, यू स्क्रीम, वी ऑल स्क्रीम फॉर आइस क्रीम!",
+      "translation": "मैं चिल्लाता हूँ, तुम चिल्लाते हो, हम सब आइसक्रीम के लिए चिल्लाते हैं!",
+      "tip": "'scream' और 'cream' में 'cr-' cluster पर ध्यान दें।"
+    }
+  ]
+}

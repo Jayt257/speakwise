@@ -1,0 +1,45 @@
+{
+  "id": 8,
+  "type": "speaking",
+  "title": "Introduce Yourself",
+  "description": "Practice a short self-introduction conversation.",
+  "duration": "15 min",
+  "xp": 35,
+  "week": 1,
+  "month": 1,
+  "langPair": "en-hi",
+  "tags": [
+    "english",
+    "hindi",
+    "devanagari",
+    "week-1",
+    "script-vowels-and-greetings"
+  ],
+  "blocks": [
+    {
+      "id": "b1",
+      "type": "roleplay_card",
+      "title": "Meet a New Classmate",
+      "scenario": "First day in class",
+      "yourRole": "New student",
+      "partnerRole": "Classmate",
+      "context": "You meet someone for the first time and introduce yourself politely.",
+      "goal": "Say hello, give your name, and thank the other person.",
+      "usefulPhrases": [
+        "नमस्ते (Hello)",
+        "मेरा नाम ... है। (My name is ...)",
+        "धन्यवाद (Thank you)"
+      ]
+    },
+    {
+      "id": "b2",
+      "type": "speaking",
+      "prompt": "Speak for 30 seconds: introduce yourself, greet the other person, and mention one thing you like.",
+      "hints": [
+        "नमस्ते",
+        "मेरा नाम ... है",
+        "मुझे ... पसंद है (I like ...)"
+      ]
+    }
+  ]
+}

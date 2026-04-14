@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta name="theme-color" content="#5b4fcf"/>
+<meta name="description" content="LearnWise - Master pronunciation with AI-powered speech recognition"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AI Conversation - LearnWise</title>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600&amp;family=Plus+Jakarta+Sans:wght@700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-tertiary-fixed": "#311c00",
+                    "inverse-surface": "#041015",
+                    "primary-fixed-dim": "#58e7ab",
+                    "on-background": "#1d3540",
+                    "surface-variant": "#cde6f4",
+                    "secondary-container": "#c8f17a",
+                    "tertiary-container": "#fda625",
+                    "secondary": "#4a6800",
+                    "on-surface": "#1d3540",
+                    "on-secondary-container": "#3f5a00",
+                    "tertiary-fixed": "#fda625",
+                    "surface-container-lowest": "#ffffff",
+                    "secondary-fixed": "#c8f17a",
+                    "on-primary-fixed": "#00452d",
+                    "surface-dim": "#c2deee",
+                    "on-primary-container": "#005a3c",
+                    "outline-variant": "#9db6c3",
+                    "on-secondary": "#f0ffce",
+                    "on-tertiary-fixed-variant": "#5c3700",
+                    "inverse-primary": "#69f6b8",
+                    "background": "#f4faff",
+                    "tertiary": "#875400",
+                    "secondary-fixed-dim": "#bae26e",
+                    "error-dim": "#821a01",
+                    "on-surface-variant": "#4b626e",
+                    "primary-fixed": "#69f6b8",
+                    "outline": "#667e8a",
+                    "surface-container-low": "#e7f6ff",
+                    "secondary-dim": "#405b00",
+                    "error-container": "#fa7150",
+                    "surface-tint": "#5b4fcf",
+                    "on-primary": "#e6ffee",
+                    "tertiary-fixed-dim": "#ed9912",
+                    "primary": "#5b4fcf",
+                    "tertiary-dim": "#764900",
+                    "on-primary-fixed-variant": "#006544",
+                    "on-error": "#fff7f6",
+                    "primary-dim": "#005f40",
+                    "on-error-container": "#671200",
+                    "on-tertiary-container": "#502f00",
+                    "surface-container-high": "#d5ecf8",
+                    "surface-container-highest": "#cde6f4",
+                    "inverse-on-surface": "#929fa6",
+                    "surface-container": "#def1fc",
+                    "on-tertiary": "#fff7f3",
+                    "error": "#aa371c",
+                    "on-secondary-fixed": "#304600",
+                    "on-secondary-fixed-variant": "#476400",
+                    "primary-container": "#69f6b8",
+                    "surface-bright": "#f4faff",
+                    "surface": "#f4faff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "1.5rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Plus Jakarta Sans"],
+                    "body": ["Be Vietnam Pro"],
+                    "label": ["Plus Jakarta Sans"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+            text-transform: none;
+            letter-spacing: normal;
+            word-wrap: normal;
+            white-space: nowrap;
+            direction: ltr;
+        }
+        .chat-scroll-area {
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+        .chat-scroll-area::-webkit-scrollbar {
+            display: none;
+        }
+    </style>
+<style>
+    body {
+      min-height:100%;
+    }
+  </style>
+  </head>
+<body class="bg-background font-body text-on-surface min-h-screen flex flex-col pb-32">
+<!-- TopAppBar -->
+<nav class="w-full top-0 sticky z-30 bg-[#f4faff] dark:bg-slate-950">
+<div class="flex justify-between items-center px-6 py-4 w-full">
+<div class="flex items-center gap-4">
+<button class="flex items-center justify-center w-10 h-10 rounded-full hover:bg-[#cde6f4] dark:hover:bg-slate-800 transition-colors scale-95 active:duration-100">
+<span class="material-symbols-outlined text-[#5b4fcf] dark:text-[#69f6b8]" data-icon="arrow_back">arrow_back</span>
+</button>
+<h1 class="text-lg font-bold text-[#1d3540] dark:text-slate-100 font-['Plus_Jakarta_Sans'] tracking-tight">Coffee Shop Scenario</h1>
+</div>
+<div class="flex items-center gap-3">
+<div class="flex items-center gap-1.5 bg-[#c8f17a] px-3 py-1.5 rounded-full">
+<span class="material-symbols-outlined text-[#3f5a00] text-[20px]" data-icon="local_fire_department" style="font-variation-settings: 'FILL' 1;">local_fire_department</span>
+<span class="text-[#3f5a00] font-headline font-bold text-sm">12</span>
+</div>
+<div class="text-[#5b4fcf] dark:text-[#69f6b8] font-['Plus_Jakarta_Sans'] font-bold text-sm">
+                    750 XP
+                </div>
+</div>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="flex-1 flex flex-col max-w-2xl mx-auto w-full px-4 pt-4 pb-32 gap-6 chat-scroll-area overflow-y-auto">
+<!-- Scenario Context / Header Card -->
+<header class="bg-surface-container-low p-6 rounded-xl flex items-center gap-5">
+<div class="w-16 h-16 rounded-full overflow-hidden flex-shrink-0 ring-4 ring-white">
+<img alt="AI Tutor Sophie" class="w-full h-full object-cover" data-alt="portrait of a friendly smiling professional woman with short dark hair in a bright modern studio setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAFpVI5ethG70f5gL2EibNKwGsidBewC2E1Xy84E991haKhltrusf6M75saXD47A13UnFIlSJbRN6aFv1n8ej1abjcfLwGB256hL3M_uRYGM5JBvuHy5oGbzwVIcfHhliRwhRO7mNA5CcVT7ACLK_8y4zxt68gzJY8OVcIabbOXVZrM3muZ4ldF7MigYn2AlrcVD-t4eYTdJL2oJcq-oWlUtJIdbCTjyMJVs1HzoLmt-uut4vrKakeycHSzSz-3qmXj8DvYheQFpWQ7"/>
+</div>
+<div>
+<p class="text-on-surface-variant text-sm font-medium mb-1 uppercase tracking-wider">Currently Practicing</p>
+<h2 class="text-xl font-headline font-extrabold text-on-surface leading-tight">Ordering at a Parisian Café</h2>
+</div>
+</header>
+<!-- Message List -->
+<div class="flex flex-col gap-6">
+<!-- AI Message -->
+<div class="flex flex-col gap-2 items-start max-w-[85%]">
+<div class="bg-surface-container-highest p-5 rounded-t-xl rounded-br-xl text-on-surface shadow-sm">
+<p class="text-[16px] leading-relaxed">Bonjour ! Bienvenue au Café Émeraude. Que désirez-vous commander aujourd'hui ?</p>
+</div>
+<div class="flex items-center gap-2 px-1">
+<span class="material-symbols-outlined text-outline text-sm" data-icon="volume_up">volume_up</span>
+<span class="text-xs text-on-surface-variant font-medium">Sophie • Just now</span>
+</div>
+</div>
+<!-- User Message -->
+<div class="flex flex-col gap-2 items-end max-w-[85%] ml-auto">
+<div class="bg-primary p-5 rounded-t-xl rounded-bl-xl text-on-primary shadow-md">
+<p class="text-[16px] leading-relaxed">Bonjour ! Je voudrais un grand café au lait et un croissant, s'il vous plaît.</p>
+</div>
+<div class="flex items-center gap-2 px-1">
+<span class="text-xs text-on-surface-variant font-medium">You • Sent</span>
+<span class="material-symbols-outlined text-primary text-sm" data-icon="done_all">done_all</span>
+</div>
+</div>
+<!-- Grammar Tip (Contextual Modal) -->
+<div class="bg-secondary-container/60 p-6 rounded-xl border-l-4 border-secondary animate-in fade-in slide-in-from-bottom-4 duration-500">
+<div class="flex items-start gap-4">
+<div class="bg-secondary-container p-2 rounded-lg">
+<span class="material-symbols-outlined text-on-secondary-container" data-icon="auto_awesome">auto_awesome</span>
+</div>
+<div>
+<h3 class="font-headline font-bold text-on-secondary-container mb-1">Grammar Tip</h3>
+<p class="text-on-secondary-container text-sm leading-relaxed">
+                            Excellent usage of <span class="font-bold italic">"Je voudrais"</span>. It is the polite conditional form of "vouloir" (to want), perfect for ordering in a café setting.
+                        </p>
+</div>
+</div>
+</div>
+<!-- AI Message 2 -->
+<div class="flex flex-col gap-2 items-start max-w-[85%]">
+<div class="bg-surface-container-highest p-5 rounded-t-xl rounded-br-xl text-on-surface shadow-sm">
+<p class="text-[16px] leading-relaxed">Très bien. Un café au lait et un croissant. Voulez-vous que le croissant soit chauffé ?</p>
+</div>
+<div class="flex items-center gap-2 px-1">
+<span class="material-symbols-outlined text-outline text-sm" data-icon="volume_up">volume_up</span>
+<span class="text-xs text-on-surface-variant font-medium">Sophie • Typing...</span>
+</div>
+</div>
+</div>
+</main>
+<!-- Floating Input Area -->
+<div class="fixed bottom-[88px] left-0 w-full px-4 z-40">
+<div class="max-w-2xl mx-auto bg-surface-container-lowest shadow-2xl rounded-xl p-3 flex items-center gap-3 border border-outline-variant/10">
+<button class="w-12 h-12 flex items-center justify-center rounded-xl bg-surface-container-high hover:bg-surface-container-highest transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="mic" style="font-variation-settings: 'FILL' 0;">mic</span>
+</button>
+<input class="flex-1 bg-transparent border-none focus:ring-0 text-on-surface font-medium placeholder:text-outline py-2" placeholder="Type your response in French..." type="text"/>
+<button class="w-12 h-12 flex items-center justify-center rounded-xl bg-primary text-on-primary hover:bg-primary-dim transition-all active:scale-95">
+<span class="material-symbols-outlined" data-icon="send" style="font-variation-settings: 'FILL' 1;">send</span>
+</button>
+</div>
+</div>
+<!-- BottomNavBar -->
+<footer class="fixed bottom-0 left-0 w-full flex justify-around items-center px-4 pb-6 pt-3 bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl z-50 rounded-t-[24px] border-t border-[#9db6c3]/15 shadow-[0_-12px_32px_-4px_rgba(29,53,64,0.06)]">
+<!-- Learn -->
+<a class="flex flex-col items-center justify-center text-[#1d3540] dark:text-slate-400 px-5 py-2 hover:text-[#5b4fcf] dark:hover:text-[#69f6b8] transition-colors" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="school">school</span>
+<span class="font-['Plus_Jakarta_Sans'] text-[12px] font-semibold">Learn</span>
+</a>
+<!-- Library -->
+<a class="flex flex-col items-center justify-center text-[#1d3540] dark:text-slate-400 px-5 py-2 hover:text-[#5b4fcf] dark:hover:text-[#69f6b8] transition-colors" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="local_library">local_library</span>
+<span class="font-['Plus_Jakarta_Sans'] text-[12px] font-semibold">Library</span>
+</a>
+<!-- Practice (Active State) -->
+<a class="flex flex-col items-center justify-center bg-[#c8f17a] dark:bg-[#5b4fcf] text-[#1d3540] dark:text-white rounded-[24px] px-5 py-2 transition-all duration-300 cubic-bezier(0.34,1.56,0.64,1) scale-110" href="#">
+<span class="material-symbols-outlined mb-0.5" data-icon="forum" style="font-variation-settings: 'FILL' 1;">forum</span>
+<span class="font-['Plus_Jakarta_Sans'] text-[12px] font-semibold">Practice</span>
+</a>
+<!-- Profile -->
+<a class="flex flex-col items-center justify-center text-[#1d3540] dark:text-slate-400 px-5 py-2 hover:text-[#5b4fcf] dark:hover:text-[#69f6b8] transition-colors" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="person">person</span>
+<span class="font-['Plus_Jakarta_Sans'] text-[12px] font-semibold">Profile</span>
+</a>
+</footer>
+
+<script>
+// ——— LearnWise SPA Router ———
+(function() {
+  const PAGE = 'conversation.html';
+
+  // Active nav item highlight
+  document.querySelectorAll('a[href], button[data-nav]').forEach(el => {
+    const href = el.getAttribute('href') || '';
+    if (href === PAGE) {
+      el.classList.add('nav-active');
+    }
+  });
+
+  // Smooth page transitions
+  document.addEventListener('click', function(e) {
+    const link = e.target.closest('a[href]');
+    if (!link) return;
+    const href = link.getAttribute('href');
+    if (!href || href === '#' || href.startsWith('http') || href.startsWith('mailto')) return;
+    e.preventDefault();
+    document.body.style.opacity = '0';
+    document.body.style.transition = 'opacity 0.2s ease';
+    setTimeout(() => { window.location.href = href; }, 200);
+  });
+
+  // Fade in on load
+  document.body.style.opacity = '0';
+  window.addEventListener('DOMContentLoaded', () => {
+    requestAnimationFrame(() => {
+      document.body.style.transition = 'opacity 0.3s ease';
+      document.body.style.opacity = '1';
+    });
+  });
+})();
+</script>
+<nav id="bottom-nav" class="fixed bottom-0 left-0 w-full flex justify-around items-center px-4 pb-safe pt-2 pb-4 bg-[#f4faff]/95 backdrop-blur-md border-t border-[#9db6c3]/15 shadow-[0_-4px_20px_-4px_rgba(29,53,64,0.06)] z-50 rounded-t-[1.5rem]">
+<a class="flex flex-col items-center justify-center text-[#1d3540] px-4 py-2 hover:bg-[#e7f6ff] rounded-xl transition-all duration-300 transform active:scale-90" href="dashboard.html">
+<span class="material-symbols-outlined text-[22px]" style="font-variation-settings:'FILL' 0;">home</span>
+<span class="text-[10px] font-semibold mt-0.5">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#1d3540] px-4 py-2 hover:bg-[#e7f6ff] rounded-xl transition-all duration-300 transform active:scale-90" href="roadmap.html">
+<span class="material-symbols-outlined text-[22px]" style="font-variation-settings:'FILL' 0;">school</span>
+<span class="text-[10px] font-semibold mt-0.5">Roadmap</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-[#c8f17a] text-[#5b4fcf] rounded-[1.5rem] px-4 py-2 transition-all duration-300 transform active:scale-90" href="speech.html">
+<span class="material-symbols-outlined text-[22px]" style="font-variation-settings:'FILL' 1;">mic</span>
+<span class="text-[10px] font-semibold mt-0.5">Practice</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#1d3540] px-4 py-2 hover:bg-[#e7f6ff] rounded-xl transition-all duration-300 transform active:scale-90" href="leaderboard.html">
+<span class="material-symbols-outlined text-[22px]" style="font-variation-settings:'FILL' 0;">leaderboard</span>
+<span class="text-[10px] font-semibold mt-0.5">Rank</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#1d3540] px-4 py-2 hover:bg-[#e7f6ff] rounded-xl transition-all duration-300 transform active:scale-90" href="achievements.html">
+<span class="material-symbols-outlined text-[22px]" style="font-variation-settings:'FILL' 0;">person</span>
+<span class="text-[10px] font-semibold mt-0.5">Profile</span>
+</a>
+</nav>
+
+<script>
+(function(){
+  const RESPONSES = [
+    "That's a great start! Your pronunciation of that word was nearly perfect.",
+    "I noticed you hesitated on the second syllable. Let's try that again.",
+    "Excellent! The intonation was spot on. Medical terminology is tricky.",
+    "Could you repeat the last phrase? I want to make sure I understood correctly.",
+    "Very well done! You sound like a native speaker in that context.",
+    "Let's slow down a little and focus on the consonant clusters.",
+  ];
+  let respIdx = 0;
+
+  const chatContainer = document.querySelector('[class*="overflow-y-auto"],[class*="flex-1"][class*="overflow"]');
+  const inputEl   = document.querySelector('input[type="text"],textarea,[contenteditable]');
+  const sendBtns  = document.querySelectorAll('button');
+
+  function addMessage(text, isUser){
+    if(!chatContainer) return;
+    const wrap = document.createElement('div');
+    wrap.className = `flex ${isUser?'justify-end':'justify-start'} mb-3 animate-fade-in`;
+    const bubble = document.createElement('div');
+    bubble.className = isUser
+      ? 'max-w-[75%] bg-primary text-white px-4 py-3 rounded-2xl rounded-br-sm text-sm font-medium'
+      : 'max-w-[75%] bg-surface-container-low text-on-surface px-4 py-3 rounded-2xl rounded-bl-sm text-sm';
+    bubble.textContent = text;
+    wrap.appendChild(bubble);
+    chatContainer.appendChild(wrap);
+    chatContainer.scrollTop = chatContainer.scrollHeight;
+  }
+
+  function showTyping(){
+    if(!chatContainer) return;
+    const el = document.createElement('div');
+    el.id='typing-indicator';
+    el.className='flex justify-start mb-3';
+    el.innerHTML='<div class="bg-surface-container-low px-4 py-3 rounded-2xl rounded-bl-sm flex gap-1 items-center"><span class="w-2 h-2 bg-[#5b4fcf] rounded-full animate-bounce" style="animation-delay:0s"></span><span class="w-2 h-2 bg-[#5b4fcf] rounded-full animate-bounce" style="animation-delay:0.15s"></span><span class="w-2 h-2 bg-[#5b4fcf] rounded-full animate-bounce" style="animation-delay:0.3s"></span></div>';
+    chatContainer.appendChild(el);
+    chatContainer.scrollTop = chatContainer.scrollHeight;
+    return el;
+  }
+
+  function sendMessage(){
+    const text = inputEl ? inputEl.value.trim() : 'Hello, let me practice my pronunciation.';
+    if(!text) return;
+    addMessage(text, true);
+    if(inputEl) inputEl.value='';
+    const typing = showTyping();
+    setTimeout(()=>{
+      typing?.remove();
+      addMessage(RESPONSES[respIdx % RESPONSES.length], false);
+      respIdx++;
+    }, 1200 + Math.random()*800);
+  }
+
+  // Wire send buttons
+  sendBtns.forEach(btn=>{
+    const icon = btn.querySelector('.material-symbols-outlined');
+    const txt  = btn.textContent.trim().toLowerCase();
+    if(icon && (icon.textContent==='send'||icon.textContent==='arrow_upward') || txt==='send'){
+      btn.addEventListener('click', sendMessage);
+    }
+  });
+
+  // Enter key to send
+  if(inputEl){
+    inputEl.addEventListener('keydown',e=>{ if(e.key==='Enter'&&!e.shiftKey){ e.preventDefault(); sendMessage(); } });
+  }
+
+  // Mic button in conversation - simulate voice input
+  sendBtns.forEach(btn=>{
+    const icon = btn.querySelector('.material-symbols-outlined');
+    if(icon && icon.textContent==='mic'){
+      btn.addEventListener('click',()=>{
+        icon.textContent='stop';
+        btn.classList.add('bg-red-100');
+        setTimeout(()=>{
+          icon.textContent='mic';
+          btn.classList.remove('bg-red-100');
+          if(inputEl) inputEl.value="Can you explain the diagnosis procedure?";
+        },2000);
+      });
+    }
+  });
+
+  // End session button
+  sendBtns.forEach(btn=>{
+    if(btn.textContent.toLowerCase().includes('end')||btn.textContent.toLowerCase().includes('finish')){
+      btn.addEventListener('click',()=>window.location.href='achievements.html');
+    }
+  });
+})();
+</script>
+<style>
+@keyframes fade-in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.animate-fade-in{animation:fade-in 0.3s ease}
+</style>
+</body></html>

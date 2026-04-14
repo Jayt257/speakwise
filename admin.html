@@ -9,7 +9,9 @@
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
 <script src="data/roadmap-data.js"></script>
 <script src="data/activities-content.js"></script>
+<script src="data/content-bundle.js"></script>
 <script src="data/content-loader.js"></script>
+<script src="data/lw-init.js"></script>
 <script src="data/blocks-renderer.js"></script>
 <style>
 *{box-sizing:border-box;margin:0;padding:0;}
@@ -450,8 +452,9 @@ textarea.field-input{resize:vertical;min-height:80px;line-height:1.6;}
 </div>
 
 <script>
-// ── State ──────────────────────────────────────────────────────────────────
-let selectedLang = 'hindi';
+// BUG #12 FIX: derive selectedLang from user's stored language pair, not hardcoded default
+const _lp0 = JSON.parse(localStorage.getItem('lw_lang_pair') || '{}');
+let selectedLang = _lp0.toId || 'hindi';
 let selectedType = 'lesson';
 let selectedMonth = 0;
 let selectedActivity = null;
@@ -614,7 +617,7 @@ function renderActivityList() {
 }
 
 // ── Select & Load Activity ─────────────────────────────────────────────────
-function selectActivity(act) {
+async function selectActivity(act) {
   selectedActivity = act;
   renderActivityList();
 
@@ -632,8 +635,19 @@ function selectActivity(act) {
   document.getElementById('ed-type-label').style.color = ti.color;
   document.getElementById('ed-act-title').textContent = act.title;
 
-  // Load saved content or defaults
-  const saved = LWContent.getContent(act.id) || {};
+  // BUG #7 FIX: Try to load JSON content when localStorage is empty
+  let saved = LWContent.getContent(act.id) || null;
+  if (!saved || saved._autoLoaded) {
+    // Admin hasn't manually edited — try to load from bundle or JSON files
+    const LANG_TO_ISO = LWInit ? LWInit.LANG_TO_ISO : {};
+    const lp = JSON.parse(localStorage.getItem('lw_lang_pair') || '{}');
+    const srcISO = LANG_TO_ISO[lp.fromId || 'english'] || 'en';
+    const tgtISO = LANG_TO_ISO[selectedLang] || 'hi';
+    const loaded = await LWLoader.getContent(act.id, srcISO, tgtISO);
+    if (loaded) saved = loaded;
+  }
+  if (!saved) saved = {};
+
   currentBlocks = (saved.blocks || []).map(b => ({...b}));
 
   // Fill fields
@@ -1338,20 +1352,21 @@ function showToast(msg, type='success') {
 // ── JSON File Export ───────────────────────────────────────────────────────
 function exportActivityJSONAdmin() {
   if (!selectedActivity) { showToast('No activity selected', 'warning'); return; }
-  // First save current state to localStorage
-  saveActivity();
-  // Then use LWLoader to export
+  saveActivity(); // persist to localStorage first
+
+  // BUG #6 FIX: derive ISO codes from selectedLang, not hardcoded 'gu'
+  const LANG_TO_ISO = LWInit ? LWInit.LANG_TO_ISO : { hindi:'hi', gujarati:'gu', english:'en' };
+  const lp  = JSON.parse(localStorage.getItem('lw_lang_pair') || '{}');
+  const src = LANG_TO_ISO[lp.fromId || 'english'] || 'en';
+  const tgt = LANG_TO_ISO[selectedLang]            || 'hi'; // use admin sidebar's selected lang
+
   const json = typeof LWLoader !== 'undefined'
-    ? LWLoader.exportActivityJSON(selectedActivity.id, selectedLang.slice(0,2), 'gu')
+    ? LWLoader.exportActivityJSON(selectedActivity.id, src, tgt)
     : LWContent.exportJSON();
 
   if (!json) { showToast('No content to export', 'warning'); return; }
 
-  const lp = JSON.parse(localStorage.getItem('lw_lang_pair') || '{}');
-  const src = (lp.fromId || 'english').slice(0,2);
-  const tgt = selectedLang.slice(0,2) === 'gu' ? 'gu' : selectedLang.slice(0,2);
   const filename = `${src}-${tgt}-activity-${selectedActivity.id}-${selectedActivity.type}.json`;
-
   const blob = new Blob([json], { type: 'application/json' });
   const a = document.createElement('a');
   a.href = URL.createObjectURL(blob);
@@ -1360,14 +1375,16 @@ function exportActivityJSONAdmin() {
   showToast(`Exported ${filename}`);
 }
 
-function reloadFromJSONAdmin() {
+async function reloadFromJSONAdmin() {
   if (!selectedActivity || typeof LWLoader === 'undefined') return;
-  const lp = JSON.parse(localStorage.getItem('lw_lang_pair') || '{}');
-  const src = (lp.fromId || 'english').slice(0,2);
-  LWLoader.reload(selectedActivity.id, src, 'gu').then(data => {
-    if (data) { loadActivity(selectedActivity); showToast('Reloaded from JSON file'); }
-    else showToast('No JSON file found for this activity', 'warning');
-  });
+  // BUG #6 FIX: derive ISO codes from selectedLang
+  const LANG_TO_ISO = LWInit ? LWInit.LANG_TO_ISO : { hindi:'hi', gujarati:'gu', english:'en' };
+  const lp  = JSON.parse(localStorage.getItem('lw_lang_pair') || '{}');
+  const src = LANG_TO_ISO[lp.fromId || 'english'] || 'en';
+  const tgt = LANG_TO_ISO[selectedLang]            || 'hi';
+  const data = await LWLoader.reload(selectedActivity.id, src, tgt);
+  if (data) { selectActivity(selectedActivity); showToast('Reloaded from JSON/bundle'); }
+  else showToast('No content found for this activity', 'warning');
 }
 
 // ── Escape ─────────────────────────────────────────────────────────────────

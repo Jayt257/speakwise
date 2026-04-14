@@ -8,7 +8,9 @@
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
 <script src="data/roadmap-data.js"></script>
 <script src="data/activities-content.js"></script>
+<script src="data/content-bundle.js"></script>
 <script src="data/content-loader.js"></script>
+<script src="data/lw-init.js"></script>
 <script src="data/blocks-renderer.js"></script>
 <script src="data/en-gu-month1.js"></script>
 <style>
@@ -166,18 +168,18 @@ const AID=parseInt(P.get('id'))||1;
 const AXP=parseInt(P.get('xp'))||30;
 let act=null,cnt=null,blks=[],step=0,completed=false;
 
-function init(){
+async function init(){
   const all=LWData.getActivities(LANG);
   outer:for(const m of all)for(const a of m.activities){if(a.id===AID){act=a;break outer;}}
-  const lp=window.LW_LANG_PAIR;
-  if(lp){document.getElementById('lp-badge').textContent=lp.fromFlag+'→'+lp.toFlag;}
-  setTimeout(()=>{
-    cnt=LWContent.getContent(AID);
-    blks=cnt?.blocks||[];
-    document.getElementById('nav-title').textContent=cnt?.title||act?.title||'Lesson';
-    document.getElementById('nav-xp').textContent='⚡'+(cnt?.xp||act?.xp||AXP);
-    render();
-  },150);
+  const lp=JSON.parse(localStorage.getItem('lw_lang_pair')||'{}');
+  const badge=document.getElementById('lp-badge');
+  if(badge&&lp.fromFlag&&lp.toFlag){badge.textContent=lp.fromFlag+'→'+lp.toFlag;}
+  // BUG #4 FIX: await content
+  cnt = await LWInit.loadActivityContent(AID, LANG);
+  blks=cnt?.blocks||[];
+  document.getElementById('nav-title').textContent=cnt?.title||act?.title||'Lesson';
+  document.getElementById('nav-xp').textContent='⚡'+(cnt?.xp||act?.xp||AXP);
+  render();
 }
 
 function render(){
@@ -348,7 +350,7 @@ function goBack(){
   window.location.href='roadmap.html?lang='+LANG+(d?'&completed='+AID+'&xp='+(cnt?.xp||AXP):'');
 }
 function playAu(url){if(url)try{new Audio(url).play();}catch(e){}}
-function guHighlight(s){return s.replace(/([\u0A80-\u0AFF]+)/g,'<span class="gu gu-highlight">$1</span>');}
+function guHighlight(s){const re=LWInit.getScriptRegex(window.LW_ACTIVE_TGT||'hi');return String(s||'').replace(re,'<span class="gu gu-highlight">$1</span>');}
 function esc(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
 function ripple(el){const r=document.createElement('div');r.className='ripple';const rect=el.getBoundingClientRect();const sz=Math.max(rect.width,rect.height);r.style.cssText=`width:${sz}px;height:${sz}px;left:${sz/2*-1+40}px;top:${sz/2*-1+22}px`;el.appendChild(r);setTimeout(()=>r.remove(),600);}
 function launchFW(){const c=document.getElementById('fw');c.style.display='block';c.width=innerWidth;c.height=innerHeight;const ctx=c.getContext('2d');const cols=['#5b4fcf','#a78bfa','#7c6fd4','#10b981','#f59e0b','#fff'];const ps=Array.from({length:110},()=>({x:innerWidth/2+(Math.random()-.5)*300,y:innerHeight*.3,vx:(Math.random()-.5)*16,vy:(Math.random()-.5)*16-6,alpha:1,color:cols[Math.floor(Math.random()*cols.length)],sz:Math.random()*5+2}));const t=()=>{ctx.clearRect(0,0,c.width,c.height);ps.forEach(p=>{p.x+=p.vx;p.y+=p.vy;p.vy+=.24;p.alpha-=.013;ctx.globalAlpha=Math.max(0,p.alpha);ctx.fillStyle=p.color;ctx.beginPath();ctx.arc(p.x,p.y,p.sz,0,Math.PI*2);ctx.fill();});if(ps.some(p=>p.alpha>0))requestAnimationFrame(t);else c.style.display='none';};t();}

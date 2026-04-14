@@ -1,0 +1,73 @@
+{
+  "id": 16,
+  "type": "listening",
+  "title": "Listening for Daily Objects",
+  "description": "Listen for room and object words.",
+  "duration": "20 min",
+  "xp": 40,
+  "week": 2,
+  "month": 1,
+  "langPair": "en-hi",
+  "tags": [
+    "english",
+    "hindi",
+    "devanagari",
+    "week-2",
+    "consonants-and-daily-objects"
+  ],
+  "blocks": [
+    {
+      "id": "b1",
+      "type": "note_template",
+      "title": "Listening Notes",
+      "instruction": "Write the words you hear:",
+      "sections": [
+        {
+          "label": "Pointing word",
+          "placeholder": "Type the word that means this..."
+        },
+        {
+          "label": "Object word",
+          "placeholder": "Type the word for book..."
+        },
+        {
+          "label": "Furniture word",
+          "placeholder": "Type the word for table..."
+        }
+      ]
+    },
+    {
+      "id": "b2",
+      "type": "gap_fill",
+      "title": "Complete the Transcript",
+      "text": "First fill in the missing words: ___, ___, ___. Listen for room items and pointing words.",
+      "gaps": [
+        "यह",
+        "किताब",
+        "मेज़"
+      ],
+      "hints": [
+        "this",
+        "book",
+        "table"
+      ]
+    },
+    {
+      "id": "b3",
+      "type": "true_false",
+      "title": "Check your listening",
+      "items": [
+        {
+          "statement": "The speaker describes things at home.",
+          "answer": true,
+          "explanation": "Room and object words are the target."
+        },
+        {
+          "statement": "The speaker asks about travel tickets.",
+          "answer": false,
+          "explanation": "Travel is not the topic here."
+        }
+      ]
+    }
+  ]
+}

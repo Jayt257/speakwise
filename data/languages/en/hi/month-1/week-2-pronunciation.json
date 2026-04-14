@@ -1,0 +1,92 @@
+{
+  "id": 14,
+  "type": "pronunciation",
+  "title": "Aspirated and Unaspirated Sounds",
+  "description": "Practice aspirated and retroflex sounds.",
+  "duration": "15 min",
+  "xp": 30,
+  "week": 2,
+  "month": 1,
+  "langPair": "en-hi",
+  "tags": [
+    "english",
+    "hindi",
+    "devanagari",
+    "week-2",
+    "consonants-and-daily-objects"
+  ],
+  "blocks": [
+    {
+      "id": "b1",
+      "type": "keypoints",
+      "title": "Main tips",
+      "points": [
+        "Retroflex sounds use the tongue curled slightly back.",
+        "Aspirated sounds matter in Hindi meaning.",
+        "Listen closely to the first consonant in each word."
+      ]
+    },
+    {
+      "id": "b2",
+      "type": "minimal_pairs",
+      "title": "Sound Contrast Pairs",
+      "instruction": "Can you hear the difference?",
+      "pairs": [
+        {
+          "word1": "ट",
+          "word2": "त",
+          "sound1": "retroflex t",
+          "sound2": "dental t",
+          "diff": "tongue position changes"
+        },
+        {
+          "word1": "ड",
+          "word2": "द",
+          "sound1": "retroflex d",
+          "sound2": "dental d",
+          "diff": "tongue position changes"
+        },
+        {
+          "word1": "स",
+          "word2": "श",
+          "sound1": "plain s",
+          "sound2": "sh sound",
+          "diff": "different tongue shape"
+        }
+      ]
+    },
+    {
+      "id": "b3",
+      "type": "stress_pattern",
+      "title": "Where is the rhythm?",
+      "words": [
+        {
+          "word": "किताब",
+          "syllables": [
+            "ki",
+            "taab"
+          ],
+          "stressed": 1,
+          "note": "Keep both syllables even and clear."
+        },
+        {
+          "word": "स्कूल",
+          "syllables": [
+            "skūl"
+          ],
+          "stressed": 0,
+          "note": "A single strong syllable."
+        }
+      ]
+    },
+    {
+      "id": "b4",
+      "type": "tongue_twister",
+      "title": "Tongue Twister",
+      "text": "खरगोश खेत में खड़ा है",
+      "romanization": "khargosh khet mein khaṛā hai",
+      "translation": "the rabbit is standing in the field",
+      "tip": "Say it slowly three times, then once at natural speed."
+    }
+  ]
+}

@@ -1,0 +1,87 @@
+{
+  "id": 14,
+  "type": "pronunciation",
+  "week": 2,
+  "month": 1,
+  "langPair": "hi-en",
+  "title": "अंग्रेज़ी स्वर ध्वनियाँ — English Vowel Sounds",
+  "description": "अंग्रेज़ी के 12 vowel sounds — हिन्दी में नहीं होते ऐसे sound जैसे /ʌ/, /æ/, /ɒ/।",
+  "duration": "10 मिनट",
+  "xp": 30,
+  "tags": [
+    "pronunciation",
+    "vowels"
+  ],
+  "blocks": [
+    {
+      "id": "p1",
+      "type": "keypoints",
+      "title": "अंग्रेज़ी के ज़रूरी Vowel Sounds",
+      "points": [
+        "/æ/ — 'cat', 'bag', 'man' — मुँह खुला, जीभ नीचे (हिन्दी 'ए' से अलग!)",
+        "/ʌ/ — 'cup', 'bus', 'fun' — छोटा, unstressed 'अ' जैसा sound",
+        "/ɒ/ — 'hot', 'not', 'dog' — गोल मुँह, British English में",
+        "/iː/ — 'seat', 'green', 'me' — लंबा 'ई' sound",
+        "/ɑː/ — 'car', 'far', 'start' — लंबा 'आ', British में 'r' नहीं बोलते",
+        "/ɜː/ — 'bird', 'word', 'her' — हिन्दी में नहीं! ('ऑर' जैसा)"
+      ]
+    },
+    {
+      "id": "p2",
+      "type": "minimal_pairs",
+      "title": "Vowel Contrast Pairs",
+      "instruction": "इन जोड़ियों में vowel का फ़र्क सुनें:",
+      "pairs": [
+        {
+          "word1": "bit",
+          "word2": "beat",
+          "sound1": "/ɪ/ short",
+          "sound2": "/iː/ long",
+          "diff": "length — short vs long 'i'"
+        },
+        {
+          "word1": "cat",
+          "word2": "cut",
+          "sound1": "/æ/",
+          "sound2": "/ʌ/",
+          "diff": "position of tongue"
+        },
+        {
+          "word1": "man",
+          "word2": "men",
+          "sound1": "/æ/",
+          "sound2": "/e/",
+          "diff": "very common Indian English mistake"
+        },
+        {
+          "word1": "ship",
+          "word2": "sheep",
+          "sound1": "/ɪ/",
+          "sound2": "/iː/",
+          "diff": "ship ≠ sheep (बहुत important!)"
+        },
+        {
+          "word1": "hot",
+          "word2": "hat",
+          "sound1": "/ɒ/",
+          "sound2": "/æ/",
+          "diff": "common confusion"
+        }
+      ]
+    },
+    {
+      "id": "p3",
+      "type": "tongue_twister",
+      "title": "Vowel Practice",
+      "text": "Red lorry, yellow lorry, red lorry, yellow lorry.",
+      "romanization": "रेड लॉरी, येलो लॉरी, रेड लॉरी, येलो लॉरी।",
+      "translation": "लाल ट्रक, पीला ट्रक, लाल ट्रक, पीला ट्रक।",
+      "tip": "'r' और 'l' और vowel sounds पर ध्यान दें। 3 बार धीरे, फिर तेज़।"
+    },
+    {
+      "id": "p4",
+      "type": "tip",
+      "body": "💡 'ship' vs 'sheep' गलत मत बोलें — यह very embarrassing mistake है! ship = /ʃɪp/ (short 'i') | sheep = /ʃiːp/ (long 'ee')। Practice: 'I am on a SHIP. I see SHEEP on the hill.'"
+    }
+  ]
+}
