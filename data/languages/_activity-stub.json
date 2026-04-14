@@ -1,0 +1,25 @@
+{
+  "_comment": "Stub activity — replace with real content",
+  "_status": "placeholder",
+  "id": 0,
+  "type": "lesson",
+  "title": "Activity Title",
+  "description": "Activity description.",
+  "duration": "15 min",
+  "xp": 30,
+  "week": 1,
+  "month": 1,
+  "blocks": [
+    {
+      "id": "b1",
+      "type": "text",
+      "title": "Coming Soon",
+      "body": "This activity is being prepared. Check back soon!"
+    },
+    {
+      "id": "b2",
+      "type": "tip",
+      "body": "📝 Admin: Replace this placeholder with real content blocks. See README.md for all 29 block types."
+    }
+  ]
+}

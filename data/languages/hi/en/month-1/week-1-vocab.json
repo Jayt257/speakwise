@@ -1,0 +1,300 @@
+{
+  "id": 2,
+  "type": "vocab",
+  "week": 1,
+  "month": 1,
+  "langPair": "hi-en",
+  "title": "ज़रूरी अभिवादन और बुनियादी शब्द",
+  "description": "अंग्रेज़ी के 25 सबसे ज़रूरी शब्द — अभिवादन, परिचय और रोज़मर्रा के वाक्यांश।",
+  "duration": "12 मिनट",
+  "xp": 20,
+  "tags": [
+    "greetings",
+    "basics",
+    "essential"
+  ],
+  "blocks": [
+    {
+      "id": "v0",
+      "type": "image_word",
+      "title": "देखकर याद करें — Visual Vocabulary",
+      "items": [
+        {
+          "emoji": "👋",
+          "word": "Hello",
+          "meaning": "नमस्ते",
+          "example": "Hello! How are you?"
+        },
+        {
+          "emoji": "🙏",
+          "word": "Thank you",
+          "meaning": "धन्यवाद",
+          "example": "Thank you very much!"
+        },
+        {
+          "emoji": "🏠",
+          "word": "Home",
+          "meaning": "घर",
+          "example": "My home is in India."
+        },
+        {
+          "emoji": "💧",
+          "word": "Water",
+          "meaning": "पानी",
+          "example": "Please give me water."
+        },
+        {
+          "emoji": "☕",
+          "word": "Tea",
+          "meaning": "चाय",
+          "example": "I like tea."
+        },
+        {
+          "emoji": "👤",
+          "word": "I / Me",
+          "meaning": "मैं / मुझे",
+          "example": "I am learning English."
+        },
+        {
+          "emoji": "📚",
+          "word": "Learn",
+          "meaning": "सीखना",
+          "example": "I want to learn English."
+        },
+        {
+          "emoji": "✅",
+          "word": "Yes",
+          "meaning": "हाँ",
+          "example": "Yes, I understand."
+        }
+      ]
+    },
+    {
+      "id": "v1",
+      "type": "vocab_table",
+      "title": "सप्ताह 1 के 25 शब्द",
+      "words": [
+        {
+          "word": "Hello / Hi",
+          "meaning": "नमस्ते / हाय",
+          "example": "Hello! Nice to meet you."
+        },
+        {
+          "word": "Goodbye / Bye",
+          "meaning": "अलविदा / बाय",
+          "example": "Goodbye! See you tomorrow."
+        },
+        {
+          "word": "Thank you",
+          "meaning": "धन्यवाद",
+          "example": "Thank you for your help."
+        },
+        {
+          "word": "Please",
+          "meaning": "कृपया",
+          "example": "Please speak slowly."
+        },
+        {
+          "word": "Sorry",
+          "meaning": "माफ़ कीजिए",
+          "example": "Sorry, I don't understand."
+        },
+        {
+          "word": "Yes",
+          "meaning": "हाँ",
+          "example": "Yes, I speak Hindi."
+        },
+        {
+          "word": "No",
+          "meaning": "नहीं",
+          "example": "No, thank you."
+        },
+        {
+          "word": "OK / Fine",
+          "meaning": "ठीक है",
+          "example": "OK, let's go!"
+        },
+        {
+          "word": "I",
+          "meaning": "मैं",
+          "example": "I am from India."
+        },
+        {
+          "word": "You",
+          "meaning": "आप / तुम",
+          "example": "You speak English well."
+        },
+        {
+          "word": "My name is...",
+          "meaning": "मेरा नाम... है",
+          "example": "My name is Priya."
+        },
+        {
+          "word": "I am from...",
+          "meaning": "मैं... से हूँ",
+          "example": "I am from Delhi."
+        },
+        {
+          "word": "Nice to meet you",
+          "meaning": "आपसे मिलकर खुशी हुई",
+          "example": "Nice to meet you, Alex!"
+        },
+        {
+          "word": "How are you?",
+          "meaning": "आप कैसे हैं?",
+          "example": "Hello! How are you?"
+        },
+        {
+          "word": "I am fine",
+          "meaning": "मैं ठीक हूँ",
+          "example": "I am fine, thank you."
+        },
+        {
+          "word": "What",
+          "meaning": "क्या / कौन सा",
+          "example": "What is your name?"
+        },
+        {
+          "word": "Where",
+          "meaning": "कहाँ",
+          "example": "Where are you from?"
+        },
+        {
+          "word": "Help",
+          "meaning": "मदद",
+          "example": "Help me, please!"
+        },
+        {
+          "word": "Slowly",
+          "meaning": "धीरे",
+          "example": "Please speak slowly."
+        },
+        {
+          "word": "Again",
+          "meaning": "फिर / दोबारा",
+          "example": "Say it again, please."
+        },
+        {
+          "word": "Understand",
+          "meaning": "समझना",
+          "example": "I don't understand."
+        },
+        {
+          "word": "Speak",
+          "meaning": "बोलना",
+          "example": "Do you speak Hindi?"
+        },
+        {
+          "word": "Learn",
+          "meaning": "सीखना",
+          "example": "I am learning English."
+        },
+        {
+          "word": "Good morning",
+          "meaning": "शुभ प्रभात / सुप्रभात",
+          "example": "Good morning! How are you?"
+        },
+        {
+          "word": "Good night",
+          "meaning": "शुभ रात्रि",
+          "example": "Good night! Sleep well."
+        }
+      ]
+    },
+    {
+      "id": "v2",
+      "type": "vocabulary_spotlight",
+      "word": "Hello",
+      "meaning": "नमस्ते",
+      "pronunciation": "Heh-loh",
+      "partOfSpeech": "exclamation / greeting",
+      "examples": [
+        {
+          "gu": "Hello! My name is Priya.",
+          "en": "नमस्ते! मेरा नाम प्रिया है।"
+        },
+        {
+          "gu": "Hello, how are you today?",
+          "en": "नमस्ते, आज आप कैसे हैं?"
+        }
+      ],
+      "relatedWords": [
+        "Hi (informal)",
+        "Hey (very casual)",
+        "Good morning/afternoon/evening (formal)"
+      ],
+      "culturalNote": "अंग्रेज़ी में 'Hello' सबसे आम अभिवादन है। 'Hi' उससे थोड़ा कम formal है। Phone पर अंग्रेज़ी में भी 'Hello' से ही शुरू करते हैं!"
+    },
+    {
+      "id": "v3",
+      "type": "word_family",
+      "title": "अभिवादन का परिवार — Greeting Word Family",
+      "root": "Greet",
+      "rootMeaning": "अभिवादन करना (मूल क्रिया)",
+      "members": [
+        {
+          "word": "Greeting",
+          "meaning": "अभिवादन (संज्ञा)"
+        },
+        {
+          "word": "Greet",
+          "meaning": "अभिवादन करना (क्रिया)"
+        },
+        {
+          "word": "Greeted",
+          "meaning": "अभिवादन किया (भूतकाल)"
+        },
+        {
+          "word": "Greeter",
+          "meaning": "स्वागत करने वाला"
+        },
+        {
+          "word": "Greetings!",
+          "meaning": "नमस्कार! (औपचारिक अभिवादन)"
+        }
+      ]
+    },
+    {
+      "id": "v4",
+      "type": "matching",
+      "title": "जोड़ी मिलाएँ — Match the Pairs",
+      "instruction": "बाईं तरफ अंग्रेज़ी, दाईं तरफ हिन्दी — सही जोड़ी चुनें",
+      "leftItems": [
+        "Hello",
+        "Thank you",
+        "Sorry",
+        "Yes",
+        "Goodbye"
+      ],
+      "rightItems": [
+        "अलविदा",
+        "धन्यवाद",
+        "माफ़ कीजिए",
+        "नमस्ते",
+        "हाँ"
+      ],
+      "pairs": [
+        [
+          0,
+          3
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          4,
+          0
+        ]
+      ]
+    }
+  ]
+}

@@ -1,0 +1,60 @@
+{
+  "id": 5,
+  "type": "writing",
+  "title": "Write Your First Greetings",
+  "description": "Write your first self-introduction in Hindi.",
+  "duration": "20 min",
+  "xp": 35,
+  "week": 1,
+  "month": 1,
+  "langPair": "en-hi",
+  "tags": [
+    "english",
+    "hindi",
+    "devanagari",
+    "week-1",
+    "script-vowels-and-greetings"
+  ],
+  "blocks": [
+    {
+      "id": "b1",
+      "type": "sentence_builder",
+      "title": "Build the sentence",
+      "translation": "Arrange the words to form a correct Hindi sentence.",
+      "words": [
+        "मैं",
+        "छात्र",
+        "हूँ",
+        "आज"
+      ],
+      "correctOrder": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "id": "b2",
+      "type": "translation_task",
+      "title": "Translate",
+      "instruction": "Translate to Hindi.",
+      "items": [
+        {
+          "source": "I am a student.",
+          "answer": "मैं छात्र हूँ।"
+        },
+        {
+          "source": "My name is Riya.",
+          "answer": "मेरा नाम रिया है।"
+        }
+      ]
+    },
+    {
+      "id": "b3",
+      "type": "writing",
+      "prompt": "Write 3 short self-introduction lines in Hindi. Include your name, greeting, and one polite word.",
+      "minWords": 20,
+      "sampleAnswer": "नमस्ते। मेरा नाम आरव है। धन्यवाद।"
+    }
+  ]
+}

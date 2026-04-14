@@ -1,0 +1,26 @@
+{
+  "_comment": "German → Arabic language pair metadata",
+  "_status": "stub — content not yet created",
+  "pairId": "de-ar",
+  "source": {
+    "id": "de",
+    "name": "German",
+    "flag": "🇩🇪"
+  },
+  "target": {
+    "id": "ar",
+    "name": "Arabic",
+    "flag": "🇸🇦"
+  },
+  "status": "planned",
+  "months": [
+    {
+      "month": 1,
+      "title": "Foundation",
+      "description": "Learn Arabic basics from German.",
+      "status": "not-started",
+      "weeks": []
+    }
+  ],
+  "_howToCreate": "See /data/README.md for instructions on creating de-ar content."
+}

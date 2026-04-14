@@ -1,0 +1,26 @@
+{
+  "_comment": "Hindi → Spanish language pair metadata",
+  "_status": "stub — content not yet created",
+  "pairId": "hi-es",
+  "source": {
+    "id": "hi",
+    "name": "Hindi",
+    "flag": "🇮🇳"
+  },
+  "target": {
+    "id": "es",
+    "name": "Spanish",
+    "flag": "🇪🇸"
+  },
+  "status": "planned",
+  "months": [
+    {
+      "month": 1,
+      "title": "Foundation",
+      "description": "Learn Spanish basics from Hindi.",
+      "status": "not-started",
+      "weeks": []
+    }
+  ],
+  "_howToCreate": "See /data/README.md for instructions on creating hi-es content."
+}

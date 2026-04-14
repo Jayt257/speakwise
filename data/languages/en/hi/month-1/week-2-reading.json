@@ -1,0 +1,77 @@
+{
+  "id": 13,
+  "type": "reading",
+  "title": "At Home in Hindi",
+  "description": "Read a short room description and answer questions.",
+  "duration": "20 min",
+  "xp": 25,
+  "week": 2,
+  "month": 1,
+  "langPair": "en-hi",
+  "tags": [
+    "english",
+    "hindi",
+    "devanagari",
+    "week-2",
+    "consonants-and-daily-objects"
+  ],
+  "blocks": [
+    {
+      "id": "b1",
+      "type": "reading",
+      "passage": "📖 At Home in Hindi\n\nयह मेरा घर है। (Yah mera ghar hai.) Here I see a मेज़, a कुर्सी, a किताब, and a घड़ी. I learn that Hindi speakers often use simple sentences to describe what is near them. My teacher points to the door and says, यह दरवाज़ा है। (Yah darvāzā hai.) Then she points to the window and says, वह खिड़की है। (Vah khidki hai.)\n\nI repeat the words slowly: घर, मेज़, कुर्सी, किताब. The more I say them, the easier they become. By the end of practice, I can describe a room using clear and short Hindi sentences.",
+      "questions": [
+        {
+          "q": "What room item is mentioned?",
+          "a": "Table, chair, book, clock, door, or window."
+        },
+        {
+          "q": "What does यह mean?",
+          "a": "This."
+        },
+        {
+          "q": "What does वह mean?",
+          "a": "That."
+        },
+        {
+          "q": "What can the learner do by the end?",
+          "a": "Describe a room using short Hindi sentences."
+        }
+      ]
+    },
+    {
+      "id": "b2",
+      "type": "true_false",
+      "title": "Quick Check",
+      "items": [
+        {
+          "statement": "The learner practices one word at a time.",
+          "answer": true,
+          "explanation": "The passage describes slow, step-by-step learning."
+        },
+        {
+          "statement": "Hindi is only used in formal books.",
+          "answer": false,
+          "explanation": "Hindi is used in daily conversation too."
+        },
+        {
+          "statement": "The learner learns useful everyday language.",
+          "answer": true,
+          "explanation": "The passage focuses on practical words and sentences."
+        }
+      ]
+    },
+    {
+      "id": "b3",
+      "type": "cultural_note",
+      "title": "Cultural Note",
+      "icon": "🌍",
+      "content": "Hindi sentences often stay short and clear in everyday conversation. Pointing words like यह and वह are very useful.",
+      "tags": [
+        "culture",
+        "hindi",
+        "daily-life"
+      ]
+    }
+  ]
+}

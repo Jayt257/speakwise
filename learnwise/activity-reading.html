@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="theme-color" content="#10b981"/>
+<meta name="description" content="LearnWise – Reading Practice"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Reading · LearnWise</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Inter',sans-serif;color:#e0ddf5;min-height:100vh;background:#0a0818;overflow-x:hidden;}
+h1,h2,h3,h4,h5,button,label{font-family:'Plus Jakarta Sans',sans-serif;}
+.material-symbols-outlined{font-variation-settings:'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 24;}
+.bg-deep{position:fixed;inset:0;z-index:0;background:radial-gradient(ellipse at 25% 25%,#0d2818 0%,#0d0b22 55%,#060410 100%);}
+.bg-grid{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:0.3;background-image:linear-gradient(rgba(16,185,129,0.05) 1px,transparent 1px),linear-gradient(90deg,rgba(16,185,129,0.05) 1px,transparent 1px);background-size:48px 48px;}
+
+.top-bar{position:sticky;top:0;z-index:50;background:rgba(10,8,24,0.92);backdrop-filter:blur(20px);border-bottom:1px solid rgba(16,185,129,0.18);padding:0 16px;height:60px;display:flex;align-items:center;justify-content:space-between;gap:12px;}
+.back-btn{width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,0.55);border:1px solid rgba(255,255,255,0.1);background:rgba(255,255,255,0.05);cursor:pointer;transition:all 0.2s;text-decoration:none;}
+.back-btn:hover{background:rgba(255,255,255,0.12);color:white;}
+.top-title{font-weight:800;font-size:14px;color:white;flex:1;text-align:center;}
+.xp-pill{display:inline-flex;align-items:center;gap:3px;background:rgba(16,185,129,0.25);color:#6ee7b7;border-radius:999px;padding:5px 12px;font-size:12px;font-weight:700;border:1px solid rgba(16,185,129,0.2);}
+
+.progress-wrap{position:sticky;top:60px;z-index:40;background:rgba(10,8,24,0.85);backdrop-filter:blur(12px);padding:12px 16px;border-bottom:1px solid rgba(255,255,255,0.05);}
+.progress-track{width:100%;max-width:700px;margin:0 auto;height:8px;border-radius:4px;background:rgba(255,255,255,0.08);overflow:hidden;}
+.progress-fill{height:100%;border-radius:4px;background:linear-gradient(90deg,#10b981,#34d399);transition:width 0.6s ease;width:0%;}
+.progress-label{max-width:700px;margin:4px auto 0;display:flex;justify-content:space-between;font-size:11px;color:rgba(255,255,255,0.35);font-weight:600;}
+
+.content{position:relative;z-index:1;max-width:700px;margin:0 auto;padding:24px 16px 120px;}
+
+/* PASSAGE */
+.passage-card{background:rgba(255,255,255,0.05);backdrop-filter:blur(18px);border:1px solid rgba(255,255,255,0.1);border-radius:1.25rem;padding:28px;margin-bottom:20px;box-shadow:0 4px 24px rgba(0,0,0,0.3);animation:fadeUp 0.45s ease both;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:translateY(0);}}
+.passage-title{font-weight:900;font-size:22px;color:white;margin-bottom:16px;display:flex;align-items:center;gap:12px;}
+.passage-text{font-size:16px;line-height:2;color:rgba(255,255,255,0.7);white-space:pre-wrap;}
+.translation-toggle{margin-top:16px;padding:12px 16px;border-radius:12px;background:rgba(16,185,129,0.08);border:1px solid rgba(16,185,129,0.2);cursor:pointer;font-size:13px;color:#6ee7b7;font-weight:600;transition:all 0.2s;display:flex;align-items:center;gap:8px;}
+.translation-toggle:hover{background:rgba(16,185,129,0.15);}
+.translation-text{display:none;margin-top:12px;padding:16px;border-radius:12px;background:rgba(255,255,255,0.04);font-size:14px;line-height:1.8;color:rgba(255,255,255,0.45);font-style:italic;border:1px dashed rgba(255,255,255,0.08);}
+.translation-text.show{display:block;animation:fadeUp 0.3s ease;}
+
+/* QUESTIONS */
+.questions-section{margin-top:24px;}
+.question-card{background:rgba(255,255,255,0.05);border:1.5px solid rgba(255,255,255,0.1);border-radius:1.25rem;padding:24px;margin-bottom:16px;animation:fadeUp 0.4s ease both;}
+.q-badge{display:inline-flex;align-items:center;gap:4px;font-size:10px;font-weight:900;text-transform:uppercase;letter-spacing:0.1em;padding:4px 10px;border-radius:6px;background:rgba(16,185,129,0.2);color:#6ee7b7;margin-bottom:12px;}
+.q-text{font-weight:700;font-size:15px;color:white;margin-bottom:16px;line-height:1.5;}
+.q-options{display:flex;flex-direction:column;gap:10px;}
+.q-opt{width:100%;text-align:left;padding:14px 16px;border-radius:12px;font-size:14px;font-weight:600;cursor:pointer;transition:all 0.22s cubic-bezier(.34,1.2,.64,1);font-family:'Inter',sans-serif;display:flex;align-items:center;gap:12px;}
+.q-opt.default{background:rgba(255,255,255,0.06);border:1.5px solid rgba(255,255,255,0.1);color:rgba(255,255,255,0.75);}
+.q-opt.default:hover{background:rgba(255,255,255,0.1);border-color:rgba(255,255,255,0.2);transform:translateY(-1px);}
+.q-opt.correct{background:rgba(16,185,129,0.15);border:1.5px solid rgba(16,185,129,0.45);color:#34d399;pointer-events:none;}
+.q-opt.wrong{background:rgba(239,68,68,0.15);border:1.5px solid rgba(239,68,68,0.45);color:#f87171;pointer-events:none;}
+.q-opt.reveal{background:rgba(16,185,129,0.08);border:1.5px solid rgba(16,185,129,0.25);color:rgba(255,255,255,0.4);pointer-events:none;}
+.q-letter{width:28px;height:28px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:12px;flex-shrink:0;}
+.q-opt.default .q-letter{background:rgba(255,255,255,0.08);color:rgba(255,255,255,0.5);}
+.q-opt.correct .q-letter{background:rgba(16,185,129,0.3);color:#34d399;}
+.q-opt.wrong .q-letter{background:rgba(239,68,68,0.3);color:#f87171;}
+
+.explanation-box{margin-top:12px;padding:12px 16px;border-radius:10px;font-size:13px;line-height:1.6;animation:fadeUp 0.3s ease both;}
+.explanation-box.correct-e{background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.2);color:#6ee7b7;}
+.explanation-box.wrong-e{background:rgba(239,68,68,0.1);border:1px solid rgba(239,68,68,0.2);color:#fca5a5;}
+
+.summary-card{background:linear-gradient(135deg,rgba(16,185,129,0.1),rgba(91,79,207,0.1));border:1.5px solid rgba(16,185,129,0.25);border-radius:1.5rem;padding:28px;text-align:center;margin-top:24px;}
+
+.nav-btns{display:flex;gap:12px;margin-top:20px;justify-content:center;}
+.btn-success{padding:14px 32px;border-radius:12px;background:linear-gradient(135deg,#10b981,#059669);color:white;font-weight:800;font-size:15px;border:none;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;box-shadow:0 6px 24px rgba(16,185,129,0.45);transition:all 0.22s cubic-bezier(.34,1.2,.64,1);display:flex;align-items:center;gap:8px;}
+.btn-success:hover{transform:translateY(-2px);box-shadow:0 10px 32px rgba(16,185,129,0.55);}
+.btn-primary{padding:14px 32px;border-radius:12px;background:linear-gradient(135deg,#10b981,#34d399);color:white;font-weight:800;font-size:15px;border:none;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;box-shadow:0 6px 24px rgba(16,185,129,0.35);transition:all 0.22s cubic-bezier(.34,1.2,.64,1);display:flex;align-items:center;gap:8px;}
+.btn-primary:hover{transform:translateY(-2px);}
+
+::-webkit-scrollbar{width:4px;}
+::-webkit-scrollbar-thumb{background:rgba(16,185,129,0.3);border-radius:2px;}
+</style>
+</head>
+<body>
+<div class="bg-deep"></div>
+<div class="bg-grid"></div>
+
+<div class="top-bar">
+  <a href="roadmap.html" class="back-btn"><span class="material-symbols-outlined" style="font-size:20px;">arrow_back</span></a>
+  <div class="top-title" id="top-title">Reading Practice</div>
+  <div class="xp-pill"><span class="material-symbols-outlined" style="font-size:14px;font-variation-settings:'FILL' 1">bolt</span><span id="xp-display">+25</span> XP</div>
+</div>
+
+<div class="progress-wrap">
+  <div class="progress-track"><div class="progress-fill" id="progress-fill"></div></div>
+  <div class="progress-label"><span id="progress-step">Reading…</span><span id="progress-pct">0%</span></div>
+</div>
+
+<div class="content" id="main-content"></div>
+
+<script src="data/roadmap-data.js"></script>
+<script src="data/activity-content.js"></script>
+<script>
+'use strict';
+const params = new URLSearchParams(window.location.search);
+const langId = params.get('lang') || LWData.getSelectedLanguage();
+const actId = parseInt(params.get('id'));
+if (isNaN(actId)) window.location.href = 'roadmap.html';
+
+const contentResult = LWContent.getActivityContent(langId, actId);
+const readData = contentResult ? contentResult.data : null;
+
+let answered = 0, correct = 0;
+const questions = readData ? readData.questions : [];
+
+function init() {
+  if (!readData) {
+    document.getElementById('main-content').innerHTML = `<div style="display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:60vh;gap:16px;color:rgba(255,255,255,0.4);"><span class="material-symbols-outlined" style="font-size:48px;color:#ef4444;">error</span><div style="font-weight:700;color:white;">Content not found</div><a href="roadmap.html" class="btn-primary" style="margin-top:12px;">← Back</a></div>`;
+    return;
+  }
+  document.getElementById('top-title').textContent = readData.title;
+  document.getElementById('xp-display').textContent = '+' + readData.xp;
+  document.getElementById('progress-step').textContent = 'Read the passage';
+  render();
+}
+
+function render() {
+  const root = document.getElementById('main-content');
+  const letters = ['A','B','C','D'];
+  
+  root.innerHTML = `
+    <div class="passage-card">
+      <div class="passage-title">
+        <span class="material-symbols-outlined" style="font-size:28px;color:#34d399;font-variation-settings:'FILL' 1">menu_book</span>
+        ${readData.title}
+      </div>
+      <div class="passage-text">${readData.passage}</div>
+      ${readData.translation ? `
+        <div class="translation-toggle" onclick="toggleTranslation()">
+          <span class="material-symbols-outlined" style="font-size:18px;">translate</span>
+          Show English Translation
+        </div>
+        <div class="translation-text" id="translation">${readData.translation}</div>
+      ` : ''}
+    </div>
+
+    <div class="questions-section">
+      <div style="font-size:10px;font-weight:900;color:#6ee7b7;text-transform:uppercase;letter-spacing:0.12em;margin-bottom:16px;">📝 Comprehension Questions</div>
+      ${questions.map((q, qi) => `
+        <div class="question-card" id="qc-${qi}">
+          <div class="q-badge"><span class="material-symbols-outlined" style="font-size:12px;font-variation-settings:'FILL' 1">quiz</span>Question ${qi+1}</div>
+          <div class="q-text">${q.question}</div>
+          <div class="q-options" id="qo-${qi}">
+            ${q.options.map((opt, oi) => `
+              <button class="q-opt default" onclick="answerQ(${qi},${oi},${q.correct})">
+                <div class="q-letter">${letters[oi]}</div>
+                <span>${opt}</span>
+              </button>
+            `).join('')}
+          </div>
+          <div id="expl-${qi}"></div>
+        </div>
+      `).join('')}
+    </div>
+
+    <div id="complete-section" style="display:none;">
+      <div class="summary-card">
+        <div style="font-size:48px;margin-bottom:12px;">📖</div>
+        <div style="font-weight:900;font-size:20px;color:white;margin-bottom:8px;">Reading Complete!</div>
+        <div style="font-size:14px;color:rgba(255,255,255,0.5);line-height:1.6;">You answered <span id="score-correct" style="color:#34d399;font-weight:900;">0</span> out of <span style="font-weight:700;">${questions.length}</span> correctly.</div>
+        <div style="font-size:28px;font-weight:900;color:#6ee7b7;margin:16px 0;">⚡ +${readData.xp} XP</div>
+      </div>
+      <div class="nav-btns" style="margin-top:24px;">
+        <button class="btn-success" onclick="completeReading()">
+          <span class="material-symbols-outlined" style="font-size:18px;font-variation-settings:'FILL' 1">check_circle</span>
+          Complete & Return to Roadmap
+        </button>
+      </div>
+    </div>`;
+    
+  document.getElementById('progress-fill').style.width = '30%';
+}
+
+function toggleTranslation() {
+  const el = document.getElementById('translation');
+  el.classList.toggle('show');
+}
+
+function answerQ(qi, selected, correctIdx) {
+  const opts = document.querySelectorAll(`#qo-${qi} .q-opt`);
+  // Prevent re-answer
+  if (opts[0].classList.contains('correct') || opts[0].classList.contains('wrong') || opts[0].classList.contains('reveal')) return;
+
+  opts.forEach((btn, i) => {
+    btn.classList.remove('default');
+    if (i === correctIdx) btn.classList.add('correct');
+    else if (i === selected) btn.classList.add('wrong');
+    else btn.classList.add('reveal');
+  });
+
+  answered++;
+  if (selected === correctIdx) correct++;
+
+  const q = questions[qi];
+  const explEl = document.getElementById(`expl-${qi}`);
+  if (explEl && q.explanation) {
+    explEl.innerHTML = `<div class="explanation-box ${selected===correctIdx?'correct-e':'wrong-e'}"><strong>${selected===correctIdx?'✓ Correct!':'✗ Incorrect.'}</strong> ${q.explanation}</div>`;
+  }
+
+  const pct = 30 + Math.round((answered / questions.length) * 70);
+  document.getElementById('progress-fill').style.width = pct + '%';
+  document.getElementById('progress-pct').textContent = pct + '%';
+  document.getElementById('progress-step').textContent = `Answered ${answered} of ${questions.length}`;
+
+  if (answered === questions.length) {
+    setTimeout(() => {
+      document.getElementById('complete-section').style.display = 'block';
+      document.getElementById('score-correct').textContent = correct;
+      document.getElementById('complete-section').scrollIntoView({ behavior: 'smooth' });
+    }, 800);
+  }
+}
+
+function completeReading() {
+  window.location.href = `roadmap.html?completed=${actId}&xp=${readData.xp}&lang=${langId}`;
+}
+
+init();
+</script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+{
+  "_comment": "Portuguese → Spanish language pair metadata",
+  "_status": "stub — content not yet created",
+  "pairId": "pt-es",
+  "source": {
+    "id": "pt",
+    "name": "Portuguese",
+    "flag": "🇧🇷"
+  },
+  "target": {
+    "id": "es",
+    "name": "Spanish",
+    "flag": "🇪🇸"
+  },
+  "status": "planned",
+  "months": [
+    {
+      "month": 1,
+      "title": "Foundation",
+      "description": "Learn Spanish basics from Portuguese.",
+      "status": "not-started",
+      "weeks": []
+    }
+  ],
+  "_howToCreate": "See /data/README.md for instructions on creating pt-es content."
+}

@@ -1,0 +1,26 @@
+{
+  "_comment": "Arabic → Gujarati language pair metadata",
+  "_status": "stub — content not yet created",
+  "pairId": "ar-gu",
+  "source": {
+    "id": "ar",
+    "name": "Arabic",
+    "flag": "🇸🇦"
+  },
+  "target": {
+    "id": "gu",
+    "name": "Gujarati",
+    "flag": "🇮🇳"
+  },
+  "status": "planned",
+  "months": [
+    {
+      "month": 1,
+      "title": "Foundation",
+      "description": "Learn Gujarati basics from Arabic.",
+      "status": "not-started",
+      "weeks": []
+    }
+  ],
+  "_howToCreate": "See /data/README.md for instructions on creating ar-gu content."
+}

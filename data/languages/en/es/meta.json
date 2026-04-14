@@ -1,0 +1,26 @@
+{
+  "_comment": "English → Spanish language pair metadata",
+  "_status": "stub — content not yet created",
+  "pairId": "en-es",
+  "source": {
+    "id": "en",
+    "name": "English",
+    "flag": "🇬🇧"
+  },
+  "target": {
+    "id": "es",
+    "name": "Spanish",
+    "flag": "🇪🇸"
+  },
+  "status": "planned",
+  "months": [
+    {
+      "month": 1,
+      "title": "Foundation",
+      "description": "Learn Spanish basics from English.",
+      "status": "not-started",
+      "weeks": []
+    }
+  ],
+  "_howToCreate": "See /data/README.md for instructions on creating en-es content."
+}

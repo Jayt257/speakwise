@@ -1,0 +1,115 @@
+{
+  "_comment": "English → Gujarati | Month 1 Week 1 | Lesson",
+  "id": 1,
+  "type": "lesson",
+  "title": "Gujarati Script & Vowels",
+  "description": "Discover the beautiful Gujarati script and master all 13 vowels with sounds and real examples.",
+  "duration": "20 min",
+  "xp": 30,
+  "week": 1,
+  "month": 1,
+  "langPair": "en-gu",
+  "tags": ["script", "vowels", "beginner", "essential"],
+  "blocks": [
+    {
+      "id": "b1",
+      "type": "text",
+      "title": "Welcome to Gujarati! ગુજરાતીમાં સ્વાગત!",
+      "body": "Gujarati (ગુજરાતી) is an Indo-Aryan language spoken by over 60 million people, primarily in Gujarat, India. It has its own unique script — a beautiful cursive system descended from ancient Devanagari.\n\nGood news: The script is very regular — once you learn the letters, you can read anything!"
+    },
+    {
+      "id": "b2",
+      "type": "keypoints",
+      "title": "What You'll Learn This Week",
+      "points": [
+        "The 13 Gujarati vowels (સ્વર) and their sounds",
+        "How vowels attach to consonants as diacritics (maatra)",
+        "Basic greeting words using only vowels",
+        "Your first 25 essential Gujarati vocabulary words"
+      ]
+    },
+    {
+      "id": "b3",
+      "type": "text",
+      "title": "The 13 Vowels — સ્વર (Svar)",
+      "body": "Gujarati has 13 independent vowels. Each has a standalone form and a diacritic (maatra) form.\n\nઅ (a) — short 'a' like in 'about'\nઆ (aa) — long 'aa' like in 'father'\nઇ (i) — short 'i' like in 'bit'\nઈ (ee) — long 'ee' like in 'feet'\nઉ (u) — short 'u' like in 'put'\nઊ (oo) — long 'oo' like in 'food'\nઋ (ri) — trilled 'r' + 'i'\nએ (e) — 'e' like in 'café'\nઐ (ai) — like 'ai' in 'aisle'\nઓ (o) — 'o' like in 'go'\nઔ (au) — 'ou' like in 'out'\nઅં (am) — nasal 'an' sound\nઅઃ (ah) — aspirated 'ah' sound"
+    },
+    {
+      "id": "b4",
+      "type": "grammar_rule",
+      "title": "SOV — Gujarati Sentence Order",
+      "pattern": "Subject + Object + Verb + છે",
+      "examples": [
+        { "native": "I food eat am", "target": "હું ખોરાક ખાઉ છું", "translation": "I eat food" },
+        { "native": "She book reads is", "target": "તે પુસ્તક વાંચે છે", "translation": "She reads a book" },
+        { "native": "He Gujarati learns is", "target": "તે ગુજરાતી શીખે છે", "translation": "He learns Gujarati" }
+      ],
+      "note": "Unlike English (Subject-Verb-Object), Gujarati puts the verb LAST."
+    },
+    {
+      "id": "b5",
+      "type": "dialogue",
+      "title": "Your First Gujarati Conversation",
+      "speakers": ["You", "Gujarati Friend"],
+      "lines": [
+        { "speaker": 0, "text": "નમસ્તે!", "romanization": "Namaste!", "translation": "Hello!" },
+        { "speaker": 1, "text": "નમસ્તે! કેમ છો?", "romanization": "Kem chho?", "translation": "Hello! How are you?" },
+        { "speaker": 0, "text": "હું સારો છું, આભાર.", "romanization": "Hun saaro chhun, aabhaar.", "translation": "I am fine, thank you." },
+        { "speaker": 1, "text": "ખૂબ સારું! ફરી મળીશું.", "romanization": "Khoob saaru! Fari malishun.", "translation": "Very good! See you again." }
+      ]
+    },
+    {
+      "id": "b6",
+      "type": "comparison_table",
+      "title": "Core Phrases at a Glance",
+      "headers": ["English", "ગુજરાતી", "Pronunciation"],
+      "rows": [
+        ["Hello / Goodbye", "નમસ્તે", "Namaste"],
+        ["Thank you", "આભાર", "Aabhaar"],
+        ["Please", "કૃપા કરીને", "Krupa karinae"],
+        ["Sorry / Excuse me", "ક્ષમા", "Kshama"],
+        ["Yes", "હા", "Haa"],
+        ["No", "ના", "Naa"],
+        ["OK / Fine", "ઠીક", "Theek"],
+        ["Very good", "ખૂબ સારું", "Khoob saaru"]
+      ]
+    },
+    {
+      "id": "b7",
+      "type": "fill_blank",
+      "title": "Quick Check — Fill in the Blanks",
+      "instructions": "Type the correct Gujarati word:",
+      "items": [
+        { "sentence": "___ means Hello in Gujarati.", "answer": "નમસ્તે", "hint": "greeting word" },
+        { "sentence": "___ means Thank you.", "answer": "આભાર", "hint": "gratitude" },
+        { "sentence": "Gujarati sentence order is Subject-Object-___.", "answer": "Verb", "hint": "action word at the end" }
+      ]
+    },
+    {
+      "id": "b8",
+      "type": "tip",
+      "body": "💡 Pro Tip: Every consonant in Gujarati has an inherent 'a' sound. So ક alone is 'ka'. To remove the vowel, a special sign called viraam (્) is used at the end of words."
+    },
+    {
+      "id": "b9",
+      "type": "cultural_note",
+      "title": "The Spirit of Namaste",
+      "icon": "🙏",
+      "content": "In Gujarati culture, 'Namaste' (નમસ્તે) is used for BOTH hello AND goodbye — the Sanskrit origin means 'I bow to you.' The palms-together gesture (pranam) shows deep respect. You'll use this many times every day in Gujarat!",
+      "tags": ["greetings", "customs", "respect", "culture"]
+    },
+    {
+      "id": "b10",
+      "type": "progress_checkpoint",
+      "title": "Week 1 Lesson — Can You Do This?",
+      "items": [
+        "Greet someone in Gujarati (hello/goodbye)",
+        "Say please, thank you, and sorry",
+        "Introduce yourself and ask someone's name",
+        "Understand that Gujarati uses SOV word order",
+        "Recognize the 13 Gujarati vowels by sight"
+      ],
+      "xpBonus": 15
+    }
+  ]
+}

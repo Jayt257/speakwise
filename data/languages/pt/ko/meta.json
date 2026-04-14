@@ -1,0 +1,26 @@
+{
+  "_comment": "Portuguese → Korean language pair metadata",
+  "_status": "stub — content not yet created",
+  "pairId": "pt-ko",
+  "source": {
+    "id": "pt",
+    "name": "Portuguese",
+    "flag": "🇧🇷"
+  },
+  "target": {
+    "id": "ko",
+    "name": "Korean",
+    "flag": "🇰🇷"
+  },
+  "status": "planned",
+  "months": [
+    {
+      "month": 1,
+      "title": "Foundation",
+      "description": "Learn Korean basics from Portuguese.",
+      "status": "not-started",
+      "weeks": []
+    }
+  ],
+  "_howToCreate": "See /data/README.md for instructions on creating pt-ko content."
+}

@@ -1,0 +1,301 @@
+{
+  "id": 21,
+  "type": "test",
+  "week": 2,
+  "month": 1,
+  "langPair": "hi-en",
+  "title": "Mid-Month Test — Part 1 (Weeks 1-2)",
+  "description": "20 सवाल: पहले दो हफ्तों का comprehensive review।",
+  "duration": "15 मिनट",
+  "xp": 75,
+  "tags": [
+    "midtest",
+    "comprehensive"
+  ],
+  "passingScore": 70,
+  "isMidTest": true,
+  "blocks": [
+    {
+      "id": "m1",
+      "type": "quiz",
+      "question": "'Hello' और 'Goodbye' में क्या अंतर है?",
+      "options": [
+        "कोई अंतर नहीं",
+        "Hello=नमस्ते, Goodbye=अलविदा",
+        "Hello=अलविदा, Goodbye=नमस्ते",
+        "दोनों का मतलब नमस्ते"
+      ],
+      "correct": 1,
+      "explanation": "Hello = नमस्ते (मिलते समय) | Goodbye = अलविदा (जाते समय)"
+    },
+    {
+      "id": "m2",
+      "type": "quiz",
+      "question": "अंग्रेज़ी वाक्य क्रम क्या है?",
+      "options": [
+        "SOV",
+        "SVO",
+        "OVS",
+        "VSO"
+      ],
+      "correct": 1,
+      "explanation": "English SVO (Subject-Verb-Object): 'I drink tea.' Hindi SOV: 'मैं चाय पीता हूँ।'"
+    },
+    {
+      "id": "m3",
+      "type": "quiz",
+      "question": "'My name is Raj' में 'My' का मतलब?",
+      "options": [
+        "तुम्हारा",
+        "उसका",
+        "मेरा",
+        "हमारा"
+      ],
+      "correct": 2,
+      "explanation": "My = मेरा (first person possessive)। Your = तुम्हारा, His = उसका (male), Our = हमारा।"
+    },
+    {
+      "id": "m4",
+      "type": "quiz",
+      "question": "'She ___ a teacher.' — सही form?",
+      "options": [
+        "am",
+        "are",
+        "is",
+        "be"
+      ],
+      "correct": 2,
+      "explanation": "She = third person singular → 'is'। Rule: I=am, He/She/It=is, You/We/They=are।"
+    },
+    {
+      "id": "m5",
+      "type": "quiz",
+      "question": "'I am not' का short form?",
+      "options": [
+        "I amn't",
+        "I'm not",
+        "I'mnot",
+        "Iam not"
+      ],
+      "correct": 1,
+      "explanation": "I am = I'm → I'm not। Note: 'I amn't' English में नहीं होता!"
+    },
+    {
+      "id": "m6",
+      "type": "quiz",
+      "question": "'Nice to meet you' का जवाब?",
+      "options": [
+        "Thank you",
+        "Nice to meet you too",
+        "Hello",
+        "Goodbye"
+      ],
+      "correct": 1,
+      "explanation": "'Nice to meet you' → 'Nice to meet you too!' — 'भी/also' के लिए 'too' लगाते हैं।"
+    },
+    {
+      "id": "m7",
+      "type": "quiz",
+      "question": "'th' sound कैसे बनता है?",
+      "options": [
+        "नाक से",
+        "होंठ बंद करके",
+        "जीभ दाँतों के बीच",
+        "गले से"
+      ],
+      "correct": 2,
+      "explanation": "'th' = जीभ ऊपर-नीचे के दाँतों के बीच। Practice: 'the', 'this', 'that', 'three', 'think'।"
+    },
+    {
+      "id": "m8",
+      "type": "quiz",
+      "question": "'Where are you from?' का हिन्दी अर्थ?",
+      "options": [
+        "आप कैसे हैं?",
+        "आप कहाँ जा रहे हैं?",
+        "आप कहाँ से हैं?",
+        "आपका नाम क्या है?"
+      ],
+      "correct": 2,
+      "explanation": "Where = कहाँ, from = से → 'Where are you from?' = 'आप कहाँ से हैं?'"
+    },
+    {
+      "id": "m9",
+      "type": "quiz",
+      "question": "'Tired' का हिन्दी अर्थ?",
+      "options": [
+        "भूखा",
+        "प्यासा",
+        "खुश",
+        "थका हुआ"
+      ],
+      "correct": 3,
+      "explanation": "Tired = थका हुआ। Hungry = भूखा। Thirsty = प्यासा। Happy = खुश।"
+    },
+    {
+      "id": "m10",
+      "type": "quiz",
+      "question": "'I' हमेशा कैसा लिखते हैं?",
+      "options": [
+        "i (छोटा)",
+        "I (बड़ा)",
+        "दोनों सही",
+        "context पर निर्भर"
+      ],
+      "correct": 1,
+      "explanation": "'I' (pronoun = मैं) हमेशा capital I लिखते हैं — वाक्य में कहीं भी हो!"
+    },
+    {
+      "id": "m11",
+      "type": "quiz",
+      "question": "'ship' और 'sheep' में क्या फ़र्क है?",
+      "options": [
+        "Same pronunciation",
+        "ship=short i, sheep=long ee",
+        "sheep=short i, ship=long ee",
+        "कोई फ़र्क नहीं"
+      ],
+      "correct": 1,
+      "explanation": "ship = /ʃɪp/ (छोटा i) = जहाज़ | sheep = /ʃiːp/ (लंबा ee) = भेड़। Different meaning!"
+    },
+    {
+      "id": "m12",
+      "type": "quiz",
+      "question": "'Hospital' का हिन्दी अर्थ?",
+      "options": [
+        "होटल",
+        "अस्पताल",
+        "स्कूल",
+        "दुकान"
+      ],
+      "correct": 1,
+      "explanation": "Hospital = अस्पताल। Hotel = होटल (ध्यान रखें — similar spelling, different meaning!)"
+    },
+    {
+      "id": "m13",
+      "type": "quiz",
+      "question": "'Are you busy?' का positive जवाब?",
+      "options": [
+        "Yes, I is.",
+        "Yes, I am.",
+        "Yes, you are.",
+        "Yes, am I."
+      ],
+      "correct": 1,
+      "explanation": "'Are you?' → 'Yes, I am.' Short answers में same verb repeat होता है।"
+    },
+    {
+      "id": "m14",
+      "type": "quiz",
+      "question": "'v' sound बनाने के लिए?",
+      "options": [
+        "होंठ गोल करें",
+        "ऊपरी दाँत निचले होंठ पर",
+        "जीभ दाँतों में",
+        "नाक से"
+      ],
+      "correct": 1,
+      "explanation": "V = ऊपरी दाँत निचले होंठ पर रखें और बोलें। W = होंठ गोल। बहुत अलग sounds!"
+    },
+    {
+      "id": "m15",
+      "type": "quiz",
+      "question": "'Please speak slowly' का प्रयोग कब करते हैं?",
+      "options": [
+        "जब कोई बहुत तेज़ बोले",
+        "जब भूख लगे",
+        "जब थकान हो",
+        "सुबह के समय"
+      ],
+      "correct": 0,
+      "explanation": "'Please speak slowly' = कृपया धीरे बोलिए — जब कोई बहुत तेज़ बोले और समझ न आए।"
+    },
+    {
+      "id": "m16",
+      "type": "quiz",
+      "question": "Contraction 'they're' = ?",
+      "options": [
+        "they is",
+        "they was",
+        "they are",
+        "they were"
+      ],
+      "correct": 2,
+      "explanation": "they're = they are। Like: we're = we are, you're = you are, I'm = I am।"
+    },
+    {
+      "id": "m17",
+      "type": "quiz",
+      "question": "'Good morning' कब कहते हैं?",
+      "options": [
+        "रात को",
+        "दोपहर में",
+        "शाम को",
+        "सुबह को"
+      ],
+      "correct": 3,
+      "explanation": "Good morning = सुबह। Good afternoon = दोपहर (12-6)। Good evening = शाम (6+)। Good night = सोते समय।"
+    },
+    {
+      "id": "m18",
+      "type": "quiz",
+      "question": "'I am from India' में article 'a/an/the' कहाँ चाहिए?",
+      "options": [
+        "I am from a India",
+        "I am from an India",
+        "I am from the India",
+        "I am from India (no article)"
+      ],
+      "correct": 3,
+      "explanation": "Country names के साथ article नहीं लगता: India, China, Japan। Exception: the USA, the UK, the Netherlands।"
+    },
+    {
+      "id": "m19",
+      "type": "quiz",
+      "question": "अंग्रेज़ी में 'small talk' का मतलब?",
+      "options": [
+        "छोटे बच्चे की बात",
+        "मौसम जैसे हल्के विषयों पर बातचीत",
+        "चिल्लाकर बात करना",
+        "फ़ोन पर बात करना"
+      ],
+      "correct": 1,
+      "explanation": "'Small talk' = हल्की-फुल्की बातचीत, जैसे मौसम, weekend plans, sports के बारे में। यह social etiquette है।"
+    },
+    {
+      "id": "m20",
+      "type": "quiz",
+      "question": "'English is an official language of India' — इसका मतलब?",
+      "options": [
+        "भारत में अंग्रेज़ी banned है",
+        "अंग्रेज़ी भारत की official भाषाओं में से एक है",
+        "भारत में सब अंग्रेज़ी बोलते हैं",
+        "अंग्रेज़ी नई language है"
+      ],
+      "correct": 1,
+      "explanation": "India में 22 official languages हैं, जिनमें Hindi और English दोनों शामिल हैं।"
+    },
+    {
+      "id": "m21",
+      "type": "true_false",
+      "title": "Quick Facts",
+      "items": [
+        {
+          "statement": "'I'm not' correct English है।",
+          "answer": true,
+          "explanation": "हाँ! 'I'm not' = 'I am not' का contraction। बिल्कुल correct।"
+        },
+        {
+          "statement": "अंग्रेज़ी में हर noun का gender होता है।",
+          "answer": false,
+          "explanation": "नहीं! अंग्रेज़ी में अधिकतर nouns gender-neutral होते हैं। 'table', 'book' के लिए 'it' use होता है।"
+        },
+        {
+          "statement": "'Nice to meet you' formal और informal दोनों situation में use हो सकता है।",
+          "answer": true,
+          "explanation": "हाँ! यह versatile phrase है। पहली मुलाक़ात में हमेशा appropriate है।"
+        }
+      ]
+    }
+  ]
+}

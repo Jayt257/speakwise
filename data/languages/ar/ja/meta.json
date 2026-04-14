@@ -1,0 +1,26 @@
+{
+  "_comment": "Arabic → Japanese language pair metadata",
+  "_status": "stub — content not yet created",
+  "pairId": "ar-ja",
+  "source": {
+    "id": "ar",
+    "name": "Arabic",
+    "flag": "🇸🇦"
+  },
+  "target": {
+    "id": "ja",
+    "name": "Japanese",
+    "flag": "🇯🇵"
+  },
+  "status": "planned",
+  "months": [
+    {
+      "month": 1,
+      "title": "Foundation",
+      "description": "Learn Japanese basics from Arabic.",
+      "status": "not-started",
+      "weeks": []
+    }
+  ],
+  "_howToCreate": "See /data/README.md for instructions on creating ar-ja content."
+}

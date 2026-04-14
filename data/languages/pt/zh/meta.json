@@ -1,0 +1,26 @@
+{
+  "_comment": "Portuguese → Mandarin language pair metadata",
+  "_status": "stub — content not yet created",
+  "pairId": "pt-zh",
+  "source": {
+    "id": "pt",
+    "name": "Portuguese",
+    "flag": "🇧🇷"
+  },
+  "target": {
+    "id": "zh",
+    "name": "Mandarin",
+    "flag": "🇨🇳"
+  },
+  "status": "planned",
+  "months": [
+    {
+      "month": 1,
+      "title": "Foundation",
+      "description": "Learn Mandarin basics from Portuguese.",
+      "status": "not-started",
+      "weeks": []
+    }
+  ],
+  "_howToCreate": "See /data/README.md for instructions on creating pt-zh content."
+}

@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="theme-color" content="#5b4fcf"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>LearnWise – Start Your Journey</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script>
+tailwind.config={darkMode:"class",theme:{extend:{colors:{
+  "primary":"#5b4fcf","primary-dark":"#4a3fb5","primary-light":"#7c6fd4",
+  "primary-container":"#ede9ff","on-primary":"#ffffff","on-primary-container":"#3b2fa0",
+  "surface":"#f8f9ff","surface-card":"#ffffff",
+  "on-surface":"#1a1b2e","on-surface-secondary":"#4b4e6d",
+  "outline":"#8b8fa8","outline-light":"#d1d3e5",
+  "success":"#10b981","success-container":"#d1fae5",
+},fontFamily:{"headline":["Plus Jakarta Sans"],"body":["Inter"]},
+borderRadius:{"DEFAULT":"0.375rem","lg":"0.75rem","xl":"1rem","2xl":"1.5rem","3xl":"2rem","full":"9999px"},
+}}}
+</script>
+<style>
+*{box-sizing:border-box;}
+body{font-family:'Inter',sans-serif;background:#f8f9ff;color:#1a1b2e;}
+h1,h2,h3,h4,button,.font-headline{font-family:'Plus Jakarta Sans',sans-serif;}
+.material-symbols-outlined{font-variation-settings:'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 24;}
+
+.bg-hero{background:linear-gradient(135deg,#3d2fa8 0%,#5b4fcf 50%,#7c6fd4 100%);}
+
+.lang-card{
+  background:#fff;border:2px solid #e8eaf0;border-radius:1rem;
+  transition:all 0.25s cubic-bezier(.34,1.2,.64,1);cursor:pointer;
+  position:relative;overflow:hidden;
+}
+.lang-card::before{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(135deg,rgba(91,79,207,0),rgba(91,79,207,0.05));
+  opacity:0;transition:opacity 0.2s;
+}
+.lang-card:hover{border-color:#a5a0df;transform:translateY(-3px);box-shadow:0 8px 24px rgba(91,79,207,0.15);}
+.lang-card:hover::before{opacity:1;}
+.lang-card.selected{border-color:#5b4fcf;box-shadow:0 8px 28px rgba(91,79,207,0.25);transform:translateY(-2px);}
+.lang-card.selected::before{opacity:1;}
+.check-ring{
+  width:24px;height:24px;border-radius:50%;border:2px solid #d1d3e5;
+  display:flex;align-items:center;justify-content:center;
+  transition:all 0.2s ease;flex-shrink:0;
+}
+.lang-card.selected .check-ring{background:#5b4fcf;border-color:#5b4fcf;}
+.lang-card.selected .check-ring svg{display:block;}
+.check-ring svg{display:none;fill:white;width:14px;height:14px;}
+
+.btn-primary{
+  background:linear-gradient(135deg,#5b4fcf,#7c6fd4);
+  box-shadow:0 8px 24px rgba(91,79,207,0.35),inset 0 1px 0 rgba(255,255,255,0.2);
+  transition:all 0.25s cubic-bezier(.34,1.2,.64,1);
+  font-family:'Plus Jakarta Sans',sans-serif;
+}
+.btn-primary:hover:not(:disabled){transform:translateY(-2px);box-shadow:0 12px 32px rgba(91,79,207,0.45);}
+.btn-primary:active:not(:disabled){transform:translateY(0) scale(0.98);}
+.btn-primary:disabled{opacity:0.5;cursor:not-allowed;}
+
+.btn-secondary{
+  background:#fff;border:1.5px solid #d1d3e5;color:#1a1b2e;
+  transition:all 0.2s ease;font-family:'Plus Jakarta Sans',sans-serif;
+}
+.btn-secondary:hover{border-color:#a5a0df;background:#f8f9ff;}
+
+/* AI loading overlay */
+#ai-loading{display:none;position:fixed;inset:0;z-index:100;background:rgba(26,27,46,0.92);backdrop-filter:blur(12px);}
+#ai-loading.show{display:flex;}
+
+.loader-orb{
+  width:100px;height:100px;border-radius:50%;
+  background:linear-gradient(135deg,#5b4fcf,#7c6fd4);
+  position:relative;display:flex;align-items:center;justify-content:center;
+  animation:pulse-orb 2s ease-in-out infinite;
+  box-shadow:0 0 40px rgba(91,79,207,0.6);
+}
+@keyframes pulse-orb{0%,100%{transform:scale(1);box-shadow:0 0 40px rgba(91,79,207,0.6);}50%{transform:scale(1.08);box-shadow:0 0 80px rgba(91,79,207,0.9);}}
+
+.loader-ring{
+  position:absolute;border-radius:50%;border:2px solid rgba(91,79,207,0.3);
+  animation:ring-expand 2s ease-out infinite;
+}
+@keyframes ring-expand{0%{width:100px;height:100px;opacity:1;}100%{width:200px;height:200px;opacity:0;}}
+
+.typing-dots span{display:inline-block;width:6px;height:6px;border-radius:50%;background:#a5a0df;animation:typing 1.4s ease-in-out infinite;}
+.typing-dots span:nth-child(2){animation-delay:0.2s;}
+.typing-dots span:nth-child(3){animation-delay:0.4s;}
+@keyframes typing{0%,80%,100%{transform:scale(0.7);opacity:0.4;}40%{transform:scale(1);opacity:1;}}
+
+.progress-track{width:100%;height:6px;background:rgba(255,255,255,0.15);border-radius:3px;overflow:hidden;}
+.progress-fill{height:100%;background:linear-gradient(90deg,#5b4fcf,#a5b4fc);border-radius:3px;transition:width 0.5s ease;}
+
+@keyframes fade-in{from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:translateY(0);}}
+.animate-in{animation:fade-in 0.5s ease both;}
+.delay-1{animation-delay:0.1s;}.delay-2{animation-delay:0.2s;}.delay-3{animation-delay:0.35s;}
+
+.step-indicator{
+  display:flex;gap:6px;align-items:center;
+}
+.step-dot{width:8px;height:8px;border-radius:4px;background:#d1d3e5;transition:all 0.3s ease;}
+.step-dot.active{width:24px;background:#5b4fcf;}
+.step-dot.done{background:#10b981;}
+
+/* Goal pills */
+.goal-pill{
+  background:#fff;border:2px solid #e8eaf0;border-radius:999px;padding:8px 16px;
+  cursor:pointer;font-size:13px;font-weight:600;font-family:'Plus Jakarta Sans',sans-serif;
+  transition:all 0.2s cubic-bezier(.34,1.2,.64,1);display:flex;align-items:center;gap:8px;
+}
+.goal-pill:hover{border-color:#a5a0df;transform:translateY(-1px);}
+.goal-pill.selected{border-color:#5b4fcf;background:#ede9ff;color:#3b2fa0;}
+
+/* Level cards */
+.level-card{
+  background:#fff;border:2px solid #e8eaf0;border-radius:1rem;padding:16px;
+  cursor:pointer;transition:all 0.2s cubic-bezier(.34,1.2,.64,1);
+}
+.level-card:hover{border-color:#a5a0df;transform:translateY(-2px);}
+.level-card.selected{border-color:#5b4fcf;background:#f5f3ff;}
+
+/* Selected lang pill in header */
+.selected-lang-pill{
+  background:linear-gradient(135deg,#5b4fcf,#7c6fd4);
+  color:white;border-radius:999px;padding:4px 12px 4px 8px;
+  font-size:12px;font-weight:700;display:flex;align-items:center;gap:6px;
+  font-family:'Plus Jakarta Sans',sans-serif;
+}
+</style>
+</head>
+<body class="min-h-screen flex flex-col">
+
+<!-- Header -->
+<header class="bg-white/90 backdrop-blur-md sticky top-0 z-50 border-b border-outline-light shadow-sm">
+  <div class="max-w-3xl mx-auto px-5 py-4 flex items-center justify-between">
+    <div class="flex items-center gap-2">
+      <div class="w-8 h-8 rounded-xl flex items-center justify-center" style="background:linear-gradient(135deg,#5b4fcf,#7c6fd4)">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 16.93V17c0-.55-.45-1-1-1s-1 .45-1 1v1.93C6.61 18.43 4 15.57 4 12c0-4.41 3.59-8 8-8s8 3.59 8 8c0 3.57-2.61 6.43-6 6.93V17c0-.55-.45-1-1-1s-1 .45-1 1v1.93z" fill="white" opacity="0.9"/><circle cx="12" cy="9" r="3" fill="white"/></svg>
+      </div>
+      <span class="text-lg font-black text-on-surface">LearnWise</span>
+    </div>
+    <div class="step-indicator" id="step-indicator">
+      <div class="step-dot active" id="dot-1"></div>
+      <div class="step-dot" id="dot-2"></div>
+      <div class="step-dot" id="dot-3"></div>
+      <div class="step-dot" id="dot-4"></div>
+    </div>
+  </div>
+</header>
+
+<!-- Steps container -->
+<main class="flex-grow max-w-3xl mx-auto w-full px-5 pb-32">
+
+  <!-- ── STEP 1: Choose Base Language (language you already know) ── -->
+  <div id="step-1" class="step-content pt-8">
+    <!-- Hero banner -->
+    <div class="bg-hero rounded-2xl p-8 mb-8 text-white text-center relative overflow-hidden animate-in">
+      <div class="absolute inset-0 opacity-10" style="background:url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2240%22 height=%2240%22><path d=%22M0 40L40 0M-10 10L10-10M30 50L50 30%22 stroke=%22white%22 stroke-width=%221%22/></svg>')"></div>
+      <div class="relative z-10">
+        <div class="text-5xl mb-3">🌍</div>
+        <h1 class="text-3xl font-black mb-2 tracking-tight">Your journey starts here!</h1>
+        <p class="text-white/75 text-base max-w-md mx-auto">First, tell us what language you already know. We'll teach you through it!</p>
+      </div>
+    </div>
+
+    <h2 class="text-xl font-black text-on-surface mb-4 animate-in delay-1">What language do you already know?</h2>
+    <p class="text-sm text-on-surface-secondary mb-6 animate-in delay-1">This is the language we'll use to explain things to you.</p>
+
+    <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 mb-8 animate-in delay-2" id="base-lang-grid">
+      <!-- Dynamically generated -->
+    </div>
+
+    <div class="flex justify-end animate-in delay-3">
+      <button id="step1-next" onclick="goToStep(2)" disabled class="btn-primary px-8 py-3.5 rounded-xl text-white font-bold text-sm flex items-center gap-2">
+        <span>Continue</span>
+        <span class="material-symbols-outlined text-lg">arrow_forward</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- ── STEP 2: Choose Target Language (language to learn) ── -->
+  <div id="step-2" class="step-content hidden pt-8">
+    <div class="animate-in">
+      <div class="flex items-center gap-3 mb-6 p-3 rounded-xl bg-primary-container/40 border border-primary/20">
+        <div class="text-2xl" id="base-flag-display">🌍</div>
+        <div>
+          <div class="text-xs font-bold text-primary">YOUR BASE LANGUAGE</div>
+          <div class="text-sm font-bold text-on-surface" id="base-name-display">—</div>
+        </div>
+      </div>
+
+      <h2 class="text-xl font-black text-on-surface mb-2">What language do you want to learn?</h2>
+      <p class="text-sm text-on-surface-secondary mb-6">Pick a language and we'll create your personalized roadmap.</p>
+
+      <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 mb-8" id="language-grid">
+        <!-- Dynamically generated -->
+      </div>
+
+      <!-- Already learning badge -->
+      <div id="already-learning-section" class="hidden mb-6 p-4 rounded-2xl border-2 border-dashed border-primary/30 bg-primary-container/30">
+        <p class="text-sm font-semibold text-on-primary-container mb-2">✅ Languages you're already learning:</p>
+        <div class="flex flex-wrap gap-2" id="already-learning-pills"></div>
+      </div>
+
+      <div class="flex justify-between">
+        <button onclick="goToStep(1)" class="btn-secondary px-6 py-3 rounded-xl font-bold text-sm flex items-center gap-2">
+          <span class="material-symbols-outlined text-lg">arrow_back</span>Back
+        </button>
+        <button id="step2-next" onclick="goToStep(3)" disabled class="btn-primary px-8 py-3.5 rounded-xl text-white font-bold text-sm flex items-center gap-2">
+          <span>Continue</span>
+          <span class="material-symbols-outlined text-lg">arrow_forward</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── STEP 3: Goals & Level ── -->
+  <div id="step-3" class="step-content hidden pt-8">
+    <div class="animate-in">
+      <div class="flex items-center gap-3 mb-6 p-3 rounded-xl bg-primary-container/40 border border-primary/20">
+        <div class="text-lg" id="summary-display">🌍 → 🌍</div>
+        <div>
+          <div class="text-xs font-bold text-primary">YOUR LEARNING PATH</div>
+          <div class="text-sm font-bold text-on-surface" id="path-display">— → —</div>
+        </div>
+      </div>
+
+      <h2 class="text-2xl font-black text-on-surface mb-1">Set your goals 🎯</h2>
+      <p class="text-on-surface-secondary text-sm mb-6">This helps us tailor your roadmap perfectly.</p>
+
+      <div class="bg-white rounded-2xl border border-outline-light p-6 mb-5 shadow-sm">
+        <h3 class="font-bold text-on-surface mb-4 flex items-center gap-2">
+          <span class="material-symbols-outlined text-primary" style="font-variation-settings:'FILL' 1">flag</span>
+          Why are you learning?
+        </h3>
+        <div class="flex flex-wrap gap-2" id="goals-grid">
+          <button class="goal-pill" data-goal="travel" onclick="toggleGoal(this)">✈️ Travel & Explore</button>
+          <button class="goal-pill" data-goal="work" onclick="toggleGoal(this)">💼 Work & Career</button>
+          <button class="goal-pill" data-goal="family" onclick="toggleGoal(this)">👨‍👩‍👧 Family & Heritage</button>
+          <button class="goal-pill" data-goal="culture" onclick="toggleGoal(this)">🎭 Culture & Media</button>
+          <button class="goal-pill" data-goal="romance" onclick="toggleGoal(this)">💑 Romance</button>
+          <button class="goal-pill" data-goal="education" onclick="toggleGoal(this)">📚 Education</button>
+          <button class="goal-pill" data-goal="fun" onclick="toggleGoal(this)">🎮 Just for fun</button>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-2xl border border-outline-light p-6 mb-6 shadow-sm">
+        <h3 class="font-bold text-on-surface mb-4 flex items-center gap-2">
+          <span class="material-symbols-outlined text-primary" style="font-variation-settings:'FILL' 1">signal_cellular_alt</span>
+          What's your current level?
+        </h3>
+        <div class="grid grid-cols-3 gap-3">
+          <div class="level-card selected" data-level="beginner" onclick="selectLevel(this)">
+            <div class="text-2xl mb-2">🌱</div>
+            <div class="font-bold text-sm text-on-surface">Beginner</div>
+            <div class="text-xs text-on-surface-secondary mt-0.5">Starting fresh</div>
+          </div>
+          <div class="level-card" data-level="intermediate" onclick="selectLevel(this)">
+            <div class="text-2xl mb-2">🌿</div>
+            <div class="font-bold text-sm text-on-surface">Intermediate</div>
+            <div class="text-xs text-on-surface-secondary mt-0.5">Some basics</div>
+          </div>
+          <div class="level-card" data-level="advanced" onclick="selectLevel(this)">
+            <div class="text-2xl mb-2">🌳</div>
+            <div class="font-bold text-sm text-on-surface">Advanced</div>
+            <div class="text-xs text-on-surface-secondary mt-0.5">Quite fluent</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="flex justify-between">
+        <button onclick="goToStep(2)" class="btn-secondary px-6 py-3 rounded-xl font-bold text-sm flex items-center gap-2">
+          <span class="material-symbols-outlined text-lg">arrow_back</span>Back
+        </button>
+        <button onclick="startGenerating()" class="btn-primary px-8 py-3.5 rounded-xl text-white font-bold text-sm flex items-center gap-2">
+          <span class="material-symbols-outlined text-lg" style="font-variation-settings:'FILL' 1">auto_awesome</span>
+          Generate My Roadmap
+        </button>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<!-- AI Generation Loading Overlay -->
+<div id="ai-loading" class="items-center justify-center flex-col gap-8 p-8">
+  <div class="text-center">
+    <!-- Orb animation -->
+    <div class="relative flex items-center justify-center mb-8" style="width:200px;height:200px;margin:auto">
+      <div class="loader-ring"></div>
+      <div class="loader-ring" style="animation-delay:0.7s"></div>
+      <div class="loader-orb">
+        <svg width="40" height="40" viewBox="0 0 24 24" fill="none">
+          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 16.93V17c0-.55-.45-1-1-1s-1 .45-1 1v1.93C6.61 18.43 4 15.57 4 12c0-4.41 3.59-8 8-8s8 3.59 8 8c0 3.57-2.61 6.43-6 6.93V17c0-.55-.45-1-1-1s-1 .45-1 1v1.93z" fill="white" opacity="0.9"/>
+          <circle cx="12" cy="9" r="3" fill="white"/>
+        </svg>
+      </div>
+    </div>
+
+    <h2 class="text-2xl font-black text-white mb-2">Building your roadmap...</h2>
+    <div class="typing-dots flex items-center justify-center gap-2 mb-6">
+      <span></span><span></span><span></span>
+    </div>
+
+    <!-- Progress bar -->
+    <div class="progress-track max-w-xs mx-auto mb-6">
+      <div class="progress-fill" id="gen-progress" style="width:0%"></div>
+    </div>
+
+    <!-- Step messages -->
+    <div id="gen-messages" class="space-y-2 max-w-sm mx-auto text-left">
+      <div class="flex items-center gap-3 p-3 rounded-xl text-white/90" style="background:rgba(91,79,207,0.3)" id="msg-1">
+        <span class="material-symbols-outlined text-lg" style="font-variation-settings:'FILL' 1">psychology</span>
+        <span class="text-sm font-medium">Analyzing your learning profile...</span>
+      </div>
+      <div class="flex items-center gap-3 p-3 rounded-xl text-white/40" id="msg-2" style="background:rgba(255,255,255,0.05)">
+        <span class="material-symbols-outlined text-lg">auto_graph</span>
+        <span class="text-sm font-medium">Designing personalized curriculum...</span>
+      </div>
+      <div class="flex items-center gap-3 p-3 rounded-xl text-white/40" id="msg-3" style="background:rgba(255,255,255,0.05)">
+        <span class="material-symbols-outlined text-lg">quiz</span>
+        <span class="text-sm font-medium">Creating 150+ activities & tests...</span>
+      </div>
+      <div class="flex items-center gap-3 p-3 rounded-xl text-white/40" id="msg-4" style="background:rgba(255,255,255,0.05)">
+        <span class="material-symbols-outlined text-lg">route</span>
+        <span class="text-sm font-medium">Mapping your learning path...</span>
+      </div>
+      <div class="flex items-center gap-3 p-3 rounded-xl text-white/40" id="msg-5" style="background:rgba(255,255,255,0.05)">
+        <span class="material-symbols-outlined text-lg">workspace_premium</span>
+        <span class="text-sm font-medium">Finalizing milestones & checkpoints...</span>
+      </div>
+    </div>
+
+    <div class="mt-6 text-white/40 text-xs font-medium" id="gen-lang-info"></div>
+  </div>
+</div>
+
+<script>
+// ── Data ──────────────────────────────────────────────────────────────────
+const LANGUAGES = [
+  {id:'hindi',   name:'Hindi',    native:'हिन्दी',  flag:'🇮🇳', speakers:'600M+', color:'#FF6B35'},
+  {id:'english', name:'English',  native:'English', flag:'🇬🇧', speakers:'1.5B+', color:'#003087'},
+  {id:'spanish', name:'Spanish',  native:'Español', flag:'🇪🇸', speakers:'500M+', color:'#AA151B'},
+  {id:'french',  name:'French',   native:'Français',flag:'🇫🇷', speakers:'280M+', color:'#002395'},
+  {id:'german',  name:'German',   native:'Deutsch', flag:'🇩🇪', speakers:'130M+', color:'#000000'},
+  {id:'japanese',name:'Japanese', native:'日本語',   flag:'🇯🇵', speakers:'125M+', color:'#BC002D'},
+  {id:'mandarin',name:'Mandarin', native:'普通话',   flag:'🇨🇳', speakers:'1B+',   color:'#DE2910'},
+  {id:'korean',  name:'Korean',   native:'한국어',   flag:'🇰🇷', speakers:'77M+',  color:'#003478'},
+  {id:'portuguese',name:'Portuguese',native:'Português',flag:'🇧🇷',speakers:'260M+',color:'#009C3B'},
+  {id:'italian', name:'Italian',  native:'Italiano',flag:'🇮🇹', speakers:'65M+',  color:'#009246'},
+  {id:'arabic',  name:'Arabic',   native:'العربية', flag:'🇸🇦', speakers:'420M+', color:'#006C35'},
+  {id:'russian', name:'Russian',  native:'Русский', flag:'🇷🇺', speakers:'260M+', color:'#003153'},
+];
+
+// State
+let selectedBaseLanguage = localStorage.getItem('lw_base_lang') || null;
+let selectedLanguage = null;
+let learningLanguages = JSON.parse(localStorage.getItem('lw_languages')||'[]');
+let currentStep = 1;
+
+// ── Build base language grid (Step 1) ─────────────────────────────────────
+function buildBaseLanguageGrid() {
+  const grid = document.getElementById('base-lang-grid');
+  grid.innerHTML = '';
+  LANGUAGES.forEach(lang => {
+    const card = document.createElement('button');
+    card.className = 'lang-card p-4 flex flex-col items-center gap-2 text-center' + (selectedBaseLanguage === lang.id ? ' selected' : '');
+    card.dataset.lang = lang.id;
+    card.innerHTML = `
+      <div class="flex justify-end w-full">
+        <div class="check-ring">
+          <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+        </div>
+      </div>
+      <div class="text-3xl">${lang.flag}</div>
+      <div>
+        <div class="font-bold text-sm text-on-surface">${lang.name}</div>
+        <div class="text-xs text-on-surface-secondary">${lang.native}</div>
+      </div>
+    `;
+    card.addEventListener('click', () => selectBaseLang(lang.id));
+    grid.appendChild(card);
+  });
+  document.getElementById('step1-next').disabled = !selectedBaseLanguage;
+}
+
+function selectBaseLang(id) {
+  selectedBaseLanguage = id;
+  document.querySelectorAll('#base-lang-grid .lang-card').forEach(c => {
+    c.classList.toggle('selected', c.dataset.lang === id);
+  });
+  document.getElementById('step1-next').disabled = false;
+}
+
+// ── Build target language grid (Step 2) ───────────────────────────────────
+function buildLanguageGrid() {
+  const grid = document.getElementById('language-grid');
+  grid.innerHTML = '';
+  // Show base language info
+  const baseLang = LANGUAGES.find(l => l.id === selectedBaseLanguage);
+  if (baseLang) {
+    document.getElementById('base-flag-display').textContent = baseLang.flag;
+    document.getElementById('base-name-display').textContent = baseLang.name;
+  }
+  
+  LANGUAGES.forEach(lang => {
+    // Skip the base language — can't learn what you already know
+    if (lang.id === selectedBaseLanguage) return;
+    const isLearning = learningLanguages.includes(lang.id);
+    const card = document.createElement('button');
+    card.className = 'lang-card p-4 flex flex-col items-center gap-2 text-center'+(isLearning?' selected':'');
+    card.dataset.lang = lang.id;
+    card.innerHTML = `
+      <div class="flex justify-end w-full">
+        <div class="check-ring">
+          <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+        </div>
+      </div>
+      <div class="text-3xl">${lang.flag}</div>
+      <div>
+        <div class="font-bold text-sm text-on-surface">${lang.name}</div>
+        <div class="text-xs text-on-surface-secondary">${lang.native}</div>
+        <div class="text-xs text-outline mt-0.5">${lang.speakers} speakers</div>
+      </div>
+      ${isLearning?`<div class="text-xs font-bold px-2 py-0.5 rounded-full" style="background:${lang.color}20;color:${lang.color}">✓ Learning</div>`:''}
+    `;
+    card.addEventListener('click', () => toggleLang(lang.id, card));
+    grid.appendChild(card);
+  });
+  updateAlreadyLearning();
+}
+
+function toggleLang(id, card) {
+  if (learningLanguages.includes(id)) {
+    selectedLanguage = id;
+    document.querySelectorAll('#language-grid .lang-card').forEach(c => {
+      c.classList.toggle('selected', c.dataset.lang === id);
+    });
+  } else {
+    selectedLanguage = id;
+    document.querySelectorAll('#language-grid .lang-card').forEach(c => c.classList.remove('selected'));
+    card.classList.add('selected');
+  }
+  document.getElementById('step2-next').disabled = false;
+}
+
+function updateAlreadyLearning() {
+  const section = document.getElementById('already-learning-section');
+  const pills = document.getElementById('already-learning-pills');
+  if (learningLanguages.length > 0) {
+    section.classList.remove('hidden');
+    pills.innerHTML = learningLanguages.map(id => {
+      const l = LANGUAGES.find(x=>x.id===id);
+      return l ? `<span class="selected-lang-pill">${l.flag} ${l.name}</span>` : '';
+    }).join('');
+  } else {
+    section.classList.add('hidden');
+  }
+}
+
+function toggleGoal(el) { el.classList.toggle('selected'); }
+
+function selectLevel(el) {
+  document.querySelectorAll('.level-card').forEach(c => c.classList.remove('selected'));
+  el.classList.add('selected');
+}
+
+// ── Step navigation ────────────────────────────────────────────────────────
+function goToStep(n) {
+  document.querySelectorAll('.step-content').forEach(s => s.classList.add('hidden'));
+  document.getElementById(`step-${n}`).classList.remove('hidden');
+  currentStep = n;
+  // Update dots
+  ['dot-1','dot-2','dot-3','dot-4'].forEach((id,i) => {
+    const d = document.getElementById(id);
+    d.className='step-dot';
+    if (i+1 < n) d.classList.add('done');
+    else if (i+1 === n) d.classList.add('active');
+  });
+  // Rebuild target grid when entering step 2
+  if (n === 2) buildLanguageGrid();
+  // Update path display on step 3
+  if (n === 3) {
+    const baseLang = LANGUAGES.find(l => l.id === selectedBaseLanguage);
+    const targetLang = LANGUAGES.find(l => l.id === selectedLanguage);
+    if (baseLang && targetLang) {
+      document.getElementById('summary-display').textContent = `${baseLang.flag} → ${targetLang.flag}`;
+      document.getElementById('path-display').textContent = `Learn ${targetLang.name} through ${baseLang.name}`;
+    }
+  }
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+// ── Generate roadmap ───────────────────────────────────────────────────────
+function startGenerating() {
+  const overlay = document.getElementById('ai-loading');
+  overlay.classList.add('show');
+
+  const lang = LANGUAGES.find(l=>l.id===selectedLanguage)||LANGUAGES[0];
+  const baseLang = LANGUAGES.find(l=>l.id===selectedBaseLanguage)||LANGUAGES[1];
+  document.getElementById('gen-lang-info').textContent = `Creating personalized roadmap: Learn ${lang.flag} ${lang.name} through ${baseLang.flag} ${baseLang.name}`;
+
+  // Save to storage
+  localStorage.setItem('lw_base_lang', selectedBaseLanguage);
+  if (!learningLanguages.includes(lang.id)) {
+    learningLanguages.push(lang.id);
+    localStorage.setItem('lw_languages', JSON.stringify(learningLanguages));
+  }
+  localStorage.setItem('lw_selected_lang', lang.id);
+
+  const msgs = ['msg-1','msg-2','msg-3','msg-4','msg-5'];
+  const timings = [0, 1200, 2600, 4000, 5200];
+  const progAt = [15, 35, 60, 80, 95];
+
+  timings.forEach((t, i) => {
+    setTimeout(() => {
+      if (i > 0) {
+        const prev = document.getElementById(msgs[i-1]);
+        prev.style.background='rgba(16,185,129,0.2)';
+        prev.style.color='rgba(255,255,255,0.9)';
+        prev.querySelector('.material-symbols-outlined').textContent='check_circle';
+        prev.querySelector('.material-symbols-outlined').style.color='#10b981';
+      }
+      const cur = document.getElementById(msgs[i]);
+      cur.style.background='rgba(91,79,207,0.35)';
+      cur.style.color='rgba(255,255,255,0.95)';
+      document.getElementById('gen-progress').style.width = progAt[i]+'%';
+    }, t);
+  });
+
+  setTimeout(() => {
+    document.getElementById('gen-progress').style.width = '100%';
+    document.getElementById(msgs[4]).style.background='rgba(16,185,129,0.2)';
+    document.getElementById(msgs[4]).querySelector('.material-symbols-outlined').textContent='check_circle';
+    setTimeout(() => { window.location.href = 'roadmap.html'; }, 700);
+  }, 6800);
+}
+
+// ── Init ──────────────────────────────────────────────────────────────────
+buildBaseLanguageGrid();
+</script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+{
+  "_comment": "English → Mandarin language pair metadata",
+  "_status": "stub — content not yet created",
+  "pairId": "en-zh",
+  "source": {
+    "id": "en",
+    "name": "English",
+    "flag": "🇬🇧"
+  },
+  "target": {
+    "id": "zh",
+    "name": "Mandarin",
+    "flag": "🇨🇳"
+  },
+  "status": "planned",
+  "months": [
+    {
+      "month": 1,
+      "title": "Foundation",
+      "description": "Learn Mandarin basics from English.",
+      "status": "not-started",
+      "weeks": []
+    }
+  ],
+  "_howToCreate": "See /data/README.md for instructions on creating en-zh content."
+}

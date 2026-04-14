@@ -1,0 +1,26 @@
+{
+  "_comment": "Korean → Hindi language pair metadata",
+  "_status": "stub — content not yet created",
+  "pairId": "ko-hi",
+  "source": {
+    "id": "ko",
+    "name": "Korean",
+    "flag": "🇰🇷"
+  },
+  "target": {
+    "id": "hi",
+    "name": "Hindi",
+    "flag": "🇮🇳"
+  },
+  "status": "planned",
+  "months": [
+    {
+      "month": 1,
+      "title": "Foundation",
+      "description": "Learn Hindi basics from Korean.",
+      "status": "not-started",
+      "weeks": []
+    }
+  ],
+  "_howToCreate": "See /data/README.md for instructions on creating ko-hi content."
+}

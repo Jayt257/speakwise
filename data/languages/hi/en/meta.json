@@ -1,0 +1,26 @@
+{
+  "_comment": "Hindi → English language pair metadata",
+  "_status": "stub — content not yet created",
+  "pairId": "hi-en",
+  "source": {
+    "id": "hi",
+    "name": "Hindi",
+    "flag": "🇮🇳"
+  },
+  "target": {
+    "id": "en",
+    "name": "English",
+    "flag": "🇬🇧"
+  },
+  "status": "planned",
+  "months": [
+    {
+      "month": 1,
+      "title": "Foundation",
+      "description": "Learn English basics from Hindi.",
+      "status": "not-started",
+      "weeks": []
+    }
+  ],
+  "_howToCreate": "See /data/README.md for instructions on creating hi-en content."
+}

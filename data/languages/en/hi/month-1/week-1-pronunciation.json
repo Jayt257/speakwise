@@ -1,0 +1,95 @@
+{
+  "id": 4,
+  "type": "pronunciation",
+  "title": "Hindi Vowels and Clear Sounds",
+  "description": "Practice Hindi vowels and breathy consonants.",
+  "duration": "15 min",
+  "xp": 30,
+  "week": 1,
+  "month": 1,
+  "langPair": "en-hi",
+  "tags": [
+    "english",
+    "hindi",
+    "devanagari",
+    "week-1",
+    "script-vowels-and-greetings"
+  ],
+  "blocks": [
+    {
+      "id": "b1",
+      "type": "keypoints",
+      "title": "Main tips",
+      "points": [
+        "Hindi vowels are usually pronounced clearly and fully.",
+        "Aspirated consonants have a soft puff of air.",
+        "Practice with short words before long sentences."
+      ]
+    },
+    {
+      "id": "b2",
+      "type": "minimal_pairs",
+      "title": "Sound Contrast Pairs",
+      "instruction": "Can you hear the difference?",
+      "pairs": [
+        {
+          "word1": "क",
+          "word2": "ख",
+          "sound1": "unaspirated k",
+          "sound2": "aspirated kh",
+          "diff": "extra breath in ख"
+        },
+        {
+          "word1": "त",
+          "word2": "थ",
+          "sound1": "unaspirated t",
+          "sound2": "aspirated th",
+          "diff": "extra breath in थ"
+        },
+        {
+          "word1": "प",
+          "word2": "फ",
+          "sound1": "unaspirated p",
+          "sound2": "aspirated ph",
+          "diff": "extra breath in फ"
+        }
+      ]
+    },
+    {
+      "id": "b3",
+      "type": "stress_pattern",
+      "title": "Where is the rhythm?",
+      "words": [
+        {
+          "word": "नमस्ते",
+          "syllables": [
+            "na",
+            "mas",
+            "te"
+          ],
+          "stressed": 1,
+          "note": "Say it smoothly, without rushing."
+        },
+        {
+          "word": "धन्यवाद",
+          "syllables": [
+            "dhan",
+            "ya",
+            "vaad"
+          ],
+          "stressed": 2,
+          "note": "Keep the final vowel long and clear."
+        }
+      ]
+    },
+    {
+      "id": "b4",
+      "type": "tongue_twister",
+      "title": "Tongue Twister",
+      "text": "कच्चा पापड़, पक्का पापड़",
+      "romanization": "kacchā pāpaṛ, pakkā pāpaṛ",
+      "translation": "raw papad, cooked papad",
+      "tip": "Say it slowly three times, then once at natural speed."
+    }
+  ]
+}

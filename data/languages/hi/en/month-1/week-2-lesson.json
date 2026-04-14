@@ -1,0 +1,224 @@
+{
+  "id": 11,
+  "type": "lesson",
+  "week": 2,
+  "month": 1,
+  "langPair": "hi-en",
+  "title": "अंग्रेज़ी क्रियाएँ और वर्तमान काल",
+  "description": "To be और To have क्रियाएँ, present tense conjugation, और दैनिक वाक्य बनाना।",
+  "duration": "20 मिनट",
+  "xp": 30,
+  "tags": [
+    "grammar",
+    "verbs",
+    "present-tense"
+  ],
+  "blocks": [
+    {
+      "id": "b1",
+      "type": "text",
+      "title": "अंग्रेज़ी की सबसे ज़रूरी क्रियाएँ",
+      "body": "अंग्रेज़ी में दो क्रियाएँ सबसे ज़्यादा use होती हैं:\n\n1. TO BE (होना): am / is / are\n2. TO HAVE (होना/रखना): have / has\n\nइन्हें अच्छे से सीखना ज़रूरी है क्योंकि ये हर जगह काम आती हैं!"
+    },
+    {
+      "id": "b2",
+      "type": "grammar_rule",
+      "title": "TO BE क्रिया — am/is/are",
+      "pattern": "I + am | He/She/It + is | You/We/They + are",
+      "examples": [
+        {
+          "native": "मैं एक student हूँ।",
+          "target": "I am a student.",
+          "translation": "मैं एक student हूँ।"
+        },
+        {
+          "native": "वह doctor है।",
+          "target": "She is a doctor.",
+          "translation": "वह doctor है।"
+        },
+        {
+          "native": "हम भारत से हैं।",
+          "target": "We are from India.",
+          "translation": "हम भारत से हैं।"
+        },
+        {
+          "native": "आप थके हुए हैं।",
+          "target": "You are tired.",
+          "translation": "आप थके हुए हैं।"
+        }
+      ],
+      "note": "हिन्दी में सब के लिए 'है/हैं/हूँ' — लेकिन अंग्रेज़ी में person के अनुसार am/is/are बदलता है!"
+    },
+    {
+      "id": "b3",
+      "type": "comparison_table",
+      "title": "TO BE — पूरी Table",
+      "headers": [
+        "Hindi",
+        "Subject",
+        "Verb",
+        "Example"
+      ],
+      "rows": [
+        [
+          "मैं हूँ",
+          "I",
+          "am",
+          "I am happy."
+        ],
+        [
+          "तुम हो",
+          "You",
+          "are",
+          "You are kind."
+        ],
+        [
+          "वह है (m)",
+          "He",
+          "is",
+          "He is tall."
+        ],
+        [
+          "वह है (f)",
+          "She",
+          "is",
+          "She is smart."
+        ],
+        [
+          "वह है (thing)",
+          "It",
+          "is",
+          "It is cold."
+        ],
+        [
+          "हम हैं",
+          "We",
+          "are",
+          "We are friends."
+        ],
+        [
+          "वे हैं",
+          "They",
+          "are",
+          "They are students."
+        ]
+      ]
+    },
+    {
+      "id": "b4",
+      "type": "grammar_rule",
+      "title": "Negative बनाना — नकारात्मक वाक्य",
+      "pattern": "Subject + am/is/are + NOT + ...",
+      "examples": [
+        {
+          "native": "मैं tired नहीं हूँ।",
+          "target": "I am not tired.",
+          "translation": "मैं थका/थकी नहीं हूँ।"
+        },
+        {
+          "native": "वह teacher नहीं है।",
+          "target": "He is not a teacher.",
+          "translation": "वह teacher नहीं है।"
+        },
+        {
+          "native": "हम late नहीं हैं।",
+          "target": "We are not late.",
+          "translation": "हम देर से नहीं हैं।"
+        }
+      ],
+      "note": "Short forms: am not = I'm not | is not = isn't | are not = aren't"
+    },
+    {
+      "id": "b5",
+      "type": "dialogue",
+      "title": "रोज़मर्रा की बातचीत",
+      "speakers": [
+        "Priya (भारतीय)",
+        "Tom (अंग्रेज़)"
+      ],
+      "lines": [
+        {
+          "speaker": 0,
+          "text": "Good morning, Tom! How are you?",
+          "romanization": "गुड मॉर्निंग, टॉम! हाउ आर यू?",
+          "translation": "शुभ प्रभात, टॉम! आप कैसे हैं?"
+        },
+        {
+          "speaker": 1,
+          "text": "I'm good, thanks! Are you busy today?",
+          "romanization": "आई'म गुड, थैंक्स! आर यू बिज़ी टुडे?",
+          "translation": "मैं ठीक हूँ, धन्यवाद! क्या आप आज व्यस्त हैं?"
+        },
+        {
+          "speaker": 0,
+          "text": "No, I'm not busy. I have a meeting at 3 PM.",
+          "romanization": "नो, आई'म नॉट बिज़ी। आई हैव अ मीटिंग एट थ्री पीएम।",
+          "translation": "नहीं, मैं व्यस्त नहीं हूँ। मेरी 3 बजे meeting है।"
+        },
+        {
+          "speaker": 1,
+          "text": "OK! Are you free for lunch?",
+          "romanization": "ओके! आर यू फ्री फॉर लंच?",
+          "translation": "ठीक है! क्या आप lunch के लिए free हैं?"
+        },
+        {
+          "speaker": 0,
+          "text": "Yes! I am free. Let's go!",
+          "romanization": "येस! आई एम फ्री। लेट्स गो!",
+          "translation": "हाँ! मैं free हूँ। चलिए!"
+        }
+      ]
+    },
+    {
+      "id": "b6",
+      "type": "fill_blank",
+      "title": "सही am/is/are भरें",
+      "instructions": "सही form चुनें:",
+      "items": [
+        {
+          "sentence": "I ___ a student from India.",
+          "answer": "am",
+          "hint": "I के साथ"
+        },
+        {
+          "sentence": "She ___ a doctor.",
+          "answer": "is",
+          "hint": "He/She/It के साथ"
+        },
+        {
+          "sentence": "We ___ from Mumbai.",
+          "answer": "are",
+          "hint": "We/You/They के साथ"
+        },
+        {
+          "sentence": "They ___ not late.",
+          "answer": "are",
+          "hint": "They के साथ"
+        },
+        {
+          "sentence": "It ___ very cold today.",
+          "answer": "is",
+          "hint": "It के साथ"
+        }
+      ]
+    },
+    {
+      "id": "b7",
+      "type": "tip",
+      "body": "💡 Short form (Contractions) याद करें:\nI am → I'm\nYou are → You're\nHe/She/It is → He's / She's / It's\nWe are → We're\nThey are → They're\nIs not → Isn't | Are not → Aren't"
+    },
+    {
+      "id": "b8",
+      "type": "progress_checkpoint",
+      "title": "सप्ताह 2 — क्या आप कर सकते हैं?",
+      "items": [
+        "मैं am/is/are का सही use कर सकता/सकती हूँ",
+        "मैं negative sentences बना सकता/सकती हूँ (I am not...)",
+        "मैं contractions (I'm, She's, We're) use कर सकता/सकती हूँ",
+        "मैं 'Are you...?' से question पूछ सकता/सकती हूँ",
+        "मैं 25 daily life vocabulary words जानता/जानती हूँ"
+      ],
+      "xpBonus": 15
+    }
+  ]
+}

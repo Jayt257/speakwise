@@ -1,0 +1,229 @@
+{
+  "id": 1,
+  "type": "lesson",
+  "week": 1,
+  "month": 1,
+  "langPair": "hi-en",
+  "title": "अंग्रेज़ी की पहली पाठ: अभिवादन और परिचय",
+  "description": "अंग्रेज़ी में नमस्ते कहना, अपना परिचय देना और बुनियादी बातचीत शुरू करना सीखें।",
+  "duration": "20 मिनट",
+  "xp": 30,
+  "tags": [
+    "greetings",
+    "introduction",
+    "basics",
+    "week1"
+  ],
+  "blocks": [
+    {
+      "id": "b1",
+      "type": "text",
+      "title": "अंग्रेज़ी में आपका स्वागत है! Welcome to English!",
+      "body": "अंग्रेज़ी (English) दुनिया में सबसे ज़्यादा बोली जाने वाली भाषाओं में से एक है। यह लगभग 1.5 अरब लोग बोलते हैं।\n\nअच्छी खबर: अंग्रेज़ी की लिपि (Roman script) सीखना आसान है — सिर्फ 26 अक्षर!\n\nइस हफ्ते आप सीखेंगे:\n• अंग्रेज़ी में अभिवादन (Greetings)\n• अपना परिचय देना (Self-introduction)\n• बुनियादी सवाल-जवाब (Basic Q&A)"
+    },
+    {
+      "id": "b2",
+      "type": "grammar_rule",
+      "title": "अंग्रेज़ी वाक्य क्रम: SVO",
+      "pattern": "Subject + Verb + Object",
+      "examples": [
+        {
+          "native": "मैं चाय पीता हूँ।",
+          "target": "I drink tea.",
+          "translation": "मैं चाय पीता हूँ।"
+        },
+        {
+          "native": "वह किताब पढ़ती है।",
+          "target": "She reads a book.",
+          "translation": "वह किताब पढ़ती है।"
+        },
+        {
+          "native": "हम अंग्रेज़ी सीखते हैं।",
+          "target": "We learn English.",
+          "translation": "हम अंग्रेज़ी सीखते हैं।"
+        }
+      ],
+      "note": "हिन्दी में क्रिया (verb) अंत में आती है (SOV), लेकिन अंग्रेज़ी में क्रिया बीच में आती है (SVO)। यह सबसे बड़ा अंतर है!"
+    },
+    {
+      "id": "b3",
+      "type": "dialogue",
+      "title": "पहली मुलाक़ात — First Meeting",
+      "speakers": [
+        "आप (You)",
+        "अंग्रेज़ी दोस्त (English Friend)"
+      ],
+      "lines": [
+        {
+          "speaker": 0,
+          "text": "Hello!",
+          "romanization": "हेलो!",
+          "translation": "नमस्ते!"
+        },
+        {
+          "speaker": 1,
+          "text": "Hello! How are you?",
+          "romanization": "हेलो! हाउ आर यू?",
+          "translation": "नमस्ते! आप कैसे हैं?"
+        },
+        {
+          "speaker": 0,
+          "text": "I am fine, thank you. What is your name?",
+          "romanization": "आई एम फाइन, थैंक यू। व्हॉट इज़ योर नेम?",
+          "translation": "मैं ठीक हूँ, धन्यवाद। आपका नाम क्या है?"
+        },
+        {
+          "speaker": 1,
+          "text": "My name is Alex. Nice to meet you!",
+          "romanization": "माय नेम इज़ एलेक्स। नाइस टु मीट यू!",
+          "translation": "मेरा नाम एलेक्स है। आपसे मिलकर खुशी हुई!"
+        },
+        {
+          "speaker": 0,
+          "text": "Nice to meet you too! Where are you from?",
+          "romanization": "नाइस टु मीट यू टू! व्हेयर आर यू फ्रॉम?",
+          "translation": "मुझे भी खुशी हुई! आप कहाँ से हैं?"
+        },
+        {
+          "speaker": 1,
+          "text": "I am from London. And you?",
+          "romanization": "आई एम फ्रॉम लंदन। एंड यू?",
+          "translation": "मैं लंदन से हूँ। और आप?"
+        }
+      ]
+    },
+    {
+      "id": "b4",
+      "type": "comparison_table",
+      "title": "हिन्दी बनाम अंग्रेज़ी — मुख्य वाक्यांश",
+      "headers": [
+        "हिन्दी",
+        "English",
+        "उच्चारण (Pronunciation)"
+      ],
+      "rows": [
+        [
+          "नमस्ते / नमस्कार",
+          "Hello / Hi",
+          "हेलो / हाय"
+        ],
+        [
+          "आप कैसे हैं?",
+          "How are you?",
+          "हाउ आर यू?"
+        ],
+        [
+          "मैं ठीक हूँ।",
+          "I am fine.",
+          "आई एम फाइन।"
+        ],
+        [
+          "धन्यवाद",
+          "Thank you",
+          "थैंक यू"
+        ],
+        [
+          "माफ़ कीजिए",
+          "Sorry / Excuse me",
+          "सॉरी / एक्सक्यूज़ मी"
+        ],
+        [
+          "हाँ",
+          "Yes",
+          "येस"
+        ],
+        [
+          "नहीं",
+          "No",
+          "नो"
+        ],
+        [
+          "फिर मिलेंगे!",
+          "See you later!",
+          "सी यू लेटर!"
+        ],
+        [
+          "शुभ रात्रि",
+          "Good night",
+          "गुड नाइट"
+        ],
+        [
+          "आपका नाम क्या है?",
+          "What is your name?",
+          "व्हॉट इज़ योर नेम?"
+        ]
+      ]
+    },
+    {
+      "id": "b5",
+      "type": "keypoints",
+      "title": "अंग्रेज़ी की 5 मुख्य बातें जो हिन्दी से अलग हैं",
+      "points": [
+        "वाक्य क्रम: हिन्दी SOV है (मैं चाय पीता हूँ) → अंग्रेज़ी SVO है (I drink tea)",
+        "लिंग: अंग्रेज़ी में संज्ञाओं का लिंग नहीं होता — 'किताब' के लिए 'it' या 'the book'",
+        "Articles: अंग्रेज़ी में 'a/an' (अनिश्चित) और 'the' (निश्चित) लगते हैं — हिन्दी में नहीं",
+        "क्रिया रूप: I am, You are, He is — तीनों अलग होते हैं (हिन्दी: मैं/आप/वह हूँ/हैं)",
+        "वर्तमान काल: 'He reads' में 's' लगता है — He read❌ / He reads ✓"
+      ]
+    },
+    {
+      "id": "b6",
+      "type": "fill_blank",
+      "title": "रिक्त स्थान भरें — Fill in the Blanks",
+      "instructions": "सही अंग्रेज़ी शब्द लिखें:",
+      "items": [
+        {
+          "sentence": "नमस्ते कहने के लिए अंग्रेज़ी में ___ कहते हैं।",
+          "answer": "Hello",
+          "hint": "H से शुरू होता है"
+        },
+        {
+          "sentence": "धन्यवाद के लिए अंग्रेज़ी में ___ ___ कहते हैं।",
+          "answer": "Thank you",
+          "hint": "2 शब्द"
+        },
+        {
+          "sentence": "'मेरा नाम राज है' अंग्रेज़ी में: '___ name is Raj.'",
+          "answer": "My",
+          "hint": "मेरा = ?"
+        },
+        {
+          "sentence": "अंग्रेज़ी वाक्य क्रम है: Subject + ___ + Object",
+          "answer": "Verb",
+          "hint": "क्रिया का अंग्रेज़ी नाम"
+        }
+      ]
+    },
+    {
+      "id": "b7",
+      "type": "tip",
+      "body": "💡 याद रखें: अंग्रेज़ी में 'आप' के लिए हमेशा 'You' कहते हैं — चाहे formal हो या informal। हिन्दी जैसे तुम/आप/आप का अंतर नहीं है!"
+    },
+    {
+      "id": "b8",
+      "type": "cultural_note",
+      "title": "अंग्रेज़ी अभिवादन की संस्कृति",
+      "icon": "🤝",
+      "content": "अंग्रेज़ी बोलने वाले देशों में मिलते समय हाथ मिलाना (handshake) सामान्य है। 'Hi' और 'Hello' दोनों सही हैं — 'Hi' थोड़ा ज़्यादा casual है। पहली मुलाक़ात में 'Nice to meet you!' ज़रूर कहें — यह बहुत礼貌 (शिष्ट) माना जाता है।",
+      "tags": [
+        "culture",
+        "greetings",
+        "etiquette",
+        "british-english"
+      ]
+    },
+    {
+      "id": "b9",
+      "type": "progress_checkpoint",
+      "title": "पहले पाठ की जाँच — Can You Do This?",
+      "items": [
+        "मैं अंग्रेज़ी में नमस्ते (Hello/Hi) कह सकता/सकती हूँ",
+        "मैं अपना परिचय दे सकता/सकती हूँ (My name is...)",
+        "मैं पूछ सकता/सकती हूँ 'How are you?' और जवाब दे सकता/सकती हूँ",
+        "मुझे हिन्दी और अंग्रेज़ी के वाक्य क्रम का अंतर पता है (SOV vs SVO)",
+        "मैं 10 बुनियादी अंग्रेज़ी वाक्यांश जानता/जानती हूँ"
+      ],
+      "xpBonus": 15
+    }
+  ]
+}

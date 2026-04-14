@@ -1,0 +1,75 @@
+{
+  "id": 13,
+  "type": "reading",
+  "week": 2,
+  "month": 1,
+  "langPair": "hi-en",
+  "title": "दिल्ली से लंदन — A Day in London",
+  "description": "Priya का लंदन में पहला दिन — present tense में story।",
+  "duration": "12 मिनट",
+  "xp": 25,
+  "tags": [
+    "reading",
+    "present-tense"
+  ],
+  "blocks": [
+    {
+      "id": "r1",
+      "type": "reading",
+      "passage": "📖 PRIYA'S FIRST DAY IN LONDON — लंदन में प्रिया का पहला दिन\n\nPriya is from Delhi. She is in London for the first time.\n(प्रिया दिल्ली से है। वह पहली बार लंदन में है।)\n\nShe wakes up at 7 AM. The weather is cold and cloudy.\n(वह सुबह 7 बजे उठती है। मौसम ठंडा और बादलों वाला है।)\n\nShe has tea and toast for breakfast. In India, she drinks chai!\n(वह नाश्ते में चाय और toast खाती है। भारत में, वह चाय पीती है!)\n\nAt 9 AM, she takes the bus to the city centre.\n(9 बजे, वह city centre के लिए बस लेती है।)\n\nThe bus is clean and on time. She is happy!\n(बस साफ़ और समय पर है। वह खुश है!)\n\nAt the market, a man asks: 'Excuse me, are you lost?'\n(बाज़ार में, एक आदमी पूछता है: 'माफ़ कीजिए, क्या आप खो गई हैं?')\n\nPriya says: 'No, I am not lost. Thank you for asking!'\n(प्रिया कहती है: 'नहीं, मैं खोई नहीं हूँ। पूछने के लिए धन्यवाद!')\n\nThe man is friendly and helpful. London is wonderful!\n(वह आदमी मिलनसार और मददगार है। लंदन अद्भुत है!)",
+      "questions": [
+        {
+          "q": "प्रिया कहाँ से है? (Where is Priya from?)",
+          "a": "प्रिया दिल्ली से है। (Priya is from Delhi.)"
+        },
+        {
+          "q": "लंदन में मौसम कैसा है?",
+          "a": "मौसम ठंडा और बादलों वाला है। (The weather is cold and cloudy.)"
+        },
+        {
+          "q": "Priya बाज़ार कैसे जाती है?",
+          "a": "वह बस लेती है। (She takes the bus.)"
+        },
+        {
+          "q": "बाज़ार में क्या हुआ?",
+          "a": "एक आदमी ने पूछा कि क्या वह खो गई है। Priya ने कहा नहीं।"
+        }
+      ]
+    },
+    {
+      "id": "r2",
+      "type": "cultural_note",
+      "title": "अंग्रेज़ी मौसम संस्कृति",
+      "icon": "🌧️",
+      "content": "ब्रिटिश लोगों का मौसम के बारे में बात करना बहुत famous है! 'It's a bit cold, isn't it?' — यह एक classic British small talk है। London में बारिश बहुत होती है, इसलिए छाता (umbrella) हमेशा साथ रखते हैं। अगर कोई कहे 'Lovely weather!' तो usually वे sarcasm में कह रहे होते हैं!",
+      "tags": [
+        "british",
+        "culture",
+        "weather",
+        "humour"
+      ]
+    },
+    {
+      "id": "r3",
+      "type": "true_false",
+      "title": "Reading Comprehension",
+      "items": [
+        {
+          "statement": "London में मौसम गर्म है।",
+          "answer": false,
+          "explanation": "नहीं! Story में: 'The weather is cold and cloudy.' — मौसम ठंडा और बादलों वाला है।"
+        },
+        {
+          "statement": "Priya bus से city centre जाती है।",
+          "answer": true,
+          "explanation": "हाँ! 'She takes the bus to the city centre.'"
+        },
+        {
+          "statement": "बाज़ार में मिला आदमी rude (बदतमीज़) था।",
+          "answer": false,
+          "explanation": "नहीं! Story में: 'The man is friendly and helpful.' — वह मिलनसार और मददगार था।"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "_comment": "Korean → French language pair metadata",
+  "_status": "stub — content not yet created",
+  "pairId": "ko-fr",
+  "source": {
+    "id": "ko",
+    "name": "Korean",
+    "flag": "🇰🇷"
+  },
+  "target": {
+    "id": "fr",
+    "name": "French",
+    "flag": "🇫🇷"
+  },
+  "status": "planned",
+  "months": [
+    {
+      "month": 1,
+      "title": "Foundation",
+      "description": "Learn French basics from Korean.",
+      "status": "not-started",
+      "weeks": []
+    }
+  ],
+  "_howToCreate": "See /data/README.md for instructions on creating ko-fr content."
+}

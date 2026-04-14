@@ -1,0 +1,26 @@
+{
+  "_comment": "Korean → Gujarati language pair metadata",
+  "_status": "stub — content not yet created",
+  "pairId": "ko-gu",
+  "source": {
+    "id": "ko",
+    "name": "Korean",
+    "flag": "🇰🇷"
+  },
+  "target": {
+    "id": "gu",
+    "name": "Gujarati",
+    "flag": "🇮🇳"
+  },
+  "status": "planned",
+  "months": [
+    {
+      "month": 1,
+      "title": "Foundation",
+      "description": "Learn Gujarati basics from Korean.",
+      "status": "not-started",
+      "weeks": []
+    }
+  ],
+  "_howToCreate": "See /data/README.md for instructions on creating ko-gu content."
+}

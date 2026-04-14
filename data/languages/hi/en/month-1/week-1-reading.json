@@ -1,0 +1,74 @@
+{
+  "id": 3,
+  "type": "reading",
+  "week": 1,
+  "month": 1,
+  "langPair": "hi-en",
+  "title": "पहली अंग्रेज़ी बातचीत",
+  "description": "दो लोगों की पहली मुलाक़ात की बातचीत पढ़ें और समझें।",
+  "duration": "12 मिनट",
+  "xp": 25,
+  "tags": [
+    "reading",
+    "dialogue"
+  ],
+  "blocks": [
+    {
+      "id": "r1",
+      "type": "reading",
+      "passage": "📖 A NEW FRIEND — एक नया दोस्त\n\nRaj is from Mumbai, India. He is learning English.\n(राज मुम्बई, भारत से है। वह अंग्रेज़ी सीख रहा है।)\n\nRaj: Hello! My name is Raj. What is your name?\n(नमस्ते! मेरा नाम राज है। आपका नाम क्या है?)\n\nSarah: Hello, Raj! My name is Sarah. Nice to meet you!\n(मेरा नाम सारा है। आपसे मिलकर खुशी हुई!)\n\nRaj: Where are you from, Sarah?\n(सारा, आप कहाँ से हैं?)\n\nSarah: I am from London. And you?\n(मैं लंदन से हूँ। और आप?)\n\nRaj: I am from Mumbai, India. Do you like India?\n(मैं मुम्बई, भारत से हूँ। क्या आपको भारत पसंद है?)\n\nSarah: Yes! I love India! The food is delicious!\n(हाँ! मुझे भारत बहुत पसंद है! खाना बहुत स्वादिष्ट है!)\n\nRaj: Thank you! Goodbye, Sarah!\n(धन्यवाद! अलविदा, सारा!)\n\nSarah: Goodbye, Raj! Nice to meet you!\n(अलविदा, राज! आपसे मिलकर खुशी हुई!)",
+      "questions": [
+        {
+          "q": "राज कहाँ से है?",
+          "a": "राज मुम्बई, भारत से है। (Raj is from Mumbai, India.)"
+        },
+        {
+          "q": "सारा कहाँ से है?",
+          "a": "सारा लंदन से है। (Sarah is from London.)"
+        },
+        {
+          "q": "'Nice to meet you' का हिन्दी अर्थ क्या है?",
+          "a": "आपसे मिलकर खुशी हुई।"
+        },
+        {
+          "q": "सारा को भारत में क्या पसंद है?",
+          "a": "सारा को भारत का खाना (food) बहुत पसंद है।"
+        }
+      ]
+    },
+    {
+      "id": "r2",
+      "type": "cultural_note",
+      "title": "अंग्रेज़ी संस्कृति में मुलाक़ात",
+      "icon": "🤝",
+      "content": "अंग्रेज़ी बोलने वाले देशों में पहली मुलाक़ात में हाथ मिलाना (handshake) सामान्य है। 'Nice to meet you!' कहना अनिवार्य礼貌 (शिष्टाचार) है। ब्रिटिश लोग 'How do you do?' भी कहते हैं जो formal greeting है।",
+      "tags": [
+        "culture",
+        "british",
+        "greeting"
+      ]
+    },
+    {
+      "id": "r3",
+      "type": "true_false",
+      "title": "सच या झूठ?",
+      "items": [
+        {
+          "statement": "राज मुम्बई से है।",
+          "answer": true,
+          "explanation": "हाँ! Raj is from Mumbai, India."
+        },
+        {
+          "statement": "Goodbye का मतलब नमस्ते है।",
+          "answer": false,
+          "explanation": "नहीं! Goodbye = अलविदा। Hello = नमस्ते।"
+        },
+        {
+          "statement": "सारा को भारत का खाना पसंद है।",
+          "answer": true,
+          "explanation": "हाँ! Sarah said: The food is delicious!"
+        }
+      ]
+    }
+  ]
+}

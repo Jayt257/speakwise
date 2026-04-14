@@ -1,0 +1,58 @@
+{
+  "id": 18,
+  "type": "speaking",
+  "week": 2,
+  "month": 1,
+  "langPair": "hi-en",
+  "title": "दैनिक English Conversations",
+  "description": "3 role-play: office में, बाज़ार में, और फ़ोन पर।",
+  "duration": "12 मिनट",
+  "xp": 35,
+  "tags": [
+    "speaking",
+    "roleplay"
+  ],
+  "blocks": [
+    {
+      "id": "sp0",
+      "type": "roleplay_card",
+      "title": "Scene: पहला दिन — First Day at Work",
+      "scenario": "New Employee Introduction",
+      "yourRole": "नया कर्मचारी (आप — भारतीय)",
+      "partnerRole": "Colleague (अंग्रेज़ बोलने वाला)",
+      "context": "आपकी नई company में पहला दिन है। आप break room में एक colleague से मिल रहे हैं।",
+      "goal": "am/is/are use करते हुए अपना परिचय दें, पूछें वे कौन से department में हैं।",
+      "usefulPhrases": [
+        "Hi! I'm new here. My name is ___",
+        "I am from the ___ department.",
+        "Are you also in this team?",
+        "It is my first day. I am a bit nervous!",
+        "The office is very nice, isn't it?"
+      ]
+    },
+    {
+      "id": "sp1",
+      "type": "speaking",
+      "prompt": "आप एक English-speaking country में shopping कर रहे हैं। दुकानदार से पूछें — क्या आपके पास ___ है? कितना है? Thank them।",
+      "hints": [
+        "Excuse me, do you have ___?",
+        "How much is it?",
+        "Is it expensive?",
+        "I am looking for ___",
+        "Thank you! It is very nice."
+      ]
+    },
+    {
+      "id": "sp2",
+      "type": "speaking",
+      "prompt": "आपका English-speaking friend आपसे पूछता है आप कैसे हैं और आप क्या कर रहे हैं। am/is/are use करके जवाब दें।",
+      "hints": [
+        "I am fine, thanks!",
+        "I am working from home today.",
+        "My family is well.",
+        "I am not busy right now.",
+        "Are you free this weekend?"
+      ]
+    }
+  ]
+}

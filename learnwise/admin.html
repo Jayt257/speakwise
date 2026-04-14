@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="theme-color" content="#5b4fcf"/>
+<meta name="description" content="LearnWise – Admin Content Manager"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Admin · LearnWise</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Inter',sans-serif;color:#e0ddf5;min-height:100vh;background:#0a0818;overflow-x:hidden;}
+h1,h2,h3,h4,h5,button,label{font-family:'Plus Jakarta Sans',sans-serif;}
+.material-symbols-outlined{font-variation-settings:'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 24;}
+.bg-deep{position:fixed;inset:0;z-index:0;background:radial-gradient(ellipse at 25% 25%,#1a1040 0%,#0d0b22 55%,#060410 100%);}
+
+.top-bar{position:sticky;top:0;z-index:50;background:rgba(10,8,24,0.95);backdrop-filter:blur(20px);border-bottom:1px solid rgba(91,79,207,0.18);padding:0 20px;height:60px;display:flex;align-items:center;justify-content:space-between;gap:12px;}
+.back-btn{width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,0.55);border:1px solid rgba(255,255,255,0.1);background:rgba(255,255,255,0.05);cursor:pointer;transition:all 0.2s;text-decoration:none;}
+.back-btn:hover{background:rgba(255,255,255,0.12);color:white;}
+.logo{display:flex;align-items:center;gap:8px;}
+.logo-icon{width:28px;height:28px;border-radius:8px;background:linear-gradient(135deg,#5b4fcf,#7c6fd4);display:flex;align-items:center;justify-content:center;}
+.logo-text{font-weight:900;font-size:15px;color:white;}
+.logo-badge{font-size:10px;font-weight:800;padding:3px 8px;border-radius:6px;background:rgba(239,68,68,0.2);color:#f87171;border:1px solid rgba(239,68,68,0.3);}
+
+.admin-layout{position:relative;z-index:1;display:grid;grid-template-columns:260px 1fr;min-height:calc(100vh - 60px);}
+@media(max-width:900px){.admin-layout{grid-template-columns:1fr;}.sidebar{display:none;}}
+
+.sidebar{background:rgba(255,255,255,0.03);border-right:1px solid rgba(255,255,255,0.06);padding:16px;overflow-y:auto;height:calc(100vh - 60px);position:sticky;top:60px;}
+.sidebar h3{font-size:10px;font-weight:900;text-transform:uppercase;letter-spacing:0.12em;color:rgba(255,255,255,0.25);margin:16px 0 8px;}
+
+.sel-btn{display:flex;align-items:center;gap:8px;padding:8px 10px;border-radius:8px;cursor:pointer;transition:all 0.15s;border:none;background:transparent;width:100%;text-align:left;font-family:'Inter',sans-serif;font-size:12px;color:rgba(255,255,255,0.45);font-weight:600;}
+.sel-btn:hover{background:rgba(255,255,255,0.05);color:rgba(255,255,255,0.7);}
+.sel-btn.active{background:rgba(91,79,207,0.18);color:white;border:1px solid rgba(91,79,207,0.25);}
+.sel-icon{width:24px;height:24px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;}
+
+.tree-month{margin-bottom:4px;}
+.tree-hd{display:flex;align-items:center;gap:6px;padding:6px 8px;border-radius:6px;cursor:pointer;font-size:11px;font-weight:700;color:rgba(255,255,255,0.4);}
+.tree-hd:hover{background:rgba(255,255,255,0.04);}
+.tree-hd.open{color:white;}
+.tree-acts{display:none;padding-left:14px;}
+.tree-acts.open{display:block;}
+.tree-act{display:flex;align-items:center;gap:5px;padding:4px 6px;border-radius:5px;cursor:pointer;font-size:10px;color:rgba(255,255,255,0.35);transition:all 0.12s;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.tree-act:hover{background:rgba(255,255,255,0.04);color:rgba(255,255,255,0.6);}
+.tree-act.sel{background:rgba(91,79,207,0.18);color:#c4b5fd;}
+.tree-dot{width:5px;height:5px;border-radius:50%;flex-shrink:0;}
+
+.main-panel{padding:24px;overflow-y:auto;height:calc(100vh - 60px);}
+.panel-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;flex-wrap:wrap;gap:12px;}
+.panel-title{font-weight:900;font-size:20px;color:white;display:flex;align-items:center;gap:10px;}
+
+.card{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:1rem;padding:20px;margin-bottom:16px;animation:fadeUp 0.3s ease both;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:translateY(0);}}
+.card h4{font-weight:800;font-size:13px;color:rgba(255,255,255,0.7);margin-bottom:12px;display:flex;align-items:center;gap:6px;}
+
+.stats-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;margin-bottom:20px;}
+.stat-card{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.06);border-radius:10px;padding:14px;text-align:center;}
+.stat-num{font-size:24px;font-weight:900;margin-bottom:2px;}
+.stat-label{font-size:10px;color:rgba(255,255,255,0.25);}
+
+.form-group{margin-bottom:14px;}
+.form-label{display:block;font-size:11px;font-weight:700;color:rgba(255,255,255,0.35);margin-bottom:4px;text-transform:uppercase;letter-spacing:0.08em;}
+.form-input,.form-textarea,.form-select{width:100%;padding:9px 12px;border-radius:8px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);color:white;font-size:13px;font-family:'Inter',sans-serif;outline:none;transition:border-color 0.2s;}
+.form-input:focus,.form-textarea:focus,.form-select:focus{border-color:rgba(91,79,207,0.4);}
+.form-textarea{min-height:80px;resize:vertical;line-height:1.5;}
+.form-select{cursor:pointer;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M2 4l4 4 4-4' fill='none' stroke='%23666' stroke-width='2'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 10px center;}
+.form-select option{background:#1a1532;color:white;}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+@media(max-width:600px){.form-row{grid-template-columns:1fr;}}
+
+.btn{padding:8px 16px;border-radius:8px;font-weight:700;font-size:12px;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;border:none;transition:all 0.2s;display:inline-flex;align-items:center;gap:5px;}
+.btn-primary{background:linear-gradient(135deg,#5b4fcf,#7c6fd4);color:white;box-shadow:0 3px 12px rgba(91,79,207,0.3);}
+.btn-primary:hover{transform:translateY(-1px);box-shadow:0 5px 20px rgba(91,79,207,0.45);}
+.btn-success{background:linear-gradient(135deg,#10b981,#059669);color:white;box-shadow:0 3px 12px rgba(16,185,129,0.3);}
+.btn-success:hover{transform:translateY(-1px);}
+.btn-danger{background:rgba(239,68,68,0.15);color:#f87171;border:1px solid rgba(239,68,68,0.2);}
+.btn-danger:hover{background:rgba(239,68,68,0.25);}
+.btn-ghost{background:rgba(255,255,255,0.06);color:rgba(255,255,255,0.5);border:1px solid rgba(255,255,255,0.08);}
+.btn-ghost:hover{background:rgba(255,255,255,0.1);color:white;}
+.btn-group{display:flex;gap:6px;flex-wrap:wrap;}
+
+.json-editor{width:100%;min-height:280px;padding:14px;border-radius:10px;background:rgba(0,0,0,0.3);border:1px solid rgba(255,255,255,0.06);color:#a5a0df;font-family:'JetBrains Mono',monospace,'Courier New',monospace;font-size:11px;line-height:1.5;resize:vertical;outline:none;tab-size:2;}
+.json-editor:focus{border-color:rgba(91,79,207,0.25);}
+
+.toast{position:fixed;bottom:20px;right:20px;z-index:999;padding:12px 18px;border-radius:10px;background:rgba(8,6,22,0.96);backdrop-filter:blur(20px);border:1px solid rgba(91,79,207,0.25);box-shadow:0 10px 40px rgba(0,0,0,0.5);display:flex;align-items:center;gap:8px;font-size:12px;font-weight:700;color:white;transform:translateY(16px);opacity:0;transition:all 0.3s cubic-bezier(.34,1.3,.64,1);pointer-events:none;}
+.toast.show{transform:translateY(0);opacity:1;}
+
+.tab-bar{display:flex;gap:3px;margin-bottom:16px;padding:3px;background:rgba(255,255,255,0.03);border-radius:10px;border:1px solid rgba(255,255,255,0.05);}
+.tab-btn{flex:1;padding:8px;border-radius:7px;border:none;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;font-size:11px;font-weight:700;background:transparent;color:rgba(255,255,255,0.35);transition:all 0.2s;text-align:center;}
+.tab-btn.active{background:rgba(91,79,207,0.2);color:white;}
+.tab-btn:hover:not(.active){color:rgba(255,255,255,0.6);}
+
+.act-table{width:100%;border-collapse:collapse;font-size:11px;}
+.act-table th{text-align:left;padding:8px 10px;font-weight:700;color:rgba(255,255,255,0.3);text-transform:uppercase;letter-spacing:0.08em;font-size:9px;border-bottom:1px solid rgba(255,255,255,0.05);}
+.act-table td{padding:8px 10px;border-bottom:1px solid rgba(255,255,255,0.03);color:rgba(255,255,255,0.5);}
+.act-table tr:hover td{background:rgba(255,255,255,0.02);}
+.act-table .clickable{color:white;font-weight:600;cursor:pointer;}
+.act-table .clickable:hover{color:#c4b5fd;text-decoration:underline;}
+.type-badge{display:inline-flex;align-items:center;gap:2px;font-size:9px;font-weight:700;padding:2px 6px;border-radius:4px;text-transform:uppercase;letter-spacing:0.06em;}
+
+::-webkit-scrollbar{width:4px;height:4px;}
+::-webkit-scrollbar-thumb{background:rgba(91,79,207,0.25);border-radius:2px;}
+</style>
+</head>
+<body>
+<div class="bg-deep"></div>
+
+<div class="top-bar">
+  <div style="display:flex;align-items:center;gap:10px;">
+    <a href="roadmap.html" class="back-btn"><span class="material-symbols-outlined" style="font-size:18px;">arrow_back</span></a>
+    <div class="logo">
+      <div class="logo-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="9" r="3" fill="white"/><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z" fill="white" opacity="0.6"/></svg></div>
+      <span class="logo-text">LearnWise</span>
+      <span class="logo-badge">ADMIN</span>
+    </div>
+  </div>
+  <div class="btn-group">
+    <button class="btn btn-ghost" onclick="exportContent()"><span class="material-symbols-outlined" style="font-size:14px;">download</span>Export JSON</button>
+    <button class="btn btn-ghost" onclick="document.getElementById('import-file').click()"><span class="material-symbols-outlined" style="font-size:14px;">upload</span>Import JSON</button>
+    <input type="file" id="import-file" accept=".json" style="display:none;" onchange="importContent(event)"/>
+  </div>
+</div>
+
+<div class="admin-layout">
+  <div class="sidebar" id="sidebar">
+    <h3>Target Language</h3>
+    <div id="lang-select"></div>
+    <h3>Filter Type</h3>
+    <div id="type-select"></div>
+    <h3>Activity Browser</h3>
+    <div id="activity-tree"></div>
+  </div>
+  <div class="main-panel" id="main-panel"></div>
+</div>
+
+<div class="toast" id="toast"><span class="material-symbols-outlined" style="font-size:16px;color:#34d399;font-variation-settings:'FILL' 1">check_circle</span><span id="toast-msg">Saved!</span></div>
+
+<script src="data/roadmap-data.js"></script>
+<script src="data/activity-content.js"></script>
+<script>
+'use strict';
+
+let selectedLang = LWData.getSelectedLanguage() || 'hindi';
+let selectedType = null;
+let selectedActId = null;
+const TYPES = LWData.ACTIVITY_TYPES;
+
+function initAdmin() {
+  renderLangSelect();
+  renderTypeSelect();
+  renderTree();
+  renderOverview();
+}
+
+// ─── Language Select ───
+function renderLangSelect() {
+  const el = document.getElementById('lang-select');
+  el.innerHTML = '';
+  LWData.ALL_LANGUAGE_IDS.forEach(id => {
+    if (id === 'english') return; // English is base, not a target
+    const lang = LWData.getLanguage(id);
+    if (!lang) return;
+    const btn = document.createElement('button');
+    btn.className = `sel-btn ${id === selectedLang ? 'active' : ''}`;
+    btn.innerHTML = `<div class="sel-icon">${lang.flag}</div><span>${lang.name}</span>`;
+    btn.onclick = () => { selectedLang = id; selectedActId = null; renderLangSelect(); renderTree(); renderOverview(); };
+    el.appendChild(btn);
+  });
+}
+
+// ─── Type Select ───
+function renderTypeSelect() {
+  const el = document.getElementById('type-select');
+  el.innerHTML = '';
+  const allBtn = document.createElement('button');
+  allBtn.className = `sel-btn ${selectedType === null ? 'active' : ''}`;
+  allBtn.innerHTML = `<div class="sel-icon" style="background:rgba(91,79,207,0.15);"><span class="material-symbols-outlined" style="font-size:12px;color:#a5a0df;font-variation-settings:'FILL' 1">apps</span></div><span>All Types</span>`;
+  allBtn.onclick = () => { selectedType = null; renderTypeSelect(); renderTree(); renderOverview(); };
+  el.appendChild(allBtn);
+  Object.entries(TYPES).forEach(([key, info]) => {
+    if (key === 'milestone' || key === 'final_exam') return;
+    const btn = document.createElement('button');
+    btn.className = `sel-btn ${selectedType === key ? 'active' : ''}`;
+    btn.innerHTML = `<div class="sel-icon" style="background:${info.color}18;"><span class="material-symbols-outlined" style="font-size:12px;color:${info.color};font-variation-settings:'FILL' 1">${info.icon}</span></div><span>${info.label}</span>`;
+    btn.onclick = () => { selectedType = key; renderTypeSelect(); renderTree(); renderOverview(); };
+    el.appendChild(btn);
+  });
+}
+
+// ─── Tree ───
+function renderTree() {
+  const el = document.getElementById('activity-tree');
+  el.innerHTML = '';
+  const monthData = LWData.getActivities(selectedLang);
+  monthData.forEach((month, mi) => {
+    const meta = LWData.MONTHS_META[mi];
+    const acts = month.activities.filter(a => !selectedType || a.type === selectedType);
+    if (acts.length === 0) return;
+    const mDiv = document.createElement('div');
+    mDiv.className = 'tree-month';
+    const hd = document.createElement('div');
+    hd.className = `tree-hd ${mi === 0 ? 'open' : ''}`;
+    hd.innerHTML = `<span class="material-symbols-outlined" style="font-size:12px;color:${meta.color};font-variation-settings:'FILL' 1">expand_more</span>${meta.emoji} M${meta.id}`;
+    hd.onclick = () => { hd.classList.toggle('open'); mDiv.querySelector('.tree-acts').classList.toggle('open'); };
+    const actDiv = document.createElement('div');
+    actDiv.className = `tree-acts ${mi === 0 ? 'open' : ''}`;
+    acts.forEach(act => {
+      const ti = TYPES[act.type] || TYPES.lesson;
+      const a = document.createElement('div');
+      a.className = `tree-act ${act.id === selectedActId ? 'sel' : ''}`;
+      a.innerHTML = `<div class="tree-dot" style="background:${ti.color};"></div>${act.title}`;
+      a.onclick = () => { selectedActId = act.id; renderTree(); renderEditor(act); };
+      actDiv.appendChild(a);
+    });
+    mDiv.appendChild(hd);
+    mDiv.appendChild(actDiv);
+    el.appendChild(mDiv);
+  });
+}
+
+// ─── Overview ───
+function renderOverview() {
+  const panel = document.getElementById('main-panel');
+  if (selectedActId) { const monthData = LWData.getActivities(selectedLang); for (const m of monthData) { const a = m.activities.find(x => x.id === selectedActId); if (a) { renderEditor(a); return; } } }
+
+  const lang = LWData.getLanguage(selectedLang);
+  const monthData = LWData.getActivities(selectedLang);
+  const allActs = monthData.flatMap(m => m.activities);
+  const filtered = selectedType ? allActs.filter(a => a.type === selectedType) : allActs;
+  const typeCounts = {};
+  allActs.forEach(a => { typeCounts[a.type] = (typeCounts[a.type] || 0) + 1; });
+
+  panel.innerHTML = `
+    <div class="panel-header">
+      <div class="panel-title"><span style="font-size:28px;">${lang?.flag||'🌍'}</span>${lang?.name||'Language'} — Content Manager</div>
+    </div>
+
+    <div class="stats-row">
+      <div class="stat-card"><div class="stat-num" style="color:#a5a0df;">${allActs.length}</div><div class="stat-label">Total Activities</div></div>
+      <div class="stat-card"><div class="stat-num" style="color:#34d399;">${Object.keys(typeCounts).length}</div><div class="stat-label">Activity Types</div></div>
+      <div class="stat-card"><div class="stat-num" style="color:#fbbf24;">6</div><div class="stat-label">Months</div></div>
+      <div class="stat-card"><div class="stat-num" style="color:#38bdf8;">24</div><div class="stat-label">Weeks</div></div>
+    </div>
+
+    <div class="tab-bar">
+      <button class="tab-btn active" onclick="showTab(this,'tab-activities')">Activities</button>
+      <button class="tab-btn" onclick="showTab(this,'tab-types')">By Type</button>
+      <button class="tab-btn" onclick="showTab(this,'tab-export')">Import / Export</button>
+    </div>
+
+    <div id="tab-activities">
+      <div class="card">
+        <h4><span class="material-symbols-outlined" style="font-size:16px;color:#a5a0df;font-variation-settings:'FILL' 1">list</span>
+          ${selectedType ? (TYPES[selectedType]?.label||'') : 'All'} Activities (${filtered.length})
+        </h4>
+        <div style="overflow-x:auto;">
+          <table class="act-table">
+            <thead><tr><th>ID</th><th>Title</th><th>Type</th><th>Week</th><th>XP</th><th>Duration</th><th>Action</th></tr></thead>
+            <tbody>
+              ${filtered.map(a => {
+                const ti = TYPES[a.type] || TYPES.lesson;
+                return `<tr>
+                  <td style="color:rgba(255,255,255,0.2);">#${a.id}</td>
+                  <td class="clickable" onclick="selectAct(${a.id})">${a.title}</td>
+                  <td><span class="type-badge" style="background:${ti.color}18;color:${ti.color};">${ti.label}</span></td>
+                  <td>${a.week||'—'}</td>
+                  <td style="color:#a5a0df;font-weight:700;">+${a.xp}</td>
+                  <td>${a.duration||'—'}</td>
+                  <td>
+                    <div class="btn-group">
+                      <button class="btn btn-ghost" style="padding:4px 8px;font-size:10px;" onclick="selectAct(${a.id})"><span class="material-symbols-outlined" style="font-size:12px;">edit</span>Edit</button>
+                      <a href="${LWContent.getPageForType(a.type)}?lang=${selectedLang}&id=${a.id}" target="_blank" class="btn btn-ghost" style="padding:4px 8px;font-size:10px;text-decoration:none;"><span class="material-symbols-outlined" style="font-size:12px;">visibility</span>Preview</a>
+                    </div>
+                  </td>
+                </tr>`;
+              }).join('')}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div id="tab-types" style="display:none;">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px;">
+        ${Object.entries(typeCounts).map(([type, count]) => {
+          const ti = TYPES[type] || TYPES.lesson;
+          return `<div class="card" style="cursor:pointer;" onclick="selectedType='${type}';renderTypeSelect();renderTree();renderOverview();">
+            <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;">
+              <div style="width:32px;height:32px;border-radius:8px;background:${ti.color}18;display:flex;align-items:center;justify-content:center;">
+                <span class="material-symbols-outlined" style="font-size:16px;color:${ti.color};font-variation-settings:'FILL' 1">${ti.icon}</span>
+              </div>
+              <div><div style="font-weight:800;color:white;font-size:13px;">${ti.label}</div><div style="font-size:10px;color:rgba(255,255,255,0.25);">${count} activities</div></div>
+            </div>
+          </div>`;
+        }).join('')}
+      </div>
+    </div>
+
+    <div id="tab-export" style="display:none;">
+      <div class="card">
+        <h4><span class="material-symbols-outlined" style="font-size:16px;color:#fbbf24;font-variation-settings:'FILL' 1">folder_open</span>Content Import / Export</h4>
+        <p style="font-size:12px;color:rgba(255,255,255,0.35);line-height:1.6;margin-bottom:16px;">
+          Export the full activity content as a JSON file for backup or editing in an external editor. Import a previously exported JSON to update content.
+        </p>
+        <div class="btn-group">
+          <button class="btn btn-primary" onclick="exportContent()"><span class="material-symbols-outlined" style="font-size:14px;">download</span>Export All Content</button>
+          <button class="btn btn-ghost" onclick="document.getElementById('import-file').click()"><span class="material-symbols-outlined" style="font-size:14px;">upload</span>Import Content</button>
+        </div>
+      </div>
+    </div>`;
+}
+
+function showTab(btn, tabId) {
+  btn.parentElement.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  ['tab-activities','tab-types','tab-export'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.style.display = id === tabId ? 'block' : 'none';
+  });
+}
+
+function selectAct(actId) {
+  selectedActId = actId;
+  renderTree();
+  const monthData = LWData.getActivities(selectedLang);
+  for (const m of monthData) {
+    const act = m.activities.find(a => a.id === actId);
+    if (act) { renderEditor(act); return; }
+  }
+}
+
+// ─── Editor ───
+function renderEditor(act) {
+  const panel = document.getElementById('main-panel');
+  const ti = TYPES[act.type] || TYPES.lesson;
+
+  // Get content from LWContent
+  const contentResult = LWContent.getActivityContent(selectedLang, act.id);
+  const contentJSON = contentResult ? JSON.stringify(contentResult.data, null, 2) : '{}';
+
+  panel.innerHTML = `
+    <div class="panel-header">
+      <div class="panel-title">
+        <button class="btn btn-ghost" onclick="selectedActId=null;renderOverview();" style="padding:6px 10px;">
+          <span class="material-symbols-outlined" style="font-size:14px;">arrow_back</span>
+        </button>
+        <div style="width:36px;height:36px;border-radius:8px;background:${ti.color}18;display:flex;align-items:center;justify-content:center;">
+          <span class="material-symbols-outlined" style="font-size:18px;color:${ti.color};font-variation-settings:'FILL' 1">${ti.icon}</span>
+        </div>
+        Edit: ${act.title}
+      </div>
+      <div class="btn-group">
+        <button class="btn btn-primary" onclick="saveActivity(${act.id})"><span class="material-symbols-outlined" style="font-size:14px;">save</span>Save</button>
+        <a href="${LWContent.getPageForType(act.type)}?lang=${selectedLang}&id=${act.id}" class="btn btn-ghost" target="_blank" style="text-decoration:none;">
+          <span class="material-symbols-outlined" style="font-size:14px;">visibility</span>Preview
+        </a>
+        <button class="btn btn-danger" onclick="deleteActivity(${act.id})"><span class="material-symbols-outlined" style="font-size:14px;">delete</span>Delete</button>
+      </div>
+    </div>
+
+    <div class="tab-bar">
+      <button class="tab-btn active" onclick="showEdTab(this,'ed-basic')">Basic Info</button>
+      <button class="tab-btn" onclick="showEdTab(this,'ed-content')">Content JSON</button>
+    </div>
+
+    <div id="ed-basic">
+      <div class="card">
+        <h4>📝 Activity Properties</h4>
+        <div class="form-row">
+          <div class="form-group"><label class="form-label">Title</label><input class="form-input" id="ed-title" value="${escapeHtml(act.title)}"/></div>
+          <div class="form-group"><label class="form-label">Type</label>
+            <select class="form-select" id="ed-type">${Object.entries(TYPES).map(([k,v]) => `<option value="${k}" ${k===act.type?'selected':''}>${v.label}</option>`).join('')}</select>
+          </div>
+        </div>
+        <div class="form-group"><label class="form-label">Description</label><textarea class="form-textarea" id="ed-desc">${escapeHtml(act.description)}</textarea></div>
+        <div class="form-row">
+          <div class="form-group"><label class="form-label">XP Points</label><input class="form-input" type="number" id="ed-xp" value="${act.xp}" min="0"/></div>
+          <div class="form-group"><label class="form-label">Duration</label><input class="form-input" id="ed-duration" value="${act.duration||''}"/></div>
+        </div>
+        <div class="form-row">
+          <div class="form-group"><label class="form-label">Week</label><input class="form-input" id="ed-week" value="${act.week||''}"/></div>
+          <div class="form-group"><label class="form-label">Day</label><input class="form-input" id="ed-day" value="${act.day||''}"/></div>
+        </div>
+      </div>
+    </div>
+
+    <div id="ed-content" style="display:none;">
+      <div class="card">
+        <h4><span class="material-symbols-outlined" style="font-size:16px;color:#a5a0df;font-variation-settings:'FILL' 1">code</span>Activity Content (Read-Only Preview)</h4>
+        <p style="font-size:11px;color:rgba(255,255,255,0.25);margin-bottom:10px;">This shows the generated content for this activity. To change content, edit the <code style="color:#c4b5fd;">data/activity-content.js</code> file directly.</p>
+        <textarea class="json-editor" id="content-json" readonly>${contentJSON}</textarea>
+        <div class="btn-group" style="margin-top:10px;">
+          <button class="btn btn-ghost" onclick="copyJSON()"><span class="material-symbols-outlined" style="font-size:14px;">content_copy</span>Copy JSON</button>
+          <button class="btn btn-ghost" onclick="formatJSON()"><span class="material-symbols-outlined" style="font-size:14px;">auto_fix_high</span>Format</button>
+        </div>
+      </div>
+    </div>`;
+}
+
+function showEdTab(btn, tabId) {
+  btn.parentElement.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  ['ed-basic','ed-content'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.style.display = id === tabId ? 'block' : 'none';
+  });
+}
+
+// ─── Save / Delete ───
+function saveActivity(actId) {
+  const monthData = LWData.getActivities(selectedLang);
+  for (const month of monthData) {
+    const act = month.activities.find(a => a.id === actId);
+    if (act) {
+      act.title = document.getElementById('ed-title').value;
+      act.type = document.getElementById('ed-type').value;
+      act.description = document.getElementById('ed-desc').value;
+      act.xp = parseInt(document.getElementById('ed-xp').value) || act.xp;
+      act.duration = document.getElementById('ed-duration').value;
+      act.week = document.getElementById('ed-week').value;
+      act.day = document.getElementById('ed-day').value;
+      saveToStorage();
+      showToast('Activity saved!');
+      renderTree();
+      return;
+    }
+  }
+}
+
+function deleteActivity(actId) {
+  if (!confirm('Delete this activity? This removes it from the roadmap.')) return;
+  const monthData = LWData.getActivities(selectedLang);
+  for (const month of monthData) {
+    const idx = month.activities.findIndex(a => a.id === actId);
+    if (idx !== -1) {
+      month.activities.splice(idx, 1);
+      saveToStorage();
+      selectedActId = null;
+      renderTree();
+      renderOverview();
+      showToast('Activity deleted');
+      return;
+    }
+  }
+}
+
+function saveToStorage() {
+  const monthData = LWData.getActivities(selectedLang);
+  const key = `lw_activities_${selectedLang}`;
+  localStorage.setItem(key, JSON.stringify(monthData.map(m => ({
+    activities: m.activities.map(a => ({ id:a.id, type:a.type, title:a.title, description:a.description, xp:a.xp, duration:a.duration, week:a.week, day:a.day }))
+  }))));
+}
+
+// ─── Export / Import ───
+function exportContent() {
+  const data = {};
+  LWData.ALL_LANGUAGE_IDS.forEach(id => {
+    const monthData = LWData.getActivities(id);
+    data[id] = monthData.map(m => ({ monthMeta: m.monthMeta, activities: m.activities }));
+  });
+  const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url; a.download = `learnwise-content-${new Date().toISOString().slice(0,10)}.json`;
+  a.click(); URL.revokeObjectURL(url);
+  showToast('Content exported!');
+}
+
+function importContent(e) {
+  const file = e.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = function(ev) {
+    try {
+      const data = JSON.parse(ev.target.result);
+      if (typeof data === 'object') {
+        Object.entries(data).forEach(([langId, langData]) => {
+          localStorage.setItem(`lw_activities_${langId}`, JSON.stringify(langData));
+        });
+        showToast('Content imported! Reload to see changes.');
+      }
+    } catch (err) { showToast('Import failed: Invalid JSON'); }
+  };
+  reader.readAsText(file);
+  e.target.value = '';
+}
+
+// ─── Utils ───
+function copyJSON() {
+  const ta = document.getElementById('content-json');
+  ta.select();
+  document.execCommand('copy');
+  showToast('JSON copied!');
+}
+function formatJSON() {
+  const ta = document.getElementById('content-json');
+  try { ta.value = JSON.stringify(JSON.parse(ta.value), null, 2); } catch(e) {}
+}
+function escapeHtml(str) { return (str||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+function showToast(msg) { const t=document.getElementById('toast'); document.getElementById('toast-msg').textContent=msg; t.classList.add('show'); setTimeout(()=>t.classList.remove('show'),3000); }
+
+initAdmin();
+</script>
+</body>
+</html>

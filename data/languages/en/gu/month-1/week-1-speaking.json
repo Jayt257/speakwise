@@ -1,0 +1,70 @@
+{
+  "_comment": "English → Gujarati | Month 1 Week 1 | Speaking",
+  "id": 8,
+  "type": "speaking",
+  "title": "Greetings & First Conversations",
+  "description": "Practice real-world speaking with 3 role-play scenarios — meeting someone for the first time.",
+  "duration": "12 min",
+  "xp": 35,
+  "week": 1,
+  "month": 1,
+  "langPair": "en-gu",
+  "tags": ["speaking", "greetings", "roleplay", "conversation"],
+  "blocks": [
+    {
+      "id": "sp0",
+      "type": "roleplay_card",
+      "title": "Scene: Gujarati Cultural Event",
+      "scenario": "Cultural Event",
+      "yourRole": "New Attendee",
+      "partnerRole": "Local Gujarati Person",
+      "context": "You are attending a Gujarati cultural festival in your city. You want to meet local people and practice your new Gujarati.",
+      "goal": "Greet them, ask their name, say where you are from, and say something nice about Gujarat.",
+      "usefulPhrases": [
+        "નમસ્તે! (Hello!)",
+        "તમારું નામ શું છે? (What is your name?)",
+        "ગુજરાત ખૂબ સુંદર છે! (Gujarat is very beautiful!)",
+        "ખૂબ ખૂશ! (Very pleased to meet you!)",
+        "ફરી મળીશું! (See you again!)"
+      ]
+    },
+    {
+      "id": "sp1",
+      "type": "speaking",
+      "prompt": "You are at a Gujarati cultural event. Greet someone new, ask their name, and say where you are from.",
+      "hints": [
+        "નમસ્તે! (Hello!)",
+        "તમારું નામ શું છે? (What's your name?)",
+        "હું ___ થી છું (I am from ___)",
+        "મને ગુજરાત ગમે છે (I like Gujarat)"
+      ]
+    },
+    {
+      "id": "sp2",
+      "type": "roleplay_card",
+      "title": "Scene: Asking for Help",
+      "scenario": "Asking for Directions",
+      "yourRole": "Tourist",
+      "partnerRole": "Local Resident",
+      "context": "You are lost in Ahmedabad and need directions to the nearest market. You only know basic Gujarati.",
+      "goal": "Politely get the attention of a local, apologize for the interruption, ask for help, and thank them.",
+      "usefulPhrases": [
+        "ક્ષમા, (Excuse me,)",
+        "મને મદદ કરો (Help me please)",
+        "બજાર ક્યાં છે? (Where is the market?)",
+        "ઘણો આભાર! (Thank you very much!)"
+      ]
+    },
+    {
+      "id": "sp3",
+      "type": "speaking",
+      "prompt": "You didn't understand something your Gujarati tutor said. Politely ask them to repeat it slowly.",
+      "hints": [
+        "ક્ષમા કરો (Excuse me)",
+        "ફરી કહો (Say again)",
+        "ધીમો બોલો (Speak slowly)",
+        "હું સમજ્યો/સમજી નહીં (I didn't understand)"
+      ]
+    }
+  ]
+}

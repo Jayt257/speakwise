@@ -1,0 +1,60 @@
+{
+  "id": 15,
+  "type": "writing",
+  "title": "Describe the Things Around You",
+  "description": "Write about the things around you.",
+  "duration": "20 min",
+  "xp": 35,
+  "week": 2,
+  "month": 1,
+  "langPair": "en-hi",
+  "tags": [
+    "english",
+    "hindi",
+    "devanagari",
+    "week-2",
+    "consonants-and-daily-objects"
+  ],
+  "blocks": [
+    {
+      "id": "b1",
+      "type": "sentence_builder",
+      "title": "Build the sentence",
+      "translation": "Arrange the words to form a correct Hindi sentence.",
+      "words": [
+        "मैं",
+        "छात्र",
+        "हूँ",
+        "आज"
+      ],
+      "correctOrder": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "id": "b2",
+      "type": "translation_task",
+      "title": "Translate",
+      "instruction": "Translate to Hindi.",
+      "items": [
+        {
+          "source": "This is my room.",
+          "answer": "यह मेरा कमरा है।"
+        },
+        {
+          "source": "That is a table.",
+          "answer": "वह मेज़ है।"
+        }
+      ]
+    },
+    {
+      "id": "b3",
+      "type": "writing",
+      "prompt": "Write 4 sentences describing the things in your room. Use यह / वह and at least two object words.",
+      "minWords": 30,
+      "sampleAnswer": "यह मेरी किताब है। वह मेज़ है। यह मेरा कमरा है। यहाँ कुर्सी है।"
+    }
+  ]
+}

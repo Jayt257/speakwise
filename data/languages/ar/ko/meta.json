@@ -1,0 +1,26 @@
+{
+  "_comment": "Arabic → Korean language pair metadata",
+  "_status": "stub — content not yet created",
+  "pairId": "ar-ko",
+  "source": {
+    "id": "ar",
+    "name": "Arabic",
+    "flag": "🇸🇦"
+  },
+  "target": {
+    "id": "ko",
+    "name": "Korean",
+    "flag": "🇰🇷"
+  },
+  "status": "planned",
+  "months": [
+    {
+      "month": 1,
+      "title": "Foundation",
+      "description": "Learn Korean basics from Arabic.",
+      "status": "not-started",
+      "weeks": []
+    }
+  ],
+  "_howToCreate": "See /data/README.md for instructions on creating ar-ko content."
+}

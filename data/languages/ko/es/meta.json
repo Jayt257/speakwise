@@ -1,0 +1,26 @@
+{
+  "_comment": "Korean → Spanish language pair metadata",
+  "_status": "stub — content not yet created",
+  "pairId": "ko-es",
+  "source": {
+    "id": "ko",
+    "name": "Korean",
+    "flag": "🇰🇷"
+  },
+  "target": {
+    "id": "es",
+    "name": "Spanish",
+    "flag": "🇪🇸"
+  },
+  "status": "planned",
+  "months": [
+    {
+      "month": 1,
+      "title": "Foundation",
+      "description": "Learn Spanish basics from Korean.",
+      "status": "not-started",
+      "weeks": []
+    }
+  ],
+  "_howToCreate": "See /data/README.md for instructions on creating ko-es content."
+}

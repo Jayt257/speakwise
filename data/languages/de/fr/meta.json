@@ -1,0 +1,26 @@
+{
+  "_comment": "German → French language pair metadata",
+  "_status": "stub — content not yet created",
+  "pairId": "de-fr",
+  "source": {
+    "id": "de",
+    "name": "German",
+    "flag": "🇩🇪"
+  },
+  "target": {
+    "id": "fr",
+    "name": "French",
+    "flag": "🇫🇷"
+  },
+  "status": "planned",
+  "months": [
+    {
+      "month": 1,
+      "title": "Foundation",
+      "description": "Learn French basics from German.",
+      "status": "not-started",
+      "weeks": []
+    }
+  ],
+  "_howToCreate": "See /data/README.md for instructions on creating de-fr content."
+}

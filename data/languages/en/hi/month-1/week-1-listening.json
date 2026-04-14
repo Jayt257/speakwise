@@ -1,0 +1,73 @@
+{
+  "id": 6,
+  "type": "listening",
+  "title": "Listening for Greetings",
+  "description": "Listen for greetings, names, and polite words.",
+  "duration": "20 min",
+  "xp": 40,
+  "week": 1,
+  "month": 1,
+  "langPair": "en-hi",
+  "tags": [
+    "english",
+    "hindi",
+    "devanagari",
+    "week-1",
+    "script-vowels-and-greetings"
+  ],
+  "blocks": [
+    {
+      "id": "b1",
+      "type": "note_template",
+      "title": "Listening Notes",
+      "instruction": "Write the words you hear:",
+      "sections": [
+        {
+          "label": "Greeting word",
+          "placeholder": "Type the greeting you hear..."
+        },
+        {
+          "label": "Name word",
+          "placeholder": "Type the word for name..."
+        },
+        {
+          "label": "Polite closing",
+          "placeholder": "Type the thank-you word..."
+        }
+      ]
+    },
+    {
+      "id": "b2",
+      "type": "gap_fill",
+      "title": "Complete the Transcript",
+      "text": "First fill in the missing words: ___, ___, ___. Listen for greetings and names. Fill in the words you hear.",
+      "gaps": [
+        "नमस्ते",
+        "नाम",
+        "धन्यवाद"
+      ],
+      "hints": [
+        "Hello",
+        "name",
+        "thank you"
+      ]
+    },
+    {
+      "id": "b3",
+      "type": "true_false",
+      "title": "Check your listening",
+      "items": [
+        {
+          "statement": "The speaker introduces themselves.",
+          "answer": true,
+          "explanation": "This week focuses on greetings and self-introduction."
+        },
+        {
+          "statement": "The passage is about food ordering.",
+          "answer": false,
+          "explanation": "Food ordering is not the focus yet."
+        }
+      ]
+    }
+  ]
+}

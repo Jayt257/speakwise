@@ -1,0 +1,291 @@
+{
+  "id": 2,
+  "type": "vocab",
+  "title": "Greetings and Essential Words",
+  "description": "Build 25 greeting and essential words.",
+  "duration": "20 min",
+  "xp": 20,
+  "week": 1,
+  "month": 1,
+  "langPair": "en-hi",
+  "tags": [
+    "english",
+    "hindi",
+    "devanagari",
+    "week-1",
+    "script-vowels-and-greetings"
+  ],
+  "blocks": [
+    {
+      "id": "b1",
+      "type": "image_word",
+      "title": "Visual Vocabulary",
+      "items": [
+        {
+          "emoji": "👋",
+          "word": "नमस्ते",
+          "meaning": "Hello",
+          "example": "नमस्ते! (namaste)"
+        },
+        {
+          "emoji": "🙏",
+          "word": "नमस्कार",
+          "meaning": "Formal Hello",
+          "example": "नमस्कार! (namaskār)"
+        },
+        {
+          "emoji": "🙇",
+          "word": "कृपया",
+          "meaning": "Please",
+          "example": "कृपया! (kripayā)"
+        },
+        {
+          "emoji": "✨",
+          "word": "धन्यवाद",
+          "meaning": "Thank You",
+          "example": "धन्यवाद! (dhanyavād)"
+        },
+        {
+          "emoji": "✅",
+          "word": "हाँ",
+          "meaning": "Yes",
+          "example": "हाँ! (hā̃)"
+        },
+        {
+          "emoji": "❌",
+          "word": "नहीं",
+          "meaning": "No",
+          "example": "नहीं! (nahī̃)"
+        },
+        {
+          "emoji": "🧍",
+          "word": "मैं",
+          "meaning": "I",
+          "example": "मैं! (main)"
+        },
+        {
+          "emoji": "🧍‍♂️",
+          "word": "आप",
+          "meaning": "You (Formal)",
+          "example": "आप! (aap)"
+        },
+        {
+          "emoji": "🧍‍♀️",
+          "word": "तुम",
+          "meaning": "You (Informal)",
+          "example": "तुम! (tum)"
+        },
+        {
+          "emoji": "🏷️",
+          "word": "मेरा",
+          "meaning": "My",
+          "example": "मेरा! (merā)"
+        }
+      ]
+    },
+    {
+      "id": "b2",
+      "type": "vocab_table",
+      "title": "Vocabulary List",
+      "words": [
+        {
+          "word": "नमस्ते",
+          "meaning": "Hello",
+          "example": "नमस्ते — hello"
+        },
+        {
+          "word": "नमस्कार",
+          "meaning": "Formal Hello",
+          "example": "नमस्कार — formal hello"
+        },
+        {
+          "word": "कृपया",
+          "meaning": "Please",
+          "example": "कृपया — please"
+        },
+        {
+          "word": "धन्यवाद",
+          "meaning": "Thank You",
+          "example": "धन्यवाद — thank you"
+        },
+        {
+          "word": "हाँ",
+          "meaning": "Yes",
+          "example": "हाँ — yes"
+        },
+        {
+          "word": "नहीं",
+          "meaning": "No",
+          "example": "नहीं — no"
+        },
+        {
+          "word": "मैं",
+          "meaning": "I",
+          "example": "मैं — I"
+        },
+        {
+          "word": "आप",
+          "meaning": "You (Formal)",
+          "example": "आप — you (formal)"
+        },
+        {
+          "word": "तुम",
+          "meaning": "You (Informal)",
+          "example": "तुम — you (informal)"
+        },
+        {
+          "word": "मेरा",
+          "meaning": "My",
+          "example": "मेरा — my"
+        },
+        {
+          "word": "नाम",
+          "meaning": "Name",
+          "example": "नाम — name"
+        },
+        {
+          "word": "अच्छा",
+          "meaning": "Good",
+          "example": "अच्छा — good"
+        },
+        {
+          "word": "ठीक",
+          "meaning": "Okay",
+          "example": "ठीक — okay"
+        },
+        {
+          "word": "मित्र",
+          "meaning": "Friend",
+          "example": "मित्र — friend"
+        },
+        {
+          "word": "घर",
+          "meaning": "Home",
+          "example": "घर — home"
+        },
+        {
+          "word": "स्कूल",
+          "meaning": "School",
+          "example": "स्कूल — school"
+        },
+        {
+          "word": "पानी",
+          "meaning": "Water",
+          "example": "पानी — water"
+        },
+        {
+          "word": "चाय",
+          "meaning": "Tea",
+          "example": "चाय — tea"
+        },
+        {
+          "word": "रोटी",
+          "meaning": "Bread",
+          "example": "रोटी — bread"
+        },
+        {
+          "word": "माँ",
+          "meaning": "Mother",
+          "example": "माँ — mother"
+        },
+        {
+          "word": "पिता",
+          "meaning": "Father",
+          "example": "पिता — father"
+        },
+        {
+          "word": "भाई",
+          "meaning": "Brother",
+          "example": "भाई — brother"
+        },
+        {
+          "word": "बहन",
+          "meaning": "Sister",
+          "example": "बहन — sister"
+        },
+        {
+          "word": "कौन",
+          "meaning": "Who",
+          "example": "कौन — who"
+        },
+        {
+          "word": "क्या",
+          "meaning": "What",
+          "example": "क्या — what"
+        }
+      ]
+    },
+    {
+      "id": "b3",
+      "type": "matching",
+      "title": "Match the pairs",
+      "instruction": "Match the Hindi word to its English meaning.",
+      "leftItems": [
+        "नमस्ते",
+        "नमस्कार",
+        "कृपया",
+        "धन्यवाद",
+        "हाँ",
+        "नहीं",
+        "मैं",
+        "आप",
+        "तुम",
+        "मेरा"
+      ],
+      "rightItems": [
+        "My",
+        "You (Informal)",
+        "You (Formal)",
+        "I",
+        "No",
+        "Yes",
+        "Thank You",
+        "Please",
+        "Formal Hello",
+        "Hello"
+      ],
+      "pairs": [
+        [
+          0,
+          9
+        ],
+        [
+          1,
+          8
+        ],
+        [
+          2,
+          7
+        ],
+        [
+          3,
+          6
+        ],
+        [
+          4,
+          5
+        ],
+        [
+          5,
+          4
+        ],
+        [
+          6,
+          3
+        ],
+        [
+          7,
+          2
+        ],
+        [
+          8,
+          1
+        ],
+        [
+          9,
+          0
+        ]
+      ]
+    }
+  ]
+}

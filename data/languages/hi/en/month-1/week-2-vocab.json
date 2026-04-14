@@ -1,0 +1,275 @@
+{
+  "id": 12,
+  "type": "vocab",
+  "week": 2,
+  "month": 1,
+  "langPair": "hi-en",
+  "title": "दैनिक जीवन के शब्द — Daily Life Vocabulary",
+  "description": "25 ज़रूरी शब्द: काम, घर, खाना, और रोज़मर्रा की चीज़ें।",
+  "duration": "10 मिनट",
+  "xp": 20,
+  "tags": [
+    "vocabulary",
+    "daily-life"
+  ],
+  "blocks": [
+    {
+      "id": "v1",
+      "type": "image_word",
+      "title": "रोज़मर्रा की चीज़ें — Visual Vocab",
+      "items": [
+        {
+          "emoji": "🏠",
+          "word": "House / Home",
+          "meaning": "घर",
+          "example": "My house is big."
+        },
+        {
+          "emoji": "🍽️",
+          "word": "Food",
+          "meaning": "खाना",
+          "example": "The food is delicious."
+        },
+        {
+          "emoji": "💼",
+          "word": "Work / Job",
+          "meaning": "काम / नौकरी",
+          "example": "I go to work at 9."
+        },
+        {
+          "emoji": "🚌",
+          "word": "Bus",
+          "meaning": "बस",
+          "example": "I take the bus to work."
+        },
+        {
+          "emoji": "📱",
+          "word": "Phone",
+          "meaning": "फ़ोन",
+          "example": "My phone is new."
+        },
+        {
+          "emoji": "⏰",
+          "word": "Time",
+          "meaning": "समय / वक्त",
+          "example": "What time is it?"
+        },
+        {
+          "emoji": "💰",
+          "word": "Money",
+          "meaning": "पैसा",
+          "example": "I need money."
+        },
+        {
+          "emoji": "🏥",
+          "word": "Hospital",
+          "meaning": "अस्पताल",
+          "example": "The hospital is near."
+        }
+      ]
+    },
+    {
+      "id": "v2",
+      "type": "vocab_table",
+      "title": "25 Daily Life शब्द",
+      "words": [
+        {
+          "word": "Food",
+          "meaning": "खाना",
+          "example": "The food here is great!"
+        },
+        {
+          "word": "Water",
+          "meaning": "पानी",
+          "example": "Please give me water."
+        },
+        {
+          "word": "House / Home",
+          "meaning": "घर",
+          "example": "I am at home."
+        },
+        {
+          "word": "Work / Job",
+          "meaning": "काम / नौकरी",
+          "example": "I love my job."
+        },
+        {
+          "word": "School",
+          "meaning": "स्कूल",
+          "example": "My children go to school."
+        },
+        {
+          "word": "Hospital",
+          "meaning": "अस्पताल",
+          "example": "The hospital is nearby."
+        },
+        {
+          "word": "Bus / Train",
+          "meaning": "बस / ट्रेन",
+          "example": "I take the train to work."
+        },
+        {
+          "word": "Chair",
+          "meaning": "कुर्सी",
+          "example": "Please sit on the chair."
+        },
+        {
+          "word": "Table",
+          "meaning": "मेज़",
+          "example": "Put it on the table."
+        },
+        {
+          "word": "Book",
+          "meaning": "किताब",
+          "example": "This book is interesting."
+        },
+        {
+          "word": "Phone",
+          "meaning": "फ़ोन",
+          "example": "My phone is ringing."
+        },
+        {
+          "word": "Money",
+          "meaning": "पैसा",
+          "example": "I don't have money."
+        },
+        {
+          "word": "Time",
+          "meaning": "समय",
+          "example": "I don't have time."
+        },
+        {
+          "word": "Door",
+          "meaning": "दरवाज़ा",
+          "example": "Please close the door."
+        },
+        {
+          "word": "Window",
+          "meaning": "खिड़की",
+          "example": "Open the window, please."
+        },
+        {
+          "word": "Key",
+          "meaning": "चाबी",
+          "example": "Where is my key?"
+        },
+        {
+          "word": "Bag",
+          "meaning": "बैग / थैला",
+          "example": "My bag is heavy."
+        },
+        {
+          "word": "Clothes",
+          "meaning": "कपड़े",
+          "example": "I need new clothes."
+        },
+        {
+          "word": "Shop / Store",
+          "meaning": "दुकान",
+          "example": "The shop is closed."
+        },
+        {
+          "word": "Market",
+          "meaning": "बाज़ार",
+          "example": "Let's go to the market."
+        },
+        {
+          "word": "Road / Street",
+          "meaning": "सड़क / गली",
+          "example": "This road is busy."
+        },
+        {
+          "word": "Car",
+          "meaning": "कार",
+          "example": "I have a car."
+        },
+        {
+          "word": "Hungry",
+          "meaning": "भूखा",
+          "example": "I am hungry."
+        },
+        {
+          "word": "Tired",
+          "meaning": "थका हुआ",
+          "example": "I am very tired today."
+        },
+        {
+          "word": "Happy",
+          "meaning": "खुश",
+          "example": "I am happy today!"
+        }
+      ]
+    },
+    {
+      "id": "v3",
+      "type": "word_family",
+      "title": "Home Word Family",
+      "root": "House",
+      "rootMeaning": "घर (मूल शब्द)",
+      "members": [
+        {
+          "word": "House",
+          "meaning": "घर (building)"
+        },
+        {
+          "word": "Home",
+          "meaning": "घर (emotional — जहाँ दिल है)"
+        },
+        {
+          "word": "Household",
+          "meaning": "घर के सदस्य / घरेलू"
+        },
+        {
+          "word": "Housework",
+          "meaning": "घर का काम"
+        },
+        {
+          "word": "Homeless",
+          "meaning": "बेघर"
+        }
+      ]
+    },
+    {
+      "id": "v4",
+      "type": "matching",
+      "title": "Match करें — Daily Objects",
+      "instruction": "अंग्रेज़ी शब्द और हिन्दी अर्थ मिलाएँ:",
+      "leftItems": [
+        "School",
+        "Hospital",
+        "Market",
+        "Chair",
+        "Book"
+      ],
+      "rightItems": [
+        "अस्पताल",
+        "किताब",
+        "स्कूल",
+        "बाज़ार",
+        "कुर्सी"
+      ],
+      "pairs": [
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          4,
+          1
+        ]
+      ]
+    }
+  ]
+}

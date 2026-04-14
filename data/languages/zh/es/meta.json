@@ -1,0 +1,26 @@
+{
+  "_comment": "Mandarin → Spanish language pair metadata",
+  "_status": "stub — content not yet created",
+  "pairId": "zh-es",
+  "source": {
+    "id": "zh",
+    "name": "Mandarin",
+    "flag": "🇨🇳"
+  },
+  "target": {
+    "id": "es",
+    "name": "Spanish",
+    "flag": "🇪🇸"
+  },
+  "status": "planned",
+  "months": [
+    {
+      "month": 1,
+      "title": "Foundation",
+      "description": "Learn Spanish basics from Mandarin.",
+      "status": "not-started",
+      "weeks": []
+    }
+  ],
+  "_howToCreate": "See /data/README.md for instructions on creating zh-es content."
+}

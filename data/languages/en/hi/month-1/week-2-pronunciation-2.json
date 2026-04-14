@@ -1,0 +1,80 @@
+{
+  "id": 20,
+  "type": "pronunciation",
+  "title": "Sound Practice 2",
+  "description": "A second pronunciation drill for week 2 sounds.",
+  "duration": "15 min",
+  "xp": 30,
+  "week": 2,
+  "month": 1,
+  "langPair": "en-hi",
+  "tags": [
+    "english",
+    "hindi",
+    "devanagari",
+    "week-2",
+    "consonants-and-daily-objects"
+  ],
+  "blocks": [
+    {
+      "id": "b1",
+      "type": "keypoints",
+      "title": "Pronunciation tips",
+      "points": [
+        "Feel the tongue curl for retroflex sounds.",
+        "Compare t and th carefully.",
+        "Listen for breath in aspirated consonants."
+      ]
+    },
+    {
+      "id": "b2",
+      "type": "stress_pattern",
+      "title": "Rhythm practice",
+      "words": [
+        {
+          "word": "किताब",
+          "syllables": [
+            "ki",
+            "taab"
+          ],
+          "stressed": 1,
+          "note": "Keep the second part clear."
+        },
+        {
+          "word": "घर",
+          "syllables": [
+            "ghar"
+          ],
+          "stressed": 0,
+          "note": "Strong g-h sound at the start."
+        }
+      ]
+    },
+    {
+      "id": "b3",
+      "type": "tongue_twister",
+      "title": "Speed practice",
+      "text": "खरगोश खेत में खड़ा है",
+      "romanization": "khargosh khet mein khaṛā hai",
+      "translation": "the rabbit is standing in the field",
+      "tip": "Say it slowly first, then increase speed."
+    },
+    {
+      "id": "b4",
+      "type": "true_false",
+      "title": "Sound check",
+      "items": [
+        {
+          "statement": "Hindi sounds should be rushed.",
+          "answer": false,
+          "explanation": "Clear and slow practice is better in the beginning."
+        },
+        {
+          "statement": "Breathy consonants matter in Hindi.",
+          "answer": true,
+          "explanation": "Sounds like ख and भ are important contrasts."
+        }
+      ]
+    }
+  ]
+}

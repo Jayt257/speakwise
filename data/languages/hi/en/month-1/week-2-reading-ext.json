@@ -1,0 +1,54 @@
+{
+  "id": 19,
+  "type": "reading",
+  "week": 2,
+  "month": 1,
+  "langPair": "hi-en",
+  "title": "भारत से अंग्रेज़ी का सफ़र — India's English Journey",
+  "description": "भारत में अंग्रेज़ी का इतिहास और आज का महत्व पढ़ें।",
+  "duration": "15 मिनट",
+  "xp": 30,
+  "tags": [
+    "culture",
+    "history",
+    "india"
+  ],
+  "blocks": [
+    {
+      "id": "r1",
+      "type": "reading",
+      "passage": "📖 ENGLISH IN INDIA — भारत में अंग्रेज़ी\n\nIndia has the world's largest number of English speakers after the USA and UK.\n(भारत में USA और UK के बाद सबसे ज़्यादा English बोलने वाले हैं।)\n\nEnglish is an official language of India. It is used in courts, government, and businesses.\n(English भारत की official language है। यह court, सरकार और businesses में use होती है।)\n\nIndian English has its own unique features.\n(भारतीय अंग्रेज़ी की अपनी विशेषताएँ हैं।)\n\nFor example: 'I am doing the needful' or 'Please do the revert.'\n(जैसे: 'I am doing the needful' या 'Please do the revert.')\n\nIndian English is creative and expressive — it is a valid form of English!\n(भारतीय अंग्रेज़ी creative और expressive है — यह अंग्रेज़ी का valid रूप है!)\n\nFamous Indian English writers include Arundhati Roy and Salman Rushdie.\n(प्रसिद्ध भारतीय अंग्रेज़ी लेखकों में अरुंधति रॉय और सलमान रुश्दी शामिल हैं।)",
+      "questions": [
+        {
+          "q": "भारत अंग्रेज़ी बोलने वालों में किस नंबर पर है?",
+          "a": "USA और UK के बाद — तीसरे नंबर पर।"
+        },
+        {
+          "q": "भारत में English कहाँ use होती है?",
+          "a": "Court, सरकार, और businesses में।"
+        },
+        {
+          "q": "'Indian English' की क्या विशेषता है?",
+          "a": "यह creative और expressive है और अंग्रेज़ी का valid रूप है।"
+        },
+        {
+          "q": "एक famous Indian English writer का नाम बताएँ।",
+          "a": "Arundhati Roy या Salman Rushdie।"
+        }
+      ]
+    },
+    {
+      "id": "r2",
+      "type": "cultural_note",
+      "title": "Hinglish — हिंग्लिश",
+      "icon": "🗣️",
+      "content": "Hinglish (Hindi + English) भारत में बहुत popular है! जैसे: 'yaar, ye toh bahut good hai!' या 'aaj ka plan kya hai?'. Bollywood और social media ने Hinglish को और popular बनाया। English सीखते वक्त Hinglish use करना बिल्कुल ठीक है — यह transition में मदद करती है!",
+      "tags": [
+        "hinglish",
+        "india",
+        "hindi",
+        "mixing"
+      ]
+    }
+  ]
+}

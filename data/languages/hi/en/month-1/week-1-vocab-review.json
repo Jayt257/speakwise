@@ -1,0 +1,164 @@
+{
+  "id": 9,
+  "type": "vocab",
+  "week": 1,
+  "month": 1,
+  "langPair": "hi-en",
+  "title": "सप्ताह 1 शब्द समीक्षा",
+  "description": "पहले सप्ताह के 15 ज़रूरी शब्द — दोहराएँ और पक्का करें।",
+  "duration": "8 मिनट",
+  "xp": 20,
+  "tags": [
+    "vocab",
+    "review",
+    "week1"
+  ],
+  "blocks": [
+    {
+      "id": "vr1",
+      "type": "vocab_table",
+      "title": "15 ज़रूरी शब्द — दोहराएँ",
+      "words": [
+        {
+          "word": "Hello",
+          "meaning": "नमस्ते",
+          "example": "Hello! How are you?"
+        },
+        {
+          "word": "Goodbye",
+          "meaning": "अलविदा",
+          "example": "Goodbye! See you tomorrow."
+        },
+        {
+          "word": "Thank you",
+          "meaning": "धन्यवाद",
+          "example": "Thank you for your help!"
+        },
+        {
+          "word": "Sorry",
+          "meaning": "माफ़ कीजिए",
+          "example": "Sorry, I don't understand."
+        },
+        {
+          "word": "Yes / No",
+          "meaning": "हाँ / नहीं",
+          "example": "Yes, I speak Hindi. No, I don't."
+        },
+        {
+          "word": "Please",
+          "meaning": "कृपया",
+          "example": "Please speak slowly."
+        },
+        {
+          "word": "My name is...",
+          "meaning": "मेरा नाम है...",
+          "example": "My name is Priya."
+        },
+        {
+          "word": "I am from...",
+          "meaning": "मैं...से हूँ",
+          "example": "I am from Delhi."
+        },
+        {
+          "word": "Nice to meet you",
+          "meaning": "आपसे मिलकर खुशी हुई",
+          "example": "Nice to meet you, Alex!"
+        },
+        {
+          "word": "How are you?",
+          "meaning": "आप कैसे हैं?",
+          "example": "Hello! How are you today?"
+        },
+        {
+          "word": "I am fine",
+          "meaning": "मैं ठीक हूँ",
+          "example": "I am fine, thank you."
+        },
+        {
+          "word": "Excuse me",
+          "meaning": "माफ़ कीजिए / सुनिए",
+          "example": "Excuse me, where is the station?"
+        },
+        {
+          "word": "I don't understand",
+          "meaning": "मुझे समझ नहीं आया",
+          "example": "Sorry, I don't understand."
+        },
+        {
+          "word": "Please repeat",
+          "meaning": "कृपया दोहराएँ",
+          "example": "Please repeat that slowly."
+        },
+        {
+          "word": "See you later",
+          "meaning": "फिर मिलेंगे",
+          "example": "See you later! Goodbye!"
+        }
+      ]
+    },
+    {
+      "id": "vr2",
+      "type": "matching",
+      "title": "तेज़ समीक्षा — Quick Match",
+      "instruction": "अंग्रेज़ी से हिन्दी — सही जोड़ी चुनें:",
+      "leftItems": [
+        "Thank you",
+        "Goodbye",
+        "Excuse me",
+        "Yes",
+        "Please"
+      ],
+      "rightItems": [
+        "कृपया",
+        "अलविदा",
+        "माफ़ कीजिए",
+        "हाँ",
+        "धन्यवाद"
+      ],
+      "pairs": [
+        [
+          0,
+          4
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          3,
+          3
+        ],
+        [
+          4,
+          0
+        ]
+      ]
+    },
+    {
+      "id": "vr3",
+      "type": "true_false",
+      "title": "शब्द जाँच",
+      "items": [
+        {
+          "statement": "'See you later' का मतलब 'कल मिलेंगे' है।",
+          "answer": false,
+          "explanation": "नहीं! 'See you later' = 'फिर मिलेंगे' (कभी भी)। 'See you tomorrow' = 'कल मिलेंगे'।"
+        },
+        {
+          "statement": "'I am fine' एक complete sentence है।",
+          "answer": true,
+          "explanation": "हाँ! 'I' (subject) + 'am' (verb) + 'fine' (adjective) = complete sentence।"
+        },
+        {
+          "statement": "'Excuse me' सिर्फ माफ़ी के लिए कहते हैं।",
+          "answer": false,
+          "explanation": "नहीं! 'Excuse me' का use: 1) किसी का ध्यान खींचने के लिए 2) रास्ता माँगने के लिए 3) छोटी गलती पर माफ़ी के लिए।"
+        }
+      ]
+    }
+  ]
+}

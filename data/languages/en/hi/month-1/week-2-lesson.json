@@ -1,0 +1,151 @@
+{
+  "id": 11,
+  "type": "lesson",
+  "title": "Hindi Consonants and Daily Life",
+  "description": "Learn core consonants and the words you use for home, school, and daily objects.",
+  "duration": "15 min",
+  "xp": 30,
+  "week": 2,
+  "month": 1,
+  "langPair": "en-hi",
+  "tags": [
+    "english",
+    "hindi",
+    "devanagari",
+    "week-2",
+    "consonants-and-daily-objects"
+  ],
+  "blocks": [
+    {
+      "id": "b1",
+      "type": "text",
+      "title": "Hindi Consonants and Daily Life",
+      "body": "This week, you learn how Hindi sounds use the tongue and breath in different ways. The most important idea is contrast: some letters are soft, some are aspirated, and some are retroflex. Do not rush; practice a few sounds every day."
+    },
+    {
+      "id": "b2",
+      "type": "grammar_rule",
+      "title": "This and that",
+      "pattern": "यह = this, वह = that",
+      "examples": [
+        {
+          "hi": "यह घर है।",
+          "romanization": "यह घर है।",
+          "en": "This is a house."
+        },
+        {
+          "hi": "वह किताब है।",
+          "romanization": "वह किताब है।",
+          "en": "That is a book."
+        },
+        {
+          "hi": "यह मेरा स्कूल है।",
+          "romanization": "यह मेरा स्कूल है।",
+          "en": "This is my school."
+        }
+      ],
+      "note": "Use यह for near objects and वह for things farther away."
+    },
+    {
+      "id": "b3",
+      "type": "dialogue",
+      "title": "Conversation Practice",
+      "speakers": [
+        "Speaker A",
+        "Speaker B"
+      ],
+      "lines": [
+        {
+          "speaker": 0,
+          "text": "यह क्या है?",
+          "romanization": "Yah kyā hai?",
+          "translation": "What is this?"
+        },
+        {
+          "speaker": 1,
+          "text": "यह किताब है।",
+          "romanization": "Yah kitāb hai.",
+          "translation": "This is a book."
+        },
+        {
+          "speaker": 0,
+          "text": "किताब कहाँ है?",
+          "romanization": "Kitāb kahā̃ hai?",
+          "translation": "Where is the book?"
+        },
+        {
+          "speaker": 1,
+          "text": "किताब मेज़ पर है।",
+          "romanization": "Kitāb mez par hai.",
+          "translation": "The book is on the table."
+        }
+      ]
+    },
+    {
+      "id": "b4",
+      "type": "comparison_table",
+      "title": "English vs Hindi",
+      "headers": [
+        "English",
+        "Hindi",
+        "Pronunciation"
+      ],
+      "rows": [
+        [
+          "house",
+          "घर",
+          "ghar"
+        ],
+        [
+          "book",
+          "किताब",
+          "kitāb"
+        ],
+        [
+          "school",
+          "स्कूल",
+          "skūl"
+        ],
+        [
+          "water",
+          "पानी",
+          "pānī"
+        ]
+      ]
+    },
+    {
+      "id": "b5",
+      "type": "fill_blank",
+      "title": "Complete the sentence",
+      "instructions": "Type the missing Hindi word.",
+      "items": [
+        {
+          "sentence": "The Hindi word for house is ___.",
+          "answer": "घर",
+          "hint": "A place where you live."
+        },
+        {
+          "sentence": "The Hindi word for book is ___.",
+          "answer": "किताब",
+          "hint": "You read it."
+        }
+      ]
+    },
+    {
+      "id": "b6",
+      "type": "tip",
+      "body": "Hindi has aspirated consonants like ख, घ, थ, ध, फ, भ. Say a small puff of air after the sound."
+    },
+    {
+      "id": "b7",
+      "type": "progress_checkpoint",
+      "title": "Checkpoint",
+      "items": [
+        "Identify common everyday nouns.",
+        "Say at least five consonants clearly.",
+        "Use यह / वह to point out objects."
+      ],
+      "xpBonus": 15
+    }
+  ]
+}

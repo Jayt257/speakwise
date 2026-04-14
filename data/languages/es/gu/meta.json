@@ -1,0 +1,26 @@
+{
+  "_comment": "Spanish → Gujarati language pair metadata",
+  "_status": "stub — content not yet created",
+  "pairId": "es-gu",
+  "source": {
+    "id": "es",
+    "name": "Spanish",
+    "flag": "🇪🇸"
+  },
+  "target": {
+    "id": "gu",
+    "name": "Gujarati",
+    "flag": "🇮🇳"
+  },
+  "status": "planned",
+  "months": [
+    {
+      "month": 1,
+      "title": "Foundation",
+      "description": "Learn Gujarati basics from Spanish.",
+      "status": "not-started",
+      "weeks": []
+    }
+  ],
+  "_howToCreate": "See /data/README.md for instructions on creating es-gu content."
+}

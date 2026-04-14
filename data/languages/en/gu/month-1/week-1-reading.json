@@ -1,0 +1,44 @@
+{
+  "_comment": "English → Gujarati | Month 1 Week 1 | Reading",
+  "id": 3,
+  "type": "reading",
+  "title": "My First Gujarati Conversation",
+  "description": "Read a simple dialogue between two people meeting for the first time in Gujarati.",
+  "duration": "12 min",
+  "xp": 25,
+  "week": 1,
+  "month": 1,
+  "langPair": "en-gu",
+  "tags": ["dialogue", "greetings", "first meeting"],
+  "blocks": [
+    {
+      "id": "r1",
+      "type": "reading",
+      "passage": "📖 DIALOGUE — પ્રથમ મુલાકાત (First Meeting)\n\nRahul:  નમસ્તે! (Namaste!)\n        Hello!\n\nSneha:  નમસ્તે! કેમ છો? (Namaste! Kem chho?)\n        Hello! How are you?\n\nRahul:  હું સારો છું, આભાર. તમે? (Hun saaro chhun, aabhaar. Tame?)\n        I am fine, thank you. And you?\n\nSneha:  હું પણ સારી છું. તમારું નામ શું છે? (Hun pan saari chhun. Tamaarun naam shun chhe?)\n        I am also fine. What is your name?\n\nRahul:  મારું નામ રાહુલ છે. (Maarun naam Rahul chhe.)\n        My name is Rahul.\n\nSneha:  ખૂબ સારું! ક્યાંથી છો? (Khoob saaru! Kyaanthi chho?)\n        Very nice! Where are you from?\n\nRahul:  હું અમદાવાદથી છું. (Hun Amdavaadthi chhun.)\n        I am from Ahmedabad.\n\nSneha:  ગુજરાત ખૂબ સુંદર છે! ફરી મળીશું. (Gujarat khoob sundar chhe! Fari malishun.)\n        Gujarat is very beautiful! See you again.",
+      "questions": [
+        { "q": "How did Sneha respond when asked how she was?", "a": "She said 'I am also fine' (હું પણ સારી છું)" },
+        { "q": "Where is Rahul from?", "a": "Ahmedabad (અમદાવાદ)" },
+        { "q": "What does 'ખૂબ સારું' mean?", "a": "Very nice / Very good" },
+        { "q": "How do you say 'What is your name?' in Gujarati?", "a": "તમારું નામ શું છે? (Tamaarun naam shun chhe?)" }
+      ]
+    },
+    {
+      "id": "r2",
+      "type": "cultural_note",
+      "title": "Gujarati Identity",
+      "icon": "🌍",
+      "content": "Gujaratis are one of the most widespread diaspora communities in the world, found in UK, USA, East Africa, and Southeast Asia. You'll find Gujarati-speaking communities in over 30 countries! When you learn Gujarati, you connect with a global community proud of their heritage, language, and cuisine.",
+      "tags": ["diaspora", "culture", "community", "global"]
+    },
+    {
+      "id": "r3",
+      "type": "true_false",
+      "title": "Reading Comprehension Check",
+      "items": [
+        { "statement": "Rahul is from Ahmedabad.", "answer": true, "explanation": "Yes! 'હું અમદાવાદથી છું' = 'I am from Ahmedabad'." },
+        { "statement": "Sneha said she was not feeling well.", "answer": false, "explanation": "No! Sneha said 'હું પણ સારી છું' = 'I am also fine'." },
+        { "statement": "The dialogue uses 'tame' (formal) form of 'you'.", "answer": true, "explanation": "Yes! 'તમે' (tame) is the formal/respectful form. This is correct to use with someone you just met." }
+      ]
+    }
+  ]
+}

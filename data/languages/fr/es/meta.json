@@ -1,0 +1,26 @@
+{
+  "_comment": "French → Spanish language pair metadata",
+  "_status": "stub — content not yet created",
+  "pairId": "fr-es",
+  "source": {
+    "id": "fr",
+    "name": "French",
+    "flag": "🇫🇷"
+  },
+  "target": {
+    "id": "es",
+    "name": "Spanish",
+    "flag": "🇪🇸"
+  },
+  "status": "planned",
+  "months": [
+    {
+      "month": 1,
+      "title": "Foundation",
+      "description": "Learn Spanish basics from French.",
+      "status": "not-started",
+      "weeks": []
+    }
+  ],
+  "_howToCreate": "See /data/README.md for instructions on creating fr-es content."
+}

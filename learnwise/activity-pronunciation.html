@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="theme-color" content="#ec4899"/>
+<meta name="description" content="LearnWise – Pronunciation Drill"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Pronunciation · LearnWise</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Inter',sans-serif;color:#e0ddf5;min-height:100vh;background:#0a0818;overflow-x:hidden;}
+h1,h2,h3,h4,h5,button,label{font-family:'Plus Jakarta Sans',sans-serif;}
+.material-symbols-outlined{font-variation-settings:'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 24;}
+.bg-deep{position:fixed;inset:0;z-index:0;background:radial-gradient(ellipse at 25% 25%,#1a0830 0%,#0d0b22 55%,#060410 100%);}
+.bg-grid{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:0.3;background-image:linear-gradient(rgba(236,72,153,0.05) 1px,transparent 1px),linear-gradient(90deg,rgba(236,72,153,0.05) 1px,transparent 1px);background-size:48px 48px;}
+
+.top-bar{position:sticky;top:0;z-index:50;background:rgba(10,8,24,0.92);backdrop-filter:blur(20px);border-bottom:1px solid rgba(236,72,153,0.18);padding:0 16px;height:60px;display:flex;align-items:center;justify-content:space-between;gap:12px;}
+.back-btn{width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,0.55);border:1px solid rgba(255,255,255,0.1);background:rgba(255,255,255,0.05);cursor:pointer;transition:all 0.2s;text-decoration:none;}
+.back-btn:hover{background:rgba(255,255,255,0.12);color:white;}
+.top-title{font-weight:800;font-size:14px;color:white;flex:1;text-align:center;}
+.xp-pill{display:inline-flex;align-items:center;gap:3px;background:rgba(236,72,153,0.25);color:#f9a8d4;border-radius:999px;padding:5px 12px;font-size:12px;font-weight:700;border:1px solid rgba(236,72,153,0.2);}
+
+.progress-wrap{position:sticky;top:60px;z-index:40;background:rgba(10,8,24,0.85);backdrop-filter:blur(12px);padding:12px 16px;border-bottom:1px solid rgba(255,255,255,0.05);}
+.progress-track{width:100%;max-width:700px;margin:0 auto;height:8px;border-radius:4px;background:rgba(255,255,255,0.08);overflow:hidden;}
+.progress-fill{height:100%;border-radius:4px;background:linear-gradient(90deg,#ec4899,#f472b6);transition:width 0.6s ease;width:0%;}
+.progress-label{max-width:700px;margin:4px auto 0;display:flex;justify-content:space-between;font-size:11px;color:rgba(255,255,255,0.35);font-weight:600;}
+
+.content{position:relative;z-index:1;max-width:700px;margin:0 auto;padding:24px 16px 120px;}
+.card{background:rgba(255,255,255,0.05);backdrop-filter:blur(18px);border:1px solid rgba(255,255,255,0.1);border-radius:1.25rem;padding:24px;margin-bottom:20px;box-shadow:0 4px 24px rgba(0,0,0,0.3);animation:fadeUp 0.45s ease both;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:translateY(0);}}
+
+/* SOUND PAIR */
+.sound-pair-container{display:flex;flex-direction:column;gap:16px;margin:20px 0;}
+.sound-pair{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.sound-card{padding:24px 16px;border-radius:16px;text-align:center;cursor:pointer;transition:all 0.25s cubic-bezier(.34,1.2,.64,1);position:relative;overflow:hidden;}
+.sound-card:hover{transform:translateY(-3px);}
+.sound-card.left{background:rgba(236,72,153,0.12);border:1.5px solid rgba(236,72,153,0.3);}
+.sound-card.right{background:rgba(139,92,246,0.12);border:1.5px solid rgba(139,92,246,0.3);}
+.sound-card.playing{transform:scale(1.02);}
+.sound-card.playing::after{content:'';position:absolute;inset:0;border-radius:16px;animation:ring-pulse 0.8s ease-out;}
+@keyframes ring-pulse{0%{box-shadow:inset 0 0 0 2px rgba(255,255,255,0.2);}100%{box-shadow:inset 0 0 0 2px transparent;}}
+.sound-letter{font-size:36px;font-weight:900;color:white;margin-bottom:8px;line-height:1;}
+.sound-name{font-size:14px;color:rgba(255,255,255,0.5);font-weight:600;}
+.sound-play{margin-top:12px;display:inline-flex;align-items:center;gap:4px;font-size:11px;color:rgba(255,255,255,0.3);font-weight:600;}
+
+/* STEPS */
+.steps-list{display:flex;flex-direction:column;gap:10px;margin:16px 0;}
+.step-item{display:flex;align-items:flex-start;gap:12px;padding:12px 14px;border-radius:12px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);transition:all 0.3s;}
+.step-item.active{background:rgba(236,72,153,0.1);border-color:rgba(236,72,153,0.2);}
+.step-item.done{background:rgba(16,185,129,0.06);border-color:rgba(16,185,129,0.15);}
+.step-num{width:28px;height:28px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:12px;flex-shrink:0;}
+.step-item.active .step-num{background:rgba(236,72,153,0.25);color:#f472b6;}
+.step-item.done .step-num{background:rgba(16,185,129,0.25);color:#34d399;}
+.step-item:not(.active):not(.done) .step-num{background:rgba(255,255,255,0.06);color:rgba(255,255,255,0.3);}
+.step-text{font-size:13px;color:rgba(255,255,255,0.5);line-height:1.5;}
+
+/* MIC */
+.mic-section{text-align:center;margin:24px 0;}
+.mic-btn{width:80px;height:80px;border-radius:50%;border:none;cursor:pointer;transition:all 0.3s;display:flex;align-items:center;justify-content:center;margin:0 auto;}
+.mic-btn.idle{background:linear-gradient(135deg,#ec4899,#f472b6);box-shadow:0 6px 24px rgba(236,72,153,0.5);}
+.mic-btn.idle:hover{transform:scale(1.08);}
+.mic-btn.recording{background:linear-gradient(135deg,#ef4444,#f87171);box-shadow:0 6px 24px rgba(239,68,68,0.5);animation:pulse-mic 1.5s ease-in-out infinite;}
+@keyframes pulse-mic{50%{box-shadow:0 6px 40px rgba(239,68,68,0.7),0 0 0 12px rgba(239,68,68,0.06);}}
+
+.tip-box{background:rgba(236,72,153,0.08);border:1px solid rgba(236,72,153,0.2);border-radius:12px;padding:16px;margin:20px 0;}
+.tip-box h4{font-weight:700;font-size:13px;color:#f472b6;margin-bottom:8px;display:flex;align-items:center;gap:6px;}
+
+.nav-btns{display:flex;gap:12px;margin-top:20px;justify-content:center;}
+.btn-primary{padding:14px 28px;border-radius:12px;background:linear-gradient(135deg,#ec4899,#f472b6);color:white;font-weight:800;font-size:15px;border:none;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;box-shadow:0 6px 24px rgba(236,72,153,0.4);transition:all 0.22s;display:flex;align-items:center;gap:8px;}
+.btn-primary:hover{transform:translateY(-2px);}
+.btn-success{padding:14px 32px;border-radius:12px;background:linear-gradient(135deg,#10b981,#059669);color:white;font-weight:800;font-size:15px;border:none;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;box-shadow:0 6px 24px rgba(16,185,129,0.45);transition:all 0.22s;display:flex;align-items:center;gap:8px;}
+.btn-success:hover{transform:translateY(-2px);}
+
+::-webkit-scrollbar{width:4px;}
+::-webkit-scrollbar-thumb{background:rgba(236,72,153,0.3);border-radius:2px;}
+</style>
+</head>
+<body>
+<div class="bg-deep"></div>
+<div class="bg-grid"></div>
+
+<div class="top-bar">
+  <a href="roadmap.html" class="back-btn"><span class="material-symbols-outlined" style="font-size:20px;">arrow_back</span></a>
+  <div class="top-title" id="top-title">Pronunciation Drill</div>
+  <div class="xp-pill"><span class="material-symbols-outlined" style="font-size:14px;font-variation-settings:'FILL' 1">bolt</span><span id="xp-display">+30</span> XP</div>
+</div>
+
+<div class="progress-wrap">
+  <div class="progress-track"><div class="progress-fill" id="progress-fill"></div></div>
+  <div class="progress-label"><span id="progress-step">Pair 1 of 3</span><span id="progress-pct">0%</span></div>
+</div>
+
+<div class="content" id="main-content"></div>
+
+<script src="data/roadmap-data.js"></script>
+<script src="data/activity-content.js"></script>
+<script>
+'use strict';
+const params = new URLSearchParams(window.location.search);
+const langId = params.get('lang') || LWData.getSelectedLanguage();
+const actId = parseInt(params.get('id'));
+if (isNaN(actId)) window.location.href = 'roadmap.html';
+
+const contentResult = LWContent.getActivityContent(langId, actId);
+const pronData = contentResult ? contentResult.data : null;
+
+let currentPair = 0;
+let currentStep = 0;
+let isRecording = false;
+let recordTimer = null;
+const pairs = pronData ? pronData.pairs : [];
+const steps = pronData ? pronData.steps : [];
+
+function init() {
+  if (!pronData) { document.getElementById('main-content').innerHTML = '<div style="text-align:center;padding:60px;color:rgba(255,255,255,0.4);"><p style="font-weight:700;color:white;">Content not found</p><a href="roadmap.html" style="color:#f472b6;">Back to Roadmap</a></div>'; return; }
+  document.getElementById('top-title').textContent = pronData.title;
+  document.getElementById('xp-display').textContent = '+' + pronData.xp;
+  render();
+}
+
+function updateProgress() {
+  const pct = Math.round((currentPair / pairs.length) * 100);
+  document.getElementById('progress-fill').style.width = pct + '%';
+  document.getElementById('progress-pct').textContent = pct + '%';
+  document.getElementById('progress-step').textContent = currentPair >= pairs.length ? 'Complete!' : `Pair ${currentPair + 1} of ${pairs.length}`;
+}
+
+function render() {
+  updateProgress();
+  if (currentPair >= pairs.length) { renderComplete(); return; }
+  
+  const pair = pairs[currentPair];
+  const root = document.getElementById('main-content');
+
+  root.innerHTML = `
+    <div class="card">
+      <div style="text-align:center;margin-bottom:20px;">
+        <div style="width:56px;height:56px;border-radius:16px;background:linear-gradient(135deg,#ec4899,#f472b6);display:flex;align-items:center;justify-content:center;margin:0 auto 12px;box-shadow:0 6px 24px rgba(236,72,153,0.4);">
+          <span class="material-symbols-outlined" style="font-size:28px;color:white;font-variation-settings:'FILL' 1">record_voice_over</span>
+        </div>
+        <div style="font-size:10px;font-weight:900;color:#f472b6;text-transform:uppercase;letter-spacing:0.12em;">Focus: ${pronData.focusSound}</div>
+        <div style="font-weight:900;font-size:18px;color:white;margin-top:4px;">Compare These Sounds</div>
+      </div>
+
+      <div class="sound-pair">
+        <div class="sound-card left" id="sc-0" onclick="playSound(0)">
+          <div class="sound-letter">${pair[0]}</div>
+          <div class="sound-play"><span class="material-symbols-outlined" style="font-size:16px;font-variation-settings:'FILL' 1">volume_up</span>Listen</div>
+        </div>
+        <div class="sound-card right" id="sc-1" onclick="playSound(1)">
+          <div class="sound-letter">${pair[1]}</div>
+          <div class="sound-play"><span class="material-symbols-outlined" style="font-size:16px;font-variation-settings:'FILL' 1">volume_up</span>Listen</div>
+        </div>
+      </div>
+
+      <div class="tip-box" style="margin-top:20px;">
+        <h4><span class="material-symbols-outlined" style="font-size:16px;font-variation-settings:'FILL' 1">lightbulb</span>Tip</h4>
+        <div style="font-size:13px;color:rgba(255,255,255,0.5);line-height:1.6;">${pronData.tip}</div>
+      </div>
+    </div>
+
+    <div class="card" style="animation-delay:0.1s;">
+      <div style="font-size:11px;font-weight:700;color:rgba(255,255,255,0.35);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:12px;">📋 Practice Steps</div>
+      <div class="steps-list" id="steps-list">
+        ${steps.map((s, i) => `
+          <div class="step-item ${i === 0 ? 'active' : ''}" id="si-${i}">
+            <div class="step-num">${i + 1}</div>
+            <div class="step-text">${s}</div>
+          </div>
+        `).join('')}
+      </div>
+
+      <div class="mic-section">
+        <button class="mic-btn idle" id="mic-btn" onclick="toggleRecord()">
+          <span class="material-symbols-outlined" style="font-size:36px;color:white;font-variation-settings:'FILL' 1" id="mic-icon">mic</span>
+        </button>
+        <div style="font-size:12px;color:rgba(255,255,255,0.3);margin-top:12px;" id="mic-label">Tap to practice pronunciation</div>
+      </div>
+
+      <div id="score-area"></div>
+
+      <div class="nav-btns">
+        <button class="btn-primary" onclick="nextPair()">
+          <span class="material-symbols-outlined" style="font-size:18px;">navigate_next</span>
+          ${currentPair < pairs.length - 1 ? 'Next Sound Pair' : 'Finish'}
+        </button>
+      </div>
+    </div>`;
+}
+
+function playSound(idx) {
+  const card = document.getElementById(`sc-${idx}`);
+  card.classList.add('playing');
+  // Simulate audio playback with visual feedback
+  setTimeout(() => card.classList.remove('playing'), 600);
+  
+  // Advance step
+  if (currentStep < 1) {
+    currentStep = 1;
+    updateSteps();
+  }
+}
+
+function toggleRecord() {
+  const btn = document.getElementById('mic-btn');
+  const icon = document.getElementById('mic-icon');
+  const label = document.getElementById('mic-label');
+
+  if (!isRecording) {
+    isRecording = true;
+    btn.className = 'mic-btn recording';
+    icon.textContent = 'stop';
+    label.textContent = 'Listening… Tap to stop';
+    if (currentStep < 2) { currentStep = 2; updateSteps(); }
+    recordTimer = setTimeout(() => finishRecord(), 5000);
+  } else {
+    finishRecord();
+  }
+}
+
+function finishRecord() {
+  if (!isRecording) return;
+  isRecording = false;
+  clearTimeout(recordTimer);
+  
+  const btn = document.getElementById('mic-btn');
+  const icon = document.getElementById('mic-icon');
+  const label = document.getElementById('mic-label');
+  
+  btn.className = 'mic-btn idle';
+  icon.textContent = 'mic';
+  label.textContent = 'Great! Try again or continue';
+
+  if (currentStep < 4) { currentStep = 4; updateSteps(); }
+
+  const score = 70 + Math.floor(Math.random() * 30);
+  const color = score >= 90 ? '#34d399' : score >= 75 ? '#fbbf24' : '#f87171';
+  
+  document.getElementById('score-area').innerHTML = `
+    <div style="text-align:center;padding:16px;border-radius:12px;background:rgba(16,185,129,0.08);border:1px solid rgba(16,185,129,0.2);margin:16px 0;animation:fadeUp 0.3s ease both;">
+      <div style="font-size:32px;font-weight:900;color:${color};">${score}%</div>
+      <div style="font-size:12px;color:rgba(255,255,255,0.4);margin-top:4px;">${score >= 90 ? 'Excellent!' : score >= 75 ? 'Good! Keep practicing' : 'Try again with the tip above'}</div>
+    </div>`;
+}
+
+function updateSteps() {
+  steps.forEach((_, i) => {
+    const si = document.getElementById(`si-${i}`);
+    if (!si) return;
+    si.classList.remove('active', 'done');
+    if (i < currentStep) si.classList.add('done');
+    else if (i === currentStep) si.classList.add('active');
+  });
+}
+
+function nextPair() {
+  currentPair++;
+  currentStep = 0;
+  if (currentPair >= pairs.length) {
+    renderComplete();
+  } else {
+    render();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+}
+
+function renderComplete() {
+  updateProgress();
+  document.getElementById('main-content').innerHTML = `
+    <div class="card" style="text-align:center;background:linear-gradient(135deg,rgba(236,72,153,0.1),rgba(16,185,129,0.1));border-color:rgba(16,185,129,0.25);">
+      <div style="font-size:48px;margin-bottom:12px;">🎤</div>
+      <div style="font-weight:900;font-size:20px;color:white;margin-bottom:8px;">Pronunciation Complete!</div>
+      <div style="font-size:14px;color:rgba(255,255,255,0.5);line-height:1.6;">You practiced ${pairs.length} sound pairs. Keep up the great work!</div>
+      <div style="font-size:28px;font-weight:900;color:#f9a8d4;margin:16px 0;">⚡ +${pronData.xp} XP</div>
+      <div class="nav-btns">
+        <button class="btn-success" onclick="completePron()">
+          <span class="material-symbols-outlined" style="font-size:18px;font-variation-settings:'FILL' 1">check_circle</span>
+          Complete & Return to Roadmap
+        </button>
+      </div>
+    </div>`;
+}
+
+function completePron() {
+  window.location.href = `roadmap.html?completed=${actId}&xp=${pronData.xp}&lang=${langId}`;
+}
+
+init();
+</script>
+</body>
+</html>
